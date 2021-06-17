@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Transaction complete - Waste tracking service
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "Transaction complete",
+        html: "Your transaction number<br><strong>HDJ2123F</strong>"
+      }) }}
+
+      <p class="govuk-body">
+        We have sent you a confirmation email.
+      </p>
+
+      <p class="govuk-body">
+        Thank you for submitting to the <strong>Waste tracking service</strong>. We've sent you an email confirming receipt of your submitted data for your records.
+      </p>
+
+      <p class="govuk-body">
+        A link through to a printable Annex VII PDF document is also provided in the email we have sent, and we have also provided it here too:
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="#" class="govuk-link govuk-link--no-visited-state">Annex VII printable PDF document</a></li>
+        </ul>
+      </p>
+
+      <p class="govuk-body">
+        <a href="index" class="govuk-link">Start another waste movement transaction</a>
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

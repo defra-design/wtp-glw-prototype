@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Generate transaction ID - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Shipment information
+      </span>
+      <h1 class="govuk-heading-xl">
+        Unique transaction ID
+      </h1>
+      
+      <form class="form" method="post">
+        
+        <p class="govuk-body">
+          All waste movements must be accompanied by a Unique Transaction ID (UTID). Parties in the movement must record the UTID and 
+          use it to report information to the service.
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a href="javascript: document.getElementById('unique-transaction-id').value = 'HDJ2123F';" class="govuk-link govuk-link--no-visited-state">Generate a UTID</a> if you are initiating a waste movement</li>
+            <li>Enter the provided UTID if you are submitting data for a waste movement that's been initiated by another party</li>
+          </ul>
+          <p class="govuk-body">Check with your waste producer if you are not sure whether a UTID has been generated for the movement.</p>
+        </p>
+
+        {{ govukInput({
+          label: {
+            text: "Unique transaction ID"
+          },
+          id: "unique-transaction-id",
+          name: "unique-transaction-id",
+          value: data['unique-transaction-id'],
+          spellcheck: false
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,236 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Recovery facility or laboratory - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Shipment information
+      </span>
+      <h1 class="govuk-heading-xl">
+        Recovery facility or laboratory
+      </h1>
+
+      {% set emailHtml %}
+      {{ govukInput({
+        id: "facility-or-lab-email",
+        name: "facility-or-lab-email",
+        type: "email",
+        spellcheck: false,
+        value: data['facility-or-lab-email'],
+        label: {
+          text: "Email address"
+        }
+      }) }}
+      {% endset -%}
+      
+      {% set telephoneHtml %}
+      {{ govukInput({
+        id: "facility-or-lab-telephone",
+        name: "facility-or-lab-telephone",
+        type: "tel",
+        value: data['facility-or-lab-telephone'],
+        classes: "govuk-input--width-20",
+        label: {
+          text: "Telephone number"
+        }
+      }) }}
+      {% endset -%}
+      
+      {% set faxHtml %}
+      {{ govukInput({
+        id: "facility-or-lab-fax",
+        name: "facility-or-lab-fax",
+        value: data['facility-or-lab-fax'],
+        type: "tel",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        label: {
+          text: "Fax number"
+        }
+      }) }}
+
+      {% endset -%}
+
+      <form class="form" method="post">
+
+        {% call govukFieldset({
+          legend: {
+            text: "Recovery facility or laboratory details",
+            classes: "govuk-fieldset__legend--l"
+          }
+        }) %}
+        
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "facility-or-lab-choice",
+          name: "facility-or-lab-choice",
+          fieldset: {
+          },
+          items: [
+            {
+              value: "recovery-facility",
+              text: "Recovery facility",
+              checked: checked("facility-or-lab-choice", "recovery-facility")
+            },
+            {
+              value: "laboratory",
+              text: "Laboratory",
+              checked: checked("facility-or-lab-choice", "laboratory")
+            }
+          ]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Recovery facility or laboratory name"
+          },
+          id: "facility-or-lab-carrier-name",
+          name: "facility-or-lab-carrier-name",
+          value: data['facility-or-lab-carrier-name']
+        }) }}
+
+          {{ govukInput({
+            label: {
+              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+            },
+            id: "facility-or-lab-address-line-1",
+            name: "facility-or-lab-address-line-1",
+            value: data['facility-or-lab-address-line-1'],
+            autocomplete: "address-line1"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+            },
+            id: "facility-or-lab-address-line-2",
+            name: "facility-or-lab-address-line-2",
+            value: data['facility-or-lab-address-line-2'],
+            autocomplete: "address-line2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Town or city"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "facility-or-lab-address-town",
+            name: "facility-or-lab-address-town",
+            value: data['facility-or-lab-address-town'],
+            autocomplete: "address-level2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "County or region"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "facility-or-lab-address-county",
+            name: "facility-or-lab-address-county",
+            value: data['facility-or-lab-address-county']
+          }) }} 
+        
+          {{ govukInput({
+            label: {
+              text: "Postcode or ZIP code"
+            },
+            classes: "govuk-input--width-10",
+            id: "facility-or-lab-address-postcode",
+            name: "facility-or-lab-address-postcode",
+            value: data['facility-or-lab-address-postcode'],
+            autocomplete: "postal-code"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Country"
+            },
+            classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-2",
+            id: "facility-or-lab-address-country",
+            name: "facility-or-lab-address-country",
+            value: data['facility-or-lab-address-country']
+          }) }} 
+        
+        {% endcall %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact person",
+            classes: "govuk-fieldset__legend--l"
+          }
+        }) %}
+        
+        {{ govukInput({
+          label: {
+            text: "Full name"
+          },
+          id: "facility-or-lab-contact-full-name",
+          name: "facility-or-lab-contact-full-name",
+          value: data['facility-or-lab-contact-full-name'],
+          autocomplete: "name",
+          spellcheck: false
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "facility-or-lab-contact",
+          name: "facility-or-lab-contact",
+          fieldset: {
+            legend: {
+              text: "Select all relevant contact options",
+              isPageHeading: false,
+              classes: "govuk-body-l"
+            }
+          },
+          items: [
+            {
+              value: "facility-or-lab-email",
+              id: "facility-or-lab-email",
+              text: "Email",
+              conditional: {
+                html: emailHtml
+              },
+              checked: checked("facility-or-lab-contact", "facility-or-lab-email")
+            },
+            {
+              value: "facility-or-lab-telephone",
+              id: "facility-or-lab-telephone",
+              text: "Telephone",
+              conditional: {
+                html: telephoneHtml
+              },
+              checked: checked("facility-or-lab-contact", "facility-or-lab-telephone")
+            },
+            {
+              value: "facility-or-lab-contact",
+              id: "facility-or-lab-fax",
+              text: "Fax",
+              conditional: {
+                html: faxHtml
+              },
+              checked: checked("facility-or-lab-contact", "facility-or-lab-contact")
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+        {{ govukDetails({
+          summaryText: "Help with recovery facility or laboratory",
+          text: "Supportive help text to help strengthen the purpose of this question."
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  National Code - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Waste identification
+      </span>
+      <h1 class="govuk-heading-xl">
+        National code
+      </h1>
+      
+      <form class="form" method="post">
+        
+        <p class="govuk-body">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+              <div id="national-code-typeahead-container" data-default-value="{{ data['national-code-typeahead'] }}"></div>
+            </div>
+          </div>
+        </p>
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

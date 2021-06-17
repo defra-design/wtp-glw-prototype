@@ -1,0 +1,216 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Waste generator - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Shipment information
+      </span>
+      <h1 class="govuk-heading-xl">
+        Waste generator, original producer, new producer or collector
+      </h1>
+
+      {% set emailHtml %}
+      {{ govukInput({
+        id: "waste-generator-email",
+        name: "waste-generator-email",
+        type: "email",
+        spellcheck: false,
+        value: data['waste-generator-email'],
+        label: {
+          text: "Email address"
+        }
+      }) }}
+      {% endset -%}
+      
+      {% set telephoneHtml %}
+      {{ govukInput({
+        id: "waste-generator-telephone",
+        name: "waste-generator-telephone",
+        type: "tel",
+        value: data['waste-generator-telephone'],
+        classes: "govuk-input--width-20",
+        label: {
+          text: "Telephone number"
+        }
+      }) }}
+      {% endset -%}
+      
+      {% set faxHtml %}
+      {{ govukInput({
+        id: "waste-generator-fax",
+        name: "waste-generator-fax",
+        value: data['waste-generator-fax'],
+        type: "tel",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        label: {
+          text: "Fax number"
+        }
+      }) }}
+
+      {% endset -%}
+
+      <form class="form" method="post">
+
+        {% call govukFieldset({
+          legend: {
+            text: "Company name and address",
+            classes: "govuk-fieldset__legend--l"
+          }
+        }) %}
+
+        {{ govukInput({
+          label: {
+            text: "Company name"
+          },
+          id: "waste-generator-company-name",
+          name: "waste-generator-company-name",
+          value: data['waste-generator-company-name']
+        }) }}
+
+          {{ govukInput({
+            label: {
+              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+            },
+            id: "waste-generator-address-line-1",
+            name: "waste-generator-address-line-1",
+            value: data['waste-generator-address-line-1'],
+            autocomplete: "address-line1"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+            },
+            id: "waste-generator-address-line-2",
+            name: "waste-generator-address-line-2",
+            value: data['waste-generator-address-line-2'],
+            autocomplete: "address-line2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Town or city"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "waste-generator-address-town",
+            name: "waste-generator-address-town",
+            value: data['waste-generator-address-town'],
+            autocomplete: "address-level2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "County or region"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "waste-generator-address-county",
+            name: "waste-generator-address-county",
+            value: data['waste-generator-address-county']
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Postcode or ZIP code"
+            },
+            classes: "govuk-input--width-10",
+            id: "waste-generator-address-postcode",
+            name: "waste-generator-address-postcode",
+            value: data['waste-generator-address-postcode'],
+            autocomplete: "postal-code"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Country"
+            },
+            classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-2",
+            id: "waste-generator-address-country",
+            name: "waste-generator-address-country",
+            value: data['waste-generator-address-country']
+          }) }}
+        
+        {% endcall %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact person",
+            classes: "govuk-fieldset__legend--l"
+          }
+        }) %}
+        
+        {{ govukInput({
+          label: {
+            text: "Full name"
+          },
+          id: "waste-generator-contact-full-name",
+          name: "waste-generator-contact-full-name",
+          value: data['waste-generator-contact-full-name'],
+          autocomplete: "name",
+          spellcheck: false
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "waste-generator-contact",
+          name: "waste-generator-contact",
+          fieldset: {
+            legend: {
+              text: "Select all relevant contact options",
+              isPageHeading: false,
+              classes: "govuk-body-l"
+            }
+          },
+          items: [
+            {
+              value: "waste-generator-email",
+              id: "waste-generator-email",
+              text: "Email",
+              conditional: {
+                html: emailHtml
+              },
+              checked: checked("waste-generator-contact", "waste-generator-email")
+            },
+            {
+              value: "waste-generator-telephone",
+              id: "waste-generator-telephone",
+              text: "Telephone",
+              conditional: {
+                html: telephoneHtml
+              },
+              checked: checked("waste-generator-contact", "waste-generator-telephone")
+            },
+            {
+              value: "waste-generator-fax",
+              id: "waste-generator-fax",
+              text: "Fax",
+              conditional: {
+                html: faxHtml
+              },
+              checked: checked("waste-generator-contact", "waste-generator-fax")
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+        {{ govukDetails({
+          summaryText: "Help with waste generator, original producer, new producer or collector",
+          text: "Supportive help text to help strengthen the purpose of this question."
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

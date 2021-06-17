@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Relevant codes - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Waste identification
+      </span>
+      <h1 class="govuk-heading-xl">
+        Relevant codes
+      </h1>
+      
+      <form class="form" method="post">
+        
+        <p class="govuk-body">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full govuk-!-margin-bottom-2">
+              <p class="govuk-body govuk-!-margin-bottom-2">Basel Annex IX</p>
+              <div id="basel-annex-ix-typeahead-container" data-default-value="{{ data['basel-annex-ix-typeahead'] }}"></div>
+            </div>
+          </div>
+        </p>
+
+        <p class="govuk-body">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full govuk-!-margin-bottom-2">
+              <p class="govuk-body govuk-!-margin-bottom-2">OECD (if different from Basel Annex IX)</p>
+              <div id="oecd-typeahead-container" data-default-value="{{ data['oecd-typeahead'] }}"></div>
+            </div>
+          </div>
+        </p>
+
+        <p class="govuk-body">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full govuk-!-margin-bottom-2">
+              <p class="govuk-body govuk-!-margin-bottom-2">Annex IIIA</p>
+              <div id="annex-iiia-typeahead-container" data-default-value="{{ data['annex-iiia-typeahead'] }}"></div>
+            </div>
+          </div>
+        </p>
+
+        <p class="govuk-body">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full govuk-!-margin-bottom-2">
+              <p class="govuk-body govuk-!-margin-bottom-2">Annex IIIB</p>
+              <div id="annex-iiib-typeahead-container" data-default-value="{{ data['annex-iiib-typeahead'] }}"></div>
+            </div>
+          </div>
+        </p>
+
+        <p class="govuk-body">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full govuk-!-margin-bottom-2">
+              <p class="govuk-body govuk-!-margin-bottom-2">EC list of wastes</p>
+              <div id="ec-wastes-typeahead-container" data-default-value="{{ data['ec-wastes-typeahead'] }}"></div>
+            </div>
+          </div>
+        </p>
+
+        <p class="govuk-body">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full govuk-!-margin-bottom-2">
+              <p class="govuk-body govuk-!-margin-bottom-2">National code</p>
+              <div id="national-code-typeahead-container" data-default-value="{{ data['national-code-typeahead'] }}"></div>
+            </div>
+          </div>
+        </p>
+
+        {{ govukDetails({
+          summaryText: "Help with relevant codes",
+          text: "Supportive help text to help strengthen the purpose of this question.",
+          classes: "govuk-!-margin-bottom-6"
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

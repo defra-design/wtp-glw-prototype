@@ -1,0 +1,34 @@
+// global styles for <a> and <p> tags
+$govuk-global-styles: true;
+
+// We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
+$govuk-assets-path: '/govuk/assets/';
+
+// Import GOV.UK Frontend and any extension styles if extensions have been configured
+@import "lib/extensions/extensions";
+
+// Patterns that aren't in Frontend
+@import "patterns/step-by-step-header";
+@import "patterns/step-by-step-nav";
+@import "patterns/step-by-step-related";
+@import "patterns/task-list";
+@import "patterns/related-items";
+@import "patterns/card";
+@import "patterns/flexbox";
+
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+@import "components/autocomplete";
+@import "custom";
+
+.spinner-text {
+    text-align: center;
+  }
+
+.spinner {
+    background-image: url("../images/spinner.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 50px;
+    margin-bottom: 2rem;
+  }

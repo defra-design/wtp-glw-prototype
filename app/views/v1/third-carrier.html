@@ -1,0 +1,229 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Third carrier - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-xl">
+      Shipment information
+    </span>
+    <h1 class="govuk-heading-xl">
+      Third carrier
+    </h1>
+
+    {% set emailHtml %}
+    {{ govukInput({
+      id: "third-carrier-email",
+      name: "third-carrier-email",
+      type: "email",
+      spellcheck: false,
+      value: data['third-carrier-email'],
+      label: {
+        text: "Email address"
+      }
+    }) }}
+    {% endset -%}
+    
+    {% set telephoneHtml %}
+    {{ govukInput({
+      id: "third-carrier-telephone",
+      name: "third-carrier-telephone",
+      type: "tel",
+      value: data['third-carrier-telephone'],
+      classes: "govuk-input--width-20",
+      label: {
+        text: "Telephone number"
+      }
+    }) }}
+    {% endset -%}
+    
+    {% set faxHtml %}
+    {{ govukInput({
+      id: "third-carrier-fax",
+      name: "third-carrier-fax",
+      value: data['third-carrier-fax'],
+      type: "tel",
+      classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+      label: {
+        text: "Fax number"
+      }
+    }) }}
+
+    {% endset -%}
+
+    <form class="form" method="post">
+      
+      {% call govukFieldset({
+        legend: {
+          text: "Contact details",
+          classes: "govuk-fieldset__legend--l"
+        }
+      }) %}
+      
+      {{ govukInput({
+        label: {
+          text: "Full name"
+        },
+        id: "third-carrier-contact-full-name",
+        name: "third-carrier-contact-full-name",
+        value: data['third-carrier-contact-full-name'],
+        autocomplete: "name",
+        spellcheck: false
+      }) }}
+
+      {{ govukCheckboxes({
+        idPrefix: "third-carrier-contact",
+        name: "third-carrier-contact",
+        fieldset: {
+          legend: {
+            text: "Select all relevant contact options",
+            isPageHeading: false,
+            classes: "govuk-body-l"
+          }
+        },
+        items: [
+          {
+            value: "third-carrier-email",
+            id: "third-carrier-email",
+            text: "Email",
+            conditional: {
+              html: emailHtml
+            }
+          },
+          {
+            value: "third-carrier-telephone",
+            id: "third-carrier-telephone",
+            text: "Telephone",
+            conditional: {
+              html: telephoneHtml
+            }
+          },
+          {
+            value: "third-carrier-fax",
+            id: "third-carrier-fax",
+            text: "Fax",
+            conditional: {
+              html: faxHtml
+            }
+          }
+        ]
+      }) }}
+
+      {% endcall %}
+
+      {% call govukFieldset({
+        legend: {
+          text: "Carrier name and address",
+          classes: "govuk-fieldset__legend--l"
+        }
+      }) %}
+
+      {{ govukInput({
+        label: {
+          text: "Carrier name"
+        },
+        id: "third-carrier-name",
+        name: "third-carrier-name",
+        value: data['third-carrier-name']
+      }) }}
+
+        {{ govukInput({
+          label: {
+            html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+          },
+          id: "third-carrier-address-line-1",
+          name: "third-carrier-address-line-1",
+          value: data['third-carrier-address-line-1'],
+          autocomplete: "address-line1"
+        }) }}
+      
+        {{ govukInput({
+          label: {
+            html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+          },
+          id: "third-carrier-address-line-2",
+          name: "third-carrier-address-line-2",
+          value: data['third-carrier-address-line-2'],
+          autocomplete: "address-line2"
+        }) }}
+      
+        {{ govukInput({
+          label: {
+            text: "Town or city"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "third-carrier-address-town",
+          name: "third-carrier-address-town",
+          value: data['third-carrier-address-town'],
+          autocomplete: "address-level2"
+        }) }}
+      
+        {{ govukInput({
+          label: {
+            text: "County"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "third-carrier-address-county",
+          name: "third-carrier-address-county",
+          value: data['third-carrier-address-county']
+        }) }}
+      
+        {{ govukInput({
+          label: {
+            text: "Postcode"
+          },
+          classes: "govuk-input--width-10 govuk-!-margin-bottom-2",
+          id: "third-carrier-address-postcode",
+          name: "third-carrier-address-postcode",
+          value: data['third-carrier-address-postcode'],
+          autocomplete: "postal-code"
+        }) }}
+        
+        {% endcall %}
+
+        {{ govukRadios({
+          idPrefix: "third-carrier-means-of-transport",
+          name: "third-carrier-means-of-transport",
+          classes: "govuk-!-margin-bottom-2",
+          fieldset: {
+            legend: {
+              text: "Means of transport",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Road",
+              text: "Road"
+            },
+            {
+              value: "Rail",
+              text: "Rail"
+            },
+            {
+              value: "Air",
+              text: "Air"
+            },
+            {
+              value: "Sea",
+              text: "Sea"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

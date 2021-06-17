@@ -1,0 +1,80 @@
+  {% extends "layout.html" %}
+
+{% block pageTitle %}
+  Unique Transaction ID - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Shipment information
+      </span>
+      <h1 class="govuk-heading-xl">
+        Unique Transaction ID
+      </h1>
+      
+      {% set idHtml %}
+      {{ govukInput({
+        id: "unique-transaction-id",
+        name: "unique-transaction-id",
+        spellcheck: false,
+        value: data['unique-transaction-id'],
+        label: {
+          text: "Unique Transaction ID"
+        }
+      }) }}
+      {% endset -%}
+
+      <form class="form" method="post">
+
+        <p class="govuk-body">
+          All waste movements must be accompanied by a Unique Transaction ID (UTID).
+        </p>
+        <p class="govuk-body">
+          Parties in the movement must record the UTID and 
+          use it to report information to the service.
+        </p>
+
+        {{ govukRadios({
+          idPrefix: "unique-id-radio",
+          name: "unique-id-radio",
+          classes: "govuk-!-margin-bottom-2",
+          fieldset: {
+          },
+          items: [
+            {
+              value: "auto-transaction-id",
+              id: "auto-transaction-id",
+              html: "Use <strong>HDJ2123F</strong> as the automatically generated Unique Transaction ID",
+              checked: checked("unique-id-radio", "auto-transaction-id")
+            },
+            {
+              value: "unique-transaction-id",
+              id: "unique-transaction-id",
+              text: "Manually enter a Unique Transaction ID",
+              conditional: {
+                html: idHtml
+              },
+              checked: checked("unique-id-radio", "unique-transaction-id")
+            }
+          ]
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with Unique Transaction ID (UTID)",
+          text: "Supportive help text to help strengthen the purpose of this question."
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Quantity - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+      {% call govukFieldset({
+        legend: {
+          html: '<span class="govuk-caption-xl">Shipment information</span>Quantity',
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      }) %}
+
+      {{ govukInput({
+        label: {
+          text: 'Weight'
+        },
+        id: "weight",
+        name: "quantity-weight",
+        value: data['quantity-weight'],
+        classes: "govuk-!-width-one-third"
+      }) }}
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "quantity-units",
+        name: "quantity-units",
+        fieldset: {
+          legend: {
+            text: "Units"
+          }
+        },
+        items: [
+          {
+            value: "tonnes-mg",
+            text: "Tonnes (Mg)",
+            checked: checked("quantity-units", "tonnes-mg")
+          },
+          {
+            value: "cubic-metres",
+            text: "Cubic metres",
+            checked: checked("quantity-units", "cubic-metres")
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "actual-or-estimate",
+        name: "actual-or-estimate",
+        fieldset: {
+          legend: {
+            text: "Is this an actual or estimated quantity?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "actual",
+            text: "Actual quantity",
+            checked: checked("actual-or-estimate", "actual")
+          },
+          {
+            value: "estimated",
+            text: "Estimated quantity",
+            checked: checked("actual-or-estimate", "estimated")
+          }
+        ]
+      }) }}
+
+      {% endcall %}
+
+      {{ govukDetails({
+        summaryText: "Help with quantity",
+        text: "Supportive help text to help strengthen the purpose of this question."
+      }) }}
+
+      {{ govukButton({
+        text: 'Continue'
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

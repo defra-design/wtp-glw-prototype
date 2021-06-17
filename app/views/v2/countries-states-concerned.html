@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Export/dispatch - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Shipment information
+      </span>
+      <h1 class="govuk-heading-xl">
+        Countries/states concerned
+      </h1>
+      
+      <form class="form" method="post">
+        
+        <p class="govuk-body">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full govuk-!-margin-bottom-2">
+              <p class="govuk-body govuk-!-margin-bottom-2">Export/dispatch</p>
+              <div id="export-dispatch-typeahead-container" data-default-value="{{ data['export-dispatch-typeahead'] }}"></div>
+            </div>
+          </div>
+        </p>
+
+        <p class="govuk-body">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full govuk-!-margin-bottom-2">
+              <p class="govuk-body govuk-!-margin-bottom-2">Transit</p>
+              <div id="transit-typeahead-container" data-default-value="{{ data['transit-typeahead'] }}"></div>
+            </div>
+          </div>
+        </p>
+
+        <p class="govuk-body">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full govuk-!-margin-bottom-2">
+              <p class="govuk-body govuk-!-margin-bottom-2">Import/destination</p>
+              <div id="import-destination-typeahead-container" data-default-value="{{ data['import-destination-typeahead'] }}"></div>
+            </div>
+          </div>
+        </p>
+
+        {{ govukDetails({
+          summaryText: "Help with countries/states concerned",
+          text: "Supportive help text to help strengthen the purpose of this question.",
+          classes: "govuk-!-margin-bottom-6"
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

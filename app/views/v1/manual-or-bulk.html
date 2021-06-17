@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Manual or bulk upload? - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+      {{ govukRadios({
+        idPrefix: "manual-bulk",
+        name: "manual-bulk",
+        fieldset: {
+          legend: {
+            html: '<span class="govuk-caption-xl">Section header</span>Manual or bulk upload?',
+            html: 'Manual or bulk upload?',
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "manual",
+            text: "Record data manually",
+            hint: {
+              text: "Single waste movements added one at a time"
+            }
+          },
+          {
+            value: "bulk",
+            text: "Bulk upload",
+            hint: {
+              text: "Multiple waste movements added in bulk and uploaded via a speadsheet"
+            }
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

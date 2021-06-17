@@ -1,0 +1,274 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Second carrier - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-xl">
+      Shipment information
+    </span>
+    <h1 class="govuk-heading-xl">
+      Second carrier
+    </h1>
+
+    {% set emailHtml %}
+    {{ govukInput({
+      id: "second-carrier-email",
+      name: "second-carrier-email",
+      type: "email",
+      spellcheck: false,
+      value: data['second-carrier-email'],
+      label: {
+        text: "Email address"
+      }
+    }) }}
+    {% endset -%}
+    
+    {% set telephoneHtml %}
+    {{ govukInput({
+      id: "second-carrier-telephone",
+      name: "second-carrier-telephone",
+      type: "tel",
+      value: data['second-carrier-telephone'],
+      classes: "govuk-input--width-20",
+      label: {
+        text: "Telephone number"
+      }
+    }) }}
+    {% endset -%}
+    
+    {% set faxHtml %}
+    {{ govukInput({
+      id: "second-carrier-fax",
+      name: "second-carrier-fax",
+      value: data['second-carrier-fax'],
+      type: "tel",
+      classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+      label: {
+        text: "Fax number"
+      }
+    }) }}
+
+    {% endset -%}
+
+    <form class="form" method="post">
+      
+      {% call govukFieldset({
+        legend: {
+          text: "Carrier name and address",
+          classes: "govuk-fieldset__legend--l"
+        }
+      }) %}
+
+      {{ govukInput({
+        label: {
+          text: "Carrier name"
+        },
+        id: "second-carrier-name",
+        name: "second-carrier-name",
+        value: data['second-carrier-name']
+      }) }}
+
+        {{ govukInput({
+          label: {
+            html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+          },
+          id: "second-carrier-address-line-1",
+          name: "second-carrier-address-line-1",
+          value: data['second-carrier-address-line-1'],
+          autocomplete: "address-line1"
+        }) }}
+      
+        {{ govukInput({
+          label: {
+            html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+          },
+          id: "second-carrier-address-line-2",
+          name: "second-carrier-address-line-2",
+          value: data['second-carrier-address-line-2'],
+          autocomplete: "address-line2"
+        }) }}
+      
+        {{ govukInput({
+          label: {
+            text: "Town or city"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "second-carrier-address-town",
+          name: "second-carrier-address-town",
+          value: data['second-carrier-address-town'],
+          autocomplete: "address-level2"
+        }) }}
+      
+        {{ govukInput({
+          label: {
+            text: "County or region"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "second-carrier-address-county",
+          name: "second-carrier-address-county",
+          value: data['second-carrier-address-county']
+        }) }}
+      
+        {{ govukInput({
+          label: {
+            text: "Postcode or ZIP code"
+          },
+          classes: "govuk-input--width-10",
+          id: "second-carrier-address-postcode",
+          name: "second-carrier-address-postcode",
+          value: data['second-carrier-address-postcode'],
+          autocomplete: "postal-code"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Country"
+          },
+          classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-2",
+          id: "second-carrier-address-country",
+          name: "second-carrier-address-country",
+          value: data['second-carrier-address-country']
+        }) }}
+        
+        {% endcall %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact person",
+            classes: "govuk-fieldset__legend--l"
+          }
+        }) %}
+        
+        {{ govukInput({
+          label: {
+            text: "Full name"
+          },
+          id: "second-carrier-contact-full-name",
+          name: "second-carrier-contact-full-name",
+          value: data['second-carrier-contact-full-name'],
+          autocomplete: "name",
+          spellcheck: false
+        }) }}
+  
+        {{ govukCheckboxes({
+          idPrefix: "second-carrier-contact",
+          name: "second-carrier-contact",
+          fieldset: {
+            legend: {
+              text: "Select all relevant contact options",
+              isPageHeading: false,
+              classes: "govuk-body-l"
+            }
+          },
+          items: [
+            {
+              value: "second-carrier-email",
+              id: "second-carrier-email",
+              text: "Email",
+              conditional: {
+                html: emailHtml
+              },
+              checked: checked("second-carrier-contact", "second-carrier-email")
+            },
+            {
+              value: "second-carrier-telephone",
+              id: "second-carrier-telephone",
+              text: "Telephone",
+              conditional: {
+                html: telephoneHtml
+              },
+              checked: checked("second-carrier-contact", "second-carrier-telephone")
+            },
+            {
+              value: "second-carrier-fax",
+              id: "second-carrier-fax",
+              text: "Fax",
+              conditional: {
+                html: faxHtml
+              },
+              checked: checked("second-carrier-contact", "second-carrier-fax")
+            }
+          ]
+        }) }}
+  
+        {% endcall %}
+
+        {{ govukRadios({
+          idPrefix: "second-carrier-means-of-transport",
+          name: "second-carrier-means-of-transport",
+          classes: "govuk-!-margin-bottom-2",
+          fieldset: {
+            legend: {
+              text: "Means of transport",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Road",
+              text: "Road",
+              checked: checked("second-carrier-means-of-transport", "Road")
+            },
+            {
+              value: "Rail",
+              text: "Rail",
+              checked: checked("second-carrier-means-of-transport", "Rail")
+            },
+            {
+              value: "Air",
+              text: "Air",
+              checked: checked("second-carrier-means-of-transport", "Air")
+            },
+            {
+              value: "Sea",
+              text: "Sea",
+              checked: checked("second-carrier-means-of-transport", "Sea")
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "add-third-carrier",
+          name: "add-third-carrier",
+          fieldset: {
+            legend: {
+              text: "Add another carrier?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with carrier",
+          text: "Supportive help text to help strengthen the purpose of this question."
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

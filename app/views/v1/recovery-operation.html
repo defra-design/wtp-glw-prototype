@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Recovery operation - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Shipment information
+      </span>
+      <h1 class="govuk-heading-xl">
+        Recovery operation
+      </h1>
+      
+      <form class="form" method="post">
+        
+        <p class="govuk-body">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <label class="govuk-label">
+                R-code/D-code
+              </label>
+              <div id="recovery-operation-typeahead-container" data-default-value="{{ data['recovery-operation-typeahead'] }}"></div>
+            </div>
+          </div>
+        </p>
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

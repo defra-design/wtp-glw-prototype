@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Export/dispatch - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Countries/states concerned
+      </span>
+      <h1 class="govuk-heading-xl">
+        Export/dispatch
+      </h1>
+      
+      <form class="form" method="post">
+        
+        <p class="govuk-body">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+              <div id="export-dispatch-typeahead-container" data-default-value="{{ data['export-dispatch-typeahead'] }}"></div>
+            </div>
+          </div>
+        </p>
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

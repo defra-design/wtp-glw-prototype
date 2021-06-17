@@ -1,0 +1,17 @@
+{
+  "assets": [
+    "/hmrc/components/account-menu/images",
+    "/hmrc/components/banner/images",
+    "/hmrc/components/internal-header/images"
+  ],
+  "nunjucksPaths": [
+    "/"
+  ],
+  "sass": [
+    "/hmrc/_prototype-kit.scss"
+  ],
+  "scripts": [
+    "/hmrc/all.js",
+    "/hmrc/init-all.js"
+  ]
+}

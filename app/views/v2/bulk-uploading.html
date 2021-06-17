@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Uploading multiple waste movements spreadsheet - Waste tracking service
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <script language="javascript" type="text/javascript">
+    window.setTimeout('location.replace("confirmation")',2500);
+  </script>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <p class="govuk-body-l spinner-text">
+        Uploading multiple waste movments spreadsheet
+      </p>
+    </div>
+  </div>
+
+  <div class="spinner"></div>
+
+{% endblock %}

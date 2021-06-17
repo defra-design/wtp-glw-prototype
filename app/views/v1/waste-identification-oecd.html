@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  OECD code - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Waste identification
+      </span>
+      <h1 class="govuk-heading-xl">
+        OECD code
+      </h1>
+      
+      <form method="post" class="form">
+        
+        <p class="govuk-body">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+              <div id="oecd-typeahead-container" data-default-value="{{ data['oecd-typeahead-container'] }}"></div>
+            </div>
+          </div>
+        </p>
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

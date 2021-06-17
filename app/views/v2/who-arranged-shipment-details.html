@@ -1,0 +1,216 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Details of person arranging the shipment - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Shipment information
+      </span>
+      <h1 class="govuk-heading-xl">
+        Details of person arranging the shipment
+      </h1>
+
+      {% set emailHtml %}
+      {{ govukInput({
+        id: "who-arranged-email",
+        name: "who-arranged-email",
+        type: "email",
+        spellcheck: false,
+        value: data['who-arranged-email'],
+        label: {
+          text: "Email address"
+        }
+      }) }}
+      {% endset -%}
+      
+      {% set telephoneHtml %}
+      {{ govukInput({
+        id: "who-arranged-telephone",
+        name: "who-arranged-telephone",
+        type: "tel",
+        value: data['who-arranged-telephone'],
+        classes: "govuk-input--width-20",
+        label: {
+          text: "Telephone number"
+        }
+      }) }}
+      {% endset -%}
+      
+      {% set faxHtml %}
+      {{ govukInput({
+        id: "who-arranged-fax",
+        name: "who-arranged-fax",
+        value: data['who-arranged-fax'],
+        type: "tel",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        label: {
+          text: "Fax number"
+        }
+      }) }}
+
+      {% endset -%}
+
+      <form class="form" method="post">
+        
+        {% call govukFieldset({
+          legend: {
+            text: "Company name and address",
+            classes: "govuk-fieldset__legend--l"
+          }
+        }) %}
+
+        {{ govukInput({
+          label: {
+            text: "Company name"
+          },
+          id: "who-arranged-company-name",
+          name: "who-arranged-company-name",
+          value: data['who-arranged-company-name']
+        }) }}
+
+          {{ govukInput({
+            label: {
+              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+            },
+            id: "who-arranged-address-line-1",
+            name: "who-arranged-address-line-1",
+            value: data['who-arranged-address-line-1'],
+            autocomplete: "address-line1"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+            },
+            id: "who-arranged-address-line-2",
+            name: "who-arranged-address-line-2",
+            value: data['who-arranged-address-line-2'],
+            autocomplete: "address-line2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Town or city"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "who-arranged-address-town",
+            name: "who-arranged-address-town",
+            value: data['who-arranged-address-town'],
+            autocomplete: "address-level2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "County or region"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "who-arranged-address-county",
+            name: "who-arranged-address-county",
+            value: data['who-arranged-address-county']
+          }) }} 
+        
+          {{ govukInput({
+            label: {
+              text: "Postcode or ZIP code"
+            },
+            classes: "govuk-input--width-10",
+            id: "who-arranged-address-postcode",
+            name: "who-arranged-address-postcode",
+            value: data['who-arranged-address-postcode'],
+            autocomplete: "postal-code"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Country"
+            },
+            classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-4",
+            id: "who-arranged-address-country",
+            name: "who-arranged-address-country",
+            value: data['who-arranged-address-country']
+          }) }} 
+        
+        {% endcall %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact person",
+            classes: "govuk-fieldset__legend--l"
+          }
+        }) %}
+        
+        {{ govukInput({
+          label: {
+            text: "Full name"
+          },
+          id: "who-arranged-contact-full-name",
+          name: "who-arranged-contact-full-name",
+          value: data['who-arranged-contact-full-name'],
+          autocomplete: "name",
+          spellcheck: false
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "who-arranged-contact",
+          name: "who-arranged-contact",
+          fieldset: {
+            legend: {
+              text: "Select all relevant contact options",
+              isPageHeading: false,
+              classes: "govuk-body-l"
+            }
+          },
+          items: [
+            {
+              value: "who-arranged-email",
+              id: "who-arranged-email",
+              text: "Email",
+              conditional: {
+                html: emailHtml
+              },
+              checked: checked("who-arranged-contact", "who-arranged-email")
+            },
+            {
+              value: "who-arranged-telephone",
+              id: "who-arranged-telephone",
+              text: "Telephone",
+              conditional: {
+                html: telephoneHtml
+              },
+              checked: checked("who-arranged-contact", "who-arranged-telephone")
+            },
+            {
+              value: "who-arranged-fax",
+              id: "who-arranged-fax",
+              text: "Fax",
+              conditional: {
+                html: faxHtml
+              },
+              checked: checked("who-arranged-contact", "who-arranged-fax")
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+        {{ govukDetails({
+          summaryText: "Help with details of person arranging the shipment",
+          text: "Supportive help text to help strengthen the purpose of this question."
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

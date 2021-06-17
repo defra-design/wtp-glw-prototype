@@ -1,0 +1,97 @@
+
+{% extends "layout-admin.html" %}
+
+{% block pageTitle %}
+  Received Annex VII forms - Waste tracking service
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "agency officer prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">
+        Waste tracking service
+      </span>
+      <h1 class="govuk-heading-xl">
+        Received Annex VII forms
+      </h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row"> 
+    <div class="govuk-grid-column-one-third">
+      <form action="search-validation-lc" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset govuk-!-margin-top-4">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Search criteria
+            </legend>
+            <div class="govuk-form-group">
+            <label class="govuk-label" for="reference-lc">
+                Reference number
+              </label>
+              <input class="govuk-input govuk-input--width-10" id="reference" name="reference-lc" type="text" value="{{ data['reference-lc'] }}" autocomplete="off" >
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Search"
+        }) }}
+
+      </form>
+
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading--m">
+        Results
+      </h2>       
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <p class="govuk-body-m">817435283</p>
+      <p class="govuk-body-s">{Status}</p>
+      <p class="govuk-body-s">Paper scrap - OCC</p>
+      <span class="govuk-!-font-size-14">Date of shipment: 17 May 2021</span>
+      <span style="float: right">
+        <a href="update-lc" class="govuk-link">View <span class="govuk-visually-hidden">annex vii</span></a>
+      </span>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <p class="govuk-body-m">375518473</p>
+      <p class="govuk-body-s">{Status}</p>
+      <p class="govuk-body-s">Mixed Paper EN643</p>
+      <span class="govuk-!-font-size-14">Date of shipment: 29 April 2021</span>
+      <span style="float: right">
+        <a href="update-lc" class="govuk-link">View <span class="govuk-visually-hidden">annex vii</span></a>
+      </span>
+      </p>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <p class="govuk-body-m">409413376</p>
+      <p class="govuk-body-s">{Status}</p>
+      <p class="govuk-body-s">Heavy melting steel scrap</p>
+      <span class="govuk-!-font-size-14">Date of shipment: 12 April 2021</span>
+      <span style="float: right">
+        <a href="update-lc" class="govuk-link">View <span class="govuk-visually-hidden">annex vii</span></a>
+      </span>
+      </p>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    </div>
+
+  </div>
+
+{% endblock %}

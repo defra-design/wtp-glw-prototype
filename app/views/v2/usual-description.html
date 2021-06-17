@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Usual description - Waste tracking service
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Waste identification
+      </span>
+      <h1 class="govuk-heading-xl">
+        Usual description
+      </h1>
+
+      <form class="form" method="post">
+        
+        {{ govukCharacterCount({
+          name: "usual-description",
+          id: "usual-description",
+          value: data['usual-description'],
+          maxlength: 200
+        }) }}
+
+        {{ govukDetails({
+          summaryText: "Help with usual description",
+          html: '
+          <p class="govuk-body">For example:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+            <li>Mixed Paper EN643</li>
+            <li>Heavy melting steel scrap</li>
+          </ul>'
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
