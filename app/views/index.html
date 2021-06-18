@@ -63,8 +63,17 @@
       </ol>
       {{ govukButton({
         text: '5. Dashboard home',
-        classes: "govuk-!-margin-bottom-6",
+        classes: "govuk-!-margin-bottom-4",
         href: '/v3-consignor/dashboard'
+      }) }}
+    
+      {{ govukInsetText({
+        html: "Use the following when conducting the <strong>exporter update</strong> journey"
+      }) }}
+      {{ govukButton({
+        text: 'Defra ID sign in and Exporter update journey',
+        classes: "govuk-!-margin-bottom-6",
+        href: '/v3-consignor/login'
       }) }}
       {% endset %}
 

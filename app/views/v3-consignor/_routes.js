@@ -33,7 +33,46 @@ router.post('/index', function(req, res) {
     req.session.data['update-actual-shipment-day'] = "1";
     req.session.data['update-actual-shipment-month'] = "6";
     req.session.data['update-actual-shipment-year'] = "2021";
-    req.session.data['update-actual-or-estimate-date'] = "update-estimated-date";
+    req.session.data['update-actual-or-estimate-date'] = 'update-estimated-date';
+
+    // reset template name variable
+    req.session.data['template-name'] = undefined;
+
+    res.redirect('dashboard');
+})
+
+// login
+router.post('/login', function(req, res) {
+    
+    // Reset prenotify statuses
+    req.session.data['preparation-status'] = "Not started";
+    req.session.data['person-arranging-the-shipment-status'] = "Not started";
+    req.session.data['importer-consignee-status'] = "Not started";
+    req.session.data['quantity-status'] = "Not started";
+    req.session.data['date-of-shipment-status'] = "Not started";
+    req.session.data['carrier-status'] = "Not started";
+    req.session.data['waste-generator-original-producer-new-producer-or-collector-status'] = "Not started";
+    req.session.data['recovery-facility-or-laboratory-status'] = "Not started";
+    req.session.data['recovery-operation-status'] = "Not started";
+    req.session.data['usual-description-of-the-waste-status'] = "Not started";
+    req.session.data['waste-identification-codes-status'] = "Not started";
+    req.session.data['countries-states-concerned-status'] = "Not started";
+    req.session.data['container-number-status'] = "Not started";
+    req.session.data['transaction-id-status'] = "Not started";
+    req.session.data['submit-and-generate-status'] = "Cannot start yet";
+
+    // set-up change variables
+
+    // amount
+    req.session.data['update-quantity-weight'] = "12";
+    req.session.data['update-quantity-units'] = "update-tonnes-mg";
+    req.session.data['update-actual-or-estimate'] = "update-estimated";
+
+    // shipment date
+    req.session.data['update-actual-shipment-day'] = "1";
+    req.session.data['update-actual-shipment-month'] = "6";
+    req.session.data['update-actual-shipment-year'] = "2021";
+    req.session.data['update-actual-or-estimate-date'] = 'update-estimated-date';
 
     // reset template name variable
     req.session.data['template-name'] = undefined;
