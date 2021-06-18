@@ -16,8 +16,6 @@
 
 {% block content %}
 
-<!-- Quick trial -->
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
@@ -54,24 +52,34 @@
         <li>maximum of three transit destinations can be added</li>
         </ul>
       </ul>
-      <p class="govuk-body"><strong>Exporter prototype (3rd iteration) shortcuts:</strong></p>
+      {#<p class="govuk-body"><strong>Exporter prototype (3rd iteration) shortcuts:</strong></p>
       <ol class="govuk-list govuk-list--number govuk-!-margin-left-2">
         <li><a href="/v3-consignor/email" class="govuk-link">On-boarding email</a></li>
         <li><a href="/v3-consignor/service-start" class="govuk-link">Service orientation page</a></li>
         <li><a href="/v3-consignor/service-start-gg-create" class="govuk-link">Gateway and Defra ID registration</a></strong></li>
         <li><a href="/defra-id/login" class="govuk-link">Defra ID sign in</a></li>
-      </ol>
-      {{ govukButton({
+      </ol>#}
+
+      {# govukButton({
         text: '5. Dashboard home',
         classes: "govuk-!-margin-bottom-4",
         href: '/v3-consignor/dashboard'
-      }) }}
-    
+      }) #}
+
       {{ govukInsetText({
-        html: "Use the following when conducting the <strong>exporter update</strong> journey"
+        html: "<strong>Full on-boarding journey</strong> this includes Government Gateway and Defra ID account creation"
       }) }}
       {{ govukButton({
-        text: 'Defra ID sign in and Exporter update journey',
+        text: 'Begin journey from invitation email',
+        classes: "govuk-!-margin-bottom-4",
+        href: '/v3-consignor/email'
+      }) }}
+
+      {{ govukInsetText({
+        html: "<strong>Partial journey</strong> assumes Defra ID account has previously been created"
+      }) }}
+      {{ govukButton({
+        text: 'Begin journey from Defra ID sign in',
         classes: "govuk-!-margin-bottom-6",
         href: '/v3-consignor/login'
       }) }}
