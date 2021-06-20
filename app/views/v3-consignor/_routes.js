@@ -82,7 +82,13 @@ router.post('/login', function(req, res) {
 
 // submitted-817435283-update
 router.post('/submitted-817435283-update', function(req, res) {
-    res.redirect('update-prenotifications');
+    if ((req.session.data.gPreviousLocation).includes('template-euromovement')) {
+        // I've come from the choose template list
+        res.redirect('confirmation');
+    } else {
+        // I've likely to have come from the update-prenotifications
+        res.redirect('update-prenotifications');
+    }
 })
 
 // submitted-817435283-update-quantity
