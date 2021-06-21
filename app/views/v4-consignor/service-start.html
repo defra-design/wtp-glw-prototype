@@ -2,7 +2,7 @@
 {% extends "layout-v3-consignor.html" %}
 
 {% block pageTitle %}
-  Tell us about a future export of green list waste - Track waste
+  Export green list waste
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,11 +19,23 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        Tell us about a future export of green list waste
+        Export green list waste
       </h1>
       
-      <p class="govuk-body">You can use this service to tell us about the export of green list waste (also called a shipment prenotification).</p>
-
+      <p class="govuk-body">You can use this service to tell us about the future export of green list waste.</p>
+      
+      <p class="govuk-body">Telling us about green list waste exports in advance will become a legal requirement 
+        from 1 April 2023, but you can start using the service today.</p>
+      
+        <p class="govuk-body">
+        Using this service you can:
+        </p>
+      </ul>
+      </li>produce an Annex VII form
+      </li>print a copy of the Annex VII form to travel with the waste
+      </li>send export details to your agency automatically
+      </ul>
+     
       {{ govukWarningText({
         text: "You are legally responsible for the waste export by using this service. This responsibility cannot be delegated to another person.",
         iconFallbackText: "Warning"
@@ -36,7 +48,7 @@
       }) }}
 
       <h2 class="govuk-heading-m">New user?</h2> 
-      <p class="govuk-body"><a href="service-start-gg-create">Create a Government Gateway and Defra account</a>.</p>
+      <p class="govuk-body"><a href="service-start-gg-create">Create a Government Gateway and Defra account</a></p>
 
     </div>
   </div>

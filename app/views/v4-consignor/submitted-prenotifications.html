@@ -31,7 +31,7 @@
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#utid-reference">Enter a transaction identification number (UTID)</a>
+              <a href="#utid-reference">Enter a transaction number</a>
             </li>
           </ul>
         </div>
@@ -80,7 +80,7 @@
             {% endif %}
             {% if data['error'] == 'no-utid-entered' %}
               <span id="utid-reference-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Enter a transaction identification number (UTID)
+                <span class="govuk-visually-hidden">Error:</span> Enter a transaction identification
               </span>
             {% endif %}
             {% if data['error'] == 'no-utid-entered' %}
@@ -109,9 +109,9 @@
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header">Status</th>
           <th scope="col" class="govuk-table__header">Date submitted</th>
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Usual description and Basel Annex IX if provided</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Waste description (and Basel Annex IX, if provided)</th>
           <th scope="col" class="govuk-table__header">Date of shipment</th>
-          <th scope="col" class="govuk-table__header">UTID</th>
+          <th scope="col" class="govuk-table__header">Transaction number</th>
           <th scope="col" class="govuk-table__header">Action</th>
         </tr>
       </thead>
