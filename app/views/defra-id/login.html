@@ -33,7 +33,15 @@
       Sign in using Government Gateway
     </h1>
 
-    <form method="POST" action="../v3-consignor/index">
+    {# Check to see if the previous URL contains v3-consignor... #}
+    {% if 'v3-consignor' in (data['gPreviousLocation']) %}
+      {# ... if it does, then we send our user onto the v3-consignor index page... #}
+      <form method="POST" action="../v3-consignor/index">
+    {% else %}
+      {# ... if it doesn't then we can assume our user is on the v4-consignor journey and we send them onto the v4-consignor index page. #}
+      {# As we develop further iterations and more complex branching, we will have to maintain this set of rules... #}
+      <form method="POST" action="../v4-consignor/index">
+    {% endif %}
 
         {{ govukInput({
             label: {

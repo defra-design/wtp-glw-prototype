@@ -3,7 +3,7 @@
 
 {% block pageTitle %}
   {% if data['manual-bulk'] == 'bulk' %}
-  Spreadsheet submitted and Annex VII created - Track waste
+    Spreadsheet submitted and Annex VII created - Track waste
   {% else %}
     Submission complete and Annex VII created - Track waste
   {% endif %}
@@ -55,7 +55,7 @@
         <li>add them to the waste export using this service</li>
       </ul>
 
-      {{ govuk-inset-text({
+      {{ govukWarningText({
         text: "Your environment regulator has been this export of green list waste. You do not need to send them any details",
         iconFallbackText: "Warning"
       }) }}
