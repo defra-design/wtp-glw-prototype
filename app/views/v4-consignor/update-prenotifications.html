@@ -42,7 +42,7 @@
           items: [
             {
               value: "search-utid",
-              text: "Transaction identification number (UTID)",
+              text: "Transaction number",
               checked: checked("search-against", "search-utid")
             },
             {
@@ -68,7 +68,7 @@
             {% endif %}
             {% if data['error'] == 'no-utid-entered' %}
               <span id="utid-reference-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Enter a transaction identification number (UTID)
+                <span class="govuk-visually-hidden">Error:</span> Enter a transaction number
               </span>
             {% endif %}
             {% if data['error'] == 'no-utid-entered' %}
@@ -95,11 +95,11 @@
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Change summary</th>
+          <th scope="col" class="govuk-table__header">Estimated details</th>
           <th scope="col" class="govuk-table__header">Date submitted</th>
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Usual description and Basel Annex IX if provided</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Waste description (and Basel Annex IX, if provided)</th>
           <th scope="col" class="govuk-table__header">Date of shipment</th>
-          <th scope="col" class="govuk-table__header">Reference number</th>
+          <th scope="col" class="govuk-table__header">Transaction number</th>
           <th scope="col" class="govuk-table__header">Action</th>
         </tr>
       </thead>
