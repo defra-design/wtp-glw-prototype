@@ -9,6 +9,11 @@ router.use('/v4-agency-officer/', (req, res, next) => {
   return require(`./views/v4-agency-officer/_routes`)(req, res, next);
 })
 
+// Import V5 Agency Officer routes
+router.use('/v5-agency-officer/', (req, res, next) => {
+  return require(`./views/v5-agency-officer/_routes`)(req, res, next);
+})
+
 // Import V3 Agency Officer routes
 router.use('/v3-agency-officer/', (req, res, next) => {
   return require(`./views/v3-agency-officer/_routes`)(req, res, next);
