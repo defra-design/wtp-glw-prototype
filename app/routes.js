@@ -19,6 +19,11 @@ router.use('/v3-consignor/', (req, res, next) => {
   return require(`./views/v3-consignor/_routes`)(req, res, next);
 })
 
+// Import V4 Consignor routes
+router.use('/v4-consignor/', (req, res, next) => {
+  return require(`./views/v4-consignor/_routes`)(req, res, next);
+})
+
 // Import V2 routes
 router.use('/v2/', (req, res, next) => {
     return require(`./views/v2/_routes`)(req, res, next);
