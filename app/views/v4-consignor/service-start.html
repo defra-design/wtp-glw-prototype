@@ -24,8 +24,11 @@
       
       <p class="govuk-body">You can use this service to tell us about the future export of green list waste.</p>
       
-      <p class="govuk-body">Telling us about green list waste exports in advance will become a legal requirement 
-        from 1 April 2023, but you can start using the service today.</p>
+      {{ govukWarningText({
+        text: "Telling us about green list waste exports in advance will become a legal requirement 
+        from 1 April 2023, but you can start using the service today.",
+        iconFallbackText: "Warning"
+      }) }}
       
         <p class="govuk-body">
         Using this service you can:
@@ -35,11 +38,6 @@
       </li>print a copy of the Annex VII form to travel with the waste
       </li>send export details to your agency automatically
       </ul>
-     
-      {{ govukWarningText({
-        text: "You are legally responsible for the waste export by using this service. This responsibility cannot be delegated to another person.",
-        iconFallbackText: "Warning"
-      }) }}
 
       {{ govukButton({
         text: "Sign in",

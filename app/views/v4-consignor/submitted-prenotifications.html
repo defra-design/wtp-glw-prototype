@@ -55,7 +55,7 @@
           items: [
             {
               value: "search-utid",
-              text: "Transaction identification number (UTID)",
+              text: "Transaction number",
               checked: checked("search-against", "search-utid")
             },
             {
@@ -70,7 +70,7 @@
           <fieldset class="govuk-fieldset govuk-!-margin-top-4">
 
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              Search criteria
+              Search
             </legend>
 
             {% if data['error'] == 'no-utid-entered' %}
