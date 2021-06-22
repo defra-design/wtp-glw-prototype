@@ -31,7 +31,7 @@
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#utid-reference">Enter a transaction number</a>
+              <a href="#utid-reference">Enter a description or a transaction number</a>
             </li>
           </ul>
         </div>
@@ -44,6 +44,7 @@
 
       <form action="received-form-validation" method="post" novalidate>
 
+        {#
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
           Search against
         </legend>
@@ -65,12 +66,13 @@
             }
           ]
         }) }}
+        #}
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset govuk-!-margin-top-4">
 
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              Search
+            <legend class="govuk-fieldset__legend">
+              Search by description or transaction number
             </legend>
 
             {% if data['error'] == 'no-utid-entered' %}
@@ -80,7 +82,7 @@
             {% endif %}
             {% if data['error'] == 'no-utid-entered' %}
               <span id="utid-reference-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Enter a transaction identification
+                <span class="govuk-visually-hidden">Error:</span> Enter a description or a transaction number
               </span>
             {% endif %}
             {% if data['error'] == 'no-utid-entered' %}

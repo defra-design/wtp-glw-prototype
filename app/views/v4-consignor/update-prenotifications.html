@@ -18,7 +18,7 @@
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#utid-reference">Enter a transaction identification number (UTID)</a>
+              <a href="#utid-reference">Enter a description or a transaction number</a>
             </li>
           </ul>
         </div>
@@ -31,6 +31,7 @@
 
       <form action="update-prenotifications-form-validation" method="post" novalidate>
 
+        {#
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
           Search against
         </legend>
@@ -52,12 +53,13 @@
             }
           ]
         }) }}
+        #}
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset govuk-!-margin-top-4">
 
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              Search criteria
+            <legend class="govuk-fieldset__legend">
+              Search by description or transaction number
             </legend>
 
             {% if data['error'] == 'no-utid-entered' %}
@@ -68,7 +70,7 @@
             {% endif %}
             {% if data['error'] == 'no-utid-entered' %}
               <span id="utid-reference-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Enter a transaction number
+                <span class="govuk-visually-hidden">Error:</span> Enter a description or transaction number
               </span>
             {% endif %}
             {% if data['error'] == 'no-utid-entered' %}
@@ -113,14 +115,17 @@
 
         <tbody class="govuk-table__body">
 
-          <!--======================================================-->
-          <!-- THIS IS THE THIRD ITEM IN THE LIST AND CAN BE EDITED -->
-          <!--======================================================-->
           {% if data['update-actual-or-estimate'] == 'update-estimated' or data['update-actual-or-estimate-date'] == 'update-estimated-date' %}
             <tr class="govuk-table__row">
               <td scope="row" class="govuk-table__cell">
-
-
+                <ul class="govuk-list govuk-list--bullet">
+                  {% if data['update-actual-or-estimate'] == 'update-estimated' %}
+                    <li>Quantity</li>
+                  {% endif %}
+                  {% if data['update-actual-or-estimate-date'] == 'update-estimated-date' %}
+                    <li>Date of shipment</li>
+                  {% endif %}
+                </ul>              
               </td>
               <td class="govuk-table__cell">1 June 2021</td>
               <td class="govuk-table__cell">
@@ -161,24 +166,13 @@
               </td>
               <td class="govuk-table__cell">817435283</td>
               <td class="govuk-table__cell">
-                <ul class="govuk-list govuk-list--bullet">
-                  {% if data['update-actual-or-estimate'] == 'update-estimated' %}
-                    <li>Quantity</li>
-                  {% endif %}
-                  {% if data['update-actual-or-estimate-date'] == 'update-estimated-date' %}
-                    <li>Date of shipment</li>
-                  {% endif %}
-                </ul>
-              </td>
-              <td class="govuk-table__cell">
-                <a href="submitted-817435283-update" class="govuk-link">Upda</a>
+                <a href="submitted-817435283-update" class="govuk-link">Update</a>
               </td>
             </tr>
           {% endif %}
           <!--============================-->
           <!-- END OF THE EDITABLE RECORD -->
           <!--============================-->
-
         </tbody>
       </table>
 
