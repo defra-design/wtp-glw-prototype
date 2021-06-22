@@ -305,11 +305,11 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
-            Date of waste collection
+            Date waste picked up
           </dt>
           <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
             <a class="govuk-link" href="date-of-shipment">
-              Change<span class="govuk-visually-hidden"> date of waste collection</span>
+              Change<span class="govuk-visually-hidden"> date waste picked up</span>
             </a>
           </dd> 
         </div>
@@ -358,9 +358,9 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['actual-or-estimate-date'] == 'estimated-date' %}
-              Estimated collection date
+              Estimated pick up date
             {% else %}
-              Actual collection date
+              Actual pick up date
             {% endif %}
           </dd>
         </div>
