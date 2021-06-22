@@ -1,5 +1,5 @@
 
-{% extends "layout-v3-consignor.html" %}
+{% extends "layout-v4-consignor.html" %}
 
 {% block pageTitle %}
   {% if data['manual-bulk'] == 'bulk' %}
@@ -29,7 +29,7 @@
         }) }}
       {% else %}
         {{ govukPanel({
-          titleText: "Spreadsheet uploaded and Annex VII created",
+          titleText: "Annex VII successfully created",
           html: "Your transaction number is <strong>HDJ2123F</strong>"
         }) }} 
       {% endif %}
