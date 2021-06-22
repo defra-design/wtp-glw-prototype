@@ -27,11 +27,11 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
-            Person arranging the shipment
+            Person arranging the export
           </dt>
           <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
             <a class="govuk-link" href="who-arranged-shipment-details">
-              Change<span class="govuk-visually-hidden"> person arranging shipment</span>
+              Change<span class="govuk-visually-hidden"> person arranging export</span>
             </a>
           </dd> 
         </div>
@@ -305,11 +305,11 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
-            Date of shipment
+            Date of waste collection
           </dt>
           <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
             <a class="govuk-link" href="date-of-shipment">
-              Change<span class="govuk-visually-hidden"> date of shipment</span>
+              Change<span class="govuk-visually-hidden"> date of waste collection</span>
             </a>
           </dd> 
         </div>
@@ -358,9 +358,9 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['actual-or-estimate-date'] == 'estimated-date' %}
-              Estimated shipment date
+              Estimated collection date
             {% else %}
-              Actual shipment date
+              Actual collection date
             {% endif %}
           </dd>
         </div>
@@ -746,7 +746,7 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
-            Waste generator
+            Waste collection point
           </dt>
           <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
             <a class="govuk-link" href="waste-generator">
@@ -1125,7 +1125,7 @@
       <dl class="govuk-summary-list" id="countries-concerned">
         <div class="govuk-summary-list__row">
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
-            Route of the waste movement
+            Countries the waste will travel through
           </dt>
           <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
             <a class="govuk-link" href="countries-states-concerned">
