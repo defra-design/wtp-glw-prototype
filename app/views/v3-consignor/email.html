@@ -85,11 +85,12 @@
       To register, click the link below:
     </p>
 
-    {{ govukButton({
-      text: "Start now",
-      href: "service-start",
-      isStartButton: true
-    }) }}
+    <form class="form" method="post">
+      {{ govukButton({
+        text: "Start now",
+        isStartButton: true
+      }) }}
+    </form>
 
     <p class="govuk-heading-s">
       Contacting us

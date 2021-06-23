@@ -41,6 +41,15 @@ router.post('/index', function(req, res) {
     res.redirect('dashboard');
 })
 
+// email
+router.post('/email', function(req, res) {
+    
+    // Set iteration version number for routing
+    req.session.data['iteration-version-number'] = "4";
+
+    res.redirect('service-start');
+})
+
 // login
 router.post('/login', function(req, res) {
     
@@ -93,12 +102,20 @@ router.post('/submitted-817435283-update', function(req, res) {
 
 // submitted-817435283-update-quantity
 router.post('/submitted-817435283-update-quantity', function(req, res) {
-    res.redirect('submitted-817435283-update#update-quantity');
+    if ((req.session.data.gPreviousLocation).includes('template-euromovement')) {
+        res.redirect('template-euromovement#update-quantity');
+    } else {
+        res.redirect('submitted-817435283-update#update-quantity');
+    }
 })
 
 // submitted-817435283-update-shipment
 router.post('/submitted-817435283-update-shipment', function(req, res) {
-    res.redirect('submitted-817435283-update#update-date-of-shipment');
+    if ((req.session.data.gPreviousLocation).includes('template-euromovement')) {
+        res.redirect('template-euromovement#update-date-of-shipment');
+    } else {
+        res.redirect('submitted-817435283-update#update-date-of-shipment');
+    }
 })
 
 // save-as-template

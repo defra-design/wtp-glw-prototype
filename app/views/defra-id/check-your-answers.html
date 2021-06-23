@@ -170,9 +170,19 @@
             <!-- End of Mary's beautiful capture hack -->
         </div>
 
-        <form method="POST" action="../v3-consignor/index">
-            <button class="govuk-button" id="myButton" disabled>Continue</button>
-        </form>
+        {#
+            Set the form action dependent upon which iteration is being viewed, the variable is setup in the 
+            routes file of each version and is triggered by the intro email.
+        #}
+        {% if (data['iteration-version-number'] == "3") %}
+            <form method="POST" action="../v3-consignor/index">
+                <button class="govuk-button" id="myButton" disabled>Continue</button>
+            </form>
+        {% elif (data['iteration-version-number'] == "4") %}
+            <form method="POST" action="../v4-consignor/index">
+                <button class="govuk-button" id="myButton" disabled>Continue</button>
+            </form>
+        {% endif %}
 
     </div>
 </div>

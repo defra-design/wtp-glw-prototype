@@ -190,8 +190,40 @@
           }
         ]
       }) }}
-      <li><a href="/v4-consignor/email" class="govuk-link">v4 Consignor: On-boarding email</a></li>
-      <li><a href="/v5-agency-officer/index" class="govuk-link">v5 Agency Officer: On-boarding email</a></li>
+
+      <h2 class="govuk-heading-l govuk-!-padding-top-6">WIP: Not for user testing</h3>
+
+      <h3 class="govuk-heading-m">Exporter: Iteration 4</h3>
+
+      {{ govukInsetText({
+        html: "<strong>Full on-boarding journey</strong> this includes Government Gateway and Defra ID account creation"
+      }) }}
+      {{ govukButton({
+        text: 'Begin journey from invitation email',
+        classes: "govuk-!-margin-bottom-4",
+        href: '/v4-consignor/email'
+      }) }}
+
+      {{ govukInsetText({
+        html: "<strong>Partial journey</strong> assumes Defra ID account has previously been created"
+      }) }}
+      {{ govukButton({
+        text: 'Begin journey from Defra ID sign in',
+        classes: "govuk-!-margin-bottom-6",
+        href: '/v4-consignor/login'
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h3 class="govuk-heading-m">Agency Officer: Iteration 3</h3>
+      {{ govukButton({
+        text: 'View Agency Officer prototype (3rd iteration)',
+        classes: "govuk-!-margin-bottom-6",
+        href: '/v5-agency-officer/index'
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
     </div>
   </div>
 

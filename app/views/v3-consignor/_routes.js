@@ -41,6 +41,15 @@ router.post('/index', function(req, res) {
     res.redirect('dashboard');
 })
 
+// email
+router.post('/email', function(req, res) {
+    
+    // Set iteration version number for routing
+    req.session.data['iteration-version-number'] = "3";
+
+    res.redirect('service-start');
+})
+
 // login
 router.post('/login', function(req, res) {
     

@@ -33,13 +33,13 @@
       Sign in using Government Gateway
     </h1>
 
-    {# Check to see if the previous URL contains v3-consignor... #}
-    {% if 'v3-consignor' in (data['gPreviousLocation']) %}
-      {# ... if it does, then we send our user onto the v3-consignor index page... #}
+    {#
+      Set the form action dependent upon which iteration is being viewed, the variable is setup in the 
+      routes file of each version and is triggered by the intro email.
+    #}
+    {% if (data['iteration-version-number'] == "3") %}
       <form method="POST" action="../v3-consignor/index">
-    {% else %}
-      {# ... if it doesn't then we can assume our user is on the v4-consignor journey and we send them onto the v4-consignor index page. #}
-      {# As we develop further iterations and more complex branching, we will have to maintain this set of rules... #}
+    {% elif (data['iteration-version-number'] == "4") %}
       <form method="POST" action="../v4-consignor/index">
     {% endif %}
 
