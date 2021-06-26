@@ -1,0 +1,464 @@
+{% extends "layout-v4-consignor.html" %}
+
+{% block pageTitle %}
+  What are your contact details? - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if 
+        data['who-arranged-company-name']|length == 0 or  
+        data['who-arranged-contact-full-name']|length == 0 %}
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            {% if data['who-arranged-company-name']|length == 0 %}
+            <li>
+              <a href="#who-arranged-company-name">Enter the name of the exporter</a>
+            </li>
+            {% endif %}
+            {% if data['who-arranged-address-line-1']|length == 0 %}
+            <li>
+              <a href="#who-arranged-address-line-1">Enter a building and street</a>
+            </li>
+            {% endif %}
+            {% if data['who-arranged-address-town']|length == 0 %}
+            <li>
+              <a href="#who-arranged-address-town">Enter a town or city</a>
+            </li>
+            {% endif %}
+            {% if data['who-arranged-address-postcode']|length == 0 %}
+            <li>
+              <a href="#who-arranged-address-postcode">Enter a postcode</a>
+            </li>
+            {% endif %}
+            {% if data['who-arranged-address-country']|length == 0 %}
+            <li>
+              <a href="#who-arranged-address-country">Select a country</a>
+            </li>
+            {% endif %}
+            {% if data['who-arranged-contact-full-name']|length == 0 %}
+            <li>
+              <a href="#who-arranged-contact-full-name">Enter the fullname of the contact person</a>
+            </li>
+            {% endif %}
+            {% if data['who-arranged-email']|length == 0 %}
+            <li>
+              <a href="#who-arranged-email">Enter a contact email address</a>
+            </li>
+            {% endif %}
+            {% if data['who-arranged-telephone']|length == 0 %}
+            <li>
+              <a href="#who-arranged-telephone">Enter a contact telephone number</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+
+      <h1 class="govuk-heading-l">
+        What are your contact details?
+      </h1>
+
+      <form class="form" method="post">
+     
+        {% if data['who-arranged-company-name']|length == 0 %}
+          {{ govukInput({
+            label: {
+              text: "Name of exporter",
+              classes: "govuk-label--m",
+              isPageHeading: false
+            },
+            hint: {
+              text: "Company, partnership, sole trader, organisation, etc."
+            },
+            errorMessage: {
+              text: "Enter the name of the exporter"
+            },
+            id: "who-arranged-company-name",
+            name: "who-arranged-company-name",
+            value: data['who-arranged-company-name']
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+              text: "Name of exporter",
+              classes: "govuk-label--m",
+              isPageHeading: false
+            },
+            hint: {
+              text: "Company, partnership, sole trader, organisation, etc."
+            },
+            id: "who-arranged-company-name",
+            name: "who-arranged-company-name",
+            value: data['who-arranged-company-name']
+          }) }}
+        {% endif %}
+
+<!-- ========================== -->
+
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        What is your address?
+      </h1>
+    </legend>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="address-line-1">
+        Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
+      </label>
+      <input class="govuk-input" id="address-line-1" name="address-line-1" type="text" autocomplete="address-line1"></div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="address-line-2">
+        <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+      </label>
+      <input class="govuk-input" id="address-line-2" name="address-line-2" type="text" autocomplete="address-line2"></div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="address-town">
+        Town or city
+      </label>
+      <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text" autocomplete="address-level2"></div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="address-county">
+        County
+      </label>
+      <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="address-county" type="text"></div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="address-postcode">
+        Postcode
+      </label>
+      <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code"></div>
+
+  </fieldset>
+
+<!-- ========================== -->
+
+        {% call govukFieldset({
+          legend: {
+            text: "Address",
+            classes: "govuk-fieldset__legend--m"
+          },
+        }) %}
+
+          {% if data['who-arranged-address-line-1']|length == 0 %}
+            {{ govukInput({
+              label: {
+                html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+              },
+              errorMessage: {
+                text: "Enter a building and street"
+              },
+              id: "who-arranged-address-line-1",
+              name: "who-arranged-address-line-1",
+              value: data['who-arranged-address-line-1'],
+              autocomplete: "address-line1",
+              classes: "govuk-input--error"
+            }) }}
+
+            {{ govukInput({
+              label: {
+                html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+              },
+              id: "who-arranged-address-line-2",
+              name: "who-arranged-address-line-2",
+              value: data['who-arranged-address-line-2'],
+              autocomplete: "address-line2"
+            }) }}
+          {% else %}
+            {{ govukInput({
+              label: {
+                html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+              },
+              id: "who-arranged-address-line-1",
+              name: "who-arranged-address-line-1",
+              value: data['who-arranged-address-line-1'],
+              autocomplete: "address-line1"
+            }) }}
+
+            {{ govukInput({
+              label: {
+                html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+              },
+              id: "who-arranged-address-line-2",
+              name: "who-arranged-address-line-2",
+              value: data['who-arranged-address-line-2'],
+              autocomplete: "address-line2"
+            }) }}
+          {% endif %}
+        
+          {% if data['who-arranged-address-town']|length == 0 %}
+            {{ govukInput({
+              label: {
+                text: "Town or city"
+              },
+              classes: "govuk-!-width-two-thirds",
+              errorMessage: {
+                text: "Enter a town or city"
+              },
+              id: "who-arranged-address-town",
+              name: "who-arranged-address-town",
+              value: data['who-arranged-address-town'],
+              autocomplete: "address-level2"
+            }) }}
+          {% else %}
+            {{ govukInput({
+              label: {
+                text: "Town or city"
+              },
+              classes: "govuk-!-width-two-thirds",
+              id: "who-arranged-address-town",
+              name: "who-arranged-address-town",
+              value: data['who-arranged-address-town'],
+              autocomplete: "address-level2"
+            }) }}
+          {% endif %}
+        
+          {{ govukInput({
+            label: {
+              text: "County"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "who-arranged-address-county",
+            name: "who-arranged-address-county",
+            value: data['who-arranged-address-county']
+          }) }} 
+        
+          {% if data['who-arranged-address-postcode']|length == 0 %}
+            {{ govukInput({
+              label: {
+                text: "Postcode"
+              },
+              classes: "govuk-input--width-10",
+              errorMessage: {
+                text: "Enter a postcode"
+              },
+              id: "who-arranged-address-postcode",
+              name: "who-arranged-address-postcode",
+              value: data['who-arranged-address-postcode'],
+              autocomplete: "postal-code"
+            }) }}
+          {% else %}
+            {{ govukInput({
+              label: {
+                text: "Postcode"
+              },
+              classes: "govuk-input--width-10",
+              id: "who-arranged-address-postcode",
+              name: "who-arranged-address-postcode",
+              value: data['who-arranged-address-postcode'],
+              autocomplete: "postal-code"
+            }) }}
+          {% endif %}
+       
+          {% if data['who-arranged-address-country']|length == 0 %}
+            {{ govukRadios({
+              classes: "govuk-radios--small",
+              errorMessage: {
+                text: "Select a country"
+              },
+              idPrefix: "who-arranged-address-country",
+              name: "who-arranged-address-country",
+              fieldset: {
+                legend: {
+                  text: "Country",
+                  isPageHeading: false
+                }
+              },
+              items: [
+                {
+                  value: "england",
+                  text: "England",
+                  checked: checked("who-arranged-address-country", "england")
+                },
+                {
+                  value: "northernireland",
+                  text: "Northern Ireland",
+                  checked: checked("who-arranged-address-country", "northernireland")
+                },
+                {
+                  value: "scotland",
+                  text: "Scotland",
+                  checked: checked("who-arranged-address-country", "scotland")
+                },
+                {
+                  value: "wales",
+                  text: "Wales",
+                  checked: checked("who-arranged-address-country", "wales")
+                }
+              ]
+            }) }}
+          {% else %}
+            {{ govukRadios({
+              classes: "govuk-radios--small",
+              idPrefix: "who-arranged-address-country",
+              name: "who-arranged-address-country",
+              fieldset: {
+                legend: {
+                  text: "Country",
+                  isPageHeading: false
+                }
+              },
+              items: [
+                {
+                  value: "england",
+                  text: "England",
+                  checked: checked("who-arranged-address-country", "england")
+                },
+                {
+                  value: "northernireland",
+                  text: "Northern Ireland",
+                  checked: checked("who-arranged-address-country", "northernireland")
+                },
+                {
+                  value: "scotland",
+                  text: "Scotland",
+                  checked: checked("who-arranged-address-country", "scotland")
+                },
+                {
+                  value: "wales",
+                  text: "Wales",
+                  checked: checked("who-arranged-address-country", "wales")
+                }
+              ]
+            }) }}
+          {% endif %}
+
+        {% endcall %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact person",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+        
+        {% if data['who-arranged-contact-full-name']|length == 0 %}
+          {{ govukInput({
+            label: {
+              text: "Full name"
+            },
+            errorMessage: {
+              text: "Enter the fullname of the contact person"
+            },
+            id: "who-arranged-contact-full-name",
+            name: "who-arranged-contact-full-name",
+            value: data['who-arranged-contact-full-name'],
+            autocomplete: "name",
+            spellcheck: false
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+              text: "Full name"
+            },
+            id: "who-arranged-contact-full-name",
+            name: "who-arranged-contact-full-name",
+            value: data['who-arranged-contact-full-name'],
+            autocomplete: "name",
+            spellcheck: false
+          }) }}
+        {% endif %}
+
+        {% endcall %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact details",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+
+        {% if data['who-arranged-email']|length == 0 %}
+          {{ govukInput({
+            id: "who-arranged-email",
+            errorMessage: {
+              text: "Enter a contact email address"
+            },
+            name: "who-arranged-email",
+            type: "email",
+            spellcheck: false,
+            value: data['who-arranged-email'],
+            label: {
+              text: "Email address"
+            }
+          }) }}
+        {% else %}
+          {{ govukInput({
+            id: "who-arranged-email",
+            name: "who-arranged-email",
+            type: "email",
+            spellcheck: false,
+            value: data['who-arranged-email'],
+            label: {
+              text: "Email address"
+            }
+          }) }}
+        {% endif %}
+      
+        {% if data['who-arranged-telephone']|length == 0 %}
+          {{ govukInput({
+            id: "who-arranged-telephone",
+            errorMessage: {
+              text: "Enter a contact telephone number"
+            },
+            name: "who-arranged-telephone",
+            type: "tel",
+            value: data['who-arranged-telephone'],
+            classes: "govuk-input--width-20",
+            label: {
+              text: "Telephone number"
+            }
+          }) }}
+        {% else %}
+          {{ govukInput({
+            id: "who-arranged-telephone",
+            name: "who-arranged-telephone",
+            type: "tel",
+            value: data['who-arranged-telephone'],
+            classes: "govuk-input--width-20",
+            label: {
+              text: "Telephone number"
+            }
+          }) }}
+        {% endif %}
+        
+        {{ govukInput({
+          id: "who-arranged-fax",
+          name: "who-arranged-fax",
+          value: data['who-arranged-fax'],
+          type: "tel",
+          classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+          label: {
+            text: "Fax number (optional)"
+          }
+        }) }}
+
+        {% endcall %}  
+      
+        {#{{ govukWarningText({
+          text: "You are legally responsible for the waste export by using this service. This responsibility cannot be delegated to another person.",
+          iconFallbackText: "Warning"
+        }) }}#}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -3,9 +3,9 @@
 
 {% block pageTitle %}
   {% if data['manual-bulk'] == 'bulk' %}
-    Spreadsheet submitted and Annex VII created - Track waste
+    Spreadsheet submitted and Annex VII created - Export green list waste
   {% else %}
-    Submission complete and Annex VII created - Track waste
+    Submission complete and Annex VII created - Export green list waste
   {% endif %}
 {% endblock %}
 
@@ -38,10 +38,19 @@
         Next steps
       </p>
 
-      <p class="govuk-body">
-        You must download, print, and sign the Annex VII form and send it with your waste export.
-      </p>
+      <ol class="govuk-list govuk-list--number govuk-list--spaced">
+        <li>You must <a href="../public/pdfs/hdj2123f-annex-vii.pdf" download class="govuk-link govuk-link--no-visited-state">download<span class="govuk-visually-hidden"> the Annex VII form (PDF document)</span></a>, print, and sign the Annex VII form and send it with your waste export:</li>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+          <li><a href="../public/pdfs/hdj2123f-annex-vii.pdf" download class="govuk-link govuk-link--no-visited-state">download the Annex VII form as a PDF document</a></li>
+        </ul>
+        <li>If any information has been estimated, as soon as you know the actual details you <strong>must</strong>:</li>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+          <li>add them to the paper copy of the Annex VII</li>
+          <li>add them to the waste export using this service</li>
+        </ul>
+      </ol>
 
+      {#
       <div class="govuk-inset-text">
         <a href="pdf-container" class="govuk-link govuk-link--no-visited-state">Download the Annex VII form (PDF document)</a>
       </div>
@@ -54,7 +63,8 @@
         <li>add them to the paper copy of the Annex VII</li>
         <li>add them to the waste export using this service</li>
       </ul>
-
+      #}
+      
       {{ govukWarningText({
         text: "Your environment regulator has been this export of green list waste. You do not need to send them any details",
         iconFallbackText: "Warning"

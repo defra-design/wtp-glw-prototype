@@ -129,6 +129,7 @@ router.post('/manual-bulk-api', function(req, res) {
         res.redirect('bulk');
     } else if (req.session.data['manual-bulk'] == 'manual') {
         // Reset prenotify statuses
+        req.session.data['first-trigger'] = 'yes';
         req.session.data['preparation-status'] = "Not started";
         req.session.data['person-arranging-the-shipment-status'] = "Not started";
         req.session.data['importer-consignee-status'] = "Not started";
@@ -219,9 +220,24 @@ router.post('/preparation', function(req, res) {
 router.post('/who-arranged-shipment-details', function(req, res) {
     req.session.data['person-arranging-the-shipment-status'] = "Completed";
 
-    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+    if ((req.session.data['who-arranged-company-name'].length == 0) || 
+        (req.session.data['who-arranged-address-line-1'].length == 0) || 
+        (req.session.data['who-arranged-address-town'].length == 0) || 
+        (req.session.data['who-arranged-address-postcode'].length == 0) || 
+        (req.session.data['who-arranged-address-country'].length == 0) || 
+        (req.session.data['who-arranged-contact-full-name'].length == 0) || 
+        (req.session.data['who-arranged-email'].length == 0) || 
+        (req.session.data['who-arranged-telephone'].length == 0)) {
+        // Reload the same page, errors will now be flagged...
+        req.session.data['first-trigger'] = 'no';
+        res.redirect('who-arranged-shipment-details');
+    } else if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        req.session.data['first-trigger'] = 'no';
+        // Assuming all's well we then navigate backto check-your-answers if that was the previous location
         res.redirect('check-your-answers');
     } else {
+        req.session.data['first-trigger'] = 'no';
+        // Otherwise go back to the prenotify to do list
         res.redirect('prenotify');
     }
 })

@@ -1,13 +1,9 @@
 
-{% extends "layout-v4-agency-officer.html" %}
+{% extends "layout-v5-agency-officer.html" %}
 
 {% block pageTitle %}
-  Dashboard home - Tell us about a future export of green list waste
+  Dashboard home - Export green list waste
 {% endblock %}
-
-{% set serviceName %}
-  Tell us about a future export of green list waste
-{% endset %}
 
 {% block beforeContent %}
   {{ govukPhaseBanner({
@@ -25,9 +21,9 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-xl">
+      {#<span class="govuk-caption-xl">
         Export green list waste
-      </span>
+      </span>#}
       <h1 class="govuk-heading-xl">
         Dashboard home
       </h1>

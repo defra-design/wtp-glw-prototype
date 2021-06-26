@@ -1,17 +1,9 @@
 
-{% extends "layout-v4-agency-officer.html" %}
+{% extends "layout-v5-agency-officer.html" %}
 
 {% block pageTitle %}
-  Alert: Transaction number 817435283 - Tell us about a future export of green list waste
+  Alert: Transaction number 817435283 - Export green list waste
 {% endblock %}
-
-{% set serviceName %}
-  Dashboard home: green list waste
-{% endset %}
-
-{% set serviceName %}
-  Tell us about a future export of green list waste
-{% endset%}
 
 {% block beforeContent %}
   {{ govukPhaseBanner({
@@ -68,7 +60,7 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
-            Exporter
+            Person arranging the export
           </dt>
         </div>
       </dl>
@@ -225,7 +217,7 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
-            Waste quantity
+            Quantity
           </dt>
         </div>
       </dl>
@@ -253,7 +245,7 @@
       <!-- ACTUAL DATE OF SHIPMENT -->
       <!---========================-->
       <h2 class="govuk-heading-m">
-        Date of waste collection
+        Date waste will be picked up
       </h2>
       
       <dl class="govuk-summary-list govuk-!-padding-bottom-6">
@@ -265,6 +257,14 @@
             1 June 2021
           </dd>
         </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Actual or estimated
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Actual pick up date
+          </dd>
+        </div>
       </dl>
 
       <!--=======================-->
@@ -273,7 +273,7 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
-            Details of first carrier
+            Carrier 1
           </dt>
         </div>
       </dl>
@@ -291,7 +291,7 @@
 
       <!-- FIRST CARRIER - Carrier details -->
       <h3 class="govuk-heading-s">
-        Name and address
+        Carrier name and address
       </h3>
 
       <dl class="govuk-summary-list">
@@ -457,7 +457,7 @@
         </span>
         <!-- RECOVERY FACILITY OR LABORATORY - Details -->
         <h3 class="govuk-heading-s">
-          Name and address
+          Recovery facility name and address
         </h3>
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
@@ -634,7 +634,7 @@
       <dl class="govuk-summary-list govuk-!-padding-bottom-6">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Exporting country
+            Export/dispatch
           </dt>
           <dd class="govuk-summary-list__value">
             United Kingdom (GB)
@@ -643,7 +643,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Transit countries
+            Transit country(ies)
           </dt>
           <dd class="govuk-summary-list__value">
             Not provided
@@ -652,7 +652,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Importing country
+            Import destination
           </dt>
           <dd class="govuk-summary-list__value">
             India (IN)
@@ -688,7 +688,7 @@
       <dl class="govuk-summary-list govuk-!-padding-bottom-6">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Transcation number
+            Transaction number
           </dt>
           <dd class="govuk-summary-list__value">
             HDJ2123F
@@ -696,7 +696,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Optional reference
+            Reference number
           </dt>
           <dd class="govuk-summary-list__value">
             Not provided

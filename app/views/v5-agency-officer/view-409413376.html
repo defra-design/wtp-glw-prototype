@@ -1,13 +1,9 @@
 
-{% extends "layout-v4-agency-officer.html" %}
+{% extends "layout-v5-agency-officer.html" %}
 
 {% block pageTitle %}
-  Unique ID 409413376 - Tell us about a future export of green list waste
+  Unique ID 409413376 - Export green list waste
 {% endblock %}
-
-{% set serviceName %}
-  Tell us about a future export of green list waste
-{% endset %}
 
 {% block beforeContent %}
   {{ govukPhaseBanner({
@@ -34,35 +30,34 @@
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-  
 
       <span class="govuk-caption-xl">
         Euromovement Limited
       </span>
-      <h1 class="govuk-heading-xl">
-        Unique ID 409413376
+      <h1 class="govuk-heading-l">
+        Transaction number 409413376
       </h1>
 
-      <!--===================================-->
+      
       <!-- PERSON ARRANGING SHIPMENT HEADING -->
-      <!--===================================-->
+      
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-heading-l" style="margin: 0; padding: 0;">
-            Person arranging the shipment
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Person arranging the export
           </dt>
         </div>
       </dl>
 
       <!-- PERSON ARRANGING SHIPMENT - Carrier details -->
-      <h3 class="govuk-heading-m">
-        Company name and address
+      <h3 class="govuk-heading-s">
+        Name and address
       </h3>
 
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Company name
+            Name
           </dt>
           <dd class="govuk-summary-list__value">
             Euromovement Limited
@@ -70,7 +65,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Company address
+            Address
           </dt>
           <dd class="govuk-summary-list__value">
             Unit 15, Berryedge Park<br>
@@ -81,8 +76,8 @@
       </dl>
 
       <!-- PERSON ARRANGING SHIPMENT - Contact details -->
-      <h3 class="govuk-heading-m">
-        Contact person
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
       </h3>
 
       <dl class="govuk-summary-list govuk-!-padding-bottom-6">
@@ -120,26 +115,26 @@
         </div>
       </dl>
 
-      <!--============================-->
+      
       <!-- IMPORTER/CONSIGNEE HEADING -->
-      <!--============================-->
+      
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-heading-l" style="margin: 0; padding: 0;">
-            Importer/consignee
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Importer or consignee
           </dt>
         </div>
       </dl>
 
       <!-- IMPORTER/CONSIGNEE - Carrier details -->
-      <h3 class="govuk-heading-m">
-        Company name and address
+      <h3 class="govuk-heading-s">
+        Importer or consignee name and address
       </h3>
 
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Company name
+            Name
           </dt>
           <dd class="govuk-summary-list__value">
             Bulk Papers
@@ -147,7 +142,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Company address
+            Address
           </dt>
           <dd class="govuk-summary-list__value">
             31st Floor, Rajbhavan Road<br>
@@ -161,8 +156,8 @@
       </dl>
 
       <!-- IMPORTER/CONSIGNEE - Contact details -->
-      <h3 class="govuk-heading-m">
-        Contact person
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
       </h3>
       
       <dl class="govuk-summary-list govuk-!-padding-bottom-6">
@@ -200,12 +195,12 @@
         </div>
       </dl>
 
-      <!--==========-->
+      
       <!-- QUANTITY -->
-      <!--==========-->
+      
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-heading-l" style="margin: 0; padding: 0;">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
             Quantity
           </dt>
         </div>
@@ -230,44 +225,62 @@
         </div>
       </dl>
 
-      <!--=========================-->
+      
       <!-- ACTUAL DATE OF SHIPMENT -->
-      <!--=========================-->
-      <h2 class="govuk-heading-l">
-        Actual date of shipment
+      
+      <h2 class="govuk-heading-m">
+        Date waste will be picked up
       </h2>
       
       <dl class="govuk-summary-list govuk-!-padding-bottom-6">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Actual date of shipment
+            Date
           </dt>
           <dd class="govuk-summary-list__value">
             17 May 2021
           </dd>
         </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Actual or estimated
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Actual pick up date
+          </dd>
+        </div>
       </dl>
 
-      <!--=======================-->
+      
       <!-- FIRST CARRIER HEADING -->
-      <!--=======================-->
+      
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-heading-l" style="margin: 0; padding: 0;">
-            First carrier
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Carrier 1
           </dt>
         </div>
       </dl>
 
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            First carrier details?
+          </dt>
+          <dd class="govuk-summary-list__value">
+          </dd>
+        </div>
+      </dl>
+
       <!-- FIRST CARRIER - Carrier details -->
-      <h3 class="govuk-heading-m">
+      <h3 class="govuk-heading-s">
         Carrier name and address
       </h3>
 
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Carrier name
+            Name
           </dt>
           <dd class="govuk-summary-list__value">
             Complete CMA Shipping Limited
@@ -275,7 +288,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Carrier address
+            Address
           </dt>
           <dd class="govuk-summary-list__value">
             32 Carriers Road<br>
@@ -294,8 +307,8 @@
       </dl>
 
       <!-- FIRST CARRIER - Contact details -->
-      <h3 class="govuk-heading-m">
-        Contact person
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
       </h3>
 
       <dl class="govuk-summary-list govuk-!-padding-bottom-6">
@@ -333,26 +346,26 @@
         </div>
       </dl>
 
-      <!--========================-->
+      
       <!-- SECOND CARRIER HEADING -->
-      <!---=======================-->
+      
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-heading-l" style="margin: 0; padding: 0;">
-            Second carrier
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Carrier 2
           </dt>
         </div>
       </dl>
 
       <!-- SECOND CARRIER - Carrier details -->
-      <h3 class="govuk-heading-m">
+      <h3 class="govuk-heading-s">
         Carrier name and address
       </h3>
 
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Carrier name
+            Name
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['second-carrier-name'] }}
@@ -360,7 +373,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Carrier address
+            Address
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['second-carrier-address-line-1'] != '' %}
@@ -394,8 +407,8 @@
       </dl>
 
       <!-- SECOND CARRIER - Contact details -->
-      <h3 class="govuk-heading-m">
-        Contact person
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
       </h3>
 
       <dl class="govuk-summary-list govuk-!-padding-bottom-6">
@@ -445,26 +458,26 @@
         </div>
       </dl>
 
-      <!--=======================-->
+      
       <!-- THIRD CARRIER HEADING -->
-      <!--=======================-->
+      
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-heading-l" style="margin: 0; padding: 0;">
-            Third carrier
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Carrier 3
           </dt>
         </div>
       </dl>
 
       <!-- THIRD CARRIER - Carrier details -->
-      <h3 class="govuk-heading-m">
+      <h3 class="govuk-heading-s">
         Carrier name and address
       </h3>
 
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Carrier name
+            Name
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['third-carrier-name'] }}
@@ -472,7 +485,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Carrier address
+            Address
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['third-carrier-address-line-1'] != '' %}
@@ -506,8 +519,8 @@
       </dl>
 
       <!-- THIRD CARRIER - Contact details -->
-      <h3 class="govuk-heading-m">
-        Contact person
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
       </h3>
 
       <dl class="govuk-summary-list govuk-!-padding-bottom-6">
@@ -557,26 +570,26 @@
         </div>
       </dl>
 
-      <!--=========================-->
+      
       <!-- WASTE GENERATOR HEADING -->
-      <!--=========================-->
+      
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-heading-l" style="margin: 0; padding: 0;">
-            Waste generator, original producer, new producer or collector
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Waste collection point
           </dt>
         </div>
       </dl>
 
       <!-- WASTE GENERATOR - Carrier details -->
-      <h3 class="govuk-heading-m">
-        Company name and address
+      <h3 class="govuk-heading-s">
+        Name and address
       </h3>
 
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Company name
+            Name
           </dt>
           <dd class="govuk-summary-list__value">
             Perfect Print Limited
@@ -584,7 +597,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Company address
+            Address
           </dt>
           <dd class="govuk-summary-list__value">
             120 South Street<br>
@@ -596,8 +609,8 @@
       </dl>
 
       <!-- WASTE GENERATOR - Contact details -->
-      <h3 class="govuk-heading-m">
-        Contact person
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
       </h3>
 
       <dl class="govuk-summary-list govuk-!-padding-bottom-6">
@@ -635,26 +648,26 @@
         </div>
       </dl>
 
-      <!--=========================================-->
+      
       <!-- RECOVERY FACILITY OR LABORATORY HEADING -->
-      <!--=========================================-->
+      
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-heading-l" style="margin: 0; padding: 0;">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
             Recovery facility
           </dt>
         </div>
       </dl>
 
       <!-- RECOVERY FACILITY OR LABORATORY - Details -->
-      <h3 class="govuk-heading-m">
+      <h3 class="govuk-heading-s">
         Recovery facility name and address
       </h3>
 
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Recovery facility name
+            Name
           </dt>
           <dd class="govuk-summary-list__value">
             Bulk Papers
@@ -662,7 +675,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Recovery facility address
+            Address
           </dt>
           <dd class="govuk-summary-list__value">
             31st Floor, Rajbhavan Road<br>
@@ -676,8 +689,8 @@
       </dl>
 
       <!-- RECOVERY FACILITY OR LABORATORY - Contact details -->
-      <h3 class="govuk-heading-m">
-        Contact person
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
       </h3>
 
       <dl class="govuk-summary-list govuk-!-padding-bottom-6">
@@ -715,11 +728,11 @@
         </div>
       </dl>
 
-      <!--====================-->
+
       <!-- RECOVERY OPERATION --> 
-      <!--====================-->
-      <h2 class="govuk-heading-l">
-        Recovery operation
+      
+      <h2 class="govuk-heading-m">
+        Recovery or disposal code
       </h2>
       
       <dl class="govuk-summary-list govuk-!-padding-bottom-6">
@@ -733,17 +746,17 @@
         </div>
       </dl>
 
-      <!--===================-->
+      
       <!-- USUAL DESCRIPTION -->
-      <!--===================-->
-      <h2 class="govuk-heading-l">
-        Usual description
+      
+      <h2 class="govuk-heading-m">
+        Description of the waste
       </h2>
       
       <dl class="govuk-summary-list govuk-!-padding-bottom-6">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Usual description
+            Description
           </dt>
           <dd class="govuk-summary-list__value">
             Paper scrap - OCC
@@ -751,13 +764,13 @@
         </div>
       </dl>
 
-      <!--==============================-->
+      
       <!-- WASTE IDENTIFICATION HEADING -->
-      <!--==============================-->
+      
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-heading-l" style="margin: 0; padding: 0;">
-            Relevant codes
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Waste identification codes
           </dt>
         </div>
       </dl>
@@ -813,13 +826,13 @@
         </div>
       </dl>
 
-      <!--==========================-->
+      
       <!-- COUNTRIES/STATES HEADING --> 
-      <!--==========================-->
+      
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-heading-l" style="margin: 0; padding: 0;">
-            Countries/states concerned
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Countries the waste will travel through
           </dt>
         </div>
       </dl>
@@ -836,7 +849,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Transit
+            Transit country(ies)
           </dt>
           <dd class="govuk-summary-list__value">
             Not provided
@@ -845,7 +858,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Import/destination
+            Import destination
           </dt>
           <dd class="govuk-summary-list__value">
             India (IN)
@@ -853,17 +866,33 @@
         </div>
       </dl>
 
-      <!--==================-->
-      <!--  TRANSACTION IDs -->
-      <!--==================-->
-      <h2 class="govuk-heading-l" id="check-transaction-id">
-        Transaction IDs
+      <!--  Container number -->
+
+      <h2 class="govuk-heading-m" id="check-transaction-id">
+        Container number
       </h2>
       
       <dl class="govuk-summary-list govuk-!-padding-bottom-6">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Unique ID
+            Container number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Not provided
+          </dd>
+        </div>
+      </dl>
+
+      <!--  TRANSACTION IDs -->
+
+      <h2 class="govuk-heading-m" id="check-transaction-id">
+        Your transaction number
+      </h2>
+      
+      <dl class="govuk-summary-list govuk-!-padding-bottom-6">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Transaction number
           </dt>
           <dd class="govuk-summary-list__value">
             HDJ2123F
@@ -871,7 +900,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-half">
-            Provided ID
+            Reference number
           </dt>
           <dd class="govuk-summary-list__value">
             Not provided

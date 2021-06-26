@@ -1,7 +1,7 @@
 {% extends "layout-v4-consignor.html" %}
 
 {% block pageTitle %}
-  Tell us about a new waste export - Track waste
+  Tell us about a new waste export - Export green list waste
 {% endblock %}
 
 {% block beforeContent %}
@@ -60,7 +60,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="quantity" aria-describedby="quantity-status">
-                  What is the quantity of the waste?
+                  What is the quantity of waste?
                 </a>
               </span>
               {% if data['quantity-status'] == null or data['quantity-status'] == 'Not started' %}
@@ -107,7 +107,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="waste-generator" aria-describedby="waste-generator-original-producer-new-producer-or-collector-status">
-                  Where will the first carrier collect the waste from?
+                  Where will the first carrier pick up the waste from?
                 </a>
               </span>
               {% if data['waste-generator-original-producer-new-producer-or-collector-status'] == null or data['waste-generator-original-producer-new-producer-or-collector-status'] == 'Not started' %}

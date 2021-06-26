@@ -1,7 +1,7 @@
 {% extends "layout-v4-consignor.html" %}
 
 {% block pageTitle %}
-  Check your answers - Track waste
+  Check your answers - Export green list waste
 {% endblock %}
 
 {% block content %}
@@ -23,7 +23,7 @@
             {% endif %}
             {% if data['update-actual-or-estimate-date'] == 'update-estimated-date' %}
               <li>
-                <a href="#update-date-of-shipment">Date waste picked up</a>
+                <a href="#update-date-of-shipment">Date waste will be picked up</a>
               </li>
             {% endif %}
           </ul>
@@ -41,7 +41,7 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
-            Person arranging the shipment
+            Person arranging the export
           </dt>
           <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
           </dd> 
@@ -266,7 +266,7 @@
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-heading-m" id="update-date-of-shipment" style="margin: 0; padding: 0;">
-              Date waste picked up
+              Date waste will be picked up
               {% if data['update-actual-or-estimate-date'] == 'update-estimated-date' %}
                 <span id="date-of-shipment-error" class="govuk-error-message govuk-!-padding-top-2">
                   <span class="govuk-visually-hidden">Error:</span> Actual date of shipment is required
@@ -442,7 +442,7 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
-            Waste generator
+            Waste collection point
           </dt>
           <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
           </dd> 
@@ -714,7 +714,7 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
-            Route of the waste movement
+            Countries the waste will travel through
           </dt>
           <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
           </dd> 
@@ -724,7 +724,7 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Exporting country
+            Export/dispatch
           </dt>
           <dd class="govuk-summary-list__value">
             United Kingdom (GB)
@@ -732,7 +732,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Transit countries
+            Transit country(ies)
           </dt>
           <dd class="govuk-summary-list__value">
             Not provided
@@ -740,7 +740,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Importing country
+            Import destination
           </dt>
           <dd class="govuk-summary-list__value">
             India
@@ -749,17 +749,60 @@
       </dl>
       <br><br>
 
-      <!--==================-->
-      <!--  TRANSACTION IDs -->
-      <!--==================-->
-      <h2 class="govuk-heading-m" id="check-transaction-id">
-        Transaction IDs
-      </h2>
-      
+      <!--======================-->
+      <!--  CONTAINER REFERENCE -->
+      <!--======================-->
+      <dl class="govuk-summary-list" id="container-number">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Container number
+          </dt>
+          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
+            <a class="govuk-link" href="container-number">
+              Change<span class="govuk-visually-hidden"> consginment number</span>
+            </a>
+          </dd> 
+        </div>
+      </dl>
+
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Unique ID
+            Container number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['container-number'] == 'container-no' %}
+              Not provided
+            {% else %}
+              {{ data['container-number-entered'] }}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      <!--==================-->
+      <!--  TRANSACTION IDs -->
+      <!--==================-->
+      <dl class="govuk-summary-list" id="check-transaction-id">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Your transaction number
+          </dt>
+          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
+            <a class="govuk-link" href="transaction-id">
+              Change<span class="govuk-visually-hidden"> transaction IDs</span>
+            </a>
+          </dd> 
+        </div>
+      </dl>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Transaction number
           </dt>
           <dd class="govuk-summary-list__value">
             HDJ2123F
@@ -769,57 +812,46 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Optional reference
+            Reference number
           </dt>
           <dd class="govuk-summary-list__value">
-            Not provided
-          </dd>
-          <dd class="govuk-summary-list__actions">
-          </dd> 
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Container number
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Not provided
+            {% if data['transaction-number'] == 'transaction-no' %}
+              Not provided
+            {% else %}
+              {{ data['unique-transaction-id'] }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
           </dd>
         </div>
       </dl>
-      <br><br>
+      <br>
 
       <!--=============-->
       <!-- DECLARATION -->
       <!--=============-->
-      <h2 class="govuk-heading-m">Declaration of the person arranging the green list waste shipment</h2>
-
       <p class="govuk-body">I certify that:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>
-          the information here is complete and correct to the best of my knowledge
+          the details I have provided are complete and correct to the best of my knowledge
         </li>
         <li>
-          I have entered into written contractual obligations with the consignee/importer of the waste 
-          (note: a contract is not required in the case of waste referred to in Article 3(4) – waste 
-          explicitly destined for laboratory analysis)
+          I have entered into written contractual obligations with the waste importer or consignee, 
+          unless the waste is destined for laboratory analysis and weighs less than 25kg
         </li>
       </ul>
         
       <p class="govuk-body">Once you click confirm and submit:</p>
-      <ul class="govuk-list govuk-list--bullet">
+      <ul class="govuk-list govuk-list--bullet govuk-!-padding-bottom-2">
         <li>
-          the information you have entered will be submitted to environmental regulator to advise them of your 
-          upcoming green list waste shipment
+          the details you have provided will be sent to the environmental regulator, you no longer need to send them 
+          an Annex VII form
         </li>
         <li>
-          you will receive a confirmation email of your submission
+          a completed Annex VII form will be created for you to print and sign to travel with the waste
         </li>
-        <li>
-          a completed Annex VII form will be created for you to download and print
-        </li>
-      </ul>
+      </ul> 
+
       <form method="post" novalidate>
         <input type="hidden" name="answers-checked" value="true">
         <button class="govuk-button" data-module="govuk-button">

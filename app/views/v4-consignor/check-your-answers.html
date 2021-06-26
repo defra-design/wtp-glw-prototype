@@ -1,7 +1,7 @@
 {% extends "layout-v4-consignor.html" %}
 
 {% block pageTitle %}
-  Check your answers - Track waste
+  Check your answers - Export green list waste
 {% endblock %}
 
 {% block beforeContent %}
@@ -1267,27 +1267,25 @@
       <p class="govuk-body">I certify that:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>
-          the information provided is complete and correct to the best of my knowledge
+          the details I have provided are complete and correct to the best of my knowledge
         </li>
         <li>
-          I have entered into written contractual obligations with the waste importer or consignee, unless the waste is 
-          explicitly destined for laboratory analysis referred to in Article 3(4)
+          I have entered into written contractual obligations with the waste importer or consignee, 
+          unless the waste is destined for laboratory analysis and weighs less than 25kg
         </li>
       </ul>
         
       <p class="govuk-body">Once you click confirm and submit:</p>
       <ul class="govuk-list govuk-list--bullet govuk-!-padding-bottom-2">
         <li>
-          the information you provided will be sent to the environmental regulator to advise them of your upcoming 
-          green list waste export
+          the details you have provided will be sent to the environmental regulator, you no longer need to send them 
+          an Annex VII form
         </li>
         <li>
-          you will receive a confirmation email with a copy of the information you provided
-        </li>
-        <li>
-          a completed Annex VII form will be created for you to download and print
+          a completed Annex VII form will be created for you to print and sign to travel with the waste
         </li>
       </ul>
+
       <form method="post" novalidate>
         <input type="hidden" name="answers-checked" value="true">
         <button class="govuk-button" data-module="govuk-button">
