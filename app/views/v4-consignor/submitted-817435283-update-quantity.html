@@ -1,7 +1,7 @@
 {% extends "layout-v4-consignor.html" %}
 
 {% block pageTitle %}
-  What is the quantity of the waste? - Export green list waste
+  What is the quantity of waste? - Export green list waste
 {% endblock %}
 
 {% block content %}
@@ -10,8 +10,12 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        What is the quantity of the waste?
+        What is the quantity of waste?
       </h1>
+
+      <p class="govuk-body govuk-!-padding-bottom-2">
+        This is the net weight or volume of the waste, not including the container or vehicle.
+      </p>
 
       <form class="form" method="post">
 
@@ -20,7 +24,7 @@
 
       {{ govukInput({
         label: {
-          text: "Amount (net)",
+          text: "Quantity",
           classes: "govuk-label--m",
           isPageHeading: false
         },
@@ -36,14 +40,14 @@
         name: "update-quantity-units",
         fieldset: {
           legend: {
-            text: "Unit",
+            text: "Units",
             classes: "govuk-label--m"
           }
         },
         items: [
           {
             value: "update-tonnes-mg",
-            text: "Tonnes or megagrams (Mg)",
+            text: "Tonnes, also called megagrams (Mg)",
             checked: checked("update-quantity-units", "update-tonnes-mg")
           },
           {
@@ -60,7 +64,7 @@
       }) %}
 
       {{ govukRadios({
-        classes: "govuk-radios--inline",
+        classes: "govuk-radios",
         idPrefix: "update-actual-or-estimate",
         name: "update-actual-or-estimate",
         fieldset: {
@@ -69,9 +73,6 @@
             isPageHeading: false,
             classes: "govuk-fieldset__legend--m"
           }
-        },
-        hint: {
-          text: "You will be able to return to the service later to enter an actual quantity."
         },
         items: [
           {
@@ -82,6 +83,9 @@
           {
             value: "update-estimated",
             text: "No, it is an estimate",
+            hint: {
+              text: "You must use this service to provide the actual quantity later as soon as you know this."
+            },
             checked: checked("update-actual-or-estimate", "update-estimated")
           }
         ]

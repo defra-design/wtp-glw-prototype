@@ -20,7 +20,7 @@
               <ul class="govuk-list govuk-error-summary__list">
                 {% if data['who-arranged-company-name']|length == 0 %}
                 <li>
-                  <a href="#who-arranged-company-name">Enter the name of the exporter</a>
+                  <a href="#who-arranged-company-name">Enter name of exporter</a>
                 </li>
                 {% endif %}
                 {% if data['who-arranged-address-line-1']|length == 0 %}
@@ -45,7 +45,7 @@
                 {% endif %}
                 {% if data['who-arranged-contact-full-name']|length == 0 %}
                 <li>
-                  <a href="#who-arranged-contact-full-name">Enter the full name of the contact person</a>
+                  <a href="#who-arranged-contact-full-name">Enter full name of contact person</a>
                 </li>
                 {% endif %}
                 {% if data['who-arranged-email']|length == 0 %}
@@ -84,7 +84,7 @@
               text: "Company, partnership, sole trader, organisation, etc."
             },
             errorMessage: {
-              text: "Enter the name of the exporter"
+              text: "Enter name of exporter"
             },
             id: "who-arranged-company-name",
             name: "who-arranged-company-name",
@@ -240,7 +240,7 @@
               text: "Full name"
             },
             errorMessage: {
-              text: "Enter the full name of the contact person"
+              text: "Enter full name of contact person"
             },
             id: "who-arranged-contact-full-name",
             name: "who-arranged-contact-full-name",

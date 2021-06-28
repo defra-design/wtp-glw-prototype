@@ -1,7 +1,7 @@
 {% extends "layout-v4-consignor.html" %}
 
 {% block pageTitle %}
-  What is the date of the shipment? - Export green list waste
+  When will the waste be picked up? - Export green list waste
 {% endblock %}
 
 {% block content %}
@@ -12,14 +12,16 @@
       <form class="form" method="post">
         <div class="govuk-form-group">
 
-          <fieldset class="govuk-fieldset" role="group" aria-describedby="update-actual-shipment-hint">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="actual-shipment-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                What is the date of the shipment?
+              <h1 class="govuk-fieldset__heading govuk-!-padding-bottom-4">
+                When will the waste be picked up?
               </h1>
             </legend>
-            <div id="update-actual-shipment-hint" class="govuk-hint">
-              For example, 27 3 2007
+            <div id="actual-shipment-hint" class="govuk-hint">
+              <p class="govuk-body">
+                For example, 27 3 2007
+              </p>
             </div>
             <div class="govuk-date-input" id="update-actual-shipment">
               <div class="govuk-date-input__item">
@@ -48,18 +50,15 @@
           </fieldset>
         
           {{ govukRadios({
-            classes: "govuk-radios--inline",
+            classes: "govuk-radios",
             idPrefix: "update-actual-or-estimate-date",
             name: "update-actual-or-estimate-date",
             fieldset: {
               legend: {
-                text: "Is this the actual shipment date?",
+                text: "Is this the actual date?",
                 isPageHeading: false,
                 classes: "govuk-fieldset__legend--m govuk-!-padding-top-8"
               }
-            },
-            hint: {
-              text: "If you have not confirmed the date you can complete this later."
             },
             items: [
               {
@@ -70,6 +69,9 @@
               {
                 value: "update-estimated-date",
                 text: "No, it is an estimate",
+                hint: {
+                  text: "You must use this service to provide the actual date later as soon as you know this."
+                },
                 checked: checked("update-actual-or-estimate-date", "update-estimated-date")
               }
             ]

@@ -358,9 +358,9 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['actual-or-estimate-date'] == 'estimated-date' %}
-              Estimated pick up date
+              Estimated date
             {% else %}
-              Actual pick up date
+              Actual date
             {% endif %}
           </dd>
         </div>
@@ -1138,7 +1138,7 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Export/dispatch
+            Exporting country
           </dt>
           <dd class="govuk-summary-list__value">
 
@@ -1158,7 +1158,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Transit country(ies)
+            Transit country (or countries)
           </dt>
           <dd class="govuk-summary-list__value">
             <ul class="govuk-list">
@@ -1174,7 +1174,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Import destination
+            Importing country
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['import-destination-typeahead'] }}
