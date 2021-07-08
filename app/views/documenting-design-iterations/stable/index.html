@@ -1,0 +1,83 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  })}}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-full">
+		<div class="govuk-form-group">{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+			{{ govukPhaseBanner({
+			  tag: {
+			    text: "Prototype"
+			  },
+			  html: 'Stable version'
+			}) }}
+		</div>
+	</div>
+	<div class="govuk-grid-column-full">
+		<h1 class="govuk-heading-l">Journey map</h1>
+	    <img src="/public/images/glw-journey.jpg" alt="user journey" style="border: none; margin: 0 0 30px 0; width: 100%">
+	</div>
+	<div class="govuk-grid-column-one-third">
+		<h2 class="govuk-heading-m">Pages</h2>
+		<div class="govuk-form-group">
+			<ul class="govuk-list govuk-list--bullet">
+				<li><a href="#">A1.1: Finding and guidance “Email”</li>
+				<li><a href="#">A2.1: Login</a></li>
+				<li><a href="#">A3.1: Agency User dashboard</a></li>
+				<li><a href="#">A3.2: Alerts</a></li>
+				<li><a href="#">A3.4: View Annex VII</a></li>
+				<li><a href="#">A3.5: Submitted Annex VII’s</a></li>
+				<li><a href="#">A3.6: View Annex VII</a></li>
+				<li><a href="#">A3.7: Reports</a></li>
+				<li>A3.8: Parameterise report</li>
+				<ul>
+					<li><a href="#">By destination</li>
+					<li><a href="#">By specific exporter</a></li>
+					<li><a href="#">By point of departure</a></li>
+					<li><a href="#">All data</a></li>
+				</ul>
+				<li><a href="#">A3.9: View report</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="govuk-grid-column-one-third">
+		<h2 class="govuk-heading-m">Validation</h2>
+		<div class="govuk-form-group">
+			<ul class="govuk-list govuk-list--bullet">
+				<li>A3.8: Parameterise report by destination</li>
+				<ul>
+					<li><a href="#">No destination</a></li>
+					<li><a href="#">No DAY</a></li>
+					<li><a href="#">No MONTH</a></li>
+					<li><a href="#">No YEAR</a></li>
+					<li><a href="#">No DAY and MONTH</a></li>
+					<li><a href="#">No DAY and YEAR</a></li>
+					<li><a href="#">No MONTH and YEAR</a></li>
+				</ul>
+			</ul>
+		</div>
+	</div>
+	<div class="govuk-grid-column-one-third">
+		<div class="govuk-form-group">
+			<h2 class="govuk-heading-m">Defaults</h2>
+			<ul class="govuk-list to-do">
+				<li><a href="#">400/500: Problem with the service</a></li>
+				<li><a href="#">404: Page not found</a></li>
+				<li><a href="#">503: Shutter page</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
