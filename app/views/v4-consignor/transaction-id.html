@@ -22,7 +22,7 @@
         {% set referenceNumberHtml %}
         {{ govukInput({
           label: {
-            text: "Reference number",
+            text: "Your reference number",
             isPageHeading: false
           },
           id: "unique-transaction-id",
@@ -36,10 +36,13 @@
           name: "transaction-number",
           fieldset: {
             legend: {
-              text: "Would you like to also add your own internal reference number?",
+              text: "Would you like to also add your own reference number?",
               isPageHeading: false,
               classes: "govuk-fieldset__legend--m"
             }
+            <p class="govuk-body">
+              This could be an invoice number, or other reference number you would like to identify this export by.
+            </p>
           },
           items: [
             {
