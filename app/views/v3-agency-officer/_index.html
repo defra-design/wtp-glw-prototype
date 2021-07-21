@@ -1,0 +1,289 @@
+
+{% extends "design-iterations-layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  })}}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "Prototype"
+      },
+      html: 'Exporter Version 3'
+    }) }}
+  </div>
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l govuk-!-margin-top-6">
+      Hypotheses
+    </h1>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Journey
+        </dt>
+        <dd class="govuk-summary-list__value">
+          For agency officers we believe that:
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Overarching
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list">
+            <li><p class="govuk-body">Using more universal terms for the retrieval journey will not be detrimental to understanding the function of the service</p></li>
+            <div class="govuk-form-group">
+              <strong class="govuk-tag govuk-tag--green">
+                Validated
+              </strong>
+            </div>
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Tests
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <ul class="govuk-list--bullet">
+                  <li>replace "retrieval" with "find"</li>
+                </ul>
+              </div>
+            </details>
+    
+            <li><p class="govuk-body">Creating separate journeys to find the correct documents will not impare the user's experience</p></li>
+            <div class="govuk-form-group">
+              <strong class="govuk-tag govuk-tag--green">
+                Validated
+              </strong>
+            </div>
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Tests
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <ul class="govuk-list--bullet">
+                  <li>create a new, specific card on the start page to find a specific document type.</li>
+                </ul>
+              </div>
+            </details>
+          </ul>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Document archiving
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ol class="govuk-list govuk-list">
+            <li>
+              <p class="govuk-body">The ability to view the whole page preview will provide additional confidence whilst locating official numbers to key-in</p>
+            </li>
+            <div class="govuk-form-group">
+              <strong class="govuk-tag govuk-tag--green">
+                Validated
+              </strong>
+            </div>
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Tests
+                </span>
+              </summary>
+
+              <div class="govuk-details__text">
+                <ul class="govuk-list--bullet">
+                  <li>view full preview feature and test with cancellation document</li>
+                </ul>
+              </div>
+            </details>
+            <li><p class="govuk-body">Providing meaningful system feedback when issues are enountered will help solve problems and provide a better end-to-end experience</p></li>
+            <div class="govuk-form-group">
+              <strong class="govuk-tag govuk-tag--grey">
+                More research needed
+              </strong>
+            </div>
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Tests
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <ul class="govuk-list--bullet">
+                  <h3 class="govuk-heading-s">Scenario</h3>
+                    <li>It's your turn on the rota and a large number of documents have been delivered to process. There has been reports of network problems, <a href="#">it's going to be one of those days...</a></li>
+
+                    <li><a href="#">no scanners found</a>
+                      <strong class="govuk-tag govuk-tag--green">
+                        Validated
+                      </strong>
+                    </li>
+                    <li><a href="#">scanner busy</a>
+                    <strong class="govuk-tag govuk-tag--green">
+                        Validated
+                      </strong>
+                    </li>
+                    <li><a href="#">problem scanning document</a>
+                      <strong class="govuk-tag govuk-tag--grey">
+                        More research needed
+                      </strong> API messages
+                    </li>
+                    <li><a href="#">official number error</a>
+                      <strong class="govuk-tag govuk-tag--green">
+                        Validated
+                      </strong> Accessibility testing needed
+                    </li>
+                    <li><a href="#"> 500 - Internal server error</a>
+                      <strong class="govuk-tag govuk-tag--green">
+                        Validated
+                      </strong> Remove clear cache / browser guidance
+                    </li>
+                  </ul>
+                </div>
+              </details>
+            </li>
+          </ol>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Find documents
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ol class="govuk-list govuk-list">
+            <li><p class="govuk-body">Separate journeys for finding a specific docuemnt will simplify the retrieval interface and yield more specific results</p>
+              <div class="govuk-form-group">
+              <strong class="govuk-tag govuk-tag--green">
+                Validated
+              </strong>
+            </div>
+            </li>
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Tests
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <ul class="govuk-list--bullet">
+                  <li>find first document type - reg#, results, simplify label</li>
+                  <li>find second document type - reg#, reg date, results, simplify label</li>
+                </ul>
+              </div>
+            </details>
+            <li><p class="govuk-body">Editing existing records can be sign-posted via the respective search results page</p>
+            <div class="govuk-form-group">
+              <strong class="govuk-tag govuk-tag--green">
+                Validated
+              </strong>
+            </div>
+          </li>
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Tests
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <ul class="govuk-list--bullet">
+                  <li>results page with an edit feature enabling information to be updated and saved</li>
+                  <li>for other document types, create a new version of the check your answers page to include registration number, date view preview</li>
+              </div>
+            </details>
+            <li><p class="govuk-body">Surfacing additional information on a cover sheet will be easier to navigate with assistive tech than embeded metadata within a PDF</p>
+              <div class="govuk-form-group">
+              <strong class="govuk-tag govuk-tag--grey">
+                More research needed
+              </strong>
+            </div>
+            </li>
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Tests
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                With screen reader, test the end-to-end journey but focus testing with PDF varients:
+                <ol class="govuk-list--number">
+                  <li>A flat scanned document</li>
+                  <li>Tagged cover sheet content with scanned images</li> 
+                  <li>Scanned images with embedded meta data</li>
+                </ol>
+              </div>
+          </ol>
+        </dd>
+      </div>
+    </dl>
+
+    {{ govukInsetText({
+      html: "<strong>Full on-boarding journey</strong> this includes Government Gateway and Defra ID account creation"
+    }) }}
+    {{ govukButton({
+      text: 'Start from invitation email',
+      classes: "govuk-!-margin-bottom-4",
+      href: 'email'
+    }) }}
+
+    {{ govukInsetText({
+      html: "<strong>Partial journey</strong> assumes Defra ID account has previously been created"
+    }) }}
+    {{ govukButton({
+      text: 'Start from Defra ID sign in',
+      classes: "govuk-!-margin-bottom-6",
+      href: 'login'
+    }) }}
+    {% endset %}
+
+    <h2 class="govuk-heading-l govuk-!-margin-top-8">
+      Research
+    </h2>
+       
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Session dates
+      </dt>
+      <dd class="govuk-summary-list__value">
+        7 Jun 2021 - 13 Jun 2021
+      </dd>
+    </div>
+    
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Participants
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <ul class="govuk-list">
+          <li>7 agency officers (experienced), one with BSL as first language</li>
+          <li>1 participant made use of Dragon</li>
+      </dd>
+    </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Insights
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <a href="#">Round 5 research findings</a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+{% endblock %}
