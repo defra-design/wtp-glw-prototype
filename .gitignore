@@ -8,8 +8,7 @@ lib/extensions/_extensions.scss
 .start.pid
 .port.tmp
 public
-node_modules/*
+node_modules/
 .tmuxp.*
 package-lock.json
-app/.DS_Store
-app/views/.DS_Store
+node_modules
