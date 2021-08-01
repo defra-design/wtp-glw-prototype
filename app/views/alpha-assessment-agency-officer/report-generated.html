@@ -1,0 +1,49 @@
+
+{% extends "../layouts/alpha-assessment-agency-officer.html" %}
+
+{% block pageTitle %}
+  Report succesfully generated - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  <!-- HMRC PATTERN : ACCOUNT MENU -->
+  <nav id="secondary-nav" class="hmrc-account-menu" aria-label="Account" data-module="hmrc-account-menu">
+    <a href="dashboard" class="hmrc-account-menu__link hmrc-account-menu__link--home hmrc-account-menu__link--active">
+      <span class="hmrc-account-icon hmrc-account-icon--home">
+        Dashboard home </span>
+    </a>
+  </nav>
+  <!-- END ACCOUNT MENU -->
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "Report successfully generated"
+      }) }}
+
+      <p class="govuk-body">
+        You can download your report as a:
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="" class="govuk-link govuk-link--no-visited-state">CSV file</a></li>
+          <li><a href="" class="govuk-link govuk-link--no-visited-state">PDF document</a></li>
+        </ul>
+      </p>
+
+      <h2 class="govuk-heading-m">What do you want to do next?</h2>
+      <ul class="govuk-list">
+        <li><a href="reports">Generate another report</a></li>
+        <li class="govuk-!-padding-top-4"><a href="dashboard">Return to dashboard</a></li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

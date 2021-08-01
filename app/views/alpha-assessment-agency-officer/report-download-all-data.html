@@ -1,0 +1,83 @@
+
+{% extends "../layouts/alpha-assessment-agency-officer.html" %}
+
+{% block pageTitle %}
+  Download all data as a CSV file - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  <!-- HMRC PATTERN : ACCOUNT MENU -->
+  <nav id="secondary-nav" class="hmrc-account-menu" aria-label="Account" data-module="hmrc-account-menu">
+    <a href="dashboard" class="hmrc-account-menu__link hmrc-account-menu__link--home hmrc-account-menu__link--active">
+      <span class="hmrc-account-icon hmrc-account-icon--home">
+        Dashboard home </span>
+    </a>
+  </nav>
+  <!-- END ACCOUNT MENU -->
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Generate a report
+      </span>
+      <h1 class="govuk-heading-l">
+        Download all data as a CSV file
+      </h1>
+
+      <form method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset govuk-!-margin-top-4">
+
+            {{ govukDateInput({
+              id: "from-date",
+              namePrefix: "report-one-from-date",
+              fieldset: {
+                legend: {
+                  text: "From which date",
+                  classes: "govuk-body"
+                }
+              },
+              hint: {
+                text: "For example, 27 3 2007"
+              }
+            }) }}
+            {{ govukDateInput({
+              id: "to-date",
+              namePrefix: "report-one-to-date",
+              fieldset: {
+                legend: {
+                  text: "To which date",
+                  classes: "govuk-body"
+                }
+              },
+              hint: {
+                text: "For example, 12 9 2013"
+              }
+            }) }}
+
+            {{ govukButton({
+              text: "Generate report",
+              classes: "govuk-!-margin-top-6"
+            }) }}
+
+          </fieldset>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

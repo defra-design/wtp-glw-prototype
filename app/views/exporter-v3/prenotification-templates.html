@@ -1,0 +1,148 @@
+
+{% extends "../layouts/layout-exporter-v3.html" %}
+
+{% block pageTitle %}
+  Your saved templates - Track waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'dashboard'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Your saved templates
+      </h1>
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Template</th>
+            <th scope="col" class="govuk-table__header">Last submitted</th>
+            <th scope="col" class="govuk-table__header">Action</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% if data['template-name'] != undefined %}
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell">
+                {{ data['template-name'] }}
+              </td>
+              <td class="govuk-table__cell">
+                10 June 2021
+              </td>
+              <td class="govuk-table__cell">
+                <a href="template-euromovement" class="govuk-link">Select <span class="govuk-visually-hidden"> template</span></a>
+              </td>
+            </tr>
+          {% endif %}
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              Euromovement paper waste movement
+            </td>
+            <td class="govuk-table__cell">
+              7 June 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="template-euromovement" class="govuk-link">Select <span class="govuk-visually-hidden"> template</span></a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              Fabric Society Waste mixed paper
+            </td>
+            <td class="govuk-table__cell">
+              7 June 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="#" class="govuk-link">Select <span class="govuk-visually-hidden"> template</span></a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              Euromovement paper scrap
+            </td>
+            <td class="govuk-table__cell">
+              6 June 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="#" class="govuk-link">Select <span class="govuk-visually-hidden"> template</span></a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              Sword Movements heavy melting steel
+            </td>
+            <td class="govuk-table__cell">
+              6 June 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="#" class="govuk-link">Select <span class="govuk-visually-hidden"> template</span></a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              Excel List Movements heavy melting steel
+            </td>
+            <td class="govuk-table__cell">
+              4 June 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="#" class="govuk-link">Select <span class="govuk-visually-hidden"> template</span></a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              Fabric Society Waste paper scrap
+            </td>
+            <td class="govuk-table__cell">
+              2 June 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="#" class="govuk-link">Select <span class="govuk-visually-hidden"> template</span></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <div class="flex-container grid-row">
+        {% if data['template-name'] != undefined %}
+          {{ mojPagination({
+            results: {
+            from: 1,
+            to: 8,
+            count: 8
+            }
+          }) }}
+        {% else %}
+          {{ mojPagination({
+            results: {
+            from: 1,
+            to: 7,
+            count: 7
+            }
+          }) }}
+          {% endif %}
+      </div>
+
+      <p class="govuk-body govuk-!-margin-top-6">
+        <a href="dashboard">Return to dashboard</a>
+      </p>
+  
+    </div>
+  </div>
+
+  {% endblock %}

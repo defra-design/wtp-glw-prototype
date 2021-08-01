@@ -4,39 +4,52 @@ const router = express.Router()
 // Defra ID
 router.use('/defra-id', require('./views/defra-id/_routes'));
 
-// Import V4 Agency Officer routes
-router.use('/v4-agency-officer/', (req, res, next) => {
-  return require(`./views/v4-agency-officer/_routes`)(req, res, next);
+// Import Agency Officer V3 routes
+router.use('/agency-officer-v3/', (req, res, next) => {
+  return require(`./views/agency-officer-v3/_routes`)(req, res, next);
 })
 
-// Import V5 Agency Officer routes
-router.use('/v5-agency-officer/', (req, res, next) => {
-  return require(`./views/v5-agency-officer/_routes`)(req, res, next);
+// Import Agency Officer V2 routes
+router.use('/agency-officer-v2/', (req, res, next) => {
+  return require(`./views/agency-officer-v2/_routes`)(req, res, next);
 })
 
-// Import V3 Agency Officer routes
-router.use('/v3-agency-officer/', (req, res, next) => {
-  return require(`./views/v3-agency-officer/_routes`)(req, res, next);
+// Import Agency Officer V1 routes
+router.use('/agency-officer-v1/', (req, res, next) => {
+  return require(`./views/agency-officer-v1/_routes`)(req, res, next);
 })
 
-// Import V3 Consignor routes
-router.use('/v3-consignor/', (req, res, next) => {
-  return require(`./views/v3-consignor/_routes`)(req, res, next);
+// Import Exporter V4 routes
+router.use('/exporter-v4/', (req, res, next) => {
+  return require(`./views/exporter-v4/_routes`)(req, res, next);
 })
 
-// Import V4 Consignor routes
-router.use('/v4-consignor/', (req, res, next) => {
-  return require(`./views/v4-consignor/_routes`)(req, res, next);
+// Import Exporter V3 routes
+router.use('/exporter-v3/', (req, res, next) => {
+  return require(`./views/exporter-v3/_routes`)(req, res, next);
 })
 
-// Import V2 routes
-router.use('/v2/', (req, res, next) => {
-    return require(`./views/v2/_routes`)(req, res, next);
+// Import Exporter V2 routes
+router.use('/exporter-v2/', (req, res, next) => {
+    return require(`./views/exporter-v2/_routes`)(req, res, next);
 })
 
-// Import V1 routes
-router.use('/v1/', (req, res, next) => {
-    return require(`./views/v1/_routes`)(req, res, next);
+// Import Exporter V1 routes
+router.use('/exporter-v1/', (req, res, next) => {
+    return require(`./views/exporter-v1/_routes`)(req, res, next);
+})
+
+// Import alpha-assessment-defra-id
+router.use('/alpha-assessment-defra-id', require('./views/alpha-assessment-defra-id/_routes'));
+
+// Import alpha-assessment-agency-officer routes
+router.use('/alpha-assessment-agency-officer/', (req, res, next) => {
+  return require(`./views/alpha-assessment-agency-officer/_routes`)(req, res, next);
+})
+
+// Import alpha-assessment-exporter routes
+router.use('/alpha-assessment-exporter/', (req, res, next) => {
+  return require(`./views/alpha-assessment-exporter/_routes`)(req, res, next);
 })
 
 // SET GLOBAL PREVIOUS PAGE

@@ -1,0 +1,245 @@
+{% extends "../layouts/layout-exporter-v3.html" %}
+
+{% block pageTitle %}
+  Tell us about a new waste export - Track waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'dashboard'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Tell us about a new waste export
+      </h1>
+
+      <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span> Prepare your answers
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="who-arranged-shipment-details" aria-describedby="person-arranging-the-shipment-status">
+                  What are your contact details?
+                </a>
+              </span>
+              {% if data['person-arranging-the-shipment-status'] == null or data['person-arranging-the-shipment-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="person-arranging-the-shipment-status">Not started</strong>
+              {% elif data['person-arranging-the-shipment-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="person-arranging-the-shipment-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="importer-consignee" aria-describedby="importer-consignee-status">
+                  Who is the importer or consignee?
+                </a>
+              </span>
+              {% if data['importer-consignee-status'] == null or data['importer-consignee-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="importer-consignee-status">Not started</strong>
+              {% elif data['importer-consignee-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="importer-consignee-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="quantity" aria-describedby="quantity-status">
+                  What is the quantity of the waste?
+                </a>
+              </span>
+              {% if data['quantity-status'] == null or data['quantity-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="quantity-status">Not started</strong>
+              {% elif data['quantity-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="quantity-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="date-of-shipment" aria-describedby="date-of-shipment-status">
+                  When will the waste be picked up?
+                </a>
+              </span>
+              {% if data['date-of-shipment-status'] == null or data['date-of-shipment-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="date-of-shipment-status">Not started</strong>
+              {% elif data['date-of-shipment-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="date-of-shipment-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <!--==============-->
+                <!-- CARRIER LOOP -->
+                <!--==============-->
+                {% if data['carrier-add-1'] == null %}
+                  <!-- IF NO CARRIERS ADDED (NULL) THEN JUMP STRAIGHT TO ADDING THE FIRST CARRIER... -->
+                  <a href="carrier-add-1" aria-describedby="carrier-status">
+                    Who are the waste carriers?
+                  </a>
+                {% else %}
+                  <!-- ... OTHERWISE GO TO THE CARRIERS LANDING PAGE TO ALLOW ANOTHER TO BE ADDED (THE LOOP). -->
+                  <a href="carriers" aria-describedby="carrier-status">
+                    Who are the waste carriers?
+                  </a>
+                {% endif %}
+              </span>
+              {% if data['carrier-status'] == null or data['carrier-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="carrier-status">Not started</strong>
+              {% elif data['carrier-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="carrier-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="waste-generator" aria-describedby="waste-generator-original-producer-new-producer-or-collector-status">
+                  Where will the waste be picked up from?
+                </a>
+              </span>
+              {% if data['waste-generator-original-producer-new-producer-or-collector-status'] == null or data['waste-generator-original-producer-new-producer-or-collector-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="waste-generator-original-producer-new-producer-or-collector-status">Not started</strong>
+              {% elif data['waste-generator-original-producer-new-producer-or-collector-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="waste-generator-original-producer-new-producer-or-collector-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="recovery-facility-laboratory" aria-describedby="recovery-facility-or-laboratory-status">
+                  Who is the recovery facility or laboratory?
+                </a>
+              </span>
+              {% if data['recovery-facility-or-laboratory-status'] == null or data['recovery-facility-or-laboratory-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="recovery-facility-or-laboratory-status">Not started</strong>
+              {% elif data['recovery-facility-or-laboratory-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="recovery-facility-or-laboratory-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="recovery-operation" aria-describedby="recovery-operation-status">
+                  What is the recovery or disposal code?
+                </a>
+              </span>
+              {% if data['recovery-operation-status'] == null or data['recovery-operation-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="recovery-operation-status">Not started</strong>
+              {% elif data['recovery-operation-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="recovery-operation-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="usual-description" aria-describedby="usual-description-of-the-waste-status">
+                  Description of the waste
+                </a>
+              </span>
+              {% if data['usual-description-of-the-waste-status'] == null or data['usual-description-of-the-waste-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="usual-description-of-the-waste-status">Not started</strong>
+              {% elif data['usual-description-of-the-waste-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="usual-description-of-the-waste-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="waste-identification-codes" aria-describedby="waste-identification-codes-status">
+                  Waste identification codes
+                </a>
+              </span>
+              {% if data['waste-identification-codes-status'] == null or data['waste-identification-codes-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="waste-identification-codes-status">Not started</strong>
+              {% elif data['waste-identification-codes-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="waste-identification-codes-status">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="countries-states-concerned" aria-describedby="countries-states-concerned-status">
+                  Which countries will the waste travel through?
+                </a>
+              </span>
+              {% if data['countries-states-concerned-status'] == null or data['countries-states-concerned-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="countries-states-concerned-status">Not started</strong>
+              {% elif data['countries-states-concerned-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="countries-states-concerned-status">Completed</strong>
+              {% endif %}
+            </li>
+            <!-- Container number -->
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="container-number" aria-describedby="container-number-status">
+                  Do you know the container number?
+                </a>
+              </span>
+              {% if data['container-number-status'] == null or data['container-number-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="container-number-status">Not started</strong>
+              {% elif data['container-number-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="container-number-status">Completed</strong>
+              {% endif %}
+            </li>
+            <!-- Transaction number -->
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="transaction-id" aria-describedby="transaction-id-status">
+                  Your transaction number
+                </a>
+              </span>
+              {% if data['transaction-id-status'] == null or data['transaction-id-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="transaction-id-status">Not started</strong>
+              {% elif data['transaction-id-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="transaction-id-status">Completed</strong>
+              {% endif %}
+            </li>            
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> Submit and generate Annex VII
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              {% if data['person-arranging-the-shipment-status'] == "Completed" and 
+              data['importer-consignee-status'] == "Completed" and 
+              data['quantity-status'] == "Completed" and 
+              data['date-of-shipment-status'] == "Completed" and 
+              data['carrier-status'] == "Completed" and 
+              data['waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" and 
+              data['recovery-facility-or-laboratory-status']  == "Completed" and 
+              data['recovery-operation-status'] == "Completed" and 
+              data['usual-description-of-the-waste-status'] == "Completed" and 
+              data['waste-identification-codes-status'] == "Completed" and 
+              data['countries-states-concerned-status'] == "Completed" and 
+              data['transaction-id-status'] == "Completed" %}
+                <span class="app-task-list__task-name">
+                  <a href="check-your-answers" aria-describedby="submit-and-generate-status">
+                    Check your answers
+                  </a>
+                </span>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-and-generate-status">Not started</strong>
+              {% else %}
+                <span class="app-task-list__task-name">
+                  Check your answers
+                </span>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-and-generate-status">Cannot start yet</strong>
+              {% endif %}
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+{% endblock %}

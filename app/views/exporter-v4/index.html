@@ -1,0 +1,47 @@
+
+{% extends "../layouts/layout-exporter-v4.html" %}
+
+{% block pageTitle %}
+  Submit information on a shipment of green list waste - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Submit information on a shipment of green list waste
+      </h1>
+
+      <p class="govuk-body">
+        For waste imports and exports, the term ‘shipment’ means the entire journey from the point of loading 
+        the waste until it has been fully recovered or disposed of at the destination facility.
+      </p>
+
+      <p class="govuk-body">You can use this service to:</p>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+        <li>submit information to your environmental regulator about a green list waste shipment prior to movement</li>
+        <li>enter details of a single green list waste shipment or upload information about several shipments of green list waste as a spreadsheet</li>
+        <li>download and print an Annex VII form to include with your waste shipment (this will be created using the information that you enter)</li>
+      </ul>
+
+      <form method="post" novalidate>
+        {{ govukButton({
+          text: "Start now",
+          isStartButton: true
+        }) }}
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

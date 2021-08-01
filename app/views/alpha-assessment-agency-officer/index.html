@@ -1,0 +1,50 @@
+
+{% extends "layout_unbranded.html" %}
+
+{% block pageTitle %}
+  The green list waste export service is now live
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <p class="govuk-body"><strong>Subject: The 'Export green list waste' service is now live</strong></p>
+    <p class="govuk-body">Dear Agency Officer</p>
+    <p class="govuk-body">
+      You can now sign in to your account using your single sign-on 
+      details (your agency email and usual password): <a href="sign-in" target="_self">https://agencyintranet.com/greenlistwaste/signin</a>
+    </p>
+    <p class="govuk-body">
+      If you have any technical issues, please contact <a href="">glw-tech-support@agency.gov.uk</a>. 
+    </p>
+    <p class="govuk-body">
+      Yours sincerely,<br>
+      <strong>Your Agency's Green List Waste Administrator</strong>
+    </p>
+
+    <p class="govuk-body-s govuk-!-padding-top-4">
+      This is an automated message – do not reply.
+    </p>
+    <p class="govuk-body-s">
+      This email and any attachments is intended for the named recipient only. If you have received it in error 
+      you have no authority to use, disclose, store or copy any of its contents and you should destroy it and 
+      inform the sender. Whilst this email and associated attachments will have been checked for known viruses 
+      whilst within Agency systems we can accept no responsibility once it has left our systems. Communications 
+      on Agency's computer systems may be monitored and/or recorded to secure the effective operation of the 
+      system and for other lawful purposes.
+    </p>
+  </div>
+</div>
+
+{% endblock %}

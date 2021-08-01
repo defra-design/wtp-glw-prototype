@@ -1,0 +1,38 @@
+{% extends "../layouts/layout-exporter-v4.html" %}
+
+{% block pageTitle %}
+  Provide a description of the weaste - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+        
+        {{ govukCharacterCount({
+          name: "usual-description",
+          id: "usual-description",
+          value: data['usual-description'],
+          maxlength: 200,
+          label: {
+            text: "Provide a description of the waste",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "You do not need to include waste codes here."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

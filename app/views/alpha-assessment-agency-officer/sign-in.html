@@ -1,0 +1,82 @@
+
+{% extends "../layouts/alpha-assessment-agency-officer-sign-in.html" %}
+
+{% set serviceName %}
+  Agency sign in
+{% endset%}
+
+{% block pageTitle %}
+  Agency sign in using your credentials
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Sign in using your credentials
+      </h1>
+
+      <form class="form" method="post">
+      
+        {% call govukFieldset({
+        }) %}
+
+        {{ govukInput({
+          label: {
+            text: "Username"
+          },
+          classes: "govuk-input--width-20",
+          id: "log-in-username",
+          name: "log-in-username",
+          autocomplete: "username"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Password"
+          },
+          classes: "govuk-input--width-20",
+          id: "log-in-password",
+          name: "log-in-password",
+          autocomplete: "current-password"
+        }) }}
+
+        {% endcall %}
+
+        {{ govukButton({
+          text: 'Sign in'
+        }) }}
+
+      </form>
+
+      <h1 class="govuk-heading-m">
+        Problems signing in
+      </h1>
+
+      <ul class="govuk-list">
+        <li>
+          <a class="govuk-link" href="#" class="govuk-link">I have forgotten my username</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#" class="govuk-link">I have forgotten my password</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="#" class="govuk-link">I have forgotten my username and password</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+{% endblock %}

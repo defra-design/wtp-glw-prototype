@@ -1,0 +1,89 @@
+
+{% extends "../layouts/alpha-assessment-agency-officer.html" %}
+
+{% block pageTitle %}
+  Choose a report to generate - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  <!-- HMRC PATTERN : ACCOUNT MENU -->
+  <nav id="secondary-nav" class="hmrc-account-menu" aria-label="Account" data-module="hmrc-account-menu">
+    <a href="dashboard" class="hmrc-account-menu__link hmrc-account-menu__link--home hmrc-account-menu__link--active">
+      <span class="hmrc-account-icon hmrc-account-icon--home">
+        Dashboard home </span>
+    </a>
+  </nav>
+  <!-- END ACCOUNT MENU -->
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Choose a report to generate
+      </h1>
+
+      <form method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset govuk-!-margin-top-4">
+
+            {{ govukRadios({
+              idPrefix: "reportchoice",
+              name: "reportchoice",
+              fieldset: {
+              },
+              items: [
+                {
+                  value: "reportone",
+                  id: "reportone",
+                  text: "Waste exports by destination over a specific timeframe",
+                  checked: checked("reportchoice", "reportone")
+                },
+                {
+                  value: "reporttwo",
+                  id: "reporttwo",
+                  text: "Waste exports by a specific exporter over a specific timeframe",
+                  checked: checked("reportchoice", "reporttwo")
+                },
+                {
+                  value: "reportthree",
+                  id: "reportthree",
+                  text: "Waste exports by point of departure over a specific timeframe",
+                  checked: checked("reportchoice", "reportthree")
+                },
+                {
+                  divider: "or"
+                },
+                {
+                  value: "reportfour",
+                  id: "reportfour",
+                  text: "Download all data as a CSV file",
+                  checked: checked("reportchoice", "reportfour")
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Continue",
+              classes: "govuk-!-margin-top-6"
+            }) }}
+
+          </fieldset>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {% endblock %}

@@ -1,0 +1,589 @@
+
+{% extends "../layouts/layout-agency-officer-v1.html" %}
+
+{% block pageTitle %}
+  Received Annex VII forms - Waste tracking service
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "agency officer prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'dashboard'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['error'] == 'no-utid-entered' %}
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#utid-reference">Enter a transaction identification number (UTID)</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+
+      <span class="govuk-caption-xl">
+        Waste tracking service
+      </span>
+      <h1 class="govuk-heading-xl">
+        Received Annex VII forms
+      </h1>
+
+      <form action="received-form-validation" method="post" novalidate>
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          Search against
+        </legend>
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline govuk-radios--small",
+          idPrefix: "search-against",
+          name: "search-against",
+          items: [
+            {
+              value: "search-utid",
+              text: "Transaction identification number (UTID)",
+              checked: checked("search-against", "search-utid")
+            },
+            {
+              value: "search-consignor",
+              text: "Exporter",
+              checked: checked("search-against", "search-consignor")
+            }
+          ]
+        }) }}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset govuk-!-margin-top-4">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Search criteria
+            </legend>
+
+            {% if data['error'] == 'no-utid-entered' %}
+              <div class="govuk-form-group govuk-form-group--error">
+            {% else %}
+              <div class="govuk-form-group">
+            {% endif %}
+            {% if data['error'] == 'no-utid-entered' %}
+              <span id="utid-reference-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Enter a transaction identification number (UTID)
+              </span>
+            {% endif %}
+            {% if data['error'] == 'no-utid-entered' %}
+              <input class="govuk-input govuk-input--error govuk-input--width-20" id="utid-reference" name="utid-reference" type="text" value="{{ data['utid-reference'] }}" autocomplete="off" >
+            {% else %}
+              <input class="govuk-input govuk-input--width-20" id="utid-reference" name="utid-reference" type="text" value="{{ data['utid-reference'] }}" autocomplete="off" >
+            {% endif %}
+
+            {{ govukButton({
+              text: "Search",
+              classes: "govuk-!-margin-left-2"
+            }) }}
+
+            </div>
+          </fieldset>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- THE FULL FAUX LIST -->
+  <div class="flex-container grid-row">
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Status</th>
+          <th scope="col" class="govuk-table__header">Date of shipment</th>
+          <th scope="col" class="govuk-table__header">Usual description</th>
+          <th scope="col" class="govuk-table__header">Exporter</th>
+          <th scope="col" class="govuk-table__header">UTID</th>
+          <th scope="col" class="govuk-table__header">Action</th>
+        </tr>
+      </thead>
+
+      <!-- FILTERED LIST -->
+      {% if (data['utid-reference'] != null) and ('35283' in data['utid-reference']) %}
+
+      <p><a href="received-forms" class="govuk-link">Clear search criteria and show all records</a></p>
+
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">17 May 2021</td>
+            <td class="govuk-table__cell">Paper scrap - OCC</td>
+            <td class="govuk-table__cell">Euromovement Limited</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">17 May 2021</td>
+            <td class="govuk-table__cell">Paper scrap - OCC</td>
+            <td class="govuk-table__cell">Pioneer Waste Plc.</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">17 May 2021</td>
+            <td class="govuk-table__cell">Paper scrap - OCC</td>
+            <td class="govuk-table__cell">Recycling Cache Limited</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">17 May 2021</td>
+            <td class="govuk-table__cell">Paper scrap - OCC</td>
+            <td class="govuk-table__cell">The Recycling Council Limited</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">17 May 2021</td>
+            <td class="govuk-table__cell">Paper scrap - OCC</td>
+            <td class="govuk-table__cell">Prism Green Plc.</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">17 May 2021</td>
+            <td class="govuk-table__cell">Paper scrap - OCC</td>
+            <td class="govuk-table__cell">Original Waste Haulage Limited</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">17 May 2021</td>
+            <td class="govuk-table__cell">Paper scrap - OCC</td>
+            <td class="govuk-table__cell">Fabric Society Waste Limited</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      {{ mojPagination({
+        results: {
+          from: 1,
+          to: 7,
+          count: 7
+        }
+      }) }}
+
+      {% else %}
+
+      <!-- UNFILTERED FULL LIST -->
+
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">17 May 2021</td>
+            <td class="govuk-table__cell">Paper scrap - OCC</td>
+            <td class="govuk-table__cell">Euromovement Limited</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">9 May 2021</td>
+            <td class="govuk-table__cell">Mixed Paper EN643</td>
+            <td class="govuk-table__cell">Green Thumb Waste Limited</td>
+            <td class="govuk-table__cell">375518473</td>
+            <td class="govuk-table__cell">
+              <a href="view-375518473" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Alert",
+                classes: "govuk-tag--red"
+              })}}
+            </td>
+            <td class="govuk-table__cell">29 April 2021</td>
+            <td class="govuk-table__cell">Heavy melting steel scrap</td>
+            <td class="govuk-table__cell">Seneca Waste Plc.</td>
+            <td class="govuk-table__cell">409413376</td>
+            <td class="govuk-table__cell">
+              <a href="view-409413376" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">17 May 2021</td>
+            <td class="govuk-table__cell">Paper scrap - OCC</td>
+            <td class="govuk-table__cell">Pioneer Waste Plc.</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">9 May 2021</td>
+            <td class="govuk-table__cell">Mixed Paper EN643</td>
+            <td class="govuk-table__cell">Onward Waste Plc.</td>
+            <td class="govuk-table__cell">375518473</td>
+            <td class="govuk-table__cell">
+              <a href="view-375518473" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Alert",
+                classes: "govuk-tag--red"
+              })}}
+            </td>
+            <td class="govuk-table__cell">29 April 2021</td>
+            <td class="govuk-table__cell">Heavy melting steel scrap</td>
+            <td class="govuk-table__cell">Tunnel Waste Limited</td>
+            <td class="govuk-table__cell">409413376</td>
+            <td class="govuk-table__cell">
+              <a href="view-409413376" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">17 May 2021</td>
+            <td class="govuk-table__cell">Paper scrap - OCC</td>
+            <td class="govuk-table__cell">Recycling Cache Limited</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">9 May 2021</td>
+            <td class="govuk-table__cell">Mixed Paper EN643</td>
+            <td class="govuk-table__cell">Sapient Waste Haulage Limited</td>
+            <td class="govuk-table__cell">375518473</td>
+            <td class="govuk-table__cell">
+              <a href="view-375518473" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Alert",
+                classes: "govuk-tag--red"
+              })}}
+            </td>
+            <td class="govuk-table__cell">29 April 2021</td>
+            <td class="govuk-table__cell">Heavy melting steel scrap</td>
+            <td class="govuk-table__cell">Recycling Authority Limited</td>
+            <td class="govuk-table__cell">409413376</td>
+            <td class="govuk-table__cell">
+              <a href="view-409413376" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">17 May 2021</td>
+            <td class="govuk-table__cell">Paper scrap - OCC</td>
+            <td class="govuk-table__cell">The Recycling Council Limited</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">9 May 2021</td>
+            <td class="govuk-table__cell">Mixed Paper EN643</td>
+            <td class="govuk-table__cell">Homepage Movements Limited</td>
+            <td class="govuk-table__cell">375518473</td>
+            <td class="govuk-table__cell">
+              <a href="view-375518473" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Alert",
+                classes: "govuk-tag--red"
+              })}}
+            </td>
+            <td class="govuk-table__cell">29 April 2021</td>
+            <td class="govuk-table__cell">Heavy melting steel scrap</td>
+            <td class="govuk-table__cell">Sword Movements Plc.</td>
+            <td class="govuk-table__cell">409413376</td>
+            <td class="govuk-table__cell">
+              <a href="view-409413376" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">17 May 2021</td>
+            <td class="govuk-table__cell">Paper scrap - OCC</td>
+            <td class="govuk-table__cell">Prism Green Plc.</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">9 May 2021</td>
+            <td class="govuk-table__cell">Mixed Paper EN643</td>
+            <td class="govuk-table__cell">Black Green List Limited</td>
+            <td class="govuk-table__cell">375518473</td>
+            <td class="govuk-table__cell">
+              <a href="view-375518473" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Alert",
+                classes: "govuk-tag--red"
+              })}}
+            </td>
+            <td class="govuk-table__cell">29 April 2021</td>
+            <td class="govuk-table__cell">Heavy melting steel scrap</td>
+            <td class="govuk-table__cell">Excel List Movements Limited</td>
+            <td class="govuk-table__cell">409413376</td>
+            <td class="govuk-table__cell">
+              <a href="view-409413376" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">17 May 2021</td>
+            <td class="govuk-table__cell">Paper scrap - OCC</td>
+            <td class="govuk-table__cell">Original Waste Haulage Limited</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">9 May 2021</td>
+            <td class="govuk-table__cell">Mixed Paper EN643</td>
+            <td class="govuk-table__cell">Second Chance Recycling Plc.</td>
+            <td class="govuk-table__cell">375518473</td>
+            <td class="govuk-table__cell">
+              <a href="view-375518473" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Alert",
+                classes: "govuk-tag--red"
+              })}}
+            </td>
+            <td class="govuk-table__cell">29 April 2021</td>
+            <td class="govuk-table__cell">Heavy melting steel scrap</td>
+            <td class="govuk-table__cell">Hyper Green Plc.</td>
+            <td class="govuk-table__cell">409413376</td>
+            <td class="govuk-table__cell">
+              <a href="view-409413376" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">17 May 2021</td>
+            <td class="govuk-table__cell">Paper scrap - OCC</td>
+            <td class="govuk-table__cell">Fabric Society Waste Limited</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">9 May 2021</td>
+            <td class="govuk-table__cell">Mixed Paper EN643</td>
+            <td class="govuk-table__cell">Greens Plc.</td>
+            <td class="govuk-table__cell">375518473</td>
+            <td class="govuk-table__cell">
+              <a href="view-375518473" class="govuk-link">View</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      {{ mojPagination({
+        results: {
+          from: 1,
+          to: 20,
+          count: 50
+        },
+        previous: {
+          text: 'Previous',
+          href: ''
+        },
+        next: {
+          text: 'Next',
+          href: ''
+        },
+        items: [{
+          text: '1',
+          href: '',
+          selected: true
+        }, {
+          text: '2',
+          href: ''
+        }, {
+          text: '3',
+          href: ''
+        }]
+      }) }}
+      
+      {% endif %}
+    
+    </div>
+
+    <div class="flex-container grid-row">
+      <p class="govuk-body govuk-!-margin-top-6">
+        <a href="dashboard">Return to dashboard</a>
+      </p>
+    </div>
+
+  {% endblock %}

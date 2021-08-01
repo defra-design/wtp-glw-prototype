@@ -1,0 +1,68 @@
+
+{% extends "../layouts/layout-agency-officer-v1.html" %}
+
+{% block pageTitle %}
+  Agency Officer Dashboard - Waste tracking service
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "agency officer prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <script>
+    req.session.data.error = "";
+  </script>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">
+        Waste tracking service
+      </span>
+      <h1 class="govuk-heading-xl">
+        Agency Officer dashboard
+      </h1>
+      
+    </div>
+  </div>
+
+  <div class="flex-container grid-row">
+    <div class="card">
+      <div class="card-body active">
+        <h2 class="heading-medium card-heading"><a href="alerts">Annex VII alerts</a></h2>
+      </div>
+
+      <div class="card-action">
+        View alerts.
+      </div> 
+    </div>
+
+    <div class="card">
+      <div class="card-body active">
+        <h2 class="heading-medium card-heading"><a href="received-forms">Received Annex VII forms</a></h2>
+      </div>
+
+      <div class="card-action">
+        Search and view received Annex VII forms.
+      </div> 
+    </div>
+
+    <div class="card">
+      <div class="card-body active">
+        <h2 class="heading-medium card-heading"><a href="reports">Reports</a></h2>
+      </div>
+
+      <div class="card-action">
+        Generate and view reports.
+      </div> 
+    </div>
+    
+  </div>
+
+{% endblock %}

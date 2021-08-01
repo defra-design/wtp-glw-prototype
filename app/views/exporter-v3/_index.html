@@ -1,0 +1,122 @@
+
+{% extends "../layouts/design-iterations-layout.html" %}
+
+{% block pageTitle %}
+  Exporter prototype version 3
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  })}}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "Prototype"
+      },
+      html: 'Exporter'
+    }) }}
+  </div>
+
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l govuk-!-margin-top-6">
+      Version 3
+    </h1>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Implemented changes
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+            <li>Introduction of dashboard</li>
+            <li>Linear data gather replaced with 'task list'</li>
+            <li>Revised content audit</li>
+            <li>Concept of 'templates' has been introduced</li>
+            <li>Ability to update weight, date of shipment, and first carrier has been introduced</li>
+            <li>Address patterns: with England, Northern Ireland, Scotland and Wales options offered when international isn't applicable</li>
+            <li>Carriers: looping mechanism with interstitial list of 'carriers added' has been introduced</li>
+            <li>Multiple transit destinations looping mechanism has been added</li>
+            <li>GOVUK orientation page has been introduced</li>
+            <li>Defra ID account creation and account sign in, which includes Government Gateway, has been included</li>
+          </ul>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Known limitations and issues
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+            <li>Maximum of three carriers can be added</li>
+            <li>Maximum of three transit destinations can be added</li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+
+    {{ govukInsetText({
+      html: "<strong>Full on-boarding journey</strong> this includes Government Gateway and Defra ID account creation"
+    }) }}
+
+    <form class="form" method="post">
+      {{ govukButton({
+        text: 'Start from invitation email',
+        classes: "govuk-!-margin-bottom-4"
+      }) }}
+    </form>
+
+    {{ govukInsetText({
+      html: "<strong>Partial journey</strong> assumes Defra ID account has previously been created"
+    }) }}
+    {{ govukButton({
+      text: 'Start from Defra ID sign in',
+      classes: "govuk-!-margin-bottom-6",
+      href: 'login'
+    }) }}
+
+    <h2 class="govuk-heading-l govuk-!-margin-top-8">
+      Research
+    </h2>
+       
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Session dates
+        </dt>
+        <dd class="govuk-summary-list__value">
+          7 Jun 2021 - 13 Jun 2021
+        </dd>
+      </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Participants
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>7 agency officers (experienced), one with BSL as first language</li>
+            <li>1 participant made use of Dragon</li>
+        </dd>
+      </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Insights
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <a href="#">Round 3 research findings</a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+{% endblock %}

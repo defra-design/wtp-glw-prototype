@@ -1,0 +1,352 @@
+{% extends "../layouts/layout-exporter-v4.html" %}
+
+{% block pageTitle %}
+  Who is arranging the export? - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['first-trigger'] != "yes" %}
+        {# Error summary #}
+        {% if data['who-arranged-company-name']|length == 0 or data['who-arranged-address-line-1']|length == 0 or data['who-arranged-address-town']|length == 0 or data['who-arranged-address-postcode']|length == 0 or data['who-arranged-address-country']|length == 0 or data['who-arranged-contact-full-name']|length == 0 or data['who-arranged-email']|length == 0 or data['who-arranged-telephone']|length == 0 %}
+          <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+              There is a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                {% if data['who-arranged-company-name']|length == 0 %}
+                <li>
+                  <a href="#who-arranged-company-name">Enter name of exporter</a>
+                </li>
+                {% endif %}
+                {% if data['who-arranged-address-line-1']|length == 0 %}
+                <li>
+                  <a href="#who-arranged-address-line-1">Enter a building and street</a>
+                </li>
+                {% endif %}
+                {% if data['who-arranged-address-town']|length == 0 %}
+                <li>
+                  <a href="#who-arranged-address-town">Enter a town or city</a>
+                </li>
+                {% endif %}
+                {% if data['who-arranged-address-postcode']|length == 0 %}
+                <li>
+                  <a href="#who-arranged-address-postcode">Enter a postcode</a>
+                </li>
+                {% endif %}
+                {% if data['who-arranged-address-country']|length == 0 %}
+                <li>
+                  <a href="#who-arranged-address-country">Select a country</a>
+                </li>
+                {% endif %}
+                {% if data['who-arranged-contact-full-name']|length == 0 %}
+                <li>
+                  <a href="#who-arranged-contact-full-name">Enter full name of contact person</a>
+                </li>
+                {% endif %}
+                {% if data['who-arranged-email']|length == 0 %}
+                <li>
+                  <a href="#who-arranged-email">Enter a contact email address</a>
+                </li>
+                {% endif %}
+                {% if data['who-arranged-telephone']|length == 0 %}
+                <li>
+                  <a href="#who-arranged-telephone">Enter a contact telephone number</a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        {% endif %}
+      {% else %}
+        {# Do nothing #}
+      {% endif %}
+
+      <h1 class="govuk-heading-l">
+        Who is arranging the export?
+      </h1>
+
+      <form class="form" method="post">
+     
+        {# Name of exporter #}
+        {% if (data['first-trigger'] != "yes") and (data['who-arranged-company-name']|length == 0) %}
+          {{ govukInput({
+            label: {
+              text: "Name of exporter",
+              classes: "govuk-label--m",
+              isPageHeading: false
+            },
+            hint: {
+              text: "Company, partnership, sole trader, organisation, etc."
+            },
+            errorMessage: {
+              text: "Enter name of exporter"
+            },
+            id: "who-arranged-company-name",
+            name: "who-arranged-company-name",
+            value: data['who-arranged-company-name']
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+              text: "Name of exporter",
+              classes: "govuk-label--m",
+              isPageHeading: false
+            },
+            hint: {
+              text: "Company, partnership, sole trader, organisation, etc."
+            },
+            id: "who-arranged-company-name",
+            name: "who-arranged-company-name",
+            value: data['who-arranged-company-name']
+          }) }}
+        {% endif %}
+
+        {# Address and country #}
+        {% if (data['first-trigger'] != "yes") and ((data['who-arranged-address-line-1']|length == 0) or (data['who-arranged-address-town']|length == 0) or (data['who-arranged-address-postcode']|length == 0) or (data['who-arranged-address-country']|length == 0)) %}
+          <div class="govuk-form-group govuk-form-group--error">
+        {% else %}
+          <div class="govuk-form-group">
+        {% endif %}
+
+        <fieldset class="govuk-fieldset govuk-form-group--error">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-fieldset__heading">
+              Address
+            </h2>
+          </legend>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="who-arranged-address-line-1">
+              Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
+            </label>
+            {% if (data['first-trigger'] != "yes") and (data['who-arranged-address-line-1']|length == 0) %}
+            <span id="'who-arranged-address-line-1-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> Enter a building and street
+            </span>
+              <input class="govuk-input govuk-input--error" id="who-arranged-address-line-1" name="who-arranged-address-line-1" type="text" autocomplete="address-line1" value="{{ data['who-arranged-address-line-1'] }}">
+            {% else %}
+              <input class="govuk-input" id="who-arranged-address-line-1" name="who-arranged-address-line-1" type="text" autocomplete="address-line1" value="{{ data['who-arranged-address-line-1'] }}">
+            {% endif %}
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="who-arranged-address-line-2">
+              <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+            </label>
+            {% if (data['first-trigger'] != "yes") and (data['who-arranged-address-line-1']|length == 0) %}
+              <input class="govuk-input govuk-input--error" id="who-arranged-address-line-2" name="who-arranged-address-line-2" type="text" autocomplete="address-line2" value="{{ data['who-arranged-address-line-2'] }}">
+            {% else %}
+              <input class="govuk-input" id="who-arranged-address-line-2" name="who-arranged-address-line-2" type="text" autocomplete="address-line2" value="{{ data['who-arranged-address-line-2'] }}">
+            {% endif %}
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="who-arranged-address-town">
+              Town or city
+            </label>
+            {% if (data['first-trigger'] != "yes") and (data['who-arranged-address-town']|length == 0) %}
+              <span id="who-arranged-address-town-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Enter a town or city
+              </span>
+              <input class="govuk-input govuk-!-width-two-thirds govuk-input--error" id="who-arranged-address-town" name="who-arranged-address-town" type="text" autocomplete="address-level2" value="{{ data['who-arranged-address-town'] }}">
+            {% else %}
+              <input class="govuk-input govuk-!-width-two-thirds" id="who-arranged-address-town" name="who-arranged-address-town" type="text" autocomplete="address-level2" value="{{ data['who-arranged-address-town'] }}">
+            {% endif %}
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="who-arranged-address-county">
+              County
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="who-arranged-address-county" name="who-arranged-address-county" type="text" value="{{ data['who-arranged-address-county'] }}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="who-arranged-address-postcode">
+              Postcode
+            </label>
+            {% if (data['first-trigger'] != "yes") and (data['who-arranged-address-postcode']|length == 0) %}
+              <span id="who-arranged-address-postcode-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Enter a postcode
+              </span>
+              <input class="govuk-input govuk-input--width-10 govuk-input--error" id="who-arranged-address-postcode" name="who-arranged-address-postcode" type="text" autocomplete="postal-code" value="{{ data['who-arranged-address-postcode'] }}">
+            {% else %}
+              <input class="govuk-input govuk-input--width-10" id="who-arranged-address-postcode" name="who-arranged-address-postcode" type="text" autocomplete="postal-code" value="{{ data['who-arranged-address-postcode'] }}">
+            {% endif %}
+          </div>
+
+        </fieldset>
+
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-fieldset__legend govuk-!-padding-top-6">
+              Country
+            </h2>
+          </legend>
+          {% if (data['first-trigger'] != "yes") and (data['who-arranged-address-country']|length == 0) %}
+          <span id="who-arranged-address-country-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select a country
+          </span>
+          {% endif %}
+
+          <div class="govuk-radios govuk-radios--small">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="who-arranged-address-country" name="who-arranged-address-country" type="radio" value="england" {{ checked("who-arranged-address-country", "england") }}>
+              <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                England
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="who-arranged-address-country" name="who-arranged-address-country" type="radio" value="northernireland" {{ checked("who-arranged-address-country", "northernireland") }}>
+              <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                Northern Ireland
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="who-arranged-address-country" name="who-arranged-address-country" type="radio" value="scotland" {{ checked("who-arranged-address-country", "scotland") }}>
+              <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                Scotland
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="who-arranged-address-country" name="who-arranged-address-country" type="radio" value="wales" {{ checked("who-arranged-address-country", "wales") }}>
+              <label class="govuk-label govuk-radios__label" for="who-arranged-address-country">
+                Wales
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        {# Close the if... statement created div; the form group is either with or without an error #}
+        </div>
+
+        {# Contact person name #}
+        {% call govukFieldset({
+          legend: {
+            text: "Contact person",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+        
+        {# Contact person full name #}
+        {% if (data['first-trigger'] != "yes") and data['who-arranged-contact-full-name']|length == 0 %}
+          {{ govukInput({
+            label: {
+              text: "Full name"
+            },
+            errorMessage: {
+              text: "Enter full name of contact person"
+            },
+            id: "who-arranged-contact-full-name",
+            name: "who-arranged-contact-full-name",
+            value: data['who-arranged-contact-full-name'],
+            autocomplete: "name",
+            spellcheck: false
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+              text: "Full name"
+            },
+            id: "who-arranged-contact-full-name",
+            name: "who-arranged-contact-full-name",
+            value: data['who-arranged-contact-full-name'],
+            autocomplete: "name",
+            spellcheck: false
+          }) }}
+        {% endif %}
+
+        {% endcall %}
+
+        {# Contact details #}
+        {% call govukFieldset({
+          legend: {
+            text: "Contact details",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+
+        {# Contact email address #}
+        {% if (data['first-trigger'] != "yes") and data['who-arranged-email']|length == 0 %}
+          {{ govukInput({
+            id: "who-arranged-email",
+            errorMessage: {
+              text: "Enter a contact email address"
+            },
+            name: "who-arranged-email",
+            type: "email",
+            spellcheck: false,
+            value: data['who-arranged-email'],
+            label: {
+              text: "Email address"
+            }
+          }) }}
+        {% else %}
+          {{ govukInput({
+            id: "who-arranged-email",
+            name: "who-arranged-email",
+            type: "email",
+            spellcheck: false,
+            value: data['who-arranged-email'],
+            label: {
+              text: "Email address"
+            }
+          }) }}
+        {% endif %}
+      
+        {# Contact telephone number #}
+        {% if (data['first-trigger'] != "yes") and data['who-arranged-telephone']|length == 0 %}
+          {{ govukInput({
+            id: "who-arranged-telephone",
+            errorMessage: {
+              text: "Enter a contact telephone number"
+            },
+            name: "who-arranged-telephone",
+            type: "tel",
+            value: data['who-arranged-telephone'],
+            classes: "govuk-input--width-20",
+            label: {
+              text: "Telephone number"
+            }
+          }) }}
+        {% else %}
+          {{ govukInput({
+            id: "who-arranged-telephone",
+            name: "who-arranged-telephone",
+            type: "tel",
+            value: data['who-arranged-telephone'],
+            classes: "govuk-input--width-20",
+            label: {
+              text: "Telephone number"
+            }
+          }) }}
+        {% endif %}
+        
+        {# Contact fax number #}
+        {{ govukInput({
+          id: "who-arranged-fax",
+          name: "who-arranged-fax",
+          value: data['who-arranged-fax'],
+          type: "tel",
+          classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+          label: {
+            text: "Fax number (optional)"
+          }
+        }) }}
+
+        {% endcall %}  
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

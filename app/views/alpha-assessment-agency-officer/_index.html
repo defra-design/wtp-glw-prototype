@@ -1,0 +1,52 @@
+
+{% extends "../layouts/design-iterations-layout.html" %}
+
+{% block pageTitle %}
+  Agency Officer alpha assessment prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  })}}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "Prototype"
+      },
+      html: 'Agency Officer'
+    }) }}
+  </div>
+  
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l govuk-!-margin-top-6">
+      Agency Officer alpha assessment
+    </h1>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Full journey
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>
+              {{ govukButton({
+                text: 'Start now',
+                href: 'index'
+              }) }}
+            </li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+{% endblock %}

@@ -34,13 +34,13 @@
     </h1>
 
     {#
-      Set the form action dependent upon which iteration is being viewed, the variable is setup in the 
-      routes file of each version and is triggered by the intro email.
+      Set the form action dependent upon which iteration is being viewed, the variable is 
+      setup in the _routes file of each version.
     #}
-    {% if (data['iteration-version-number'] == "3") %}
-      <form method="POST" action="../v3-consignor/index">
-    {% elif (data['iteration-version-number'] == "4") %}
-      <form method="POST" action="../v4-consignor/index">
+    {% if (data['iteration-variant-and-number'] == "exporter-v3") %}
+      <form method="POST" action="../exporter-v3/index">
+    {% elif (data['iteration-variant-and-number'] == "exporter-v4") %}
+      <form method="POST" action="../exporter-v4/index">
     {% endif %}
 
         {{ govukInput({

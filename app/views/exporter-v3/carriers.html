@@ -1,0 +1,320 @@
+{% extends "../layouts/layout-exporter-v3.html" %}
+
+{% block pageTitle %}
+  Who are the waste carriers? - Track waste
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Who are the waste carriers?
+    </h1>
+
+    <p class="govuk-body">
+      You must cover your waste’s entire journey to its destination.  You will be able to add multiple carriers as necessary.  
+    </p>
+    
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-padding-bottom-2">
+      <li>
+        <strong>First carrier</strong>: This is who collects the waste from the load site. 
+        If you do not know this yet please supply details of the company arranging the first carrier.
+      </li>
+      <li>
+        <strong>Second carrier</strong>: This is likely to be the shipping line, ferry, or Eurotunnel.
+      </li>
+      <li>
+        <strong>Third carrier</strong>: This is likely to be the company who takes the waste to the final destination facility.
+      </li>
+    </ul>
+
+    <!--===================-->
+    <!-- NO CARRIERS ADDED -->
+    <!--===================-->
+
+    {% if data['carrier-add-1'] == null %}
+
+    <form method="post" action="">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="add-first-carrier-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do you know the first carrier’s details?
+          </legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-first-carrier" name="add-first-carrier" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="add-first-carrier">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-first-carrier" name="add-first-carrier" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="add-first-carrier">
+                No, you must provide the details of the company arranging the first carrier
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+    {% elif data['carrier-add-2'] == null %}
+
+    <!--=====================-->
+    <!-- FIRST CARRIER ADDED -->
+    <!--=====================-->
+
+    <h2 class="govuk-heading-m">First carrier</h2>
+    <div class="govuk-form-group">
+      <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
+        <li class="hmrc-add-to-a-list__contents">
+          <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
+            <!-- Greens Waste Movement Limited -->
+            {{ data['first-carrier-name'] }}
+          </span>
+          <span class="hmrc-add-to-a-list__change">
+            <a class="govuk-link" href="carrier-add-1">
+              <span aria-hidden="true">Change</span>
+              <span class="govuk-visually-hidden">Change {{ data['first-carrier-name'] }}</span>
+            </a>
+          </span>
+          <span class="hmrc-add-to-a-list__remove">
+            <a class="govuk-link" href="#">
+              <span aria-hidden="true">Remove</span>
+              <span class="govuk-visually-hidden">Remove {{ data['first-carrier-name'] }}</span>
+            </a>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <form method="post" action="">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="add-second-carrier-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do you need to add another carrier?
+          </legend>
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-second-carrier" name="add-second-carrier" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="add-second-carrier">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-second-carrier" name="add-second-carrier" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="add-second-carrier">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+    {% elif data['carrier-add-3'] == null %}
+
+    <!--================-->
+    <!-- SECOND CARRIER -->
+    <!--================-->
+
+    <h2 class="govuk-heading-m">First carrier</h2>
+    <div class="govuk-form-group">
+      <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
+        <li class="hmrc-add-to-a-list__contents">
+          <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
+            <!-- Greens Waste Movement Limited -->
+            {{ data['first-carrier-name'] }}
+          </span>
+          <span class="hmrc-add-to-a-list__change">
+            <a class="govuk-link" href="carrier-add-1">
+              <span aria-hidden="true">Change</span>
+              <span class="govuk-visually-hidden">Change {{ data['first-carrier-name'] }}</span>
+            </a>
+          </span>
+          <span class="hmrc-add-to-a-list__remove">
+            <a class="govuk-link" href="#">
+              <span aria-hidden="true">Remove</span>
+              <span class="govuk-visually-hidden">Remove {{ data['first-carrier-name'] }}</span>
+            </a>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <h2 class="govuk-heading-m">You have added 1 additional carrier</h2>
+    <div class="govuk-form-group">
+      <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
+        <li class="hmrc-add-to-a-list__contents">
+          <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
+            <!-- Alpha Beta Shipments Plc -->
+            {{ data['second-carrier-name'] }}
+          </span>
+          <span class="hmrc-add-to-a-list__change">
+            <a class="govuk-link" href="carrier-add-2">
+              <span aria-hidden="true">Change</span>
+              <span class="govuk-visually-hidden">Change {{ data['second-carrier-name'] }}</span>
+            </a>
+          </span>
+          <span class="hmrc-add-to-a-list__remove">
+            <a class="govuk-link" href="#">
+              <span aria-hidden="true">Remove</span>
+              <span class="govuk-visually-hidden">Remove {{ data['second-carrier-name'] }}</span>
+            </a>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <form method="post" action="">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="add-third-carrier-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do you need to add another carrier?
+          </legend>
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-third-carrier" name="add-third-carrier" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="add-third-carrier">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-third-carrier" name="add-third-carrier" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="add-third-carrier">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+    {% elif data['carrier-add-1'] == 'true' and data['carrier-add-2'] == 'true' and data['carrier-add-3'] == 'true' %}
+
+    <!--===============-->
+    <!-- THIRD CARRIER -->
+    <!--===============-->
+
+    <h2 class="govuk-heading-m">First carrier</h2>
+    <div class="govuk-form-group">
+      <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
+        <li class="hmrc-add-to-a-list__contents">
+          <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
+            <!-- Greens Waste Movement Limited -->
+            {{ data['first-carrier-name'] }}
+          </span>
+          <span class="hmrc-add-to-a-list__change">
+            <a class="govuk-link" href="carrier-add-1">
+              <span aria-hidden="true">Change</span>
+              <span class="govuk-visually-hidden">Change {{ data['first-carrier-name'] }}</span>
+            </a>
+          </span>
+          <span class="hmrc-add-to-a-list__remove">
+            <a class="govuk-link" href="#">
+              <span aria-hidden="true">Remove</span>
+              <span class="govuk-visually-hidden">Remove {{ data['first-carrier-name'] }}</span>
+            </a>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <h2 class="govuk-heading-m">You have added 2 additional carriers</h2>
+    <div class="govuk-form-group">
+      <ul class="hmrc-add-to-a-list hmrc-add-to-a-list--short">
+        <li class="hmrc-add-to-a-list__contents">
+          <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
+            <!-- Alpha Beta Shipments Plc -->
+            {{ data['second-carrier-name'] }}
+          </span>
+          <span class="hmrc-add-to-a-list__change">
+            <a class="govuk-link" href="carrier-add-2">
+              <span aria-hidden="true">Change</span>
+              <span class="govuk-visually-hidden">Change {{ data['second-carrier-name'] }}</span>
+            </a>
+          </span>
+          <span class="hmrc-add-to-a-list__remove">
+            <a class="govuk-link" href="#">
+              <span aria-hidden="true">Remove</span>
+              <span class="govuk-visually-hidden">Remove {{ data['second-carrier-name'] }}</span>
+            </a>
+          </span>
+        </li>
+        <li class="hmrc-add-to-a-list__contents">
+          <span class="hmrc-add-to-a-list__identifier hmrc-add-to-a-list__identifier--light">
+            <!-- Applied Waste Couriers Limited -->
+            {{ data['third-carrier-name'] }}
+          </span>
+          <span class="hmrc-add-to-a-list__change">
+            <a class="govuk-link" href="carrier-add-3">
+              <span aria-hidden="true">Change</span>
+              <span class="govuk-visually-hidden">Change {{ data['third-carrier-name'] }}</span>
+            </a>
+          </span>
+          <span class="hmrc-add-to-a-list__remove">
+            <a class="govuk-link" href="#">
+              <span aria-hidden="true">Remove</span>
+              <span class="govuk-visually-hidden">Remove {{ data['third-carrier-name'] }}</span>
+            </a>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <form method="post" action="">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="add-fourth-carrier-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do you need to add another carrier?
+          </legend>
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-fourth-carrier" name="add-fourth-carrier" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="add-fourth-carrier">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="add-fourth-carrier" name="add-fourth-carrier" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="add-fourth-carrier">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}

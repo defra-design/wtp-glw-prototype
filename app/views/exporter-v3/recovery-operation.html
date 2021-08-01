@@ -1,0 +1,37 @@
+{% extends "../layouts/layout-exporter-v3.html" %}
+
+{% block pageTitle %}
+  What is the recovery or disposal code? - Track waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l">
+              What is the recovery or disposal code?
+            </label>
+          </h1>
+          <div id="event-name-hint" class="govuk-hint">
+            You may know this as an R-code or a D-code. This is the waste recovery or disposal method that 
+            will be used to treat your waste at the overseas reprocessing site.
+          </div>
+          <div id="recovery-operation-typeahead-container" data-default-value="{{ data['recovery-operation-typeahead'] }}">
+          </div>
+        </div>
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

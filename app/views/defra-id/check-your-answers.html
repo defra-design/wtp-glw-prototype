@@ -174,12 +174,13 @@
             Set the form action dependent upon which iteration is being viewed, the variable is setup in the 
             routes file of each version and is triggered by the intro email.
         #}
-        {% if (data['iteration-version-number'] == "3") %}
-            <form method="POST" action="../v3-consignor/index">
+
+        {% if (data['iteration-variant-and-number'] == "exporter-v3") %}
+            <form method="POST" action="../exporter-v3/index">
                 <button class="govuk-button" id="myButton" disabled>Continue</button>
             </form>
-        {% elif (data['iteration-version-number'] == "4") %}
-            <form method="POST" action="../v4-consignor/index">
+        {% elif (data['iteration-variant-and-number'] == "exporter-v4") %}
+            <form method="POST" action="../exporter-v4/index">
                 <button class="govuk-button" id="myButton" disabled>Continue</button>
             </form>
         {% endif %}

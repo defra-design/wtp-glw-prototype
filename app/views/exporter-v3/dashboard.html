@@ -1,0 +1,77 @@
+
+{% extends "../layouts/layout-exporter-v3.html" %}
+
+{% block pageTitle %}
+  Dashboard home - Track waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  
+{% endblock %}
+
+{% block content %}
+  <script>
+    req.session.data.error = "";
+  </script>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">
+        Green list waste exports
+      </span>
+      <h1 class="govuk-heading-xl">
+        Dashboard home
+      </h1>
+      
+    </div>
+  </div>
+
+  <div class="flex-container grid-row">
+    <div class="card">
+      <div class="card-body active">
+        <h2 class="heading-medium card-heading"><a href="manual-bulk-api">Tell us about a new waste export</a></h2>
+      </div>
+
+      <div class="card-action">
+        This is also known as an Annex VII.
+      </div> 
+    </div>
+
+    <div class="card">
+      <div class="card-body active">
+        <h2 class="heading-medium card-heading"><a href="update-prenotifications">Update exports awaiting final details</a></h2>
+      </div>
+
+      <div class="card-action">
+        Add new information about weight, date of transport, or carrier details.
+      </div> 
+    </div>
+
+    <div class="card">
+      <div class="card-body active">
+        <h2 class="heading-medium card-heading"><a href="submitted-prenotifications">View all submitted exports</a></h2>
+      </div>
+
+      <div class="card-action">
+        Search, view and update previous waste exports.
+      </div> 
+    </div>
+  
+    <div class="card">
+      <div class="card-body active">
+        <h2 class="heading-medium card-heading"><a href="prenotification-templates">Your saved templates</a></h2>
+      </div>
+
+      <div class="card-action">
+        Use a template you have created.
+      </div> 
+    </div>
+  </div>
+
+{% endblock %}

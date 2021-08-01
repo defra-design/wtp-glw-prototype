@@ -1,0 +1,33 @@
+
+{% extends "../layouts/layout-agency-officer-v1.html" %}
+
+{% block pageTitle %}
+  Generating report - Waste tracking service
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "agency officer prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <script language="javascript" type="text/javascript">
+    window.setTimeout('location.replace("report-generated")',2500);
+  </script>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <p class="govuk-body-l spinner-text">
+        Your report is now being generated...
+      </p>
+    </div>
+  </div>
+
+  <div class="spinner"></div>
+
+{% endblock %}

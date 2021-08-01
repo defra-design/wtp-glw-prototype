@@ -1,0 +1,203 @@
+{% extends "../layouts/layout-exporter-v3.html" %}
+
+{% block pageTitle %}
+  What are your contact details? - Track waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        What are your contact details?
+      </h1>
+
+      <form class="form" method="post">
+     
+        {{ govukInput({
+          label: {
+            text: "Name of exporter",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          hint: {
+            text: "Company, partnership, sole trader, organisation, etc."
+          },
+          id: "who-arranged-company-name",
+          name: "who-arranged-company-name",
+          value: data['who-arranged-company-name']
+        }) }}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Address",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+
+          {{ govukInput({
+            label: {
+              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+            },
+            id: "who-arranged-address-line-1",
+            name: "who-arranged-address-line-1",
+            value: data['who-arranged-address-line-1'],
+            autocomplete: "address-line1"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+            },
+            id: "who-arranged-address-line-2",
+            name: "who-arranged-address-line-2",
+            value: data['who-arranged-address-line-2'],
+            autocomplete: "address-line2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Town or city"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "who-arranged-address-town",
+            name: "who-arranged-address-town",
+            value: data['who-arranged-address-town'],
+            autocomplete: "address-level2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "County"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "who-arranged-address-county",
+            name: "who-arranged-address-county",
+            value: data['who-arranged-address-county']
+          }) }} 
+        
+          {{ govukInput({
+            label: {
+              text: "Postcode"
+            },
+            classes: "govuk-input--width-10",
+            id: "who-arranged-address-postcode",
+            name: "who-arranged-address-postcode",
+            value: data['who-arranged-address-postcode'],
+            autocomplete: "postal-code"
+          }) }}
+       
+          {{ govukRadios({
+            classes: "govuk-radios--small",
+            idPrefix: "who-arranged-address-country",
+            name: "who-arranged-address-country",
+            fieldset: {
+              legend: {
+                text: "Country",
+                isPageHeading: false
+              }
+            },
+            items: [
+              {
+                value: "england",
+                text: "England",
+                checked: checked("who-arranged-address-country", "england")
+              },
+              {
+                value: "northernireland",
+                text: "Northern Ireland",
+                checked: checked("who-arranged-address-country", "northernireland")
+              },
+              {
+                value: "scotland",
+                text: "Scotland",
+                checked: checked("who-arranged-address-country", "scotland")
+              },
+              {
+                value: "wales",
+                text: "Wales",
+                checked: checked("who-arranged-address-country", "wales")
+              }
+            ]
+          }) }}
+
+        {% endcall %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact person",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+        
+        {{ govukInput({
+          label: {
+            text: "Full name"
+          },
+          id: "who-arranged-contact-full-name",
+          name: "who-arranged-contact-full-name",
+          value: data['who-arranged-contact-full-name'],
+          autocomplete: "name",
+          spellcheck: false
+        }) }}
+
+        {% endcall %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact details",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+
+        {{ govukInput({
+          id: "who-arranged-email",
+          name: "who-arranged-email",
+          type: "email",
+          spellcheck: false,
+          value: data['who-arranged-email'],
+          label: {
+            text: "Email address"
+          }
+        }) }}
+      
+        {{ govukInput({
+          id: "who-arranged-telephone",
+          name: "who-arranged-telephone",
+          type: "tel",
+          value: data['who-arranged-telephone'],
+          classes: "govuk-input--width-20",
+          label: {
+            text: "Telephone number"
+          }
+        }) }}
+      
+        {{ govukInput({
+          id: "who-arranged-fax",
+          name: "who-arranged-fax",
+          value: data['who-arranged-fax'],
+          type: "tel",
+          classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+          label: {
+            text: "Fax number (optional)"
+          }
+        }) }}
+
+        {% endcall %}  
+      
+          {{ govukWarningText({
+          text: "You are legally responsible for the waste export by using this service. This responsibility cannot be delegated to another person.",
+          iconFallbackText: "Warning"
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

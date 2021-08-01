@@ -1,0 +1,111 @@
+{% extends "../layouts/layout-exporter-v3.html" %}
+
+{% block pageTitle %}
+  Which countries will the waste travel through? - Track waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Which countries will the waste travel through?
+      </h1>
+
+      <form class="form" method="post">
+        <div class="govuk-form-group">
+
+          {{ govukRadios({
+            classes: "govuk-radios--small govuk-radios--inline",
+            idPrefix: "export-country",
+            name: "export-country",
+            fieldset: {
+              legend: {
+                text: "Export/dispatch",
+                isPageHeading: false,
+                classes: "govuk-label govuk-!-font-weight-bold"
+              }
+            },
+            items: [
+              {
+                value: "england",
+                text: "England",
+                checked: checked("export-country", "england")
+              },
+              {
+                value: "northernireland",
+                text: "Northern Ireland",
+                checked: checked("export-country", "northernireland")
+              },
+              {
+                value: "scotland",
+                text: "Scotland",
+                checked: checked("export-country", "scotland")
+              },
+              {
+                value: "wales",
+                text: "Wales",
+                checked: checked("export-country", "wales")
+              }
+            ]
+          }) }}
+
+
+
+          <fieldset class="govuk-fieldset">
+            <div class="container">
+              <div class='govuk-form-group' id='div_1'>
+                <label class="govuk-label govuk-!-font-weight-bold" for="transit-country_1">
+                  Transit country 1 (optional)
+                </label>
+                <input class="govuk-input govuk-!-margin-bottom-0" type='text' name='transit-country_1' value="{{ data['transit-country_1'] }}">
+              </div>
+
+              {% if data['transit-country_2'] %}
+              <div class='govuk-form-group' id='div_2'>
+                <label class="govuk-label govuk-!-font-weight-bold" for="transit-country_2">
+                  Transit country 2 (optional)
+                </label>
+                <input class="govuk-input" type='text' name='transit-country_2' value="{{ data['transit-country_2'] }}"> 
+                <span id='remove_2' style='float:right' class='govuk-button govuk-button--warning govuk-!-margin-top-2 govuk-!-margin-bottom-0 remove' aria-labelledby="remove_2">Remove country 2</span>
+              </div>
+              {% endif %}
+
+              {% if data['transit-country_3'] %}
+              <div class='govuk-form-group' id='div_3'>
+                <label class="govuk-label govuk-!-font-weight-bold" for="transit-country_3">
+                  Transit country 3 (optional)
+                </label>
+                <input class="govuk-input" type='text' name='transit-country_3' value="{{ data['transit-country_3'] }}"> 
+                <span id='remove_3' style='float:right' class="govuk-button govuk-button--warning govuk-!-margin-top-2 govuk-!-margin-bottom-0 remove" aria-labelledby="remove_3">Remove country 3</span>
+              </div>
+              {% endif %}
+
+            </div>
+          </fieldset>
+
+          <div class="govuk-button govuk-button--secondary govuk-!-margin-top-2 add" value="Add another country"> <!-- govuk-!-margin-top-4 govuk-!-margin-bottom-6 -->
+            Add another country
+          </div>
+
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-!-font-weight-bold">
+              Import destination
+            </label>
+          </h1>
+          <div id="import-destination-typeahead-container" data-default-value="{{ data['import-destination-typeahead'] }}">
+          </div>
+
+        </div>
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

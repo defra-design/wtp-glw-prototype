@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    Export green list waste | prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+    {{ govukBackLink({
+        text: "Back",
+        href: "javascript:history.back()"
+    }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+            You must create a Government Gateway and a Defra account
+        </h1>
+
+        <p>To create a Government Gateway account, you’ll need to tell us your email address and full name.</p>
+
+        <p>To create a Defra account, you’ll need to tell us:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+            <li>where your organisation is registered</li>
+            <li>your organisation’s company number</li>
+            <li>the main contact details for your organisation</li>
+            <li>your full name</li>
+            <li>your telephone number</li>
+        </ul>
+
+        {{ govukInsetText({
+            text: "After you’ve created your Defra account, you’ll use your Government Gateway user ID and password to sign in to the 'Track waste' service."
+        }) }}
+
+        <form method="POST" action="../alpha-assessment-defra-id/email-address">
+            {{govukButton({
+                text: "Continue"
+            })}}
+        </form>
+
+        <p><a href="service-start">Return to GOV.UK</a></p>
+
+    </div>
+</div>
+
+{% endblock %}

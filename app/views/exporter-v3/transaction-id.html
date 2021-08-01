@@ -1,0 +1,70 @@
+  {% extends "../layouts/layout-exporter-v3.html" %}
+
+{% block pageTitle %}
+  Your transaction number - Track waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Your transaction number
+      </h1>
+      
+      <form class="form" method="post">
+
+        <p class="govuk-body">
+          The unique transaction number <strong>HDJ2123F</strong> will be created automatically for this waste export.
+        </p>
+
+        {% set referenceNumberHtml %}
+        {{ govukInput({
+          label: {
+            text: "Reference number",
+            isPageHeading: false
+          },
+          id: "unique-transaction-id",
+          name: "unique-transaction-id",
+          value: data['unique-transaction-id']
+        }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "transaction-number",
+          name: "transaction-number",
+          fieldset: {
+            legend: {
+              text: "Would you like to also add your own internal reference number?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "transaction-yes",
+              text: "Yes",
+              conditional: {
+                html: referenceNumberHtml
+              },
+              checked: checked("transaction-number", "transaction-yes")
+            },
+            {
+              value: "transaction-no",
+              text: "No",
+              checked: checked("transaction-number", "transaction-no")
+            }
+          ]
+        }) }}
+        
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

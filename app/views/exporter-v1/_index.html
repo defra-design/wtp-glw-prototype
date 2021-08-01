@@ -1,0 +1,110 @@
+
+{% extends "../layouts/design-iterations-layout.html" %}
+
+{% block pageTitle %}
+  Exporter prototype version 1
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  })}}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "Prototype"
+      },
+      html: 'Exporter'
+    }) }}
+  </div>
+  
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l govuk-!-margin-top-6">
+      Version 1
+    </h1>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Implemented changes
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+            <li>Digitised Annex VII form</li>
+            <li>Targeted user/persona (generator/broker)</li>
+            <li>User has successfully logged into the service by "some means"</li>
+            <li>The purpose of the service is prenotification only</li>
+            <li>The service offers no tracking of waste</li>
+            <li>Assumed prenotification is of Green List Waste only</li>
+          </ul>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Known limitations and issues
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+            <li>Maximum of three carriers can be added in this prototype</li>
+            <li>Currently unable to add more than one "transit" destination</li>
+            <li>No error messaging/validation has been included in this initial version</li>
+            <li>When "changing" entered data from the <strong>check your answers</strong> page:</li>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Any radio button decisions are not presently brought through</li>
+              <li>The 'type ahead' entries are not presently brought through</li>
+              <li>The user will be forced to revisit all pages in the journey before being taken back to the <strong>check your answers</strong> page</li>
+            </ul>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+
+  {{ govukButton({
+     text: "Start now",
+     href: "index"
+  }) }}
+
+    <h2 class="govuk-heading-l govuk-!-margin-top-8">
+      Research
+    </h2>
+       
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Session dates
+        </dt>
+        <dd class="govuk-summary-list__value">
+          7 Jun 2021 - 13 Jun 2021
+        </dd>
+      </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Participants
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>7 agency officers (experienced), one with BSL as first language</li>
+            <li>1 participant made use of Dragon</li>
+        </dd>
+      </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Insights
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <a href="#">Round 1 research findings</a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+{% endblock %}

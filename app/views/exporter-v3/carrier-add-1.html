@@ -1,0 +1,248 @@
+{% extends "../layouts/layout-exporter-v3.html" %}
+
+{% block pageTitle %}
+  Who are the waste carriers? - Track waste
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Who are the waste carriers?
+    </h1>
+
+    <p class="govuk-body">
+      You must cover your waste’s entire journey to its destination.  You will be able to add multiple carriers as necessary.  
+    </p>
+    
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-padding-bottom-2">
+      <li>
+        <strong>First carrier</strong>: This is who collects the waste from the load site. 
+        If you do not know this yet please supply details of the company arranging the first carrier.
+      </li>
+      <li>
+        <strong>Second carrier</strong>: This is likely to be the shipping line, ferry, or Eurotunnel.
+      </li>
+      <li>
+        <strong>Third carrier</strong>: This is likely to be the company who takes the waste to the final destination facility.
+      </li>
+    </ul>
+
+    <form class="form" method="post">
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "is-first-carrier-or-company",
+        name: "is-first-carrier-or-company",
+        fieldset: {
+          legend: {
+            text: "Do you know the first carrier?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes-first-carrier",
+            text: "Yes",
+            checked: checked("is-first-carrier-or-company", "yes-first-carrier")
+          },
+          {
+            value: "no-company-arranging",
+            text: "No, you must supply the details of the company arranging first carrier",
+            checked: checked("is-first-carrier-or-company", "no-company-arranging")
+          }
+        ]
+      }) }}
+      
+      {{ govukInput({
+        label: {
+          text: "Name of carrier or arranging company",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "first-carrier-name",
+        name: "first-carrier-name",
+        value: data["first-carrier-name"]
+      }) }}
+
+      {% call govukFieldset({
+        legend: {
+          text: "Address",
+          classes: "govuk-fieldset__legend--m"
+        }
+      }) %}
+
+      {{ govukInput({
+        label: {
+          html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+        },
+        id: "first-carrier-address-line-1",
+        name: "first-carrier-address-line-1",
+        value: data['first-carrier-address-line-1'],
+        autocomplete: "address-line1"
+      }) }}
+    
+      {{ govukInput({
+        label: {
+          html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+        },
+        id: "first-carrier-address-line-2",
+        name: "first-carrier-address-line-2",
+        value: data['first-carrier-address-line-2'],
+        autocomplete: "address-line2"
+      }) }}
+    
+      {{ govukInput({
+        label: {
+          text: "Town or city"
+        },
+        classes: "govuk-!-width-two-thirds",
+        id: "first-carrier-address-town",
+        name: "first-carrier-address-town",
+        value: data['first-carrier-address-town'],
+        autocomplete: "address-level2"
+      }) }}
+    
+      {{ govukInput({
+        label: {
+          text: "Region, state or county"
+        },
+        classes: "govuk-!-width-two-thirds",
+        id: "first-carrier-address-county",
+        name: "first-carrier-address-county",
+        value: data['first-carrier-address-county']
+      }) }}
+    
+      {{ govukInput({
+        label: {
+          text: "Postcode or ZIP code"
+        },
+        classes: "govuk-input--width-10",
+        id: "first-carrier-address-postcode",
+        name: "first-carrier-address-postcode",
+        value: data['first-carrier-address-postcode'],
+        autocomplete: "postal-code"
+      }) }}
+      
+      {{ govukInput({
+        label: {
+          text: "Country"
+        },
+        classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-2",
+        id: "first-carrier-address-country",
+        name: "first-carrier-address-country",
+        value: data['first-carrier-address-country']
+      }) }}
+
+      {% endcall %}
+
+      {% call govukFieldset({
+        legend: {
+          text: "Contact person",
+          classes: "govuk-fieldset__legend--m"
+        }
+      }) %}
+      
+      {{ govukInput({
+        label: {
+          text: "Full name"
+        },
+        id: "first-carrier-contact-full-name",
+        name: "first-carrier-contact-full-name",
+        value: data['first-carrier-contact-full-name'],
+        autocomplete: "name",
+        spellcheck: false
+      }) }}
+
+      {% endcall %}
+
+      {% call govukFieldset({
+        legend: {
+          text: "Contact details",
+          classes: "govuk-fieldset__legend--m"
+        }
+      }) %}
+
+      {{ govukInput({
+        id: "first-carrier-email",
+        name: "first-carrier-email",
+        type: "email",
+        spellcheck: false,
+        value: data['first-carrier-email'],
+        label: {
+          text: "Email address"
+        }
+      }) }}
+      
+      {{ govukInput({
+        id: "first-carrier-telephone",
+        name: "first-carrier-telephone",
+        type: "tel",
+        value: data['first-carrier-telephone'],
+        classes: "govuk-input--width-20",
+        label: {
+          text: "Telephone number"
+        }
+      }) }}
+      
+      {{ govukInput({
+        id: "first-carrier-fax",
+        name: "first-carrier-fax",
+        value: data['first-carrier-fax'],
+        type: "tel",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        label: {
+          text: "Fax number (optional)"
+        }
+      }) }}
+
+      {% endcall %}  
+
+      {{ govukRadios({
+        idPrefix: "first-carrier-means-of-transport",
+        name: "first-carrier-means-of-transport",
+        classes: "govuk-!-margin-bottom-2",
+        fieldset: {
+          legend: {
+            text: "Means of transport",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "Road",
+            text: "Road",
+            checked: checked("first-carrier-means-of-transport", "Road")
+          },
+          {
+            value: "Rail",
+            text: "Rail",
+            checked: checked("first-carrier-means-of-transport", "Rail")
+          },
+          {
+            value: "Air",
+            text: "Air",
+            checked: checked("first-carrier-means-of-transport", "Air")
+          },
+          {
+            value: "Sea",
+            text: "Sea",
+            checked: checked("first-carrier-means-of-transport", "Sea")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: 'Continue'
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

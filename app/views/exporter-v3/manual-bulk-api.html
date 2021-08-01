@@ -1,0 +1,72 @@
+{% extends "../layouts/layout-exporter-v3.html" %}
+
+{% block pageTitle %}
+  How do you want to enter the information? - Track waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'dashboard'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+        
+      {{ govukRadios({
+        idPrefix: "manual-bulk",
+        name: "manual-bulk",
+        fieldset: {
+          legend: {
+            text: 'How do you want to enter the information?',
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "manual",
+            text: "I will enter it manually",
+            hint: {
+              text: "This is best for a single waste export"
+            }
+          },
+          {
+            value: "bulk",
+            text: "I will upload a spreadsheet",
+            hint: {
+              text: "This is best for adding lots of waste exports"
+            }
+          },
+          {
+            value: "api",
+            text: "I want to bulk transfer data",
+            hint: {
+              text: "Learn how an Application Programming Interface (API) can be used to integrate this service into your business systems"
+            }
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,592 @@
+
+{% extends "../layouts/alpha-assessment-agency-officer.html" %}
+
+{% block pageTitle %}
+  View all submitted exports - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  <!-- HMRC PATTERN : ACCOUNT MENU -->
+  <nav id="secondary-nav" class="hmrc-account-menu" aria-label="Account" data-module="hmrc-account-menu">
+    <a href="dashboard" class="hmrc-account-menu__link hmrc-account-menu__link--home hmrc-account-menu__link--active">
+      <span class="hmrc-account-icon hmrc-account-icon--home">
+        Dashboard home </span>
+    </a>
+  </nav>
+  <!-- END ACCOUNT MENU -->
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'dashboard'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['error'] == 'no-utid-entered' %}
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#utid-reference-error">Enter an exporter name or transaction number</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+
+      <h1 class="govuk-heading-l">
+        View all submitted exports
+      </h1>
+      
+      <form action="received-form-validation" method="post" novalidate>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset govuk-!-margin-top-4">
+
+            <label class="govuk-label">
+              Search by exporter name or transaction number
+            </label>
+
+            {% if data['error'] == 'no-utid-entered' %}
+              <div class="govuk-form-group govuk-form-group--error">
+            {% else %}
+              <div class="govuk-form-group">
+            {% endif %}
+            {% if data['error'] == 'no-utid-entered' %}
+              <span id="utid-reference-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Enter an exporter name or transaction number
+              </span>
+            {% endif %}
+            {% if data['error'] == 'no-utid-entered' %}
+              <input class="govuk-input govuk-input--error govuk-input--width-20" id="utid-reference" name="utid-reference" type="text" value="{{ data['utid-reference'] }}" autocomplete="off" >
+            {% else %}
+              <input class="govuk-input govuk-input--width-20" id="utid-reference" name="utid-reference" type="text" value="{{ data['utid-reference'] }}" autocomplete="off" >
+            {% endif %}
+
+            {{ govukButton({
+              text: "Search",
+              classes: "govuk-!-margin-left-2"
+            }) }}
+
+            </div>
+          </fieldset>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- THE FULL FAUX LIST -->
+  <div class="flex-container grid-row">
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Alert type</th>
+          <th scope="col" class="govuk-table__header">Date submitted</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Waste description (and Basel Annex IX, if provided)</th>
+          <th scope="col" class="govuk-table__header">Exporter name</th>
+          <th scope="col" class="govuk-table__header">Date waste picked up</th>
+          <th scope="col" class="govuk-table__header">Transaction number</th>
+          <th scope="col" class="govuk-table__header">Action</th>
+        </tr>
+      </thead>
+
+      <!-- FILTERED LIST -->
+      {% if (data['utid-reference'] != null) and ('35283' in data['utid-reference']) %}
+
+        <p class="govuk-body">
+          <a href="received-forms" class="govuk-link">Clear search criteria and show all records</a>
+        </p>
+
+        <tbody class="govuk-table__body">
+
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">1 June 2021</td>
+            <td class="govuk-table__cell">
+              Paper scrap - OCC
+              <br>
+              B3020: Paper, paperboard and paper product wastes
+            </td>
+            <td class="govuk-table__cell">Euromovement Limited</td>
+            <td class="govuk-table__cell">2 June 2021</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+        {{ mojPagination({
+          results: {
+            from: 1,
+            to: 1,
+            count: 1
+          }
+        }) }}
+
+      {% else %}
+
+      <!-- UNFILTERED FULL LIST -->
+
+        <tbody class="govuk-table__body">
+
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">2 June 2021</td>
+            <td class="govuk-table__cell">
+              Mixed Paper EN643
+              <br>
+              B2040: Other wastes containing principally inorganic constituents
+            </td>
+            <td class="govuk-table__cell">Seneca Waste Plc.</td>
+            <td class="govuk-table__cell">4 June 2021</td>
+            <td class="govuk-table__cell">828528178</td>
+            <td class="govuk-table__cell">
+              <a href="view-375518473" class="govuk-link">View</a>
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">2 June 2021</td>
+            <td class="govuk-table__cell">
+              Heavy melting steel scrap
+            </td>
+            <td class="govuk-table__cell">Green Thumb Waste Limited</td>
+            <td class="govuk-table__cell">2 June 2021</td>
+            <td class="govuk-table__cell">919709788</td>
+            <td class="govuk-table__cell">
+              <a href="view-409413376" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <!-- RECORD TO FOLLOW AND VIEW -->
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">1 June 2021</td>
+            <td class="govuk-table__cell">
+              Paper scrap - OCC
+              <br>
+              B3020: Paper, paperboard and paper product wastes
+            </td>
+            <td class="govuk-table__cell">Euromovement Limited</td>
+            <td class="govuk-table__cell">2 June 2021</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">1 June 2021</td>
+            <td class="govuk-table__cell">
+              Paper scrap - OCC
+              <br>
+              B2040: Other wastes containing principally inorganic constituents
+            </td>
+            <td class="govuk-table__cell">Pioneer Waste Plc.</td>
+            <td class="govuk-table__cell">2 June 2021</td>
+            <td class="govuk-table__cell">446984963</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">28 May 2021</td>
+            <td class="govuk-table__cell">
+              Mixed Paper EN643
+              <br>
+              B2060: Spent activated carbon
+            </td>
+            <td class="govuk-table__cell">Onward Waste Plc.</td>
+            <td class="govuk-table__cell">31 May 2021</td>
+            <td class="govuk-table__cell">474099313</td>
+            <td class="govuk-table__cell">
+              <a href="view-375518473" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">28 May 2021</td>
+            <td class="govuk-table__cell">
+              Heavy melting steel scrap
+            </td>
+            <td class="govuk-table__cell">Tunnel Waste Limited</td>
+            <td class="govuk-table__cell">31 May 2021</td>
+            <td class="govuk-table__cell">100575494</td>
+            <td class="govuk-table__cell">
+              <a href="view-409413376" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">28 May 2021</td>
+            <td class="govuk-table__cell">
+              Paper scrap - OCC
+            </td>
+            <td class="govuk-table__cell">Recycling Cache Limited</td>
+            <td class="govuk-table__cell">28 May 2021</td>
+            <td class="govuk-table__cell">603439986</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">26 May 2021</td>
+            <td class="govuk-table__cell">
+              Mixed Paper EN643
+              <br>
+              B2040: Other wastes containing principally inorganic constituents
+            </td>
+            <td class="govuk-table__cell">Sapient Waste Haulage Limited</td>
+            <td class="govuk-table__cell">28 May 2021</td>
+            <td class="govuk-table__cell">104779838</td>
+            <td class="govuk-table__cell">
+              <a href="view-375518473" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">26 May 2021</td>
+            <td class="govuk-table__cell">
+              Heavy melting steel scrap
+              <br>
+              B1210: Slag arising from the manufacture of iron and steel
+            </td>
+            <td class="govuk-table__cell">Recycling Authority Limited</td>
+            <td class="govuk-table__cell">28 May 2021</td>
+            <td class="govuk-table__cell">299517832</td>
+            <td class="govuk-table__cell">
+              <a href="view-409413376" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">26 May 2021</td>
+            <td class="govuk-table__cell">
+              Paper scrap - OCC
+            </td>
+            <td class="govuk-table__cell">The Recycling Council Limited</td>
+            <td class="govuk-table__cell">27 May 2021</td>
+            <td class="govuk-table__cell">324129673</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">25 May 2021</td>
+            <td class="govuk-table__cell">
+              Mixed Paper EN643
+            </td>
+            <td class="govuk-table__cell">Green Thumb Waste Limited</td>
+            <td class="govuk-table__cell">27 May 2021</td>
+            <td class="govuk-table__cell">657478014</td>
+            <td class="govuk-table__cell">
+              <a href="view-375518473" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">24 May 2021</td>
+            <td class="govuk-table__cell">
+              Heavy melting steel scrap
+              <br>
+              B1210: Slag arising from the manufacture of iron and steel
+            </td>
+            <td class="govuk-table__cell">Euromovement Limited</td>
+            <td class="govuk-table__cell">27 May 2021</td>
+            <td class="govuk-table__cell">806781760</td>
+            <td class="govuk-table__cell">
+              <a href="view-409413376" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">24 May 2021</td>
+            <td class="govuk-table__cell">
+              Paper scrap - OCC
+            </td>
+            <td class="govuk-table__cell">Pioneer Waste Plc.</td>
+            <td class="govuk-table__cell">24 May 2021</td>
+            <td class="govuk-table__cell">805396704</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">24 May 2021</td>
+            <td class="govuk-table__cell">
+              Mixed Paper EN643
+            </td>
+            <td class="govuk-table__cell">Seneca Waste Plc.</td>
+            <td class="govuk-table__cell">25 May 2021</td>
+            <td class="govuk-table__cell">953035682</td>
+            <td class="govuk-table__cell">
+              <a href="view-375518473" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">21 May 2021</td>
+            <td class="govuk-table__cell">
+              Heavy melting steel scrap
+              <br>
+              B1210: Slag arising from the manufacture of iron and steel
+            </td>
+            <td class="govuk-table__cell">The Recycling Council Limited</td>
+            <td class="govuk-table__cell">22 May 2021</td>
+            <td class="govuk-table__cell">574497213</td>
+            <td class="govuk-table__cell">
+              <a href="view-409413376" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">21 May 2021</td>
+            <td class="govuk-table__cell">
+              Paper scrap - OCC
+            </td>
+            <td class="govuk-table__cell">Tunnel Waste Limited</td>
+            <td class="govuk-table__cell">21 May 2021</td>
+            <td class="govuk-table__cell">064791988</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">21 May 2021</td>
+            <td class="govuk-table__cell">
+              Mixed Paper EN643
+            </td>
+            <td class="govuk-table__cell">Onward Waste Plc.</td>
+            <td class="govuk-table__cell">24 May 2021</td>
+            <td class="govuk-table__cell">327859338</td>
+            <td class="govuk-table__cell">
+              <a href="view-375518473" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">20 May 2021</td>
+            <td class="govuk-table__cell">
+              Heavy melting steel scrap
+              <br>
+              B1020: Clean, uncontaminated metal scrap, including alloys, in bulk finished form
+            </td>
+            <td class="govuk-table__cell">Sapient Waste Haulage Limited</td>
+            <td class="govuk-table__cell">20 May 2021</td>
+            <td class="govuk-table__cell">164467073</td>
+            <td class="govuk-table__cell">
+              <a href="view-409413376" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">20 May 2021</td>
+            <td class="govuk-table__cell">
+              Paper scrap - OCC
+            </td>
+            <td class="govuk-table__cell">Pioneer Waste Plc.</td>
+            <td class="govuk-table__cell">20 May 2021</td>
+            <td class="govuk-table__cell">316008299</td>
+            <td class="govuk-table__cell">
+              <a href="view-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+          
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "Submitted",
+                classes: "govuk-tag--blue"
+              })}}
+            </td>
+            <td class="govuk-table__cell">19 May 2021</td>
+            <td class="govuk-table__cell">
+              Mixed Paper EN643
+            </td>
+            <td class="govuk-table__cell">Recycling Authority Limited</td>
+            <td class="govuk-table__cell">20 May 2021</td>
+            <td class="govuk-table__cell">115111207</td>
+            <td class="govuk-table__cell">
+              <a href="view-375518473" class="govuk-link">View</a>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      {{ mojPagination({
+        results: {
+          from: 1,
+          to: 20,
+          count: 50
+        },
+        previous: {
+          text: 'Previous',
+          href: ''
+        },
+        next: {
+          text: 'Next',
+          href: ''
+        },
+        items: [{
+          text: '1',
+          href: '',
+          selected: true
+        }, {
+          text: '2',
+          href: ''
+        }, {
+          text: '3',
+          href: ''
+        }]
+      }) }}
+      
+      {% endif %}
+    
+    </div>
+
+    <div class="flex-container grid-row">
+      <p class="govuk-body govuk-!-margin-top-6">
+        <a href="dashboard">Return to dashboard</a>
+      </p>
+    </div>
+
+  {% endblock %}

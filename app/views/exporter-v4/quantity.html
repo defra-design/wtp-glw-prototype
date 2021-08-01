@@ -1,0 +1,105 @@
+{% extends "../layouts/layout-exporter-v4.html" %}
+
+{% block pageTitle %}
+  What is the quantity of waste? - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        What is the quantity of waste?
+      </h1>
+
+      <p class="govuk-body govuk-!-padding-bottom-2">
+        Provide the net weight or volume of the waste, not including the container or vehicle.
+      </p>
+
+      <form class="form" method="post">
+
+      {% call govukFieldset({
+      }) %}
+
+      {{ govukInput({
+        label: {
+          text: "Quantity",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "weight",
+        name: "quantity-weight",
+        value: data['quantity-weight'],
+        classes: "govuk-!-width-one-third"
+      }) }}
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "quantity-units",
+        name: "quantity-units",
+        fieldset: {
+          legend: {
+            text: "Unit",
+            classes: "govuk-label--m"
+          }
+        },
+        items: [
+          {
+            value: "tonnes-mg",
+            text: "Tonnes, also called megagrams (Mg)",
+            checked: checked("quantity-units", "tonnes-mg")
+          },
+          {
+            value: "cubic-metres",
+            text: "Cubic metres (m³)",
+            checked: checked("quantity-units", "cubic-metres")
+          }
+        ]
+      }) }}
+
+      {% endcall %}
+
+      {% call govukFieldset({
+      }) %}
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "actual-or-estimate",
+        name: "actual-or-estimate",
+        fieldset: {
+          legend: {
+            text: "Is this amount the actual quantity?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "actual",
+            text: "Yes",
+            checked: checked("actual-or-estimate", "actual")
+          },
+          {
+            value: "estimated",
+            text: "No, it is an estimate",
+            hint: {
+              text: "You must use this service to provide the actual quantity later as soon as you know this."
+            },
+            checked: checked("actual-or-estimate", "estimated")
+          }
+        ]
+      }) }}
+
+      {% endcall %}
+
+      {{ govukButton({
+        text: 'Continue'
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

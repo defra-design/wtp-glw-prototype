@@ -1,0 +1,281 @@
+
+{% extends "../layouts/alpha-assessment-agency-officer.html" %}
+
+{% block pageTitle %}
+  Home - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <script>
+    req.session.data.error = "";
+  </script>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {#<span class="govuk-caption-xl">
+        Export green list waste
+      </span>#}
+      <h1 class="govuk-heading-xl">
+        Home
+      </h1>
+    </div>
+  </div>
+
+  <div class="flex-container grid-row">
+
+    <div class="card">
+      <div class="card-body active">
+        <h2 class="heading-medium card-heading"><a href="received-forms">View all submitted exports</a></h2>
+      </div>
+
+      <div class="card-action">
+        Search and view submitted Annex VII forms.
+      </div> 
+    </div>
+
+    <div class="card">
+      <div class="card-body active">
+        <h2 class="heading-medium card-heading"><a href="reports">Generate a report</a></h2>
+      </div>
+
+      <div class="card-action">
+        Generate and download reports on Annex VII data.
+      </div> 
+    </div>
+    
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" novalidate>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset govuk-!-margin-top-0">
+
+            <h2 class="govuk-heading-l">
+              Exports that need to be reviewed
+            </h2>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label">
+                Search by exporter name or transaction number
+              </label>
+              <input class="govuk-input govuk-input--width-20" id="alert-utid-reference" name="alert-utid-reference" type="text" autocomplete="off" >
+
+              {{ govukButton({
+                text: "Search",
+                classes: "govuk-!-margin-left-2"
+              }) }}
+
+            </div>
+          </fieldset>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- THE FULL FAUX LIST -->
+  <div class="flex-container grid-row">
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Alert type</th>
+          <th scope="col" class="govuk-table__header">Date submitted</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Waste description (and Basel Annex IX, if provided)</th>
+          <th scope="col" class="govuk-table__header">Exporter name</th>
+          <th scope="col" class="govuk-table__header">Date waste picked up</th>
+          <th scope="col" class="govuk-table__header">Transaction number</th>
+          <th scope="col" class="govuk-table__header">Action</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Change in waste output</td>
+          <td class="govuk-table__cell">2 June 2021</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+            <br>
+            B2040: Other wastes containing principally inorganic constituents
+          </td>
+          <td class="govuk-table__cell">Euromovement Limited</td>
+          <td class="govuk-table__cell">4 June 2021</td>
+          <td class="govuk-table__cell">828528178</td>
+            <td class="govuk-table__cell">
+              <a href="alert-817435283" class="govuk-link">View</a>
+            </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Change in export tonnage</td>
+          <td class="govuk-table__cell">2 June 2021</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+          </td>
+          <td class="govuk-table__cell">Green Thumb Waste Limited</td>
+          <td class="govuk-table__cell">2 June 2021</td>
+          <td class="govuk-table__cell">919709788</td>
+          <td class="govuk-table__cell">
+            <a href="" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+        {% if data['alert-status-one'] != 'yes' %}
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">Prohibited destination</td>
+            <td class="govuk-table__cell">1 June 2021</td>
+            <td class="govuk-table__cell">
+              Paper scrap - OCC
+              <br>
+              B3020: Paper, paperboard and paper product wastes
+            </td>
+            <td class="govuk-table__cell">Euromovement Limited</td>
+            <td class="govuk-table__cell">2 June 2021</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">
+              <a href="alert-817435283" class="govuk-link">View</a>
+            </td>
+          </tr>
+        {% endif %}
+
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Data missing</td>
+          <td class="govuk-table__cell">1 June 2021</td>
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+            <br>
+            B2040: Other wastes containing principally inorganic constituents
+          </td>
+          <td class="govuk-table__cell">Pioneer Waste Plc.</td>
+          <td class="govuk-table__cell">2 June 2021</td>
+          <td class="govuk-table__cell">446984963</td>
+          <td class="govuk-table__cell">
+            <a href="" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Waste type</td>
+          <td class="govuk-table__cell">28 May 2021</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+            <br>
+            B2060: Spent activated carbon
+          </td>
+          <td class="govuk-table__cell">Onward Waste Plc.</td>
+          <td class="govuk-table__cell">31 May 2021</td>
+          <td class="govuk-table__cell">474099313</td>
+          <td class="govuk-table__cell">
+            <a href="" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Export country</td>
+          <td class="govuk-table__cell">28 May 2021</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+          </td>
+          <td class="govuk-table__cell">Tunnel Waste Limited</td>
+          <td class="govuk-table__cell">31 May 2021</td>
+          <td class="govuk-table__cell">100575494</td>
+          <td class="govuk-table__cell">
+            <a href="" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Export is an interim operation</td>
+          <td class="govuk-table__cell">28 May 2021</td>
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+          </td>
+          <td class="govuk-table__cell">Recycling Cache Limited</td>
+          <td class="govuk-table__cell">28 May 2021</td>
+          <td class="govuk-table__cell">603439986</td>
+          <td class="govuk-table__cell">
+            <a href="" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Export is a disposal operation</td>
+          <td class="govuk-table__cell">26 May 2021</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+            <br>
+            B2040: Other wastes containing principally inorganic constituents
+          </td>
+          <td class="govuk-table__cell">Sapient Waste Haulage Limited</td>
+          <td class="govuk-table__cell">28 May 2021</td>
+          <td class="govuk-table__cell">104779838</td>
+          <td class="govuk-table__cell">
+            <a href="" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">Unusual practitioner shipment</td>
+          <td class="govuk-table__cell">26 May 2021</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+            <br>
+            B1210: Slag arising from the manufacture of iron and steel
+          </td>
+          <td class="govuk-table__cell">Recycling Authority Limited</td>
+          <td class="govuk-table__cell">28 May 2021</td>
+          <td class="govuk-table__cell">299517832</td>
+          <td class="govuk-table__cell">
+            <a href="" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">New practitioner</td>
+          <td class="govuk-table__cell">26 May 2021</td>
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+          </td>
+          <td class="govuk-table__cell">The Recycling Council Limited</td>
+          <td class="govuk-table__cell">27 May 2021</td>
+          <td class="govuk-table__cell">324129673</td>
+          <td class="govuk-table__cell">
+            <a href="" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    {% if data['alert-status-one'] != 'yes' %}
+      {{ mojPagination({
+        results: {
+          from: 1,
+          to: 10,
+          count: 10
+        }
+      }) }}
+    {% else %}
+      {{ mojPagination({
+        results: {
+          from: 1,
+          to: 9,
+          count: 9
+        }
+      }) }}
+    {% endif %}
+
+  </div>
+
+{% endblock %}

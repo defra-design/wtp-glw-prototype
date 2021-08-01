@@ -1,0 +1,71 @@
+
+{% extends "../layouts/design-iterations-layout.html" %}
+
+{% block pageTitle %}
+  Exporter alpha assessment prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  })}}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "Prototype"
+      },
+      html: 'Exporter'
+    }) }}
+  </div>
+
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l govuk-!-margin-top-6">
+      Exporter alpha assessment
+    </h1>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Full on-boarding journey
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>Includes Government Gateway and Defra ID account creation</li>
+            <li>
+              {{ govukButton({
+                text: 'Start from invitation email',
+                classes: "govuk-!-margin-top-4",
+                href: 'email'
+              }) }}
+            </li>
+          </ul>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Partial journey
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>Assumes Defra ID account has previously been created</li>
+            <li>
+              {{ govukButton({
+                text: 'Start from Defra ID sign in',
+                classes: "govuk-!-margin-top-4",
+                href: 'login'
+              }) }}
+            </li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+{% endblock %}

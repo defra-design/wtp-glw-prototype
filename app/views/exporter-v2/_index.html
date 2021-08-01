@@ -1,0 +1,105 @@
+
+{% extends "../layouts/design-iterations-layout.html" %}
+
+{% block pageTitle %}
+  Exporter prototype version 2
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  })}}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "Prototype"
+      },
+      html: 'Exporter'
+    }) }}
+  </div>
+  
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l govuk-!-margin-top-6">
+      Version 2
+    </h1>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Implemented changes
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+            <li>Reordering of company and contact person fields</li>
+            <li>Rewording of field labels so as to be more aligned with Annex VII form</li>
+            <li>Addition of <strong>Details</strong> component placeholders for help text to be added</li>
+            <li><strong>Waste identification</strong> typeaheads now reside on a single page</li>
+            <li><strong>Countries/states concerned</strong> all three aspects now reside on a single page</li>
+            <li>Input of international addresses now recognised</li>
+          </ul>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Known limitations and issues
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+            <li>Maximum of three carriers can be added in this prototype</li>
+            <li>Currently unable to add more than one "transit" destination</li>
+            <li><strong>Save and resume</strong> for multiple users and hand-offs between colleagues to be further investigated</li>
+            <li>To do list and progression to be further investigated</li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+
+  {{ govukButton({
+     text: "Start now",
+     href: "index"
+  }) }}
+
+    <h2 class="govuk-heading-l govuk-!-margin-top-8">
+      Research
+    </h2>
+       
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Session dates
+        </dt>
+        <dd class="govuk-summary-list__value">
+          7 Jun 2021 - 13 Jun 2021
+        </dd>
+      </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Participants
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>7 agency officers (experienced), one with BSL as first language</li>
+            <li>1 participant made use of Dragon</li>
+        </dd>
+      </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Insights
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <a href="#">Round 2 research findings</a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+{% endblock %}

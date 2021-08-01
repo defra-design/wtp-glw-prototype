@@ -1,0 +1,1108 @@
+
+{% extends "../layouts/alpha-assessment-agency-officer.html" %}
+
+{% block pageTitle %}
+  Received Annex VII forms - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "agency officer prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  <!-- HMRC PATTERN : ACCOUNT MENU -->
+  <nav id="secondary-nav" class="hmrc-account-menu" aria-label="Account" data-module="hmrc-account-menu">
+    <a href="dashboard" class="hmrc-account-menu__link hmrc-account-menu__link--home hmrc-account-menu__link--active">
+      <span class="hmrc-account-icon hmrc-account-icon--home">
+        Dashboard home </span>
+    </a>
+  </nav>
+  <!-- END ACCOUNT MENU -->
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Euromovement Limited
+      </span>
+      <h1 class="govuk-heading-l">
+        Transaction number 375518473
+      </h1>
+      
+      <!-- PERSON ARRANGING SHIPMENT HEADING -->
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Person arranging the export
+          </dt>
+        </div>
+      </dl>
+
+      <!-- PERSON ARRANGING SHIPMENT - Carrier details -->
+      <h3 class="govuk-heading-s">
+        Name and address
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['who-arranged-company-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['who-arranged-address-line-1'] != '' %}
+              {{ data['who-arranged-address-line-1'] }}<br>
+            {% endif %}
+            {% if data['who-arranged-address-line-2'] != '' %}
+              {{ data['who-arranged-address-line-2'] }}<br>
+            {% endif %}
+            {% if data['who-arranged-address-town'] != '' %}
+              {{ data['who-arranged-address-town'] }}<br>
+            {% endif %}
+            {% if data['who-arranged-address-county'] != '' %}
+              {{ data['who-arranged-address-county'] }}<br>
+            {% endif %}
+            {% if data['who-arranged-address-postcode'] != '' %}
+              {{ data['who-arranged-address-postcode'] }}<br>
+            {% endif %}
+            {% if data['who-arranged-address-country'] != '' %}
+            {{ data['who-arranged-address-country'] }}
+          {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      <!-- PERSON ARRANGING SHIPMENT - Contact details -->
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['who-arranged-contact-full-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['who-arranged-email'] != '' %}
+              {{ data['who-arranged-email'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['who-arranged-telephone'] != '' %}
+              {{ data['who-arranged-telephone'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Fax number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['who-arranged-fax'] != '' %}
+            {{ data['who-arranged-fax'] }}
+          {% else %}
+            Not provided
+          {% endif %}
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      
+      <!-- IMPORTER/CONSIGNEE HEADING -->
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Importer or consignee
+          </dt>
+        </div>
+      </dl>
+
+      <!-- IMPORTER/CONSIGNEE - Carrier details -->
+      <h3 class="govuk-heading-s">
+        Importer or consignee name and address
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['importer-company-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['importer-company-address-line-1'] != '' %}
+              {{ data['importer-company-address-line-1'] }}<br>
+            {% endif %}
+            {% if data['importer-company-address-line-2'] != '' %}
+              {{ data['importer-company-address-line-2'] }}<br>
+            {% endif %}
+            {% if data['importer-company-address-town'] != '' %}
+              {{ data['importer-company-address-town'] }}<br>
+            {% endif %}
+            {% if data['importer-company-address-county'] != '' %}
+              {{ data['importer-company-address-county'] }}<br>
+            {% endif %}
+            {% if data['importer-company-address-postcode'] != '' %}
+              {{ data['importer-company-address-postcode'] }}<br>
+            {% endif %}
+            {% if data['importer-company-address-country'] != '' %}
+            {{ data['importer-company-address-country'] }}
+          {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      <!-- IMPORTER/CONSIGNEE - Contact details -->
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
+      </h3>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['importer-contact-full-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['importer-email'] != '' %}
+              {{ data['importer-email'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['importer-telephone'] != '' %}
+              {{ data['importer-telephone'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Fax number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['importer-fax'] != '' %}
+              {{ data['importer-fax'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      
+      <!-- QUANTITY -->
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Quantity
+          </dt>
+        </div>
+      </dl>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Weight
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['quantity-weight'] }}
+            {% if data['quantity-units'] == 'tonnes-mg' %}
+              Tonnes (Mg)
+            {% else %}
+              Cubic Metres
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Actual or estimated
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['actual-or-estimate'] == 'estimated' %}
+              Estimated quantity
+            {% else %}
+              Actual quantity
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      
+      <!-- ACTUAL DATE OF SHIPMENT -->
+      
+      <h2 class="govuk-heading-m">
+        Date waste will be picked up
+      </h2>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['actual-shipment-day'] }} 
+            {% if data['actual-shipment-month'] == '1' or data['actual-shipment-month'] == '01' %}
+              January 
+            {% elif data['actual-shipment-month'] == '2' or data['actual-shipment-month'] == '02' %}
+              February 
+            {% elif data['actual-shipment-month'] == '3' or data['actual-shipment-month'] == '03' %}
+              March 
+            {% elif data['actual-shipment-month'] == '4' or data['actual-shipment-month'] == '04' %}
+              April 
+            {% elif data['actual-shipment-month'] == '5' or data['actual-shipment-month'] == '05' %}
+              May 
+            {% elif data['actual-shipment-month'] == '6' or data['actual-shipment-month'] == '06' %}
+              June 
+            {% elif data['actual-shipment-month'] == '7' or data['actual-shipment-month'] == '07' %}
+              July 
+            {% elif data['actual-shipment-month'] == '8' or data['actual-shipment-month'] == '08' %}
+              August 
+            {% elif data['actual-shipment-month'] == '9' or data['actual-shipment-month'] == '09' %}
+              September 
+            {% elif data['actual-shipment-month'] == '10' or data['actual-shipment-month'] == '10' %}
+              October 
+            {% elif data['actual-shipment-month'] == '11' or data['actual-shipment-month'] == '11' %}
+              November 
+            {% elif data['actual-shipment-month'] == '12' or data['actual-shipment-month'] == '12' %}
+              December 
+            {% else %}
+              January 
+            {% endif %}
+            {{ data['actual-shipment-year'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Actual or estimated
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Actual date
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      
+      <!-- FIRST CARRIER HEADING -->
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Carrier 1
+          </dt>
+        </div>
+      </dl>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            First carrier details?
+          </dt>
+          <dd class="govuk-summary-list__value">
+          </dd>
+        </div>
+      </dl>
+
+      <!-- FIRST CARRIER - Carrier details -->
+      <h3 class="govuk-heading-s">
+        Carrier name and address
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['first-carrier-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['first-carrier-address-line-1'] != '' %}
+              {{ data['first-carrier-address-line-1'] }}<br>
+            {% endif %}
+            {% if data['first-carrier-address-line-2'] != '' %}
+              {{ data['first-carrier-address-line-2'] }}<br>
+            {% endif %}
+            {% if data['first-carrier-address-town'] != '' %}
+              {{ data['first-carrier-address-town'] }}<br>
+            {% endif %}
+            {% if data['first-carrier-address-county'] != '' %}
+              {{ data['first-carrier-address-county'] }}<br>
+            {% endif %}
+            {% if data['first-carrier-address-postcode'] != '' %}
+              {{ data['first-carrier-address-postcode'] }}<br>
+            {% endif %}
+            {% if data['first-carrier-address-country'] != '' %}
+            {{ data['first-carrier-address-country'] }}
+          {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Means of transport
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['first-carrier-means-of-transport'] }}
+          </dd>
+        </div>
+      </dl>
+
+      <!-- FIRST CARRIER - Contact details -->
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['first-carrier-contact-full-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['first-carrier-email'] != '' %}
+              {{ data['first-carrier-email'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['first-carrier-telephone'] != '' %}
+              {{ data['first-carrier-telephone'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Fax number
+          </dt>
+          <dd class="govuk-summary-list__value">
+          {% if data['first-carrier-fax'] != '' %}
+            {{ data['first-carrier-fax'] }}
+          {% else %}
+            Not provided
+          {% endif %}
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      {% if data['add-second-carrier'] == 'yes' %}
+      
+      <!-- SECOND CARRIER HEADING -->
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Carrier 2
+          </dt>
+        </div>
+      </dl>
+
+      <!-- SECOND CARRIER - Carrier details -->
+      <h3 class="govuk-heading-s">
+        Carrier name and address
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['second-carrier-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['second-carrier-address-line-1'] != '' %}
+              {{ data['second-carrier-address-line-1'] }}<br>
+            {% endif %}
+            {% if data['second-carrier-address-line-2'] != '' %}
+              {{ data['second-carrier-address-line-2'] }}<br>
+            {% endif %}
+            {% if data['second-carrier-address-town'] != '' %}
+              {{ data['second-carrier-address-town'] }}<br>
+            {% endif %}
+            {% if data['second-carrier-address-county'] != '' %}
+              {{ data['second-carrier-address-county'] }}<br>
+            {% endif %}
+            {% if data['second-carrier-address-postcode'] != '' %}
+              {{ data['second-carrier-address-postcode'] }}<br>
+            {% endif %}
+            {% if data['second-carrier-address-country'] != '' %}
+            {{ data['second-carrier-address-country'] }}
+          {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Means of transport
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['second-carrier-means-of-transport'] }}
+          </dd>
+        </div>
+      </dl>
+
+      <!-- SECOND CARRIER - Contact details -->
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['second-carrier-contact-full-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['second-carrier-email'] != '' %}
+              {{ data['second-carrier-email'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['second-carrier-telephone'] != '' %}
+              {{ data['second-carrier-telephone'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Fax number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['second-carrier-fax'] != '' %}
+            {{ data['second-carrier-fax'] }}
+          {% else %}
+            Not provided
+          {% endif %}
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+      {% endif %}
+
+      {% if data['add-third-carrier'] == 'yes' %}
+      
+      <!-- THIRD CARRIER HEADING -->
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Carrier 3
+          </dt>
+        </div>
+      </dl>
+
+      <!-- THIRD CARRIER - Carrier details -->
+      <h3 class="govuk-heading-s">
+        Carrier name and address
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['third-carrier-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['third-carrier-address-line-1'] != '' %}
+              {{ data['third-carrier-address-line-1'] }}<br>
+            {% endif %}
+            {% if data['third-carrier-address-line-2'] != '' %}
+              {{ data['third-carrier-address-line-2'] }}<br>
+            {% endif %}
+            {% if data['third-carrier-address-town'] != '' %}
+              {{ data['third-carrier-address-town'] }}<br>
+            {% endif %}
+            {% if data['third-carrier-address-county'] != '' %}
+              {{ data['third-carrier-address-county'] }}<br>
+            {% endif %}
+            {% if data['third-carrier-address-postcode'] != '' %}
+              {{ data['third-carrier-address-postcode'] }}<br>
+            {% endif %}
+            {% if data['third-carrier-address-country'] != '' %}
+            {{ data['third-carrier-address-country'] }}
+          {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Means of transport
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['third-carrier-means-of-transport'] }}
+          </dd>
+        </div>
+      </dl>
+
+      <!-- THIRD CARRIER - Contact details -->
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['third-carrier-contact-full-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['third-carrier-email'] != '' %}
+              {{ data['third-carrier-email'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['third-carrier-telephone'] != '' %}
+              {{ data['third-carrier-telephone'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Fax number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['third-carrier-fax'] != '' %}
+              {{ data['third-carrier-fax'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+      {% endif %}
+
+      
+      <!-- WASTE GENERATOR HEADING -->
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Waste collection point
+          </dt>
+        </div>
+      </dl>
+
+      <!-- WASTE GENERATOR - Carrier details -->
+      <h3 class="govuk-heading-s">
+        Name and address
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['waste-generator-company-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['waste-generator-address-line-1'] != '' %}
+              {{ data['waste-generator-address-line-1'] }}<br>
+            {% endif %}
+            {% if data['waste-generator-address-line-2'] != '' %}
+              {{ data['waste-generator-address-line-2'] }}<br>
+            {% endif %}
+            {% if data['waste-generator-address-town'] != '' %}
+              {{ data['waste-generator-address-town'] }}<br>
+            {% endif %}
+            {% if data['waste-generator-address-county'] != '' %}
+              {{ data['waste-generator-address-county'] }}<br>
+            {% endif %}
+            {% if data['waste-generator-address-postcode'] != '' %}
+              {{ data['waste-generator-address-postcode'] }}<br>
+            {% endif %}
+            {% if data['waste-generator-address-country'] != '' %}
+            {{ data['waste-generator-address-country'] }}
+          {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      <!-- WASTE GENERATOR - Contact details -->
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['waste-generator-contact-full-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['waste-generator-email'] != '' %}
+              {{ data['waste-generator-email'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['waste-generator-telephone'] != '' %}
+              {{ data['waste-generator-telephone'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Fax number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['waste-generator-fax'] != '' %}
+            {{ data['waste-generator-fax'] }}
+          {% else %}
+            Not provided
+          {% endif %}
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      
+      <!-- RECOVERY FACILITY OR LABORATORY HEADING -->
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            {% if data['facility-or-lab-choice'] == 'recovery-facility' %}
+              Recovery facility
+            {% else %}
+              Laboratory
+            {% endif %}
+          </dt>
+        </div>
+      </dl>
+
+      <!-- RECOVERY FACILITY OR LABORATORY - Details -->
+      <h3 class="govuk-heading-s">
+        {% if data['facility-or-lab-choice'] == 'recovery-facility' %}
+          Recovery facility name and address
+        {% else %}
+          Laboratory name and address
+        {% endif %}
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['facility-or-lab-carrier-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['facility-or-lab-address-line-1'] != '' %}
+              {{ data['facility-or-lab-address-line-1'] }}<br>
+            {% endif %}
+            {% if data['facility-or-lab-address-line-2'] != '' %}
+              {{ data['facility-or-lab-address-line-2'] }}<br>
+            {% endif %}
+            {% if data['facility-or-lab-address-town'] != '' %}
+              {{ data['facility-or-lab-address-town'] }}<br>
+            {% endif %}
+            {% if data['facility-or-lab-address-county'] != '' %}
+              {{ data['facility-or-lab-address-county'] }}<br>
+            {% endif %}
+            {% if data['facility-or-lab-address-postcode'] != '' %}
+              {{ data['facility-or-lab-address-postcode'] }}<br>
+            {% endif %}
+            {% if data['facility-or-lab-address-country'] != '' %}
+            {{ data['facility-or-lab-address-country'] }}
+          {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      <!-- RECOVERY FACILITY OR LABORATORY - Contact details -->
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['facility-or-lab-contact-full-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['facility-or-lab-email'] != '' %}
+              {{ data['facility-or-lab-email'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['facility-or-lab-telephone'] != '' %}
+              {{ data['facility-or-lab-telephone'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Fax number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['facility-or-lab-fax'] != '' %}
+              {{ data['facility-or-lab-fax'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      
+      <!-- RECOVERY OPERATION --> 
+      
+      <h2 class="govuk-heading-m">
+        Recovery or disposal code
+      </h2>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            R-code/D-code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['recovery-operation-typeahead'] }}
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      
+      <!-- USUAL DESCRIPTION -->
+      
+      <h2 class="govuk-heading-m">
+        Description of the waste
+      </h2>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Description
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['usual-description'] }}
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      
+      <!-- WASTE IDENTIFICATION HEADING -->
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Waste identification codes
+          </dt>
+        </div>
+      </dl>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Basel Annex IX
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['basel-annex-ix-typeahead'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            OECD code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['oecd-typeahead'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Annex IIIA
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['annex-iiia-typeahead'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Annex IIIB
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['annex-iiib-typeahead'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            EC list of wastes
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ec-wastes-typeahead'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            National code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['national-code-typeahead'] }}
+          </dd>
+        </div>
+      </dl>
+    <br><br>
+
+      
+      <!-- COUNTRIES/STATES HEADING --> 
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Countries the waste will travel through
+          </dt>
+        </div>
+      </dl>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Exporting country
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['export-dispatch-typeahead'] }}
+          </dd>
+
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Transit country (or countries)
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['transit-typeahead'] }}
+          </dd>
+
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Importing country
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['import-destination-typeahead'] }}
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+
+      <!--  Container number  -->
+      
+      <h2 class="govuk-heading-m" id="check-transaction-id">
+        Container number
+      </h2>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Container number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Not provided
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      
+      <!--  TRANSACTION IDs -->
+      
+      <h2 class="govuk-heading-m" id="check-transaction-id">
+        Transaction number
+      </h2>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Transaction number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            HDJ2123F
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            Reference number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Not provided
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+    </div>
+  </div>
+
+{% endblock %}

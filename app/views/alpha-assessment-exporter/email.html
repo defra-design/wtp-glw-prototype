@@ -1,0 +1,103 @@
+{% extends "layout_unbranded.html" %}
+
+{% block pageTitle %}
+  Export green list waste trigger email
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Inbox
+    </h1>
+
+    <p class="govuk-body">
+      Dear Customer,
+    </p>
+
+    <p class="govuk-heading-m">
+      There's a new online service for green list waste exporters.
+    </p>
+
+    <p class="govuk-body">
+      Green list waste is non-hazardous, uncontaminated, single-stream waste like paper or scrap metal. It can be exported overseas for recovery under Article 18 controls.
+    </p>
+    
+    <p class="govuk-heading-s">
+      Who we are
+    </p>
+
+    <p class="govuk-body">
+      We are the agency, the government’s environmental regulator.  We regulate waste management for the 
+      protection of people and the environment.
+    </p>
+
+    <p class="govuk-heading-s">
+      Why we have emailed you
+    </p>
+
+    <p class="govuk-body">
+      We have sent you this email because you are involved in waste imports or exports.
+    </p>
+    
+    <p class="govuk-body">
+      Telling us about green list waste exports in advance will become a legal requirement 
+      from 1 April 2023, but you can start using the service today.
+    </p>
+
+    <p class="govuk-heading-s">
+      Export green list waste
+    </p>
+
+    <p class="govuk-body">
+      Using this service you can:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>produce an Annex VII form</li>
+      <li>print a copy of the Annex VII form to travel with the waste</li>
+      <li>send export details to your agency automatically</li>
+    </ul>
+
+    <p class="govuk-body">
+      You will no longer need to scan and email your Annex VII form to us.
+    </p>
+
+    <p class="govuk-body">
+      This service is part of our initiative to eradicate waste crime and create a level 
+      playing field for all waste operators.
+    </p>
+
+    <p class="govuk-heading-s">
+      Start using the service
+    </p>
+
+    <p class="govuk-body">
+      Register or sign in: <a href="/alpha-assessment-defra-id/login" class="gov.uk-link">https://www.gov.uk/exportgreenlistwaste</a>
+    </p>
+
+    <p class="govuk-heading-s">
+      Contacting us
+    </p>
+
+    <p class="govuk-body">
+      If you have any questions contact us at <a href="mailto:exportshelp@agency.com" class="govuk-link">askshipments@agency.com</a>.
+    </p>
+      
+    <p class="govuk-heading-s">Yours sincerely,</p>
+    <p class="govuk-heading-s">Your agency</p>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+
+{% extends "../layouts/layout-agency-officer-v1.html" %}
+
+{% block pageTitle %}
+  Report succesfully generated - Waste tracking service
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "agency officer prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "Report successfully generated"
+      }) }}
+
+      <p class="govuk-body">
+        Your report has been successfully generated.
+      </p>
+
+      <p class="govuk-body">
+        Links through to both a CSV file and a PDF document of your generated report can be found below:
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="" class="govuk-link govuk-link--no-visited-state">download a CSV file of your report for use in Microsoft Excel</a></li>
+          <li><a href="" class="govuk-link govuk-link--no-visited-state">download a PDF document of your report</a></li>
+        </ul>
+      </p>
+
+      <h2 class="govuk-heading-m">What do you want to do next?</h2>
+      <ul class="govuk-list">
+        <li><a href="reports">Generate another report</a></li>
+        <li><a href="alerts">View Annex VII alerts</a></li>
+        <li><a href="received-forms">View received Annex VII forms</a></li>
+        <li class="govuk-!-padding-top-4"><a href="dashboard">Return to dashboard</a></li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock %}

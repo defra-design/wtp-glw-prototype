@@ -1,0 +1,205 @@
+
+{% extends "../layouts/layout-agency-officer-v1.html" %}
+
+{% block pageTitle %}
+  Generate and view reports - Waste tracking service
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "agency officer prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Waste tracking service
+      </span>
+      <h1 class="govuk-heading-xl">
+        Generate and view reports
+      </h1>
+
+      {% set reportOneHTML %}
+      {{ govukInput({
+        label: {
+          text: "Destination country"
+        },
+        classes: "govuk-!-width-two-thirds",
+        id: "report-one-country",
+        name: "report-one-country"
+      }) }} 
+      {{ govukDateInput({
+        id: "from-date",
+        namePrefix: "report-one-from-date",
+        fieldset: {
+          legend: {
+            text: "From which date",
+            classes: "govuk-body"
+          }
+        },
+        hint: {
+          text: "For example, 27 3 2007"
+        }
+      }) }}
+      {{ govukDateInput({
+        id: "to-date",
+        namePrefix: "report-one-to-date",
+        fieldset: {
+          legend: {
+            text: "To which date",
+            classes: "govuk-body"
+          }
+        },
+        hint: {
+          text: "For example, 12 9 2013"
+        }
+      }) }}
+    {% endset -%}
+    
+    {% set reportTwoHTML %}
+    {{ govukInput({
+      label: {
+        text: "Practitioner"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "report-two-practitioner",
+      name: "report-two-practitioner"
+    }) }} 
+    {{ govukDateInput({
+      id: "report-one-from-date",
+      namePrefix: "report-two-from-date",
+      fieldset: {
+        legend: {
+          text: "From which date",
+          classes: "govuk-body"
+        }
+      },
+      hint: {
+        text: "For example, 27 3 2007"
+      }
+    }) }}
+    {{ govukDateInput({
+      id: "to-date",
+      namePrefix: "report-two-to-date",
+      fieldset: {
+        legend: {
+          text: "To which date",
+          classes: "govuk-body"
+        }
+      },
+      hint: {
+        text: "For example, 12 9 2013"
+      }
+    }) }}
+  {% endset -%}
+    
+  {% set reportThreeHTML %}
+    {{ govukInput({
+      label: {
+        text: "Point of departure"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "report-three-point-of-departure",
+      name: "report-three-point-of-departure"
+    }) }} 
+    {{ govukDateInput({
+      id: "report-three-from-date",
+      namePrefix: "report-three-from-date",
+      fieldset: {
+        legend: {
+          text: "From which date",
+          classes: "govuk-body"
+        }
+      },
+      hint: {
+        text: "For example, 27 3 2007"
+      }
+    }) }}
+    {{ govukDateInput({
+      id: "to-date",
+      namePrefix: "report-three-to-date",
+      fieldset: {
+        legend: {
+          text: "To which date",
+          classes: "govuk-body"
+        }
+      },
+      hint: {
+        text: "For example, 12 9 2013"
+      }
+    }) }}
+  {% endset -%}
+
+      <form method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset govuk-!-margin-top-4">
+
+              {{ govukRadios({
+                idPrefix: "reportchoice",
+                name: "reportchoice",
+                fieldset: {
+                  legend: {
+                    text: "Choose report to generate",
+                      classes: "govuk-body"
+                  }
+                },
+                items: [
+                  {
+                    value: "reportone",
+                    text: "Waste exported by destination over a specific timeframe",
+                    conditional: {
+                      html: reportOneHTML
+                    }
+                  },
+                  {
+                    value: "reporttwo",
+                    text: "Waste exports from a specific practitioner over a specific timeframe",
+                    conditional: {
+                      html: reportTwoHTML
+                    }
+                  },
+                  {
+                    value: "reportthree",
+                    text: "Waste exports by point of departure over a specific timeframe",
+                    conditional: {
+                      html: reportThreeHTML
+                    }
+                  },
+                  {
+                    divider: "or"
+                  },
+                  {
+                    value: "reportfour",
+                    text: "Download all data as a CSV file"
+                  }
+                ]
+              }) }}
+
+              {{ govukButton({
+                text: "Generate report",
+                classes: "govuk-!-margin-top-6"
+              }) }}
+
+            </div>
+          </fieldset>
+        </div>
+
+
+
+      </form>
+
+    </div>
+  </div>
+
+  {% endblock %}

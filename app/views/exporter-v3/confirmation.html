@@ -1,0 +1,82 @@
+
+{% extends "../layouts/layout-exporter-v3.html" %}
+
+{% block pageTitle %}
+  {% if data['manual-bulk'] == 'bulk' %}
+  Spreadsheet submitted and Annex VII created - Track waste
+  {% else %}
+    Submission complete and Annex VII created - Track waste
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if data['manual-bulk'] == 'bulk' %}
+        {{ govukPanel({
+          titleText: "Spreadsheet submitted and Annex VII created",
+          html: "Your unique transaction number is <strong>HDJ2123F</strong>"
+        }) }}
+      {% else %}
+        {{ govukPanel({
+          titleText: "Submission complete and Annex VII created",
+          html: "Your unique transaction number is <strong>HDJ2123F</strong>"
+        }) }} 
+      {% endif %}
+
+      <p class="govuk-heading-m govuk-!-padding-top-4">
+        Next steps
+      </p>
+
+      <p class="govuk-body">
+        You must download, print, and sign the Annex VII form and send it with your waste export.
+      </p>
+
+      <div class="govuk-inset-text">
+        <a href="pdf-container" class="govuk-link govuk-link--no-visited-state">Download the Annex VII form (PDF document)</a>
+      </div>
+
+      <p class="govuk-body">
+        If any information has been estimated, as soon as you know the actual details you must:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+        <li>add them to the paper copy of the Annex VII</li>
+        <li>add them to the waste export using this service</li>
+      </ul>
+
+      {{ govukWarningText({
+        text: "Your environment regulator has been advised of the export of this green list waste. You do not need to send them a separate Annex VII paper form.",
+        iconFallbackText: "Warning"
+      }) }}
+
+      <p class="govuk-body">
+        You have also been emailed a record of this waste export.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        What do you want to do now?
+      </h2>
+
+      <p class="govuk-body">
+        <ul class="govuk-list">
+          <li><a href="save-as-template" class="govuk-link">Use the details submitted to create a template</a></li>
+          <li><a href="manual-bulk-api" class="govuk-link">Tell us about another waste export</a></li>
+          <li><a href="dashboard" class="govuk-link">Return to the main dashboard</a></li>
+        </ul>
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

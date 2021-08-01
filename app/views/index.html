@@ -1,5 +1,5 @@
 
-{% extends "design-iterations-layout.html" %}
+{% extends "layouts/design-iterations-layout.html" %}
 
 {% block pageTitle %}
   {{ serviceName }} prototype
@@ -33,7 +33,7 @@
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="v4-consignor/_index">V4</a>
+            <a href="exporter-v4/_index">V4</a>
           </td>
           <td class="govuk-table__cell">
             N/A
@@ -49,7 +49,7 @@
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="v3-consignor/_index">V3</a>
+            <a href="exporter-v3/_index">V3</a>
           </td>
           <td class="govuk-table__cell">
             N/A
@@ -65,7 +65,7 @@
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="v2/_index">V2</a>
+            <a href="exporter-v2/_index">V2</a>
           </td>
           <td class="govuk-table__cell">
             N/A
@@ -81,7 +81,7 @@
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="v1/_index">V1</a>
+            <a href="exporter-v1/_index">V1</a>
           </td>
           <td class="govuk-table__cell">
             N/A
@@ -130,7 +130,7 @@
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="v5-agency-officer/_index">V3</a>
+            <a href="agency-officer-v3/_index">V3</a>
           </td>
           <td class="govuk-table__cell">
             N/A
@@ -146,7 +146,7 @@
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="v4-agency-officer/_index">V2</a>
+            <a href="agency-officer-v2/_index">V2</a>
           </td>
           <td class="govuk-table__cell">
             N/A
@@ -162,7 +162,7 @@
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="v3-agency-officer/_index">V1</a>
+            <a href="agency-officer-v1/_index">V1</a>
           </td>
           <td class="govuk-table__cell">
             N/A
@@ -194,6 +194,57 @@
         #}
       </tbody>
     </table>
+
+
+    {# ASSESSMENTS #}
+    <h1 class="govuk-heading-l govuk-!-padding-top-4">
+      Assessments
+    </h1>
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Phase</th>
+          <th class="govuk-table__header" scope="col">Actor</th>
+          <th class="govuk-table__header" scope="col">Date</th>
+          <th class="govuk-table__header" scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <a href="alpha-assessment-agency-officer/_index">Alpha</a>
+          </td>
+          <td class="govuk-table__cell">
+            Agency Officer
+          </td>
+          <td class="govuk-table__cell">
+            1 Jul 2021
+          </td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Passed
+            </strong>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <a href="alpha-assessment-exporter/_index">Alpha</a>
+          </td>
+          <td class="govuk-table__cell">
+            Exporter
+          </td>
+          <td class="govuk-table__cell">
+            1 Jul 2021
+          </td>
+          <td class="govuk-table__cell">
+            <strong class="govuk-tag govuk-tag--green">
+              Passed
+            </strong>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
 
 {% endblock %}
