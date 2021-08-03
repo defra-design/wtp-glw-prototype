@@ -36,7 +36,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="who-arranged-shipment-details" aria-describedby="person-arranging-the-shipment-status">
-                  Contact details
+                  Person arranging the export
                 </a>
               </span>
               {% if data['person-arranging-the-shipment-status'] == null or data['person-arranging-the-shipment-status'] == 'Not started' %}
@@ -167,7 +167,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="countries-states-concerned" aria-describedby="countries-states-concerned-status">
-                  Countries of transit
+                  Countries the waste will travel through
                 </a>
               </span>
               {% if data['countries-states-concerned-status'] == null or data['countries-states-concerned-status'] == 'Not started' %}
@@ -193,7 +193,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="transaction-id" aria-describedby="transaction-id-status">
-                  Custom reference number
+                  Transaction and reference number
                 </a>
               </span>
               {% if data['transaction-id-status'] == null or data['transaction-id-status'] == 'Not started' %}
