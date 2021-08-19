@@ -2,6 +2,19 @@ const { red } = require('ansi-colors');
 const express = require('express')
 const router = express.Router()
 
+// cookies
+router.post('/cookies', function(req, res) {
+    if ((req.session.data['exporter-v4-cookies-yes-no'] == "yes") || (req.session.data['exporter-v4-cookies-yes-no'] == "no")) {
+        req.session.data['exporter-v4-cookie-status'] = "changed";
+        // Reload the same page, "Your cookie settings were saved" messaging will be triggered...
+        res.redirect('cookies');
+    } else {
+        req.session.data['exporter-v4-cookie-status'] = "error";
+        // Reload the same page, error state messaging will be triggered...
+        res.redirect('cookies');
+    }
+})
+
 // index
 router.post('/index', function(req, res) {
     
@@ -61,6 +74,7 @@ router.post('/index', function(req, res) {
 router.post('/_index', function(req, res) {
     // Set iteration version number for routing
     req.session.data['iteration-variant-and-number'] = "exporter-v4";
+
     res.redirect('email');
 })
 

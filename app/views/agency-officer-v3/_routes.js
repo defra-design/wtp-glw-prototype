@@ -1,6 +1,19 @@
 const express = require('express')
 const router = express.Router()
 
+// cookies
+router.post('/cookies', function(req, res) {
+    if ((req.session.data['agency-officer-v3-cookies-yes-no'] == "yes") || (req.session.data['agency-officer-v3-cookies-yes-no'] == "no")) {
+        req.session.data['agency-officer-v3-cookie-status'] = "changed";
+        // Reload the same page, "Your cookie settings were saved" messaging will be triggered...
+        res.redirect('cookies');
+    } else {
+        req.session.data['agency-officer-v3-cookie-status'] = "error";
+        // Reload the same page, error state messaging will be triggered...
+        res.redirect('cookies');
+    }
+})
+
 // sign-in
 router.post('/sign-in', function(req, res) {
     res.redirect('dashboard');
