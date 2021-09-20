@@ -7,9 +7,13 @@
       Person arranging the export
     </dt>
     <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-      <a class="govuk-link" href="who-arranged-shipment-details">
-        Change<span class="govuk-visually-hidden"> person arranging export</span>
-      </a>
+
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="who-arranged-shipment-details">
+          Change<span class="govuk-visually-hidden"> person arranging export</span>
+        </a>
+      {% endif %}
+
     </dd> 
   </div>
 </dl>
@@ -130,9 +134,11 @@
       Importer or consignee
     </dt>
     <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-      <a class="govuk-link" href="importer-consignee">
-        Change<span class="govuk-visually-hidden"> importer/consignee</span>
-      </a>
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="importer-consignee">
+          Change<span class="govuk-visually-hidden"> importer/consignee</span>
+        </a>
+      {% endif %}
     </dd> 
   </div>
 </dl>
@@ -240,9 +246,11 @@
       Quantity
     </dt>
     <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-      <a class="govuk-link" href="quantity">
-        Change<span class="govuk-visually-hidden"> quantity</span>
-      </a>
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="quantity">
+          Change<span class="govuk-visually-hidden"> quantity</span>
+        </a>
+      {% endif %}
     </dd> 
   </div>
 </dl>
@@ -285,9 +293,11 @@
       Date waste will be picked up
     </dt>
     <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-      <a class="govuk-link" href="date-of-shipment">
-        Change<span class="govuk-visually-hidden"> date waste will be picked up</span>
-      </a>
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="date-of-shipment">
+          Change<span class="govuk-visually-hidden"> date waste will be picked up</span>
+        </a>
+      {% endif %}
     </dd> 
   </div>
 </dl>
@@ -353,9 +363,11 @@
       Carrier 1
     </dt>
     <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-      <a class="govuk-link" href="carrier-add-1">
-        Change<span class="govuk-visually-hidden"> carriers</span>
-      </a>
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="carrier-add-1">
+          Change<span class="govuk-visually-hidden"> carriers</span>
+        </a>
+      {% endif %}
     </dd> 
   </div>
 </dl>
@@ -487,9 +499,11 @@
       Carrier 2
     </dt>
     <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-      <a class="govuk-link" href="carrier-add-2">
-        Change<span class="govuk-visually-hidden"> carriers</span>
-      </a>
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="carrier-add-2">
+          Change<span class="govuk-visually-hidden"> carriers</span>
+        </a>
+      {% endif %}
     </dd> 
   </div>
 </dl>
@@ -607,9 +621,11 @@
       Carrier 3
     </dt>
     <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-      <a class="govuk-link" href="carrier-add-3">
-        Change<span class="govuk-visually-hidden"> carriers</span>
-      </a>
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="carrier-add-3">
+          Change<span class="govuk-visually-hidden"> carriers</span>
+        </a>
+      {% endif %}
     </dd> 
   </div>
 </dl>
@@ -726,9 +742,11 @@
       Waste collection point
     </dt>
     <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-      <a class="govuk-link" href="waste-generator">
-        Change<span class="govuk-visually-hidden"> waste generator</span>
-      </a>
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="waste-generator">
+          Change<span class="govuk-visually-hidden"> waste generator</span>
+        </a>
+      {% endif %}
     </dd> 
   </div>
 </dl>
@@ -847,9 +865,11 @@
       {% endif %}
     </dt>
     <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-      <a class="govuk-link" href="recovery-facility-laboratory">
-        Change<span class="govuk-visually-hidden"> recovery facility or laboratory</span>
-      </a>
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="recovery-facility-laboratory">
+          Change<span class="govuk-visually-hidden"> recovery facility or laboratory</span>
+        </a>
+      {% endif %}
     </dd> 
   </div>
 </dl>
@@ -972,9 +992,11 @@
       {% endif %}
     </dd>
     <dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="recovery-operation">
-        Change<span class="govuk-visually-hidden"> Recovery operation</span>
-      </a>
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="recovery-operation">
+          Change<span class="govuk-visually-hidden"> Recovery operation</span>
+        </a>
+      {% endif %}
     </dd> 
   </div>
 </dl>
@@ -996,9 +1018,11 @@
       {{ data['usual-description'] }}
     </dd>
     <dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="usual-description">
-        Change<span class="govuk-visually-hidden"> usual description</span>
-      </a>
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="usual-description">
+          Change<span class="govuk-visually-hidden"> usual description</span>
+        </a>
+      {% endif %}
     </dd> 
   </div>
 </dl>
@@ -1013,9 +1037,11 @@
       Waste identification codes
     </dt>
     <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-      <a class="govuk-link" href="waste-identification-codes">
-        Change<span class="govuk-visually-hidden"> waste identification</span>
-      </a>
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="waste-identification-codes">
+          Change<span class="govuk-visually-hidden"> waste identification</span>
+        </a>
+      {% endif %}
     </dd> 
   </div>
 </dl>
@@ -1105,9 +1131,11 @@
       Countries the waste will travel through
     </dt>
     <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-      <a class="govuk-link" href="countries-states-concerned">
-        Change<span class="govuk-visually-hidden"> countries/states concerned</span>
-      </a>
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="countries-states-concerned">
+          Change<span class="govuk-visually-hidden"> countries/states concerned</span>
+        </a>
+      {% endif %}
     </dd> 
   </div>
 </dl>
@@ -1169,9 +1197,11 @@
       Container number
     </dt>
     <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-      <a class="govuk-link" href="container-number">
-        Change<span class="govuk-visually-hidden"> consginment number</span>
-      </a>
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="container-number">
+          Change<span class="govuk-visually-hidden"> consginment number</span>
+        </a>
+      {% endif %}
     </dd> 
   </div>
 </dl>
@@ -1203,9 +1233,11 @@
       Your transaction number
     </dt>
     <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-      <a class="govuk-link" href="transaction-id">
-        Change<span class="govuk-visually-hidden"> transaction IDs</span>
-      </a>
+      {% if data['show-change-links'] == 'yes' %}
+        <a class="govuk-link" href="transaction-id">
+          Change<span class="govuk-visually-hidden"> transaction IDs</span>
+        </a>
+      {% endif %}
     </dd> 
   </div>
 </dl>
@@ -1237,35 +1269,3 @@
   </div>
 </dl>
 <br>
-
-<!--=============-->
-<!-- DECLARATION -->
-<!--=============-->
-<p class="govuk-body">I certify that:</p>
-<ul class="govuk-list govuk-list--bullet">
-  <li>
-    the details I have provided are complete and correct to the best of my knowledge
-  </li>
-  <li>
-    I have entered into written contractual obligations with the waste importer or consignee, 
-    unless the waste is destined for laboratory analysis and weighs less than 25kg
-  </li>
-</ul>
-  
-<p class="govuk-body">Once you click confirm and submit:</p>
-<ul class="govuk-list govuk-list--bullet govuk-!-padding-bottom-2">
-  <li>
-    the details you have provided will be sent to the environmental regulator, you no longer need to send them 
-    an Annex VII form
-  </li>
-  <li>
-    a completed Annex VII form will be created for you to print and sign to travel with the waste
-  </li>
-</ul>
-
-<form method="post" novalidate>
-  <input type="hidden" name="answers-checked" value="true">
-  <button class="govuk-button" data-module="govuk-button">
-    Confirm and submit
-  </button>
-</form>

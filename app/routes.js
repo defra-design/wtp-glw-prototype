@@ -1,6 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
+// Dynamic check your answers routes
+router.use('/dynamic-check-your-answers/', (req, res, next) => {
+  return require(`./views/dynamic-check-your-answers/_routes`)(req, res, next);
+})
+
 // Defra ID
 router.use('/defra-id', require('./views/defra-id/_routes'));
 

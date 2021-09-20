@@ -1,6 +1,17 @@
 
-// Recaptcha box on the 'check your answers' steps
+// Button as link
+button.button-as-link {
+    background: none !important;
+    color: #005ea5;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    &:hover { color: #2b8cc4; }
+}
 
+// Recaptcha box on the 'check your answers' steps
 .rc-anchor-light.rc-anchor-normal {
     border: 1px solid #d3d3d3;
 }
@@ -120,7 +131,6 @@
 .rc-anchor-light .rc-anchor-pt a:link, .rc-anchor-light .rc-anchor-pt a:visited {
     color: #555;
 }
-
 
 .rc-anchor-logo-text {
     cursor: default;

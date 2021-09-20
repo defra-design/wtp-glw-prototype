@@ -1,0 +1,94 @@
+
+{% extends "../layouts/layout-exporter-v4.html" %}
+
+{% block pageTitle %}
+  Include dynamic reuseable check your answers page
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  
+{% endblock %}
+
+{% block content %}
+  <script>
+    req.session.data.error = "";
+  </script>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">
+        Trigger a scenario
+      </span>
+      <h1 class="govuk-heading-xl">
+        Check your answers
+      </h1>
+      
+      <form class="form" method="post">
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "choose-check-your-answers",
+          name: "choose-check-your-answers",
+          fieldset: {
+            legend: {
+              text: "Choose what to show"
+            }
+          },
+          items: [
+            {
+              value: "both",
+              text: "Both change links and declaration"
+            },
+            {
+              value: "change-links-only",
+              text: "Change links but exclude declaration"
+            },
+            {
+              value: "declaration-only",
+              text: "Exclude change links but include declaration"
+            },
+            {
+              value: "neither",
+              text: "Exclude both change links and declaration"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+      {#
+      <form class="form" method="post">
+    
+        <p class="govuk-body">
+          Enabled "Change" links:
+          <ol class="govuk-list govuk-list--number">
+            <li><button type="submit" class="button-as-link" formaction="post-to-this-url">Include declaration</button></li>
+            <li><button type="submit" class="button-as-link" formaction="post-to-this-url">Exclude declaration</a></li>
+          </ol>
+        </p>
+
+        <p class="govuk-body">
+          Disabled "Change" link:
+          <ol class="govuk-list govuk-list--number">
+            <li><button type="submit" class="button-as-link" formaction="post-to-this-url">Include declaration</button></li>
+            <li><button type="submit" class="button-as-link" formaction="post-to-this-url">Exclude declaration</button></li>
+          </ol>
+        </p>
+
+      </form>
+      #}
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+<!--=============-->
+<!-- DECLARATION -->
+<!--=============-->
+{% if data['show-declaration'] == 'yes' %}
+  <p class="govuk-body">I certify that:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      the details I have provided are complete and correct to the best of my knowledge
+    </li>
+    <li>
+      I have entered into written contractual obligations with the waste importer or consignee, 
+      unless the waste is destined for laboratory analysis and weighs less than 25kg
+    </li>
+  </ul>
+    
+  <p class="govuk-body">Once you click confirm and submit:</p>
+  <ul class="govuk-list govuk-list--bullet govuk-!-padding-bottom-2">
+    <li>
+      the details you have provided will be sent to the environmental regulator, you no longer need to send them 
+      an Annex VII form
+    </li>
+    <li>
+      a completed Annex VII form will be created for you to print and sign to travel with the waste
+    </li>
+  </ul>
+{% endif %}

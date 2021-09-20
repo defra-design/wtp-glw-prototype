@@ -1,0 +1,68 @@
+
+{% extends "../layouts/layout-exporter-v4.html" %}
+
+{% block pageTitle %}
+  Dashboard home - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  
+{% endblock %}
+
+{% block content %}
+  <script>
+    req.session.data.error = "";
+  </script>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">
+        {% if data['choose-check-your-answers'] == 'both' %}
+          Include both change links and declaration
+        {% elif data['choose-check-your-answers'] == 'change-links-only' %}
+          Include change links but exclude declaration
+        {% elif data['choose-check-your-answers'] == 'declaration-only' %}
+          Exclude change links but include declaration
+        {% elif data['choose-check-your-answers'] == 'neither' %}
+          Exclude both change links and declaration
+        {% endif %}
+      </span>
+      <h1 class="govuk-heading-xl">
+        Check your answers
+      </h1>
+
+      <!--====================-->
+      <!-- CHECK YOUR ANSWERS -->
+      <!--====================-->
+      {% include "includes/check-your-answers.html" %}
+
+      <!--=============-->
+      <!-- DECLARATION -->
+      <!--=============-->
+      {% if data['show-declaration'] == 'yes' %}
+        {% include "includes/declaration.html" %}
+        <form method="post" novalidate>
+          <input type="hidden" name="answers-checked" value="true">
+          <button class="govuk-button" data-module="govuk-button">
+            Confirm and submit
+          </button>
+        </form>
+      {% else %}
+        <form method="post" novalidate>
+          <input type="hidden" name="answers-checked" value="true">
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+      {% endif %}
+
+    </div>
+  </div>
+
+{% endblock %}
