@@ -102,6 +102,15 @@ if ($('#recovery-operation-typeahead-container').length > 0) {
   })
 }
 
+// R-code and D-code specifically for Exporter v4
+// Added 23rd August 2021 and hopefully addresses the issue experienced in Google Chrome
+let selectElement = document.querySelector('#recoveryOperation-exporter-v4')
+
+accessibleAutocomplete.enhanceSelectElement({
+  defaultValue: '',
+  selectElement: selectElement
+})
+
 // Basel Annex IX autocomplete
 const baselAnnexIX = [
   'B1010: Metal and metal-alloy wastes in metallic, non-dispersible form',
