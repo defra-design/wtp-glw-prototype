@@ -41,17 +41,24 @@
 {% endblock %}
 
 {% block header %}
-{# Set serviceName in config.js. #}
-  <header class="govuk-header" role="banner" data-module="govuk-header">
-    <div class="govuk-header__container govuk-width-container">
-      <div class="govuk-header__logo govuk-!-width-full">
-        <a href="dashboard" class="govuk-header__link govuk-header__link--homepage">
-          <span class="govuk-header__logotype">
-            <span class="govuk-header__logotype-text">
-              Export green list waste
-            </span>
-          </span>
-        </a>
+  <header class="moj-header" role="banner">
+    <div class="moj-header__container">
+      <div class="moj-header__logo">
+        {# Service name #}
+        <a class="moj-header__link moj-header__link--service-name govuk-!-font-weight-bold" href="/agency-officer-v3/dashboard">Export green list waste</a>
+      </div>
+      <div class="moj-header__content">
+        <nav class="moj-header__navigation" aria-label="Account navigation">
+          <ul class="moj-header__navigation-list">
+            <li class="moj-header__navigation-item">
+              {# Full name of current logged-in user #}
+              <a class="moj-header__navigation-link" href="#" aria-current="page">Elizabeth Wilkinson</a>
+            </li>
+            <li class="moj-header__navigation-item">
+              <a class="moj-header__navigation-link" href="/agency-officer-v3/sign-in">Sign out</a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </header>
