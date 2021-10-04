@@ -50,6 +50,8 @@ router.post('/index', function(req, res) {
 
     // reset template name variable
     req.session.data['template-name'] = undefined;
+    req.session.data['rename-template-name'] = "Fabric Society Waste mixed paper";
+    req.session.data['total-favs'] = "6";
 
     res.redirect('dashboard');
 })
@@ -113,6 +115,8 @@ router.post('/login', function(req, res) {
 
     // reset template name variable
     req.session.data['template-name'] = undefined;
+    req.session.data['rename-template-name'] = "Fabric Society Waste mixed paper";
+    req.session.data['total-favs'] = "6";
 
     res.redirect('dashboard');
 })
@@ -148,6 +152,11 @@ router.post('/submitted-817435283-update-shipment', function(req, res) {
 
 // save-as-template
 router.post('/save-as-template', function(req, res) {
+    res.redirect('prenotification-templates');
+})
+
+// rename-template
+router.post('/rename-template', function(req, res) {
     res.redirect('prenotification-templates');
 })
 
@@ -509,6 +518,16 @@ router.get('*/update-prenotifications-form-validation', function (req, res) {
         req.session.data.error = "no-error";
         res.redirect ('update-prenotifications');
     }
+})
+
+// delete-template
+router.post('/delete-template', function(req, res) {
+    res.redirect('prenotification-templates');
+})
+
+// create-template-from-view-all
+router.post('/create-template-from-view-all', function(req, res) {
+    res.redirect('create-template-success');
 })
 
 // Add your routes here - above the module.exports line
