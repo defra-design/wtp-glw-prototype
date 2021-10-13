@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-exporter-v4.html" %}
 
 {% block pageTitle %}
-  Successfully createed favourite template - Export green list waste
+  Template created - Export green list waste
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,18 +19,23 @@
     <div class="govuk-grid-column-two-thirds">
 
       {{ govukPanel({
-        titleText: "Successfully created favourite template"
+        titleText: "Template saved"
       }) }}
+      <h2 class="govuk-heading-m">
+        What would you like to do next?
+      </h2>
 
-      <p class="govuk-body govuk-!-padding-top-4 govuk-!-padding-bottom-2">
-        Your new favourite template has been successfully created.
-      </p>
-
-      <p class="govuk-body">
-        <a href="submitted-prenotifications" class="govuk-link">
-          Return to view all submitted exports
-        </a>
-      </p>
+     <ul class="govuk-list govuk-list--bullet"></ul>
+        <li><a href="submitted-prenotifications" class="govuk-link">
+          View all submitted exports
+        </a></li>
+        <li><a href="prenotification-templates" class="govuk-link">
+          View templates
+        </a></li>
+        <li><a href="dashboard" class="govuk-link">
+          Return to home
+        </a></li>
+      </ul>
 
     </div>
   </div>
