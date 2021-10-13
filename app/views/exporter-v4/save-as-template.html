@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-exporter-v4.html" %}
 
 {% block pageTitle %}
-  Save favourite - Export green list waste
+  Create a template - Export green list waste
 {% endblock %}
 
 {% block content %}
@@ -10,21 +10,17 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Save a favourite export
+        Create a template
       </h1>
 
-      <p class="govuk-body govuk-!-padding-bottom-2">
-        Save the last export as a favourite to send it quicker next time.
-      </p>
-
-      <form class="form" method="post">
+        <form class="form" method="post">
 
       {% call govukFieldset({
       }) %}
 
       {{ govukInput({
         label: {
-          text: "What would you like to name this favourite?",
+          text: "What would you like to call this template?",
           classes: "govuk-label--m",
           isPageHeading: false
         },
@@ -36,16 +32,18 @@
       {% endcall %}
 
       {{ govukButton({
-        text: 'Save favourite'
+        text: 'Save template'
       }) }}
 
       </form>
-
-      <!-- START OF TEMPLATE -->
-
       <h2 class="govuk-heading-m govuk-!-padding-top-4">
-        The favourite will use the details below.
+        Template details
       </h2>
+
+      <p class="govuk-body govuk-!-padding-bottom-2">
+        The pick up date, weight and first carrier details can be added when you start an export using this template.
+      </p>
+      <!-- START OF TEMPLATE -->
 
       <!--===================================-->
       <!-- PERSON ARRANGING SHIPMENT HEADING -->
