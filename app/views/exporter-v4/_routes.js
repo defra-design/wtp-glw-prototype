@@ -152,7 +152,7 @@ router.post('/submitted-817435283-update-shipment', function(req, res) {
 
 // save-as-template
 router.post('/save-as-template', function(req, res) {
-    res.redirect('prenotification-templates');
+    res.redirect('create-template-success');
 })
 
 // rename-template
