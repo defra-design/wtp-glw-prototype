@@ -13,30 +13,36 @@
         Save a template
       </h1>
 
-        <form class="form" method="post">
+      <form class="form" method="post">
 
-      {% call govukFieldset({
-      }) %}
+        {% call govukFieldset({
+        }) %}
 
-      {{ govukInput({
-        label: {
-          text: "What would you like to call this template?",
-          classes: "govuk-label--m",
-          isPageHeading: false
-        },
-        id: "template",
-        name: "template-name",
-        value: data['template-name']
-      }) }}
+        {{ govukInput({
+          label: {
+            text: "What would you like to call this template?",
+            classes: "govuk-label--s",
+            isPageHeading: false
+          },
+          id: "template",
+          name: "template-name",
+          value: data['template-name'],
+          value : ""
+        }) }}
 
-      {% endcall %}
+        {% endcall %}
 
-      {{ govukButton({
-        text: 'Save template'
-      }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: 'Save template'
+          }) }}
+
+          <a class="govuk-link" href="javascript:history.go(-1)">Cancel</a>
+        </div>
 
       </form>
-      <h2 class="govuk-heading-m govuk-!-padding-top-4">
+
+      <h2 class="govuk-heading-l govuk-!-padding-top-4">
         Template details
       </h2>
 

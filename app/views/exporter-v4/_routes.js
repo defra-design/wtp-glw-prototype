@@ -526,9 +526,9 @@ router.post('/delete-template', function(req, res) {
 })
 
 // create-template-from-view-all
-router.post('/create-template-from-view-all', function(req, res) {
-    res.redirect('create-template-success');
-})
+//router.post('/create-template-from-view-all', function(req, res) {
+//    res.redirect('create-template-success');
+//})
 
 // Add your routes here - above the module.exports line
 module.exports = router
