@@ -8,18 +8,6 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" style="border-color: #d4351c !important">
-        <div class="govuk-notification-banner__header" style="background-color: #d4351c !important">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Important
-          </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <p class="govuk-notification-banner__heading">
-            Review export details and make changes before submitting notification 
-          </p>
-        </div>
-      </div>
 
       <h1 class="govuk-heading-l">
         {% if data['template-name'] != undefined %}
@@ -29,6 +17,10 @@
         {% endif %}
       </h1>
 
+      <p class="govuk-body">
+        Maybe something here as an intro paragraph?
+      </p>
+
       <!--===================================-->
       <!-- PERSON ARRANGING SHIPMENT HEADING -->
       <!--===================================-->
@@ -37,11 +29,6 @@
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
             Person arranging the export
           </dt>
-          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="who-arranged-shipment-details">
-              Change<span class="govuk-visually-hidden"> person arranging shipment</span>
-            </a>
-          </dd> 
         </div>
       </dl>
 
@@ -121,11 +108,6 @@
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
             Importer or consignee
           </dt>
-          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="importer-consignee">
-              Change<span class="govuk-visually-hidden"> importer/consignee</span>
-            </a>
-          </dd> 
         </div>
       </dl>
 
@@ -208,11 +190,6 @@
           <dt class="govuk-heading-m" id="update-quantity" style="display: block-inline; margin: 0; padding: 0;">
             Quantity
           </dt>
-          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="submitted-817435283-update-quantity">
-              Change<span class="govuk-visually-hidden"> quantity</span>
-            </a>
-          </dd> 
         </div>
       </dl>
 
@@ -244,11 +221,6 @@
           <dt class="govuk-heading-m" id="update-date-of-shipment" style="margin: 0; padding: 0;">
             Date waste will be picked up
           </dt>
-          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="submitted-817435283-update-shipment">
-              Change<span class="govuk-visually-hidden"> date of shipment</span>
-            </a>
-          </dd> 
         </div>
       </dl>
 
@@ -280,11 +252,6 @@
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
             Carrier 1
           </dt>
-          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="carriers">
-              Change<span class="govuk-visually-hidden"> carriers</span>
-            </a>
-          </dd> 
         </div>
       </dl>
 
@@ -383,11 +350,6 @@
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
             Waste collection point
           </dt>
-          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="waste-generator">
-              Change<span class="govuk-visually-hidden"> waste generator</span>
-            </a>
-          </dd> 
         </div>
       </dl>
 
@@ -468,11 +430,6 @@
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
             Recovery facility
           </dt>
-          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="recovery-facility-laboratory">
-              Change<span class="govuk-visually-hidden"> recovery facility or laboratory</span>
-            </a>
-          </dd> 
         </div>
       </dl>
 
@@ -561,11 +518,6 @@
           <dd class="govuk-summary-list__value">
             R12: Exchange of wastes for submission to any of the operations numbered R01 to R11
           </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="recovery-operation">
-              Change<span class="govuk-visually-hidden"> Recovery operation</span>
-            </a>
-          </dd> 
         </div>
       </dl>
       <br><br>
@@ -585,11 +537,6 @@
           <dd class="govuk-summary-list__value">
             Paper scrap - OCC
           </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="usual-description">
-              Change<span class="govuk-visually-hidden"> usual description</span>
-            </a>
-          </dd> 
         </div>
       </dl>
       <br><br>
@@ -602,11 +549,6 @@
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
             Waste identification codes
           </dt>
-          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="waste-identification-codes">
-              Change<span class="govuk-visually-hidden"> waste identification</span>
-            </a>
-          </dd> 
         </div>
       </dl>
       
@@ -670,11 +612,6 @@
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
             Countries the waste will travel through
           </dt>
-          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="countries-states-concerned">
-              Change<span class="govuk-visually-hidden"> countries/states concerned</span>
-            </a>
-          </dd> 
         </div>
       </dl>
       
@@ -715,11 +652,6 @@
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
             Container number
           </dt>
-          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="container-number">
-              Change<span class="govuk-visually-hidden"> consginment number</span>
-            </a>
-          </dd> 
         </div>
       </dl>
 
@@ -735,8 +667,6 @@
               {{ data['container-number-entered'] or "Not provided"}}
             {% endif %}
           </dd>
-          <dd class="govuk-summary-list__actions">
-          </dd>
         </div>
       </dl>
       <br><br>
@@ -749,11 +679,6 @@
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
             Your transaction number
           </dt>
-          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="transaction-id">
-              Change<span class="govuk-visually-hidden"> transaction IDs</span>
-            </a>
-          </dd> 
         </div>
       </dl>
 
@@ -785,39 +710,44 @@
       </dl>
       <br>
 
-      <!--=============-->
-      <!-- DECLARATION -->
-      <!--=============-->
-      <p class="govuk-body">I certify that:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          the details I have provided are complete and correct to the best of my knowledge
-        </li>
-        <li>
-          I have entered into written contractual obligations with the waste importer or consignee, 
-          unless the waste is destined for laboratory analysis and weighs less than 25kg
-        </li>
-      </ul>
-        
-      <p class="govuk-body">Once you click confirm and submit:</p>
-      <ul class="govuk-list govuk-list--bullet govuk-!-padding-bottom-2">
-        <li>
-          the details you have provided will be sent to the environmental regulator, you no longer need to send them 
-          an Annex VII form
-        </li>
-        <li>
-          a completed Annex VII form will be created for you to print and sign to travel with the waste
-        </li>
-      </ul>
+    </div>
 
-      <form method="post" novalidate>
-        <input type="hidden" name="answers-checked" value="true">
-        <button class="govuk-button" data-module="govuk-button">
-          Confirm and submit
-        </button>
-      </form>
+    {# Right hand side action panel #}
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Use this template</span>
+          <p class="govkuk-body app-step-nav__paragraph">Something about the "use" functionality.</p>
+          <a href="template-euromovement">
+            Use this template
+          </a>
+        </h2>
+      </div>
+
+      <div class="app-step-nav-related">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Edit this template</span>
+          <p class="govkuk-body app-step-nav__paragraph">Something about the "edit" functionality.</p>
+          <a href="template-euromovement-edit">
+            Edit this template
+          </a>
+        </h2>
+      </div>
+
+      <div class="app-step-nav-related">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">Delete this template</span>
+          <p class="govkuk-body app-step-nav__paragraph">Something about the "delete" functionality.</p>
+          <a href="delete-template">
+            Delete this template
+          </a>
+        </h2>
+      </div>
 
     </div>
+
   </div>
+
 
 {% endblock %}

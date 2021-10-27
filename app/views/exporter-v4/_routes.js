@@ -522,7 +522,7 @@ router.get('*/update-prenotifications-form-validation', function (req, res) {
 
 // delete-template
 router.post('/delete-template', function(req, res) {
-    res.redirect('prenotification-templates');
+    res.redirect('delete-confirmation');
 })
 
 // create-template-from-view-all

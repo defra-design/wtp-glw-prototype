@@ -14,3 +14,4 @@ package-lock.json
 node_modules
 app/assets/.DS_Store
 .DS_Store
+app/.DS_Store
