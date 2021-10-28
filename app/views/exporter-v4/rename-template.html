@@ -19,7 +19,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Rename favourite
+        What would you like to call this template?
       </h1>
 
       <form class="form" method="post">
@@ -28,10 +28,6 @@
       }) %}
 
       {{ govukInput({
-        label: {
-          text: "Update the name of this template",
-          isPageHeading: false
-        },
         id: "rename-template-name",
         name: "rename-template-name",
         value: data['rename-template-name']
@@ -42,10 +38,10 @@
       <div class="govuk-button-group">
 
         {{ govukButton({
-          text: 'Rename and continue'
+          text: 'Save'
         }) }}
 
-        <a class="govuk-link" href="prenotification-templates">Cancel, do not rename</a>
+        <a class="govuk-link" href="template-euromovement-edit">Cancel</a>
 
       </div>
 
