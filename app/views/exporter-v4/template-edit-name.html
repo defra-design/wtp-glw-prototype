@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-exporter-v4.html" %}
 
 {% block pageTitle %}
-  Rename favourite - Export green list waste
+  Update template name - Export green list waste
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,7 +19,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        What would you like to call this template?
+        Update template name
       </h1>
 
       <form class="form" method="post">
@@ -28,9 +28,9 @@
       }) %}
 
       {{ govukInput({
-        id: "rename-template-name",
-        name: "rename-template-name",
-        value: data['rename-template-name']
+        id: "new-rename-template-name",
+        name: "new-rename-template-name",
+        value: data['new-rename-template-name']
       }) }}
 
       {% endcall %}

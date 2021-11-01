@@ -4,40 +4,73 @@
   Euromovement paper waste movement - Export green list waste
 {% endblock %}
 
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'template-euromovement-selected'
+  }) }}
+{% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            I AM BEING EDITED
-          </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <p class="govuk-notification-banner__heading">
-            Maybe some messaging here making it clear that this is a template that is being edited
-          </p>
-        </div>
-      </div>
 
-      {# TEMPLATE HEADING / NAME #}
+      {# AN EDIT HAS HAPPENED BANNER #}
+      {% if data['just-edited'] == 'yes' %}
+        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" style="border-color: #00703c !important">
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="body_1" width="33" height="33">
+                <g transform="matrix(0.33 0 0 0.33 0 0)">
+                  <g>
+                    <path d="M91.86289 4.4383235C 48.27099 86.70242 48.27099 86.70242 48.27099 86.70242L48.27099 86.70242L5.1194143 58.161816" stroke="#008000" stroke-width="18.351" fill="none" />
+                  </g>
+                </g>
+              </svg>
+              Template name has been updated.
+            </p>
+          </div>
+        </div>
+      {% endif %}
+
+      <h1 class="govuk-heading-l">
+        Edit template
+      </h1>
+
+      <!--===============-->
+      <!-- TEMPLATE NAME -->
+      <!--===============-->
+      <h2 class="govuk-heading-m">
+        Template name
+      </h2>
+      
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-heading-l" style="margin: 0; padding: 0;">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Template name
+          </dt>
+          <dd class="govuk-summary-list__value">
             {% if data['template-name'] != undefined %}
               {{ data['template-name'] }}
             {% else %}
               Euromovement paper waste movement
             {% endif %}
-          </dt>
-          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="template-euromovement-edit">
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-edit-name">
               Update<span class="govuk-visually-hidden"> template name</span>
             </a>
           </dd> 
         </div>
       </dl>
+      <br><br>
 
       <!--===================================-->
       <!-- PERSON ARRANGING SHIPMENT HEADING -->
@@ -775,7 +808,7 @@
             Transaction number
           </dt>
           <dd class="govuk-summary-list__value">
-            HDJ2123F
+            Not provided
           </dd>
           <dd class="govuk-summary-list__actions">
           </dd>

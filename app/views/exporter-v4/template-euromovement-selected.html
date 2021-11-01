@@ -4,80 +4,24 @@
   Euromovement paper waste movement - Export green list waste
 {% endblock %}
 
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'prenotification-templates'
+  }) }}
+{% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
-    
-    <div class="govuk-grid-column-full">
-
-      <div class="moj-page-header-actions">
-        <div class="moj-page-header-actions__title">
-          <h1 class="govuk-heading-l govuk-!-padding-bottom-4">
-            {%if data['template-name'] != undefined %}
-              {{ data['template-name'] }}
-            {% else %}
-              Euromovement paper waste movement
-            {% endif %}
-          </h1>
-        </div>
-        <div class="moj-page-header-actions__actions">
-          <div class="moj-button-menu">
-            <div class="moj-button-menu__wrapper">
-              {{ govukButton({
-                text: "Use this template",
-                href: "template-euromovement",
-                classes: "govuk-!-margin-right-4"
-              }) }}
-              {{ govukButton({
-                text: "Edit this template",
-                href: "template-euromovement-edit",
-                classes: "govuk-button--secondary govuk-!-margin-right-4"
-              }) }}
-              {{ govukButton({
-                text: "Delete this template",
-                href: "delete-template",
-                classes: "govuk-button--secondary"
-              }) }}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {#
-      <h1 class="govuk-heading-l">
-        {% if data['template-name'] != undefined %}
-          {{ data['template-name'] }}
-        {% else %}
-          Euromovement paper waste movement
-        {% endif %}
-      </h1>
-
-      <div class="moj-page-header-actions">
-        <div class="moj-page-header-actions__title">
-        </div>
-        <div class="moj-page-header-actions__actions">
-          <div class="moj-button-menu">
-            <div class="moj-button-menu__wrapper">
-              <button class="govuk-button moj-button-menu__item moj-page-header-actions__action" data-module="govuk-button">
-                Use this template
-              </button>
-              <button class="govuk-button moj-button-menu__item govuk-button--secondary moj-page-header-actions__action" data-module="govuk-button">
-                Edit this template
-              </button>
-              <button class="govuk-button moj-button-menu__item govuk-button--secondary moj-page-header-actions__action" data-module="govuk-button">
-                Delete this template
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      #}
-
-    </div>
-
     <div class="govuk-grid-column-two-thirds">
 
-      {#
       <h1 class="govuk-heading-l">
         {% if data['template-name'] != undefined %}
           {{ data['template-name'] }}
@@ -85,7 +29,6 @@
           Euromovement paper waste movement
         {% endif %}
       </h1>
-      #}
 
       <!--===================================-->
       <!-- PERSON ARRANGING SHIPMENT HEADING -->
@@ -756,7 +699,7 @@
             Transaction number
           </dt>
           <dd class="govuk-summary-list__value">
-            HDJ2123F
+            Not provided
           </dd>
           <dd class="govuk-summary-list__actions">
           </dd>
@@ -781,64 +724,22 @@
     </div>
 
     {# Right hand side action panel #}
-    {#
+
     <div class="govuk-grid-column-one-third">
+      <div class="app-step-nav-related govuk-!-padding-top-4">
+        {{ govukButton({
+          text: "Use this template",
+          classes: "govuk-!-margin-bottom-4",
+          href : "template-euromovement"
+        }) }}
+        <p class="govuk-body govuk-!-margin-bottom-4">
+          <a class="govuk-link" href="template-euromovement-edit?just-edited=no">Edit this template</a>
+        </p>
+        <p class="govuk-body">
+          <a class="govuk-link" href="delete-template">Delete this template</a>
+        </p>
 
-      <div class="app-step-nav-related">
-        <h2 class="app-step-nav-related__heading">
-          <span class="app-step-nav-related__pretitle">Actions</span>
-        </h2>
-
-        <div class="govuk-button-group">
-          {{ govukButton({
-            text: "Use this template"
-          }) }}
-
-          {{ govukButton({
-            text: "Edit this template",
-            classes: "govuk-button--secondary"
-          }) }}
-
-          {{ govukButton({
-            text: "Delete this template",
-            classes: "govuk-button--secondary"
-          }) }}
-        </div>
       </div>
-      #}
-
-      {#
-      <div class="app-step-nav-related">
-        <h2 class="app-step-nav-related__heading">
-          <span class="app-step-nav-related__pretitle">Use this template</span>
-          <p class="govkuk-body app-step-nav__paragraph">Something about the "use" functionality.</p>
-          <a href="template-euromovement">
-            Use this template
-          </a>
-        </h2>
-      </div>
-
-      <div class="app-step-nav-related">
-        <h2 class="app-step-nav-related__heading">
-          <span class="app-step-nav-related__pretitle">Edit this template</span>
-          <p class="govkuk-body app-step-nav__paragraph">Something about the "edit" functionality.</p>
-          <a href="template-euromovement-edit">
-            Edit this template
-          </a>
-        </h2>
-      </div>
-
-      <div class="app-step-nav-related">
-        <h2 class="app-step-nav-related__heading">
-          <span class="app-step-nav-related__pretitle">Delete this template</span>
-          <p class="govkuk-body app-step-nav__paragraph">Something about the "delete" functionality.</p>
-          <a href="delete-template">
-            Delete this template
-          </a>
-        </h2>
-      </div>
-      #}
-
     </div>
 
   </div>

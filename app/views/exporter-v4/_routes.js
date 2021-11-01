@@ -51,7 +51,10 @@ router.post('/index', function(req, res) {
     // reset template name variable
     req.session.data['template-name'] = undefined;
     req.session.data['rename-template-name'] = "Fabric Society Waste mixed paper";
+    req.session.data['new-rename-template-name'] = "Euromovement paper waste movement";
     req.session.data['total-favs'] = "6";
+
+    req.session.data['just-edited'] = 'no';
 
     res.redirect('dashboard');
 })
@@ -116,7 +119,10 @@ router.post('/login', function(req, res) {
     // reset template name variable
     req.session.data['template-name'] = undefined;
     req.session.data['rename-template-name'] = "Fabric Society Waste mixed paper";
+    req.session.data['new-rename-template-name'] = "Euromovement paper waste movement";
     req.session.data['total-favs'] = "6";
+
+    req.session.data['just-edited'] = 'no';
 
     res.redirect('dashboard');
 })
@@ -155,9 +161,13 @@ router.post('/save-as-template', function(req, res) {
     res.redirect('create-template-success');
 })
 
-// rename-template
-router.post('/rename-template', function(req, res) {
-    res.redirect('prenotification-templates');
+// template-edit-name
+router.post('/template-edit-name', function(req, res) {
+    //res.redirect('prenotification-templates');
+    req.session.data['template-name'] = req.session.data['rename-template-name'];
+    req.session.data['template-name'] = req.session.data['new-rename-template-name'];
+    req.session.data['just-edited'] = 'yes';
+    res.redirect('template-euromovement-edit');
 })
 
 // manual-bulk-api
@@ -522,6 +532,8 @@ router.get('*/update-prenotifications-form-validation', function (req, res) {
 
 // delete-template
 router.post('/delete-template', function(req, res) {
+    req.session.data['delete-template'] = "yes";
+    req.session.data['template-name'] = undefined;
     res.redirect('delete-confirmation');
 })
 
