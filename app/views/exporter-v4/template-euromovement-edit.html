@@ -27,13 +27,13 @@
         <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" style="border-color: #00703c !important">
           <div class="govuk-notification-banner__content">
             <p class="govuk-notification-banner__heading">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="body_1" width="33" height="33">
+              {#<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="body_1" width="33" height="33">
                 <g transform="matrix(0.33 0 0 0.33 0 0)">
                   <g>
                     <path d="M91.86289 4.4383235C 48.27099 86.70242 48.27099 86.70242 48.27099 86.70242L48.27099 86.70242L5.1194143 58.161816" stroke="#008000" stroke-width="18.351" fill="none" />
                   </g>
                 </g>
-              </svg>
+              </svg>#}
               Template name has been updated.
             </p>
           </div>
@@ -831,6 +831,16 @@
       <br>
 
     </div>
+
+    {# Right hand side action panel #}
+    <div class="govuk-grid-column-one-third">
+      <div class="app-step-nav-related govuk-!-padding-top-4">
+        <p class="govuk-body">
+          <a class="govuk-link" href="prenotification-templates">View all templates</a>
+        </p>
+      </div>
+    </div>
+
   </div>
 
 {% endblock %}
