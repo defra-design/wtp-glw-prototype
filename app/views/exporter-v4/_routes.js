@@ -194,6 +194,10 @@ router.post('/manual-bulk-api', function(req, res) {
         req.session.data['submit-and-generate-status'] = "Cannot start yet";
 
         res.redirect('prenotify');
+
+    } else if (req.session.data['manual-bulk'] == 'use-template') {
+        res.redirect('prenotification-templates');
+        
     } else {
         res.redirect('api-information');
     }

@@ -12,10 +12,22 @@
     },
     html: 'This is not a live service.'
   }) }}
-  {{ govukBackLink({
-    text: 'Back',
-    href: 'dashboard'
-  }) }}
+
+  {# Unclear why gCurrentLocation lists the previous location URL, and gPreviousLocation doesn't. #}
+  {# Very confusing and conscious of logic already in-place, so don't want to make changes they may otherwise break things further down-the-line... #}
+
+  {% if 'manual-bulk-api' in data['gCurrentLocation'] %}
+    {{ govukBackLink({
+      text: 'Back',
+      href: 'manual-bulk-api'
+    }) }}
+  {% else %}
+    {{ govukBackLink({
+      text: 'Back',
+      href: 'dashboard'
+    }) }}
+  {% endif %}
+
 {% endblock %}
 
 {% block content %}
