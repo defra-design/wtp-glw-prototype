@@ -56,9 +56,6 @@ useHttps = useHttps.toLowerCase()
 
 var useDocumentation = (config.useDocumentation === 'true')
 
-// Logging
-var useLogging = config.useLogging
-
 // Promo mode redirects the root to /docs - so our landing page is docs when published on heroku
 var promoMode = process.env.PROMO_MODE || 'false'
 promoMode = promoMode.toLowerCase()
@@ -105,7 +102,7 @@ app.set('view engine', 'html')
 // Middleware to serve static assets
 app.use('/public', express.static(path.join(__dirname, '/public')))
 
-// Serve govuk-frontend in from node_modules (so not to break pre-extenstions prototype kits)
+// Serve govuk-frontend in from node_modules (so not to break pre-extensions prototype kits)
 app.use('/node_modules/govuk-frontend', express.static(path.join(__dirname, '/node_modules/govuk-frontend')))
 
 // Set up documentation app
@@ -199,24 +196,6 @@ if (useAutoStoreData === 'true') {
   if (useV6) {
     utils.addCheckedFunction(nunjucksV6Env)
   }
-}
-
-// Logging session data
-if (useLogging !== 'false') {
-  app.use((req, res, next) => {
-    const all = (useLogging === 'true')
-    const post = (useLogging === 'post' && req.method === 'POST')
-    const get = (useLogging === 'get' && req.method === 'GET')
-    if (all || post || get) {
-      const log = {
-        method: req.method,
-        url: req.originalUrl,
-        data: req.session.data
-      }
-      console.log(JSON.stringify(log, null, 2))
-    }
-    next()
-  })
 }
 
 // Clear all data in session if you open /prototype-admin/clear-data
