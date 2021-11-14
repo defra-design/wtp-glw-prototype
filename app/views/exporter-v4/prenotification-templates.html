@@ -50,20 +50,25 @@
         </thead>
         
         <tbody class="govuk-table__body">
-          {% if data['template-name'] != undefined %}
+          {% if 'template-euromovement-edit' in data['gCurrentLocation'] %}
+            {# Do nothing #}
+          {% else %}
+            {# Not sure as to what aspect this refers to #}
+            {% if data['template-name'] != undefined %}
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">
+                  {{ data['template-name'] }}
+                </td>
+                <td class="govuk-table__cell">
+                  10 June 2021
+                </td>
+                <td class="govuk-table__cell">
+                  <a href="template-euromovement-selected?just-edited=no" class="govuk-link">Select template</a>
+                </td>
+              </tr>
+            {% endif %}
+            {% endif %}
             <tr class="govuk-table__row">
-              <td scope="row" class="govuk-table__cell">
-                {{ data['template-name'] }}
-              </td>
-              <td class="govuk-table__cell">
-                10 June 2021
-              </td>
-              <td class="govuk-table__cell">
-                <a href="template-euromovement-selected?just-edited=no" class="govuk-link">Select template</a>
-              </td>
-            </tr>
-          {% endif %}
-          <tr class="govuk-table__row">
             <td scope="row" class="govuk-table__cell">
               Euromovement paper waste movement
             </td>
@@ -79,13 +84,23 @@
           {% if data['delete-template'] != "yes" %}
             <tr class="govuk-table__row">
               <td scope="row" class="govuk-table__cell">
-                {{ data['rename-template-name'] }}
+
+                {% if 'template-euromovement-edit' in data['gCurrentLocation'] %}
+                  {{ data['template-name'] }}
+                {% else %}
+                  {{ data['rename-template-name'] }}
+                {% endif %}
+
               </td>
               <td class="govuk-table__cell">
                 7 June 2021
               </td>
               <td class="govuk-table__cell">
-                <a href="template-euromovement-selected?template-name=Fabric Society Waste mixed paper" class="govuk-link">Select template</a>
+                {% if data['template-name'] != undefined %}
+                  <a href="template-fabirc-society-selected?template-name={{ data['template-name'] }}" class="govuk-link">Select template</a>
+                {% else %}
+                  <a href="template-fabirc-society-selected?template-name=Fabric Society Waste mixed paper" class="govuk-link">Select template</a>
+                {% endif %}
               </td>
             </tr>
           {% endif %}
