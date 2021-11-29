@@ -17,10 +17,10 @@
 
 {% block content %}
 
-  {# Session timeout mechanism - set for 90 seconds, warning after 30 seconds #}
+  {# Session timeout mechanism - set for 60 seconds, warning after 30 seconds #}
   {{ hmrcTimeoutDialog ({
-    timeout: 90,
-    countdown: 60,
+    timeout: 60,
+    countdown: 30,
     keepAliveUrl: "?continue=true",
     signOutUrl: "signed-out?lang=English",
     language: "en"
