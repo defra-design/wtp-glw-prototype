@@ -26,6 +26,7 @@ router.use('/agency-officer-v1/', (req, res, next) => {
 
 // Import Exporter V4 routes
 router.use('/exporter-v4/', (req, res, next) => {
+  //req.session.data["entered-criteria"] = undefined;
   return require(`./views/exporter-v4/_routes`)(req, res, next);
 })
 

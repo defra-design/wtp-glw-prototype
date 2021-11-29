@@ -17,6 +17,15 @@
 
 {% block content %}
 
+  {# Session timeout mechanism - set for 90 seconds, warning after 30 seconds #}
+  {{ hmrcTimeoutDialog ({
+    timeout: 90,
+    countdown: 60,
+    keepAliveUrl: "?continue=true",
+    signOutUrl: "signed-out?lang=English",
+    language: "en"
+  }) }}
+
   <script>
     req.session.data.error = "";
   </script>

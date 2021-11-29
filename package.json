@@ -12,7 +12,7 @@
     "test": "npm run lint && gulp generate-assets && jest"
   },
   "dependencies": {
-    "@ministryofjustice/frontend": "^1.0.0",
+    "@ministryofjustice/frontend": "^1.0.1",
     "acorn": "^8.5.0",
     "ansi-colors": "^4.1.1",
     "basic-auth": "^2.0.0",
@@ -34,7 +34,7 @@
     "gulp-nodemon": "^2.5.0",
     "gulp-sass": "^5.0.0",
     "gulp-sourcemaps": "^3.0.0",
-    "hmrc-frontend": "^3.1.1",
+    "hmrc-frontend": "^3.2.0",
     "inquirer": "^8.2.0",
     "keypather": "^3.0.0",
     "marked": "^3.0.8",

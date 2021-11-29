@@ -56,6 +56,8 @@ router.post('/index', function(req, res) {
 
     req.session.data['just-edited'] = 'no';
 
+    req.session.data["entered-criteria"] = undefined;
+
     res.redirect('dashboard');
 })
 
@@ -499,6 +501,12 @@ router.post('/check-your-answers', function(req, res) {
     req.session.data['submit-and-generate-status'] = "Cannot start yet";
 
     res.redirect('confirmation');
+})
+
+// search-sort-filter
+router.post('/search-sort-filter', function(req, res) {
+    req.session.data['search-results'] = req.session.data['entered-criteria'];
+    res.redirect ('search-sort-filter');
 })
 
 // received-form-validation
