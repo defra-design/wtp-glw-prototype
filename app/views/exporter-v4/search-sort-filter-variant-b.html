@@ -1,0 +1,283 @@
+
+{% extends "../layouts/layout-exporter-v4.html" %}
+
+{% block pageTitle %}
+  View all submitted exports  - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: '_index'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        View all submitted exports
+      </h1>
+
+      <form class="form" method="post" novalidate>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset govuk-!-margin-top-4">
+
+            <legend class="govuk-fieldset__legend">
+              Search by description or transaction number
+            </legend>
+            <div class="govuk-form-group">
+              <input class="govuk-input govuk-!-width-two-thirds" id="entered-criteria" name="entered-criteria" type="text" value="" autocomplete="off" >
+              {{ govukButton({
+                text: "Search",
+                classes: "govuk-!-margin-left-2"
+              }) }}
+            </div>
+          </fieldset>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <details class="govuk-details" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Filters
+      </span>
+    </summary>
+    <div class="govuk-details__text govuk-!-padding-bottom-0">
+      <form action="" method="post">
+        <div id="standard-filters">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+              <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    Date submitted
+                  </legend>
+                  <div class="govuk-checkboxes govuk-radios--small">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="time-period" name="time-period" type="radio" value="all" checked>
+                      <label class="govuk-label govuk-radios__label" for="time-period">
+                        All dates
+                      </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="time-period-2" name="time-period" type="radio" value="thismonth">
+                      <label class="govuk-label govuk-radios__label" for="time-period-2">
+                        This month
+                      </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="time-period-3" name="time-period" type="radio" value="lastmonth">
+                      <label class="govuk-label govuk-radios__label" for="time-period-3">
+                        Last month
+                      </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="time-period-4" name="time-period" type="radio" value="last90days">
+                      <label class="govuk-label govuk-radios__label" for="time-period-4">
+                        Last 90 days
+                      </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="time-period-5" name="time-period" type="radio" value="thisyear">
+                      <label class="govuk-label govuk-radios__label" for="time-period-5">
+                        This year
+                      </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="time-period-6" name="time-period" type="radio" value="lastyear">
+                      <label class="govuk-label govuk-radios__label" for="time-period-6">
+                        Last year
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            <div class="govuk-grid-column-one-half">
+              <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    Status
+                  </legend>
+                  <div class="govuk-checkboxes govuk-checkboxes--small">
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="7" checked>
+                      <label class="govuk-label govuk-checkboxes__label" for="status">
+                        Submitted (7)
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="status-2" name="status" type="checkbox" value="3" checked>
+                      <label class="govuk-label govuk-checkboxes__label" for="status-2">
+                        Alert (3)
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="govuk-button govuk-!-margin-bottom-0" type="submit" id="apply-filters">
+          Apply
+        </button>
+        <a class="govuk-link das-inline-button-link" id="reset-filters" href="">Reset filters</a>
+        <input name="" type="hidden" value="">
+      </form>
+    </div>
+  </details>
+
+  {# Sortable table #}
+  <table class="govuk-table" data-module="moj-sortable-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header">Status</th>
+        <th scope="col" class="govuk-table__header" aria-sort="ascending">Date submitted</th>
+        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Waste description (and Basel Annex IX, if provided)</th>
+        <th scope="col" class="govuk-table__header" aria-sort="none">Date picked up</th>
+        <th scope="col" class="govuk-table__header">Transaction number</th>
+        <th scope="col" class="govuk-table__header">Reference number</th>
+        <th scope="col" class="govuk-table__header">Action</th>
+      </tr>
+    </thead>
+
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Submitted</strong></td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          <td class="govuk-table__cell">Mixed Paper EN643<br>B2040: Other wastes containing principally inorganic constituents</td>
+          <td class="govuk-table__cell" data-sort-value="20210604">4 June 2021</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="828528178">828528178</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link">View</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Submitted</strong></td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          <td class="govuk-table__cell">Heavy melting steel scrap</td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="919709788">919709788</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link">View</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">Alert</strong></td>
+          <td class="govuk-table__cell" data-sort-value="20210601">1 June 2021</td>
+          <td class="govuk-table__cell">Paper scrap - OCC<br>B3020: Paper, paperboard and paper product wastes</td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="817435283">817435283</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link">View</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Submitted</strong></td>
+          <td class="govuk-table__cell" data-sort-value="20210601">1 June 2021</td>
+          <td class="govuk-table__cell">Paper scrap - OCC<br>B2040: Other wastes containing principally inorganic constituents</td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="446984963">446984963</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link">View</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Submitted</strong></td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell">Mixed Paper EN643<br>B2060: Spent activated carbon</td>
+          <td class="govuk-table__cell" data-sort-value="20210531">31 May 2021</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="474099313">474099313</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link">View</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Submitted</strong></td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell">Heavy melting steel scrap</td>
+          <td class="govuk-table__cell" data-sort-value="20210531">31 May 2021</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="100575494">100575494</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link">View</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">Alert</strong></td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell">Paper scrap - OCC</td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="603439986">603439986</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link">View</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Submitted</strong></td>
+          <td class="govuk-table__cell" data-sort-value="20210526">26 May 2021</td>
+          <td class="govuk-table__cell">Mixed Paper EN643<br>B2040: Other wastes containing principally inorganic constituents</td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="104779838">104779838</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link">View</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Submitted</strong></td>
+          <td class="govuk-table__cell" data-sort-value="20210526">26 May 2021</td>
+          <td class="govuk-table__cell">Heavy melting steel scrap<br>B1210: Slag arising from the manufacture of iron and steel</td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="299517832">299517832</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link">View</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">Alert</strong></td>
+          <td class="govuk-table__cell" data-sort-value="20210526">26 May 2021</td>
+          <td class="govuk-table__cell">Paper scrap - OCC</td>
+          <td class="govuk-table__cell" data-sort-value="20210527">27 May 2021</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="324129673">324129673</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell"><a href="#" class="govuk-link">View</a></td>
+        </tr>
+      </tbody>
+    </table>
+    {##}
+
+    {{ mojPagination({
+      results: {
+        from: 1,
+        to: 10,
+        count: 50
+      },
+      previous: {
+        text: 'Previous',
+        href: ''
+      },
+      next: {
+        text: 'Next',
+        href: ''
+      },
+      items: [{
+        text: '1',
+        href: '',
+        selected: true
+      }, {
+        text: '2',
+        href: ''
+      }, {
+        text: '3',
+        href: ''
+      }]
+    }) }}
+
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="dashboard">Return to dashboard</a>
+    </p>
+
+  </div>
+
+  {% endblock %}
