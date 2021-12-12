@@ -223,6 +223,14 @@
     </div>
   {% endif %}
 
+  <table class="govuk-table">
+    <tr class="govuk-table__row">
+      <td scope="row" class="govuk-!-width-full">
+        <h3 class="govuk-heading-m">My submissions</h3>
+      </td>
+    </tr>
+  </table>
+
   {# THE FULL FAUX LIST #}
   <table class="govuk-table" data-module="moj-sortable-table">
 
@@ -241,6 +249,7 @@
     {# FILTERED LIST #}
     {% if (data['utid-reference'] != null) and ('35283' in data['utid-reference']) %}
       <tbody class="govuk-table__body">
+
         <tr class="govuk-table__row">
           <td scope="row" class="govuk-table__cell">
             {{govukTag({
@@ -268,6 +277,7 @@
 
         {# Filter is either "all-dates" or "this-year" #}
         {% if (data['exporter-time-period'] == 'all-dates') or (data['exporter-time-period'] == 'this-year') %}
+
           <tr class="govuk-table__row">
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
@@ -573,6 +583,12 @@
         {# Filter is either "all-dates" or "last-year" #}
         {% if (data['exporter-time-period'] == 'all-dates') or (data['exporter-time-period'] == 'last-year') %}          
         
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-!-padding-top-9">
+              <h3 class="govuk-heading-m">The rest</h3>
+            </td>
+          </tr>
+
           <tr class="govuk-table__row">
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
