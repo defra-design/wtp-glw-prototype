@@ -10,3 +10,8 @@ lib/extensions/_extensions.scss
 public
 node_modules/*
 .tmuxp.*
+public/.DS_Store
+app/views/.DS_Store
+app/assets/.DS_Store
+app/.DS_Store
+.DS_Store

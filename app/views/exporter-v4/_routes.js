@@ -225,6 +225,15 @@ router.post('/bulk-uploading', function(req, res) {
     res.redirect('confirmation');
 })
 
+// draft-cancel
+router.post('/draft-cancel', function(req, res) {
+    if (req.session.data['cancel-confirmation'] == 'yes') {
+        res.redirect('draft-cancel-confirmation');
+    } else if (req.session.data['cancel-confirmation'] == 'no') {
+        res.redirect('draft-prenotify?person-arranging-the-shipment-status=Completed&importer-consignee-status=Completed&quantity-status=Completed&recovery-operation-status=Completed&usual-description-of-the-waste-status=Completed&waste-identification-codes-status=Completed&transaction-id-status=Completed');
+    }
+})
+
 // who-arranged-shipment
 router.post('/who-arranged-shipment', function(req, res) {
     if (req.session.data['are-you-arranging'] == 'yes') {
