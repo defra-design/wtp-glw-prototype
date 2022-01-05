@@ -270,10 +270,22 @@
         {% if (data['exporter-time-period'] == 'all-dates') or (data['exporter-time-period'] == 'this-year') %}
           <tr class="govuk-table__row">
             <td scope="row" class="govuk-table__cell">
-              {{govukTag({
-                text: "Submitted",
-                classes: "govuk-tag--blue"
-              })}}
+
+
+              {% if data['view-all-cancelled'] == "true" %}
+                {{govukTag({
+                  text: "cancelled",
+                  classes: "govuk-tag--orange"
+                })}}
+              {% else %}
+                {{govukTag({
+                  text: "Submitted",
+                  classes: "govuk-tag"
+                })}}
+              {% endif %}
+
+
+
             </td>
             <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
             <td class="govuk-table__cell">
@@ -285,7 +297,7 @@
             <td class="govuk-table__cell">828528178</td>
             <td class="govuk-table__cell">Not provided</td>
             <td class="govuk-table__cell">
-              <a href="view-828528178" class="govuk-link">View</a>
+              <a href="view-all-with-cancel" class="govuk-link">View</a>
             </td>
           </tr>
 
@@ -293,7 +305,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
@@ -333,7 +345,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20210601">1 June 2021</td>
@@ -354,7 +366,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
@@ -375,7 +387,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
@@ -394,7 +406,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
@@ -413,7 +425,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20210526">26 May 2021</td>
@@ -434,7 +446,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20210526">26 May 2021</td>
@@ -455,7 +467,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20210526">26 May 2021</td>
@@ -474,7 +486,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20210525">25 May 2021</td>
@@ -493,7 +505,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20210524">24 May 2021</td>
@@ -514,7 +526,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20210524">24 May 2021</td>
@@ -533,7 +545,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20210524">24 May 2021</td>
@@ -552,7 +564,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20210521">21 May 2021</td>
@@ -577,7 +589,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20201221">21 December 2020</td>
@@ -596,7 +608,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20201221">21 December 2020</td>
@@ -615,7 +627,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20201220">20 December 2020</td>
@@ -636,7 +648,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20201220">20 December 2020</td>
@@ -655,7 +667,7 @@
             <td scope="row" class="govuk-table__cell">
               {{govukTag({
                 text: "Submitted",
-                classes: "govuk-tag--blue"
+                classes: "govuk-tag"
               })}}
             </td>
             <td class="govuk-table__cell" data-sort-value="20201219">19 December 2020</td>

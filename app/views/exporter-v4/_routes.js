@@ -225,6 +225,15 @@ router.post('/bulk-uploading', function(req, res) {
     res.redirect('confirmation');
 })
 
+// view-all-cancel
+router.post('/view-all-cancel', function(req, res) {
+    if (req.session.data['view-all-cancel-confirmation'] == 'yes') {
+        res.redirect('view-all-cancel-confirmation');
+    } else if (req.session.data['view-all-cancel-confirmation'] == 'no') {
+        res.redirect('view-all-with-cancel');
+    }
+})
+
 // draft-cancel
 router.post('/draft-cancel', function(req, res) {
     if (req.session.data['cancel-confirmation'] == 'yes') {
