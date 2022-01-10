@@ -1,0 +1,281 @@
+
+{% extends "../layouts/layout-agency-officer-v3.html" %}
+
+{% block pageTitle %}
+  Annex VII alerts - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  <!-- HMRC PATTERN : ACCOUNT MENU -->
+  <nav id="secondary-nav" class="hmrc-account-menu" aria-label="Account" data-module="hmrc-account-menu">
+    <a href="dashboard" class="hmrc-account-menu__link hmrc-account-menu__link--home hmrc-account-menu__link--active">
+      <span class="hmrc-account-icon hmrc-account-icon--home">
+        Dashboard home </span>
+    </a>
+  </nav>
+  <!-- END ACCOUNT MENU -->
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'dashboard'
+  }) }}
+  
+{% endblock %}
+
+{% block content %}
+  <script>
+    req.session.data.error = "";
+  </script>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--
+      {% if data['error'] == 'no-utid-entered' %}
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#utid-reference">Enter a transaction identification number (UTID)</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+      -->
+
+      <h1 class="govuk-heading-xl">
+        Annex VII alerts
+      </h1>
+
+      <form method="post" novalidate>
+        {#
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          Search against
+        </legend>
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline govuk-radios--small",
+          idPrefix: "search-against",
+          name: "search-against",
+          items: [
+            {
+              value: "search-utid",
+              text: "Transaction identification number (UTID)"
+            },
+            {
+              value: "search-consignor",
+              text: "Exporter"
+            }
+          ]
+        }) }}
+        #}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset govuk-!-margin-top-4">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              Search criteria
+            </legend>
+            <div class="govuk-form-group">
+              <input class="govuk-input govuk-!-width-three-quarters" id="utid-reference" name="utid-reference" type="text" autocomplete="off" >
+
+              {{ govukButton({
+                text: "Search",
+                classes: "govuk-!-margin-left-2"
+              }) }}
+
+            </div>
+          </fieldset>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="flex-container grid-row">
+
+    <span class="govuk-!-padding-bottom-6">
+      <h2 class="govuk-heading-m">
+        Potential non-compliant shipments
+      </h2>
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Date submitted</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Waste description (and Basel Annex IX, if provided)</th>
+            <th scope="col" class="govuk-table__header">Exporter name</th>
+            <th scope="col" class="govuk-table__header">Date waste picked up</th>
+            <th scope="col" class="govuk-table__header">Transaction number</th>
+            <th scope="col" class="govuk-table__header">Reference number</th>
+            <th scope="col" class="govuk-table__header">Action</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">2 June 2021</td>
+            <td class="govuk-table__cell">
+              Mixed Paper EN643
+              <br>
+              B2040: Other wastes containing principally inorganic constituents
+            </td>
+            <td class="govuk-table__cell">Euromovement Limited</td>
+            <td class="govuk-table__cell">4 June 2021</td>
+            <td class="govuk-table__cell">828528178</td>
+            <td class="govuk-table__cell">Not provided</td>
+              <td class="govuk-table__cell">
+                <a href="" class="govuk-link">View</a>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </span>
+
+    <span class="govuk-!-padding-bottom-6">
+      <h2 class="govuk-heading-m">
+        Export is for an interim operation
+      </h2>
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Date submitted</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Waste description (and Basel Annex IX, if provided)</th>
+            <th scope="col" class="govuk-table__header">Exporter name</th>
+            <th scope="col" class="govuk-table__header">Date waste picked up</th>
+            <th scope="col" class="govuk-table__header">Transaction number</th>
+            <th scope="col" class="govuk-table__header">Reference number</th>
+            <th scope="col" class="govuk-table__header">Action</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">2 June 2021</td>
+            <td class="govuk-table__cell">
+              Heavy melting steel scrap
+            </td>
+            <td class="govuk-table__cell">Green Thumb Waste Limited</td>
+            <td class="govuk-table__cell">2 June 2021</td>
+            <td class="govuk-table__cell">919709788</td>
+            <td class="govuk-table__cell">Not provided</td>
+            <td class="govuk-table__cell">
+              <a href="" class="govuk-link">View</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">1 June 2021</td>
+            <td class="govuk-table__cell">
+              Paper scrap - OCC
+              <br>
+              B3020: Paper, paperboard and paper product wastes
+            </td>
+            <td class="govuk-table__cell">Euromovement Limited</td>
+            <td class="govuk-table__cell">2 June 2021</td>
+            <td class="govuk-table__cell">817435283</td>
+            <td class="govuk-table__cell">Not provided</td>
+            <td class="govuk-table__cell">
+              <a href="" class="govuk-link">View</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </span>
+
+    <h2 class="govuk-heading-m">
+      Facility is high risk or under enforcement
+    </h2>
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Date submitted</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Waste description (and Basel Annex IX, if provided)</th>
+          <th scope="col" class="govuk-table__header">Exporter name</th>
+          <th scope="col" class="govuk-table__header">Date waste picked up</th>
+          <th scope="col" class="govuk-table__header">Transaction number</th>
+          <th scope="col" class="govuk-table__header">Reference number</th>
+          <th scope="col" class="govuk-table__header">Action</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">1 June 2021</td>
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+            <br>
+            B2040: Other wastes containing principally inorganic constituents
+          </td>
+          <td class="govuk-table__cell">Pioneer Waste Plc.</td>
+          <td class="govuk-table__cell">2 June 2021</td>
+          <td class="govuk-table__cell">446984963</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">28 May 2021</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+            <br>
+            B2060: Spent activated carbon
+          </td>
+          <td class="govuk-table__cell">Onward Waste Plc.</td>
+          <td class="govuk-table__cell">31 May 2021</td>
+          <td class="govuk-table__cell">474099313</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">28 May 2021</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+          </td>
+          <td class="govuk-table__cell">Tunnel Waste Limited</td>
+          <td class="govuk-table__cell">31 May 2021</td>
+          <td class="govuk-table__cell">100575494</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    {% if data['alert-status-one'] != 'yes' %}
+      {{ mojPagination({
+        results: {
+          from: 1,
+          to: 6,
+          count: 6
+        }
+      }) }}
+    {% else %}
+      {{ mojPagination({
+        results: {
+          from: 1,
+          to: 9,
+          count: 9
+        }
+      }) }}
+    {% endif %}
+
+  </div>
+
+  <div class="flex-container grid-row">
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="dashboard">Return to dashboard</a>
+    </p>
+  </div>
+
+  {% endblock %}
