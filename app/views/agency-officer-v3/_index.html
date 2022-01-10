@@ -43,8 +43,14 @@
     </dl>
 
   {{ govukButton({
-     text: "Start now",
-     href: "index"
+     text: "Journey 1. Sign in and ALERTS on home page",
+     href: "index?ao-alerts=homepage",
+     classes: "govuk-!-margin-right-2"
+  }) }}
+  <br>
+  {{ govukButton({
+     text: "Journey 2. Sign in and ALERTS in nav bar",
+     href: "index?ao-alerts=separate"
   }) }}
 
     <h2 class="govuk-heading-l govuk-!-margin-top-8">
