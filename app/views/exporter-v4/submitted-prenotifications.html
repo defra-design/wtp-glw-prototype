@@ -270,8 +270,6 @@
         {% if (data['exporter-time-period'] == 'all-dates') or (data['exporter-time-period'] == 'this-year') %}
           <tr class="govuk-table__row">
             <td scope="row" class="govuk-table__cell">
-
-
               {% if data['view-all-cancelled'] == "true" %}
                 {{govukTag({
                   text: "cancelled",
@@ -283,9 +281,6 @@
                   classes: "govuk-tag"
                 })}}
               {% endif %}
-
-
-
             </td>
             <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
             <td class="govuk-table__cell">

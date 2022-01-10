@@ -8,6 +8,14 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+      {% if data['view-all-cancelled'] == 'true' %}
+        {{govukTag({
+          text: "cancelled",
+          classes: "govuk-tag--orange"
+        })}}
+      {% endif %}
+
       <h1 class="govuk-heading-l">
         Transaction number 828528178
       </h1>
@@ -711,15 +719,29 @@
         </h2>
       </div>
 
-      <div class="app-step-nav-related">
-        <h2 class="app-step-nav-related__heading">
-          <span class="app-step-nav-related__pretitle">Cancel this export</span>
-          <p class="govkuk-body app-step-nav__paragraph">Cancel this export prior to it being collected.</p>
-          <a href="view-all-cancel">
-            Cancel export
-          </a>
-        </h2>
-      </div>
+      {% if data['view-all-cancelled'] != 'true' %}
+        <div class="app-step-nav-related">
+          <h2 class="app-step-nav-related__heading">
+            <span class="app-step-nav-related__pretitle">Download the Annex VII form</span>
+            <p class="govkuk-body app-step-nav__paragraph">Download, print, and sign the Annex VII form and send it with your waste export.</p>
+            <a href="../public/pdfs/hdj2123f-annex-vii.pdf" download class="govuk-link govuk-link--no-visited-state">
+              Download Annex VII
+            </a>
+          </h2>
+        </div>
+      {% endif %}
+
+      {% if data['view-all-cancelled'] != 'true' %}
+        <div class="app-step-nav-related">
+          <h2 class="app-step-nav-related__heading">
+            <span class="app-step-nav-related__pretitle">Cancel this export</span>
+            <p class="govkuk-body app-step-nav__paragraph">Cancel this export prior to it being collected.</p>
+            <a href="view-all-cancel">
+              Cancel export
+            </a>
+          </h2>
+        </div>
+      {% endif %}
       
     </div>
 
