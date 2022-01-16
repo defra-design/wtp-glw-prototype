@@ -33,7 +33,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <!-- DRAFTS WORK IN PROGRESS -->
+      {# DRAFTS WORK IN PROGRESS #}
       {% if data['signed-out'] == "true" %}
         <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" style="border-color: #d4351c !important">
           <div class="govuk-notification-banner__header" style="background-color: #d4351c !important">
@@ -51,7 +51,7 @@
           </div>
         </div>
       {% endif %}
-      <!-- -->
+      {# #}
 
       <span class="govuk-caption-xl">
         Export green list waste
@@ -74,16 +74,16 @@
       </div> 
     </div>
 
-    <!-- DRAFTS WORK IN PROGRESS -->
+    {# DRAFTS WORK IN PROGRESS #}
     <div class="card">
       <div class="card-body active">
-        <h2 class="heading-medium card-heading"><a href="draft-exports?exporter-time-period=all-dates&draft-cancel=false">View all draft and partially completed exports</a></h2>
+        <h2 class="heading-medium card-heading"><a href="draft-exports?exporter-time-period=all-dates&draft-cancel=false">View draft waste exports</a></h2>
       </div>
       <div class="card-action">
-        Search, view, add and edit information for draft and partially completed exports. (View <a href="draft-exports?exporter-time-period=all-dates&option=a&draft-cancel=false">option A</a> or <a href="draft-exports?exporter-time-period=all-dates&option=b&draft-cancel=false">option B</a>)
+        Search, view, add and edit information for all draft waste exports. (View <a href="draft-exports?exporter-time-period=all-dates&option=a&draft-cancel=false">option A</a> or <a href="draft-exports?exporter-time-period=all-dates&option=b&draft-cancel=false">option B</a>)
       </div> 
     </div>
-    <!-- -->
+    {# #}
 
     <div class="card">
       <div class="card-body active">

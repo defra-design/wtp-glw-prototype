@@ -1,7 +1,20 @@
 {% extends "../layouts/layout-exporter-v4.html" %}
 
 {% block pageTitle %}
-  Currently editing transaction number 919709788 - Export green list waste
+  Submission created 2 June 2021 - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'draft-exports'
+  }) }}
 {% endblock %}
 
 {% block content %}

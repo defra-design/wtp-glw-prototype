@@ -20,6 +20,21 @@
         Transaction number 828528178
       </h1>
 
+      {% if data['view-all-cancelled'] == 'true' %}
+        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Cancellation reason
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              {{ data ['cancel-reason'] }}
+            </p>
+          </div>
+        </div>
+      {% endif %}
+
       <!--===================================-->
       <!-- PERSON ARRANGING SHIPMENT HEADING -->
       <!--===================================-->
