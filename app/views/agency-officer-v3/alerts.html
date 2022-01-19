@@ -111,15 +111,15 @@
           <th scope="col" class="govuk-table__header">Exporter name</th>
           <th scope="col" class="govuk-table__header">Date waste picked up</th>
           <th scope="col" class="govuk-table__header">Transaction number</th>
-          <th scope="col" class="govuk-table__header">Reference number</th>
-          <th scope="col" class="govuk-table__header">Action</th>
+          {#<th scope="col" class="govuk-table__header">Reference number</th>
+          <th scope="col" class="govuk-table__header">Action</th>#}
         </tr>
       </thead>
 
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td scope="row" class="govuk-table__cell">
-            <ol class="govuk-list govuk-list--number">
+            <ol class="govuk-list govuk-list--number govuk-list--spaced">
               <li>Exporter, Broker, or Dealer under investigation</li>
               <li>Submitted less than 3 days ahead of shipment</li>
             </ol>
@@ -133,11 +133,11 @@
           </td>
           <td class="govuk-table__cell">Euromovement Limited</td>
           <td class="govuk-table__cell">4 June 2021</td>
-          <td class="govuk-table__cell">828528178</td>
-          <td class="govuk-table__cell">Not provided</td>
-            <td class="govuk-table__cell">
-              <a href="alert-817435283" class="govuk-link">View</a>
-            </td>
+          <td class="govuk-table__cell"><a href="alert-817435283" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 828528178</td></a>
+          {#<td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="alert-817435283" class="govuk-link">View</a>
+          </td>#}
         </tr>
 
         <tr class="govuk-table__row">
@@ -148,11 +148,11 @@
           </td>
           <td class="govuk-table__cell">Green Thumb Waste Limited</td>
           <td class="govuk-table__cell">2 June 2021</td>
-          <td class="govuk-table__cell">919709788</td>
-          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell"><a href="" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 919709788</a></td>
+          {#<td class="govuk-table__cell">Not provided</td>
           <td class="govuk-table__cell">
             <a href="" class="govuk-link">View</a>
-          </td>
+          </td>#}
         </tr>
 
         {% if data['alert-status-one'] != 'yes' %}
@@ -166,11 +166,11 @@
             </td>
             <td class="govuk-table__cell">Euromovement Limited</td>
             <td class="govuk-table__cell">2 June 2021</td>
-            <td class="govuk-table__cell">817435283</td>
-            <td class="govuk-table__cell">Not provided</td>
+            <td class="govuk-table__cell"><a href="" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 817435283</a></td>
+            {#<td class="govuk-table__cell">Not provided</td>
             <td class="govuk-table__cell">
               <a href="alert-817435283" class="govuk-link">View</a>
-            </td>
+            </td>#}
           </tr>
         {% endif %}
 
@@ -184,11 +184,11 @@
           </td>
           <td class="govuk-table__cell">Pioneer Waste Plc.</td>
           <td class="govuk-table__cell">2 June 2021</td>
-          <td class="govuk-table__cell">446984963</td>
-          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell"><a href="" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 446984963</a></td>
+          {#<td class="govuk-table__cell">Not provided</td>
           <td class="govuk-table__cell">
             <a href="" class="govuk-link">View</a>
-          </td>
+          </td>#}
         </tr>
 
         <tr class="govuk-table__row">
@@ -201,11 +201,11 @@
           </td>
           <td class="govuk-table__cell">Onward Waste Plc.</td>
           <td class="govuk-table__cell">31 May 2021</td>
-          <td class="govuk-table__cell">474099313</td>
-          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell"><a href="" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 474099313</a></td>
+          {#<td class="govuk-table__cell">Not provided</td>
           <td class="govuk-table__cell">
             <a href="" class="govuk-link">View</a>
-          </td>
+          </td>#}
         </tr>
 
         <tr class="govuk-table__row">
@@ -216,11 +216,11 @@
           </td>
           <td class="govuk-table__cell">Tunnel Waste Limited</td>
           <td class="govuk-table__cell">31 May 2021</td>
-          <td class="govuk-table__cell">100575494</td>
-          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell"><a href="" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 100575494</a></td>
+          {#<td class="govuk-table__cell">Not provided</td>
           <td class="govuk-table__cell">
             <a href="" class="govuk-link">View</a>
-          </td>
+          </td>#}
         </tr>
 
         {#
