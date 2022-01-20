@@ -32,7 +32,7 @@
     <div class="govuk-grid-column-full-width">
 
       <h1 class="govuk-heading-l govuk-!-padding-bottom-4">
-        2 alerts on transaction 817435283
+        2 alerts on submission 817435283
       </h1>
 
       {% set alertsHtml %}
@@ -156,7 +156,7 @@
 
       {% endset -%}
 
-      {% set transactionHtml %}
+      {% set submissionHtml %}
         <!--===================================-->
         <!-- PERSON ARRANGING SHIPMENT HEADING -->
         <!--===================================-->
@@ -815,10 +815,10 @@
             }
           },
           {
-            label: "Transaction",
-            id: "transction",
+            label: "Submission",
+            id: "submission",
             panel: {
-              html: transactionHtml
+              html: submissionHtml
             }
           }
         ]
