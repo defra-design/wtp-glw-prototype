@@ -1,0 +1,24 @@
+{
+    "id": "account-1",
+    "name": "Account 1",
+    "users": [
+        {
+            "status": "submitted",
+            "name": "Green Thumb Waste Limited",
+            "date": "1 June 2021",
+            "transactionNumber": 828528178
+        },
+        {
+            "status": "cancelled",
+            "name": "Seneca Waste Plc.",
+            "date": "4 June 2021",
+            "transactionNumber": 919709788
+        },
+        {
+            "status": "overdue",
+            "name": "Euromovement Limited",
+            "date": "8 June 2021",
+            "transactionNumber": 446984963
+        }
+    ]
+}

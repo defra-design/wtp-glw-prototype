@@ -1,6 +1,38 @@
 const express = require('express')
 const router = express.Router()
 
+/////////////////////////////////////////////////
+// myData object to pass to prototype versions //
+/////////////////////////////////////////////////
+var _myData = {
+  // Fake Data JSON Files //
+  accounts: {
+    "account-1": require(__dirname + '/data/account-1.json')
+  }
+}
+
+//Version 1-0 routing
+//Pass myData variable as parameter into version specific routes file
+require('./routes/import-json/routes.js')(router,JSON.parse(JSON.stringify(_myData)));
+
+/////////////////////////////////////////////////
+// myData object to pass to prototype versions //
+/////////////////////////////////////////////////
+//var _myData = {
+  // Fake Data JSON Files //
+  //accounts: {
+//  importedSubmissions: {
+//    "imports-1": require(__dirname + '/data/annex-vii-data.json')
+    //"account-1": require(__dirname + '/data/account-1.json'),
+    //"account-2": require(__dirname + '/data/account-2.json'),
+    //"account-3": require(__dirname + '/data/account-3.json')
+//  }
+//}
+
+// Playground routing
+// Pass myData variable as parameter into specific routes file
+//require('./routes/import-json/routes.js')(router,JSON.parse(JSON.stringify(_myData)));
+
 // Dynamic check your answers routes
 router.use('/dynamic-check-your-answers/', (req, res, next) => {
   return require(`./views/dynamic-check-your-answers/_routes`)(req, res, next);

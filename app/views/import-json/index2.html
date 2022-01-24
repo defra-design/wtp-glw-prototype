@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% set _selectedExport = "" %}
+<!--FOR loop over all keys (importedSubmissions) in myData.importedSubmissions object-->
+{% for key, annexvii in myData.importedSubmissions %}
+    <!--IF check on each key to see if it matches the ID saved from the query string-->
+    {% if key == myData.selectedExport %}
+        {% set _selectedExport = annexvii %}
+    {% endif %}
+{% endfor %}
+
+{% block page_title %}
+  JSON Demo 1-0
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+	
+	<!--Breadcrumbs-->
+	<div class="grid-row">
+		<div class="column-two-thirds">
+            <a href="/index" class="link-back">Back</a>
+		</div>
+		<div class="column-one-third">
+		</div>
+	</div>
+
+	<div class="grid-row">
+		<div class="column-two-thirds">
+			<header> 
+				<h1 class="heading-large" >
+					Loop through annexvii's exports
+                    <span class="heading-secondary">
+                    {% if _selectedExport != "" %}
+                        {{_selectedExport.exporter}}, {{_selectedExport.exports.length}} exports
+                    {% else %}
+                        annexvii doesn't exist
+                    {% endif %}
+                    </span>
+				<h1>
+			</header>
+		</div>
+		<div class="column-one-third">
+		</div>
+	</div>
+
+    {% if _selectedExport != "" %}
+    <div class="grid-row">
+		<div class="column-two-thirds">
+
+            {% if _selectedExport.exports.length > 0 %}
+            <form method="POST">
+                <div class="form-section">
+                    <fieldset>
+                        <!--
+                            FOR loop over each export in annexvii
+                        -->
+                        {% for export in _selectedExport.exports %}
+                        <div class="form-group">
+                            <label class="form-label" for="{{export.exporter}}-{{loop.index}}">
+                                <span class="font-medium">{{export.exporter}}'s age is <span class="bold">{{export.dateSubmitted}}</span></span>
+                            </label>
+                            <input class="form-control" id="{{export.exporter}}-{{loop.index}}" name="accountusers" type="number" value="{{export.dateSubmitted}}" >
+                        </div>
+                        {% endfor %}
+
+                    </fieldset>
+                    <input class="button" type="submit" value="Save">
+                </div>
+            </form>
+            {% else %}
+            <p>No exports on annexvii</p>
+            {% endif %}
+
+		</div>
+		<div class="column-one-third">
+		</div>
+	</div>
+    {% endif %}
+
+</main>
+
+{% endblock %}

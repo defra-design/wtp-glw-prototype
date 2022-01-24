@@ -105,12 +105,12 @@
     <table class="govuk-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Alert type</th>
-          <th scope="col" class="govuk-table__header">Date submitted</th>
-          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Waste description (and Basel Annex IX, if provided)</th>
-          <th scope="col" class="govuk-table__header">Exporter name</th>
-          <th scope="col" class="govuk-table__header">Date waste picked up</th>
           <th scope="col" class="govuk-table__header">Transaction number</th>
+          <th scope="col" class="govuk-table__header">Date submitted</th>
+          <th scope="col" class="govuk-table__header">Date waste picked up</th>
+          <th scope="col" class="govuk-table__header">Exporter name</th>
+          <th scope="col" class="govuk-table__header">Alert type</th>
+          {#<th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Waste description (and Basel Annex IX, if provided)</th>#} 
           {#<th scope="col" class="govuk-table__header">Reference number</th>
           <th scope="col" class="govuk-table__header">Action</th>#}
         </tr>
@@ -118,22 +118,22 @@
 
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="alert-817435283" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 828528178</td></a>
+          <td class="govuk-table__cell">2 June 2021</td>
+          <td class="govuk-table__cell">4 June 2021</td>
+          <td class="govuk-table__cell">Euromovement Limited</td>
           <td scope="row" class="govuk-table__cell">
-            <ol class="govuk-list govuk-list--number govuk-list--spaced">
+            <ol class="govuk-list govuk-list govuk-list--spaced">
               <li>Exporter, Broker, or Dealer under investigation</li>
               <li>Submitted less than 3 days ahead of shipment</li>
             </ol>
           </td>
           {# <td scope="row" class="govuk-table__cell">Potential non-compliant shipment</td> #}
-          <td class="govuk-table__cell">2 June 2021</td>
-          <td class="govuk-table__cell">
+          {#<td class="govuk-table__cell">
             Mixed Paper EN643
             <br>
             B2040: Other wastes containing principally inorganic constituents
-          </td>
-          <td class="govuk-table__cell">Euromovement Limited</td>
-          <td class="govuk-table__cell">4 June 2021</td>
-          <td class="govuk-table__cell"><a href="alert-817435283" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 828528178</td></a>
+          </td>#}
           {#<td class="govuk-table__cell">Not provided</td>
           <td class="govuk-table__cell">
             <a href="alert-817435283" class="govuk-link">View</a>
@@ -141,14 +141,18 @@
         </tr>
 
         <tr class="govuk-table__row">
-          <td scope="row" class="govuk-table__cell">Export country</td>
-          <td class="govuk-table__cell">2 June 2021</td>
-          <td class="govuk-table__cell">
-            Heavy melting steel scrap
-          </td>
-          <td class="govuk-table__cell">Green Thumb Waste Limited</td>
-          <td class="govuk-table__cell">2 June 2021</td>
           <td class="govuk-table__cell"><a href="" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 919709788</a></td>
+          <td class="govuk-table__cell">2 June 2021</td>
+          <td class="govuk-table__cell">2 June 2021</td>
+          <td class="govuk-table__cell">Green Thumb Waste Limited</td>
+          <td scope="row" class="govuk-table__cell">
+            <ol class="govuk-list govuk-list govuk-list--spaced">
+              <li>Export country</li>
+            </ol>
+          </td>
+          {#<td class="govuk-table__cell">
+            Heavy melting steel scrap
+          </td>#}
           {#<td class="govuk-table__cell">Not provided</td>
           <td class="govuk-table__cell">
             <a href="" class="govuk-link">View</a>
@@ -157,16 +161,20 @@
 
         {% if data['alert-status-one'] != 'yes' %}
           <tr class="govuk-table__row">
-            <td scope="row" class="govuk-table__cell">Export is for an interim operation</td>
+            <td class="govuk-table__cell"><a href="" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 817435283</a></td>
             <td class="govuk-table__cell">1 June 2021</td>
-            <td class="govuk-table__cell">
+            <td class="govuk-table__cell">2 June 2021</td>
+            <td class="govuk-table__cell">Euromovement Limited</td>
+            <td scope="row" class="govuk-table__cell">
+              <ol class="govuk-list govuk-list govuk-list--spaced">
+                <li>Export is for an interim operation</li>
+              </ol>
+            </td>
+            {#<td class="govuk-table__cell">
               Paper scrap - OCC
               <br>
               B3020: Paper, paperboard and paper product wastes
-            </td>
-            <td class="govuk-table__cell">Euromovement Limited</td>
-            <td class="govuk-table__cell">2 June 2021</td>
-            <td class="govuk-table__cell"><a href="" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 817435283</a></td>
+            </td>#}
             {#<td class="govuk-table__cell">Not provided</td>
             <td class="govuk-table__cell">
               <a href="alert-817435283" class="govuk-link">View</a>
@@ -175,16 +183,20 @@
         {% endif %}
 
         <tr class="govuk-table__row">
-          <td scope="row" class="govuk-table__cell">Exporter, Broker, or Dealer under investigation</td>
+          <td class="govuk-table__cell"><a href="" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 446984963</a></td>
           <td class="govuk-table__cell">1 June 2021</td>
-          <td class="govuk-table__cell">
+          <td class="govuk-table__cell">2 June 2021</td>
+          <td class="govuk-table__cell">Pioneer Waste Plc.</td>
+          <td scope="row" class="govuk-table__cell">
+            <ol class="govuk-list govuk-list govuk-list--spaced">
+              <li>Exporter, Broker, or Dealer under investigation</li>
+            </ol>
+          </td>
+          {#<td class="govuk-table__cell">
             Paper scrap - OCC
             <br>
             B2040: Other wastes containing principally inorganic constituents
-          </td>
-          <td class="govuk-table__cell">Pioneer Waste Plc.</td>
-          <td class="govuk-table__cell">2 June 2021</td>
-          <td class="govuk-table__cell"><a href="" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 446984963</a></td>
+          </td>#}
           {#<td class="govuk-table__cell">Not provided</td>
           <td class="govuk-table__cell">
             <a href="" class="govuk-link">View</a>
@@ -192,16 +204,20 @@
         </tr>
 
         <tr class="govuk-table__row">
-          <td scope="row" class="govuk-table__cell">Facility is high risk or under enforcement</td>
+          <td class="govuk-table__cell"><a href="" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 474099313</a></td>
           <td class="govuk-table__cell">28 May 2021</td>
-          <td class="govuk-table__cell">
+          <td class="govuk-table__cell">31 May 2021</td>
+          <td class="govuk-table__cell">Onward Waste Plc.</td>
+          <td scope="row" class="govuk-table__cell">
+            <ol class="govuk-list govuk-list govuk-list--spaced">
+              <li>Facility is high risk or under enforcement</li>
+            </ol>
+          </td>
+          {#<td class="govuk-table__cell">
             Mixed Paper EN643
             <br>
             B2060: Spent activated carbon
-          </td>
-          <td class="govuk-table__cell">Onward Waste Plc.</td>
-          <td class="govuk-table__cell">31 May 2021</td>
-          <td class="govuk-table__cell"><a href="" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 474099313</a></td>
+          </td>#}
           {#<td class="govuk-table__cell">Not provided</td>
           <td class="govuk-table__cell">
             <a href="" class="govuk-link">View</a>
@@ -209,14 +225,18 @@
         </tr>
 
         <tr class="govuk-table__row">
-          <td scope="row" class="govuk-table__cell">Submitted less than 3 days ahead of shipment</td>
-          <td class="govuk-table__cell">28 May 2021</td>
-          <td class="govuk-table__cell">
-            Heavy melting steel scrap
-          </td>
-          <td class="govuk-table__cell">Tunnel Waste Limited</td>
-          <td class="govuk-table__cell">31 May 2021</td>
           <td class="govuk-table__cell"><a href="" class="govuk-link"><span class="govuk-visually-hidden">View transaction number</span> 100575494</a></td>
+          <td class="govuk-table__cell">28 May 2021</td>
+          <td class="govuk-table__cell">31 May 2021</td>
+          <td class="govuk-table__cell">Tunnel Waste Limited</td>
+          <td scope="row" class="govuk-table__cell">
+            <ol class="govuk-list govuk-list govuk-list--spaced">
+              <li>Submitted less than 3 days ahead of shipment</li>
+            </ol>
+          </td>
+          {#<td class="govuk-table__cell">
+            Heavy melting steel scrap
+          </td>#}
           {#<td class="govuk-table__cell">Not provided</td>
           <td class="govuk-table__cell">
             <a href="" class="govuk-link">View</a>
