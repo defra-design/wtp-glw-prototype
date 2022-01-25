@@ -157,87 +157,102 @@
       {% endset -%}
 
       {% set submissionHtml %}
-        <!--===================================-->
-        <!-- PERSON ARRANGING SHIPMENT HEADING -->
-        <!--===================================-->
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
-              Person arranging the export
-            </dt>
-          </div>
-        </dl>
 
-        <!-- PERSON ARRANGING SHIPMENT - Carrier details -->
-        <h3 class="govuk-heading-s">
-          Name and address
-        </h3>
+        <h2 class="govuk-heading-m">
+          Alerts
+        </h2>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-padding-bottom-4">
+          <li>
+            <a class="govuk-link" href="#alert-named-exporter">Named exporter, broker, or dealer is under investigation ert</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="#alert-submitted-less-than-three-days">Submitted less than 3 days ahead of shipment</a>
+          </li>
+        </ul>
 
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
-              Name
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Euromovement Limited
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
-              Address
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Unit 15, Berryedge Park<br>
-              Dunstable<br>
-              LU5 4AX
-            </dd>
-          </div>
-        </dl>
+        <div style="border-left: solid 5px; padding-left: 15px; color: #d4351c" id="alert-named-exporter">
+          <!--===================================-->
+          <!-- PERSON ARRANGING SHIPMENT HEADING -->
+          <!--===================================-->
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+                Person arranging the export
+              </dt>
+            </div>
+          </dl>
 
-        <!-- PERSON ARRANGING SHIPMENT - Contact details -->
-        <h3 class="govuk-heading-s">
-          Contact person and contact details
-        </h3>
+          <!-- PERSON ARRANGING SHIPMENT - Carrier details -->
+          <h3 class="govuk-heading-s">
+            Name and address
+          </h3>
 
-        <dl class="govuk-summary-list govuk-!-padding-bottom-6">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
-              Full name
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Gary Squires
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
-              Email address
-            </dt>
-            <dd class="govuk-summary-list__value">
-              gary.squires@euromovement.com
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
-              Telephone number
-            </dt>
-            <dd class="govuk-summary-list__value">
-              01790 243 3921
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
-              Fax number
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Not provided
-            </dd>
-          </div>
-        </dl>
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Euromovement Limited
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Unit 15, Berryedge Park<br>
+                Dunstable<br>
+                LU5 4AX
+              </dd>
+            </div>
+          </dl>
+
+          <!-- PERSON ARRANGING SHIPMENT - Contact details -->
+          <h3 class="govuk-heading-s">
+            Contact person and contact details
+          </h3>
+
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Full name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Gary Squires
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Email address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                gary.squires@euromovement.com
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Telephone number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                01790 243 3921
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Fax number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Not provided
+              </dd>
+            </div>
+          </dl>
+        </div>
 
         <!--============================-->
         <!-- IMPORTER/CONSIGNEE HEADING -->
         <!---===========================-->
-        <dl class="govuk-summary-list">
+        <dl class="govuk-summary-list govuk-!-padding-top-6">
           <div class="govuk-summary-list__row">
             <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
               Importer or consignee
@@ -344,36 +359,38 @@
           </div>
         </dl>
 
-        <!--=========================-->
-        <!-- ACTUAL DATE OF SHIPMENT -->
-        <!---========================-->
-        <h2 class="govuk-heading-m">
-          Date waste will be picked up
-        </h2>
-        
-        <dl class="govuk-summary-list govuk-!-padding-bottom-6">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
-              Date
-            </dt>
-            <dd class="govuk-summary-list__value">
-              1 June 2021
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
-              Actual or estimated
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Actual date
-            </dd>
-          </div>
-        </dl>
+        <div style="border-left: solid 5px; padding-left: 15px; color: #d4351c" id="alert-submitted-less-than-three-days">
+          <!--=========================-->
+          <!-- ACTUAL DATE OF SHIPMENT -->
+          <!---========================-->
+          <h2 class="govuk-heading-m">
+            Date waste will be picked up
+          </h2>
+          
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Date
+              </dt>
+              <dd class="govuk-summary-list__value">
+                4 June 2021
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Actual or estimated
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Actual date
+              </dd>
+            </div>
+          </dl>
+        </div>
 
         <!--=======================-->
         <!-- FIRST CARRIER HEADING -->
         <!--=======================-->
-        <dl class="govuk-summary-list">
+        <dl class="govuk-summary-list govuk-!-padding-top-6">
           <div class="govuk-summary-list__row">
             <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
               Carrier 1
