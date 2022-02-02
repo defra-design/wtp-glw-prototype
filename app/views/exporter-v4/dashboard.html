@@ -17,7 +17,29 @@
 
 {% block content %}
 
-  {# Session timeout mechanism - set for 60 seconds, warning after 30 seconds #}
+  <div class="govuk-modal-overlay" style="display: none;">
+    <div class="govuk-modal" role="dialog" aria-labelledby="govuk-modal-title" tabindex="-1" style="display: none;" >
+      <h2 class="govuk-heading-l" id="govuk-modal-title">You are about to be signed out</h2>
+
+      <div class="govuk-modal-content" role="document">
+        <p>For your security, we will sign you out in the next <strong>5 minutes</string>.</p>
+      </div>
+
+      {{ govukButton({
+        text: "Stay signed in",
+        classes: "govuk-button govuk-!-margin-bottom-1 close-modal",
+        href: "?continue=true"
+      }) }}
+
+      {{ govukButton({
+        text: "Sign out",
+        classes: "govuk-button--secondary govuk-!-margin-left-2 govuk-!-margin-bottom-1",
+        href: "signed-out?signed-out=true"
+      }) }}
+    </div>
+  </div>
+
+{#  {# Session timeout mechanism - set for 60 seconds, warning after 30 seconds 
   {{ hmrcTimeoutDialog ({
     timeout: 60,
     countdown: 30,
@@ -25,6 +47,7 @@
     signOutUrl: "signed-out?lang=English&signed-out=true",
     language: "en"
   }) }}
+#}
 
   <script>
     req.session.data.error = "";
