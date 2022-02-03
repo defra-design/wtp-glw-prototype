@@ -1,5 +1,5 @@
 
-{% extends "../layouts/layout-exporter-v4.html" %}
+{% extends "../layouts/layout-exporter-v4-no-nav.html" %}
 
 {% block pageTitle %}
     Signed out - Export green list waste
@@ -19,28 +19,36 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if data['sign-out-type'] == 'user' %}
+      {#{% if data['sign-out-type'] == 'user' %}
         <h1 class="govuk-heading-xl">
-          You have successfully signed out
+          You've been signed out
         </h1>
       {% elif data['sign-out-type'] == 'system' %}
         <h1 class="govuk-heading-xl">
           For your security, we signed you out
         </h1>
-      {% endif %}
+      {% endif %}#}
+
+      <h1 class="govuk-heading-xl">
+        You've been signed out
+      </h1>
 
       <p class="govuk-body">
         Any partially completed submissions have been saved.
       </p>
 
-      <div class="govuk-form-group">
+      <p class="govuk-body">
+        You can close this tab or <a href="login" class="govuk-link">sign in</a> again.
+      </p>
+
+      {#<div class="govuk-form-group">
         {{ govukButton({
           text: "Sign in",
           id: "timeout-keep-signin-btn",
           classes: "govuk-button govuk-!-margin-bottom-0",
           href: "login"
         }) }}
-      </div>
+      </div>#}
 
     </div>
   </div>
