@@ -62,7 +62,7 @@ $(document).ready(function() {
       $('.govuk-modal-overlay').show();
       $('html').addClass("noscroll");
       findModal($('.govuk-modal'));
-    }, 5000); // timed delay in nano-seconds (set to 5 seconds)
+    }, 15000); // timed delay in nano-seconds (set to 15 seconds)
   }
 
   //hide modal and overlay

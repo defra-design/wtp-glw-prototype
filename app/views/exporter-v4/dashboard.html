@@ -34,10 +34,12 @@
       {{ govukButton({
         text: "Sign out",
         classes: "govuk-button--secondary govuk-!-margin-left-2 govuk-!-margin-bottom-1",
-        href: "signed-out?signed-out=true"
+        href: "signed-out?sign-out-type=system"
       }) }}
     </div>
   </div>
+
+{#href: "signed-out?signed-out=true"#}
 
 {#  {# Session timeout mechanism - set for 60 seconds, warning after 30 seconds 
   {{ hmrcTimeoutDialog ({
@@ -57,7 +59,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       {# DRAFTS WORK IN PROGRESS #}
-      {% if data['signed-out'] == "true" %}
+      {% if data['sign-out-type'] == "system" %}
         <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" style="border-color: #d4351c !important">
           <div class="govuk-notification-banner__header" style="background-color: #d4351c !important">
             <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
