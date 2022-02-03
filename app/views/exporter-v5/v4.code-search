@@ -1,0 +1,314 @@
+# Query: v4
+# Including: ./wtp-glw-prototype/app/views/exporter-v5
+# ContextLines: 1
+
+79 results - 66 files
+
+app/views/exporter-v5/accessibility-statement.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/accessible-autocomplete.html:
+   1: {% extends "../layouts/layout-exporter-v5.html" %}
+   2  
+
+  27            </label>
+  28:           <select class="govuk-select" name="recoveryOperation-exporter-v5" id="recoveryOperation-exporter-v5">
+  29              <option value="" selected></option>
+
+app/views/exporter-v5/api-information.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/bulk-uploading.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/bulk.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/carrier-add-1.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/carrier-add-2.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/carrier-add-3.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/carriers.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/check-your-answers.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/confirmation.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/container-number.html:
+  1:   {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/cookies.html:
+    1: {% extends "../layouts/layout-exporter-v5.html" %}
+    2  
+
+   20    <div class="govuk-grid-column-two-thirds">
+   21:     {% if (data['exporter-v5-cookie-status'] == "error") %}
+   22        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+
+   33        </div>
+   34:     {% elif (data['exporter-v5-cookie-status'] == 'changed') %}
+   35        {% set html %}
+
+   41          </p>
+   42:         <p class="govuk-body"><a class="govuk-notification-banner__link" href="dashboard?exporter-v5-cookie-status=undefined">Go to dashboard</a></p>
+   43        {% endset %}
+
+  183              <div class="govuk-radios__item">
+  184:               <input class="govuk-radios__input" id="exporter-v5-cookies-yes-no" name="exporter-v5-cookies-yes-no" type="radio" value="yes" {{ checked("exporter-v5-cookies-yes-no", "yes") }}>
+  185:               <label class="govuk-label govuk-radios__label" for="exporter-v5-cookies-yes-no">
+  186                  Yes
+
+  189              <div class="govuk-radios__item">
+  190:               <input class="govuk-radios__input" id="exporter-v5-cookies-yes-no" name="exporter-v5-cookies-yes-no" type="radio" value="no" {{ checked("exporter-v5-cookies-yes-no", "no") }}>
+  191:               <label class="govuk-label govuk-radios__label" for="exporter-v5-cookies-yes-no">
+  192                  No
+
+app/views/exporter-v5/countries-states-concerned.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/create-template-success.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/dashboard.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/date-of-shipment.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/delete-confirmation.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/delete-template.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/draft-cancel-confirmation.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/draft-cancel.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/draft-export.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/draft-exports.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/draft-prenotify.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/importer-consignee.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/index.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/manual-bulk-api.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/prenotification-templates.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/prenotify.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/preparation.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/privacy-notice.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/quantity.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/recovery-facility-laboratory.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/recovery-operation.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/save-as-template.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/search-sort-filter-variant-a.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/search-sort-filter-variant-b.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/service-start.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/signed-out.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5-no-nav.html" %}
+  3  
+
+app/views/exporter-v5/submitted-817435283-alert.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/submitted-817435283-update-quantity.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/submitted-817435283-update-shipment.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/submitted-817435283-update.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/submitted-prenotifications-split-view-example.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/submitted-prenotifications.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/template-confirmation.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/template-edit-name.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/template-euromovement-edit.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/template-euromovement-selected.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/template-euromovement.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/template-fabirc-society-selected.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/transaction-id.html:
+  1:   {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/update-prenotifications.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/usual-description.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/view-375518473.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/view-409413376.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/view-817435283.html:
+  1  
+  2: {% extends "../layouts/layout-exporter-v5.html" %}
+  3  
+
+app/views/exporter-v5/view-828528178.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/view-all-cancel-confirmation.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/view-all-cancel.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/view-all-with-cancel.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/waste-generator.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/waste-identification-codes.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/who-arranged-shipment-details.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/_HOLDING-FOLDER/create-template-from-view-all.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  
+
+app/views/exporter-v5/_HOLDING-FOLDER/template-edit-name-OLD.html:
+  1: {% extends "../layouts/layout-exporter-v5.html" %}
+  2  

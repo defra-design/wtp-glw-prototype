@@ -1,0 +1,184 @@
+
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Your saved templates - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+
+  {# Unclear why gCurrentLocation lists the previous location URL, and gPreviousLocation doesn't. #}
+  {# Very confusing and conscious of logic already in-place, so don't want to make changes they may otherwise break things further down-the-line... #}
+
+  {% if 'manual-bulk-api' in data['gCurrentLocation'] %}
+    {{ govukBackLink({
+      text: 'Back',
+      href: 'manual-bulk-api'
+    }) }}
+  {% else %}
+    {{ govukBackLink({
+      text: 'Back',
+      href: 'dashboard'
+    }) }}
+  {% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    {#<div class="govuk-grid-column-full">#}
+
+      <h1 class="govuk-heading-l">
+        Your saved templates
+      </h1>
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Template name</th>
+            <th scope="col" class="govuk-table__header">Last used</th>
+            <th scope="col" class="govuk-table__header">Action</th>
+          </tr>
+        </thead>
+        
+        <tbody class="govuk-table__body">
+          {% if 'template-euromovement-edit' in data['gCurrentLocation'] %}
+            {# Do nothing #}
+          {% else %}
+            {# Not sure as to what aspect this refers to #}
+            {% if data['template-name'] != undefined %}
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">
+                  {{ data['template-name'] }}
+                </td>
+                <td class="govuk-table__cell">
+                  10 June 2021
+                </td>
+                <td class="govuk-table__cell">
+                  <a href="template-euromovement-selected?just-edited=no" class="govuk-link">Select template</a>
+                </td>
+              </tr>
+            {% endif %}
+            {% endif %}
+            <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              Euromovement paper waste movement
+            </td>
+            <td class="govuk-table__cell">
+              7 June 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="template-euromovement-selected" class="govuk-link">Select template</a>
+            </td>
+          </tr>
+
+          {# Rename template name and also the delete template functionality too #}
+          {% if data['delete-template'] != "yes" %}
+            <tr class="govuk-table__row">
+              <td scope="row" class="govuk-table__cell">
+
+                {% if 'template-euromovement-edit' in data['gCurrentLocation'] %}
+                  {{ data['template-name'] }}
+                {% else %}
+                  {{ data['rename-template-name'] }}
+                {% endif %}
+
+              </td>
+              <td class="govuk-table__cell">
+                7 June 2021
+              </td>
+              <td class="govuk-table__cell">
+                {% if data['template-name'] != undefined %}
+                  <a href="template-fabirc-society-selected?template-name={{ data['template-name'] }}" class="govuk-link">Select template</a>
+                {% else %}
+                  <a href="template-fabirc-society-selected?template-name=Fabric Society Waste mixed paper" class="govuk-link">Select template</a>
+                {% endif %}
+              </td>
+            </tr>
+          {% endif %}
+          {# #}
+
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              Euromovement paper scrap
+            </td>
+            <td class="govuk-table__cell">
+              6 June 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="template-euromovement-selected" class="govuk-link">Select template</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              Sword Movements heavy melting steel
+            </td>
+            <td class="govuk-table__cell">
+              6 June 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="template-euromovement-selected" class="govuk-link">Select template</a>
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              Excel List Movements heavy melting steel
+            </td>
+            <td class="govuk-table__cell">
+              4 June 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="template-euromovement-selected" class="govuk-link">Select template</a>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              Fabric Society Waste paper scrap
+            </td>
+            <td class="govuk-table__cell">
+              2 June 2021
+            </td>
+            <td class="govuk-table__cell">
+              <a href="template-euromovement-selected" class="govuk-link">Select template</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <div class="flex-container grid-row">
+        {% if data['template-name'] != undefined %}
+          {{ mojPagination({
+            results: {
+            from: 1,
+            to: 8,
+            count: 8
+            }
+          }) }}
+        {% else %}
+          {{ mojPagination({
+            results: {
+            from: 1,
+            to: 7,
+            count: 7
+            }
+          }) }}
+          {% endif %}
+      </div>
+
+      <p class="govuk-body govuk-!-margin-top-6">
+        <a href="dashboard">Return to dashboard</a>
+      </p>
+  
+    </div>
+  </div>
+
+  {% endblock %}

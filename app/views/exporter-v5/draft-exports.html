@@ -1,0 +1,1262 @@
+
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  View all draft and partially completed exports - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'dashboard'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{#<h1>{{ data['option'] }}</h1>#}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['error'] == 'no-utid-entered' %}
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#utid-reference">Enter a description or a transaction number</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+
+      <h1 class="govuk-heading-l">
+        View draft waste exports
+      </h1>
+
+      <form action="received-form-validation" method="post" novalidate>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset govuk-!-margin-top-4">
+
+            <legend class="govuk-fieldset__legend">
+              Search by description or transaction number
+            </legend>
+
+            {% if data['error'] == 'no-utid-entered' %}
+              <div class="govuk-form-group govuk-form-group--error">
+            {% else %}
+              <div class="govuk-form-group">
+            {% endif %}
+            {% if data['error'] == 'no-utid-entered' %}
+              <span id="utid-reference-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Enter a description or a transaction number
+              </span>
+            {% endif %}
+            {% if data['error'] == 'no-utid-entered' %}
+              <input class="govuk-input govuk-input--error govuk-!-width-three-quarters" id="utid-reference" name="utid-reference" type="text" value="{{ data['utid-reference'] }}" autocomplete="off" >
+            {% else %}
+              <input class="govuk-input govuk-!-width-three-quarters" id="utid-reference" name="utid-reference" type="text" value="{{ data['utid-reference'] }}" autocomplete="off" >
+            {% endif %}
+
+            {{ govukButton({
+              text: "Search",
+              classes: "govuk-!-margin-left-2"
+            }) }}
+
+            {% if (data['utid-reference'] != null) and ('35283' in data['utid-reference']) %}
+              <p class="govuk-body">
+                <a href="submitted-prenotifications" class="govuk-link">Clear search criteria and show all records</a>
+              </p>
+            {% endif %}
+
+            </div>
+          </fieldset>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <details class="govuk-details" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Filters
+      </span>
+    </summary>
+    <div class="govuk-details__text govuk-!-padding-bottom-0">
+      <form action="" method="post">
+        <div id="standard-filters">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+              <div class="govuk-form-group">
+
+                {% call govukFieldset({
+                  legend: {
+                    text: "Date submitted",
+                    classes: "govuk-fieldset__legend--m"
+                  }
+                }) %}
+
+                {{ govukRadios({
+                  classes: "govuk-radios--small",
+                  idPrefix: "exporter-time-period",
+                  name: "exporter-time-period",
+                  items: [
+                    {
+                      value: "all-dates",
+                      text: "All dates",
+                      checked: checked("exporter-time-period", "all-dates")
+                    },
+                    {
+                      value: "this-month",
+                      text: "This month",
+                      checked: checked("exporter-time-period", "this-month")
+                    },
+                    {
+                      value: "last-month",
+                      text: "Last month",
+                      checked: checked("exporter-time-period", "last-month")
+                    },
+                    {
+                      value: "last-90-days",
+                      text: "Last 90 days",
+                      checked: checked("exporter-time-period", "last-90-days")
+                    },
+                    {
+                      value: "this-year",
+                      text: "This year",
+                      checked: checked("exporter-time-period", "this-year")
+                    },
+                    {
+                      value: "last-year",
+                      text: "Last Year",
+                      checked: checked("exporter-time-period", "last-year")
+                    }
+                  ]
+                }) }}
+            
+                {% endcall %}
+
+              </div>
+            </div>
+            <div class="govuk-grid-column-one-half">
+              <div class="govuk-form-group">
+                {% call govukFieldset({
+                  legend: {
+                    text: "Status",
+                    classes: "govuk-fieldset__legend--m"
+                  }
+                }) %}
+
+                {{ govukCheckboxes({
+                  classes: "govuk-checkboxes--small",
+                  idPrefix: "exporter-status",
+                  name: "exporter-status",
+                  fieldset: {
+                  },
+                  items: [
+                    {
+                      value: "submitted",
+                      text: "Submitted",
+                      checked: checked
+                    },
+                    {
+                      value: "alert",
+                      text: "Alert",
+                      checked: checked
+                    }
+                  ]
+                }) }}
+
+                {% endcall %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="govuk-button govuk-!-margin-right-2" formaction="{{ gCurrentlocation }}?filters=applied" type="submit" id="apply-filters">
+          Apply
+        </button>
+        <button class="govuk-button govuk-button--secondary govuk-!-margin-right-2" formaction="{{ gCurrentlocation }}?filters=reset&exporter-time-period=all-dates" id="reset-filters">
+          Reset filters
+        </button>
+        {#
+        <button class="button-as-link govuk-!-margin-top-1" formaction="#" id="download-filters" >
+          Download filtered data as a CSV file
+        </button>
+        #}
+      </form>
+    </div>
+  </details>
+
+  {# Testing outputs
+  <p>
+    time period selected = {{ data['exporter-time-period'] }}
+  </p>
+
+  <p>
+    status selected = {{ data['exporter-status'] }}
+  </p>
+
+  {% if (data['filters'] == 'applied') %}
+    <p>filters applied</p>
+  {% else %}
+    <p>not applied</p>
+  {% endif %}
+  #}
+
+  {# Filter notification banner and download link #}
+  {% if (data['filters'] == 'applied') and (data['exporter-time-period'] != 'all-dates') %}
+    <div class="govuk-inset-text" style="padding:20px; border-color: #00703c; background: #bfdbce">
+      <h3 class="govuk-heading-m">
+        Filters are currently applied to the list
+      </h3>
+      You can <a class="govuk-notification-banner__link" href="../public/csv/exporter-submissions.csv" download class="govuk-link govuk-link--no-visited-state">download this filtered submission list</a> as a comma-separated values (CSV) file.
+    </div>
+  {% endif %}
+
+  {# OPTION A LIST #}
+  {% if (data['option'] == 'a') %} 
+    <table class="govuk-table" data-module="moj-sortable-table">
+
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Status</th>
+          <th scope="col" class="govuk-table__header" aria-sort="ascending">Created</th>
+          <th scope="col" class="govuk-table__header" aria-sort="ascending">Last saved</th>
+          <th scope="col" class="govuk-table__header">Creator</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Waste description</th>
+          <th scope="col" class="govuk-table__header">Transaction number</th>
+          <th scope="col" class="govuk-table__header">Reference number</th>
+          <th scope="col" class="govuk-table__header">Action</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "locked",
+              classes: "govuk-tag--blue"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210604">4 June 2021</td>
+          <td class="govuk-table__cell">Glen Baker</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+            <br>
+            B2040: Other wastes containing principally inorganic constituents
+          </td>
+          <td class="govuk-table__cell">828528178</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-828528178" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+        {% if (data['draft-cancel'] != 'true') %}
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "draft",
+                classes: "govuk-tag--grey"
+              })}}
+            </td>
+            <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+            <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+            <td class="govuk-table__cell">David Brown</td>
+            <td class="govuk-table__cell">
+              Heavy melting steel scrap
+            </td>
+            <td class="govuk-table__cell">Not applicable</td>
+            <td class="govuk-table__cell">Not provided</td>
+            <td class="govuk-table__cell">
+              <a href="draft-prenotify?person-arranging-the-shipment-status=Completed&importer-consignee-status=Completed&quantity-status=Completed&recovery-operation-status=Completed&usual-description-of-the-waste-status=Completed&waste-identification-codes-status=Completed&transaction-id-status=Completed" class="govuk-link">View</a>
+            </td>
+          </tr>
+        {% endif %}
+
+        {#
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {% if (data['draft-cancel'] == 'true') %}
+              {{govukTag({
+                text: "cancelled",
+                classes: "govuk-tag--orange"
+              })}}
+            {% else %}
+              {{govukTag({
+                text: "draft",
+                classes: "govuk-tag--grey"
+              })}}
+            {% endif %}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          <td class="govuk-table__cell">David Brown</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+          </td>
+          <td class="govuk-table__cell">Not applicable</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="draft-prenotify?person-arranging-the-shipment-status=Completed&importer-consignee-status=Completed&quantity-status=Completed&recovery-operation-status=Completed&usual-description-of-the-waste-status=Completed&waste-identification-codes-status=Completed&transaction-id-status=Completed" class="govuk-link">View</a>
+          </td>
+        </tr>
+        #}
+
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "overdue",
+              classes: "govuk-tag--red"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210601">1 June 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          <td class="govuk-table__cell">Peter Cox</td>
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+            <br>
+            B3020: Paper, paperboard and paper product wastes
+          </td>
+          <td class="govuk-table__cell">817435283</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="submitted-817435283-alert" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "attention",
+              classes: "govuk-tag--yellow"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210601">1 June 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          <td class="govuk-table__cell">Susan Crane</td>
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+            <br>
+            B2040: Other wastes containing principally inorganic constituents
+          </td>
+          <td class="govuk-table__cell">446984963</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-817435283" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "cancelled",
+              classes: "govuk-tag--orange"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210531">31 May 2021</td>
+          <td class="govuk-table__cell">Michael Croke</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+            <br>
+            B2060: Spent activated carbon
+          </td>
+          <td class="govuk-table__cell">474099313</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-375518473" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "locked",
+              classes: "govuk-tag--blue"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210531">31 May 2021</td>
+          <td class="govuk-table__cell">Anthony Kelly</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+          </td>
+          <td class="govuk-table__cell">100575494</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-409413376" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "draft",
+              classes: "govuk-tag--grey"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell">Adriana Lobo</td>
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+          </td>
+          <td class="govuk-table__cell">603439986</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="draft-export" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "attention",
+              classes: "govuk-tag--yellow"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210526">26 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell">Robert Simcox</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+            <br>
+            B2040: Other wastes containing principally inorganic constituents
+          </td>
+          <td class="govuk-table__cell">104779838</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-375518473" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "overdue",
+              classes: "govuk-tag--red"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210526">26 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell">Stephen Smith</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+            <br>
+            B1210: Slag arising from the manufacture of iron and steel
+          </td>
+          <td class="govuk-table__cell">299517832</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-409413376" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "cancelled",
+              classes: "govuk-tag--orange"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210526">26 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210527">27 May 2021</td>
+          <td class="govuk-table__cell">Kelly Taylor</td>
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+          </td>
+          <td class="govuk-table__cell">324129673</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-817435283" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "locked",
+              classes: "govuk-tag--blue"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210525">25 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210527">27 May 2021</td>
+          <td class="govuk-table__cell">Nathan Tunnell</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+          </td>
+          <td class="govuk-table__cell">657478014</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-375518473" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "draft",
+              classes: "govuk-tag--grey"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210524">24 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210527">27 May 2021</td>
+          <td class="govuk-table__cell">Phil Wright</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+            <br>
+            B1210: Slag arising from the manufacture of iron and steel
+          </td>
+          <td class="govuk-table__cell">806781760</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="draft-export" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "attention",
+              classes: "govuk-tag--yellow"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210524">24 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210524">24 May 2021</td>
+          <td class="govuk-table__cell">Anthony Kelly</td>
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+          </td>
+          <td class="govuk-table__cell">805396704</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-817435283" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "overdue",
+              classes: "govuk-tag--red"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210524">24 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210525">25 May 2021</td>
+          <td class="govuk-table__cell">David Brown</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+          </td>
+          <td class="govuk-table__cell">953035682</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-375518473" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "cancelled",
+              classes: "govuk-tag--orange"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210521">21 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210522">22 May 2021</td>
+          <td class="govuk-table__cell">Susan Crane</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+            <br>
+            B1210: Slag arising from the manufacture of iron and steel
+          </td>
+          <td class="govuk-table__cell">574497213</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-409413376" class="govuk-link">View</a>
+          </td>
+        </tr>
+    
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "locked",
+              classes: "govuk-tag--blue"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210520">20 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell">Robert Simcox</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+            <br>
+            B2040: Other wastes containing principally inorganic constituents
+          </td>
+          <td class="govuk-table__cell">104779838</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-375518473" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "draft",
+              classes: "govuk-tag--grey"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210519">19 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell">Stephen Smith</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+            <br>
+            B1210: Slag arising from the manufacture of iron and steel
+          </td>
+          <td class="govuk-table__cell">299517832</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="draft-export" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "attention",
+              classes: "govuk-tag--yellow"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210519">19 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210527">27 May 2021</td>
+          <td class="govuk-table__cell">Kelly Taylor</td>
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+          </td>
+          <td class="govuk-table__cell">324129673</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-817435283" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "overdue",
+              classes: "govuk-tag--red"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210518">18 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210527">27 May 2021</td>
+          <td class="govuk-table__cell">Nathan Tunnell</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+          </td>
+          <td class="govuk-table__cell">657478014</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-375518473" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "cancelled",
+              classes: "govuk-tag--orange"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210517">17 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210527">27 May 2021</td>
+          <td class="govuk-table__cell">Phil Wright</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+            <br>
+            B1210: Slag arising from the manufacture of iron and steel
+          </td>
+          <td class="govuk-table__cell">806781760</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-409413376" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  {# OPTION B LIST #}
+  {% else %}
+
+    <table class="govuk-table govuk-!-margin-bottom-9" data-module="moj-sortable-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Your exports</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Status</th>
+          <th scope="col" class="govuk-table__header" aria-sort="ascending">Created</th>
+          <th scope="col" class="govuk-table__header" aria-sort="ascending">Last saved</th>
+          {#<th scope="col" class="govuk-table__header">Creator</th>#}
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Waste description</th>
+          <th scope="col" class="govuk-table__header">Transaction number</th>
+          <th scope="col" class="govuk-table__header">Reference number</th>
+          <th scope="col" class="govuk-table__header">Action</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "locked",
+              classes: "govuk-tag--blue"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210604">4 June 2021</td>
+          {#<td class="govuk-table__cell">Glen Baker</td>#}
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+            <br>
+            B2040: Other wastes containing principally inorganic constituents
+          </td>
+          <td class="govuk-table__cell">828528178</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-828528178" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+        {% if (data['draft-cancel'] != 'true') %}
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              {{govukTag({
+                text: "draft",
+                classes: "govuk-tag--grey"
+              })}}
+            </td>
+            <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+            <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+            {#<td class="govuk-table__cell">David Brown</td>#}
+            <td class="govuk-table__cell">
+              Heavy melting steel scrap
+            </td>
+            <td class="govuk-table__cell">Not applicable</td>
+            <td class="govuk-table__cell">Not provided</td>
+            <td class="govuk-table__cell">
+              <a href="draft-prenotify?person-arranging-the-shipment-status=Completed&importer-consignee-status=Completed&quantity-status=Completed&recovery-operation-status=Completed&usual-description-of-the-waste-status=Completed&waste-identification-codes-status=Completed&transaction-id-status=Completed" class="govuk-link">View</a>
+            </td>
+          </tr>
+        {% endif %}
+
+        {#
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {% if (data['draft-cancel'] == 'true') %}
+              {{govukTag({
+                text: "cancelled",
+                classes: "govuk-tag--orange"
+              })}}
+            {% else %}
+              {{govukTag({
+                text: "draft",
+                classes: "govuk-tag--grey"
+              })}}
+            {% endif %}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+          </td>
+          <td class="govuk-table__cell">Not applicable</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="draft-prenotify?person-arranging-the-shipment-status=Completed&importer-consignee-status=Completed&quantity-status=Completed&recovery-operation-status=Completed&usual-description-of-the-waste-status=Completed&waste-identification-codes-status=Completed&transaction-id-status=Completed" class="govuk-link">View</a>
+          </td>
+        </tr>
+        #}
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "overdue",
+              classes: "govuk-tag--red"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210601">1 June 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          {#<td class="govuk-table__cell">Peter Cox</td>#}
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+            <br>
+            B3020: Paper, paperboard and paper product wastes
+          </td>
+          <td class="govuk-table__cell">817435283</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="submitted-817435283-alert" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "attention",
+              classes: "govuk-tag--yellow"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210601">1 June 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210602">2 June 2021</td>
+          {#<td class="govuk-table__cell">Susan Crane</td>#}
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+            <br>
+            B2040: Other wastes containing principally inorganic constituents
+          </td>
+          <td class="govuk-table__cell">446984963</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-817435283" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "cancelled",
+              classes: "govuk-tag--orange"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210531">31 May 2021</td>
+          {#<td class="govuk-table__cell">Michael Croke</td>#}
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+            <br>
+            B2060: Spent activated carbon
+          </td>
+          <td class="govuk-table__cell">474099313</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-375518473" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <table class="govuk-table" data-module="moj-sortable-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Remaining exports</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Status</th>
+          <th scope="col" class="govuk-table__header" aria-sort="ascending">Created</th>
+          <th scope="col" class="govuk-table__header" aria-sort="ascending">Last saved</th>
+          <th scope="col" class="govuk-table__header">Creator</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Waste description</th>
+          <th scope="col" class="govuk-table__header">Transaction number</th>
+          <th scope="col" class="govuk-table__header">Reference number</th>
+          <th scope="col" class="govuk-table__header">Action</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "locked",
+              classes: "govuk-tag--blue"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210531">31 May 2021</td>
+          <td class="govuk-table__cell">Anthony Kelly</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+          </td>
+          <td class="govuk-table__cell">100575494</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-409413376" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "draft",
+              classes: "govuk-tag--grey"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell">Adriana Lobo</td>
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+          </td>
+          <td class="govuk-table__cell">603439986</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="draft-export" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "attention",
+              classes: "govuk-tag--yellow"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210526">26 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell">Robert Simcox</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+            <br>
+            B2040: Other wastes containing principally inorganic constituents
+          </td>
+          <td class="govuk-table__cell">104779838</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-375518473" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "overdue",
+              classes: "govuk-tag--red"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210526">26 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell">Stephen Smith</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+            <br>
+            B1210: Slag arising from the manufacture of iron and steel
+          </td>
+          <td class="govuk-table__cell">299517832</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-409413376" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "cancelled",
+              classes: "govuk-tag--orange"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210526">26 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210527">27 May 2021</td>
+          <td class="govuk-table__cell">Kelly Taylor</td>
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+          </td>
+          <td class="govuk-table__cell">324129673</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-817435283" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "locked",
+              classes: "govuk-tag--blue"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210525">25 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210527">27 May 2021</td>
+          <td class="govuk-table__cell">Nathan Tunnell</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+          </td>
+          <td class="govuk-table__cell">657478014</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-375518473" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "draft",
+              classes: "govuk-tag--grey"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210524">24 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210527">27 May 2021</td>
+          <td class="govuk-table__cell">Phil Wright</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+            <br>
+            B1210: Slag arising from the manufacture of iron and steel
+          </td>
+          <td class="govuk-table__cell">806781760</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="draft-export" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "attention",
+              classes: "govuk-tag--yellow"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210524">24 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210524">24 May 2021</td>
+          <td class="govuk-table__cell">Anthony Kelly</td>
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+          </td>
+          <td class="govuk-table__cell">805396704</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-817435283" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "overdue",
+              classes: "govuk-tag--red"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210524">24 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210525">25 May 2021</td>
+          <td class="govuk-table__cell">David Brown</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+          </td>
+          <td class="govuk-table__cell">953035682</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-375518473" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "cancelled",
+              classes: "govuk-tag--orange"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210521">21 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210522">22 May 2021</td>
+          <td class="govuk-table__cell">Susan Crane</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+            <br>
+            B1210: Slag arising from the manufacture of iron and steel
+          </td>
+          <td class="govuk-table__cell">574497213</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-409413376" class="govuk-link">View</a>
+          </td>
+        </tr>
+    
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "locked",
+              classes: "govuk-tag--blue"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210520">20 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell">Robert Simcox</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+            <br>
+            B2040: Other wastes containing principally inorganic constituents
+          </td>
+          <td class="govuk-table__cell">104779838</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-375518473" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "draft",
+              classes: "govuk-tag--grey"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210519">19 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210528">28 May 2021</td>
+          <td class="govuk-table__cell">Stephen Smith</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+            <br>
+            B1210: Slag arising from the manufacture of iron and steel
+          </td>
+          <td class="govuk-table__cell">299517832</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="draft-export" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "attention",
+              classes: "govuk-tag--yellow"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210519">19 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210527">27 May 2021</td>
+          <td class="govuk-table__cell">Kelly Taylor</td>
+          <td class="govuk-table__cell">
+            Paper scrap - OCC
+          </td>
+          <td class="govuk-table__cell">324129673</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-817435283" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "overdue",
+              classes: "govuk-tag--red"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210518">18 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210527">27 May 2021</td>
+          <td class="govuk-table__cell">Nathan Tunnell</td>
+          <td class="govuk-table__cell">
+            Mixed Paper EN643
+          </td>
+          <td class="govuk-table__cell">657478014</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-375518473" class="govuk-link">View</a>
+          </td>
+        </tr>
+        
+        <tr class="govuk-table__row">
+          <td scope="row" class="govuk-table__cell">
+            {{govukTag({
+              text: "cancelled",
+              classes: "govuk-tag--orange"
+            })}}
+          </td>
+          <td class="govuk-table__cell" data-sort-value="20210517">17 May 2021</td>
+          <td class="govuk-table__cell" data-sort-value="20210527">27 May 2021</td>
+          <td class="govuk-table__cell">Phil Wright</td>
+          <td class="govuk-table__cell">
+            Heavy melting steel scrap
+            <br>
+            B1210: Slag arising from the manufacture of iron and steel
+          </td>
+          <td class="govuk-table__cell">806781760</td>
+          <td class="govuk-table__cell">Not provided</td>
+          <td class="govuk-table__cell">
+            <a href="view-409413376" class="govuk-link">View</a>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    </table>
+
+  {% endif %}
+
+  {# Pagination dependent upon search results #}
+  {% if (data['utid-reference'] != null) and ('35283' in data['utid-reference']) %}
+    {{ mojPagination({
+      results: {
+        from: 1,
+        to: 1,
+        count: 1
+      }
+    }) }}
+  {% else %}
+    {# All dates #}
+    {% if (data['exporter-time-period'] == 'all-dates') %}
+      {{ mojPagination({
+        results: {
+          from: 1,
+          to: 20,
+          count: 50
+        },
+        previous: {
+          text: 'Previous',
+          href: ''
+        },
+        next: {
+          text: 'Next',
+          href: ''
+        },
+        items: [{
+          text: '1',
+          href: '',
+          selected: true
+        }, {
+          text: '2',
+          href: ''
+        }, {
+          text: '3',
+          href: ''
+        }]
+      }) }}
+    {% elif (data['exporter-time-period'] == 'this-year') %}
+      {{ mojPagination({
+        results: {
+          from: 1,
+          to: 15,
+          count: 15
+        }
+      }) }}
+    {% elif (data['exporter-time-period'] == 'last-year') %}
+      {{ mojPagination({
+        results: {
+          from: 1,
+          to: 5,
+          count: 5
+        }
+      }) }}
+    {% endif %}
+  {% endif %}
+
+  <p class="govuk-body govuk-!-margin-top-6">
+    <a href="dashboard">Return to dashboard</a>
+  </p>
+
+{% endblock %}

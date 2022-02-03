@@ -1,0 +1,142 @@
+
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Home - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-modal-overlay" style="display: none;">
+    <div class="govuk-modal" role="dialog" aria-labelledby="govuk-modal-title" tabindex="-1" style="display: none;" >
+      <h2 class="govuk-heading-l" id="govuk-modal-title">You are about to be signed out</h2>
+
+      <div class="govuk-modal-content" role="document">
+        <p>For your security, we will sign you out in the next <strong>5 minutes</string>.</p>
+      </div>
+
+      {{ govukButton({
+        text: "Stay signed in",
+        classes: "govuk-button govuk-!-margin-bottom-1 close-modal",
+        href: "?continue=true"
+      }) }}
+
+      {{ govukButton({
+        text: "Sign out",
+        classes: "govuk-button--secondary govuk-!-margin-left-2 govuk-!-margin-bottom-1",
+        href: "signed-out?sign-out-type=system"
+      }) }}
+    </div>
+  </div>
+
+{#href: "signed-out?signed-out=true"#}
+
+{#  {# Session timeout mechanism - set for 60 seconds, warning after 30 seconds 
+  {{ hmrcTimeoutDialog ({
+    timeout: 60,
+    countdown: 30,
+    keepAliveUrl: "?continue=true",
+    signOutUrl: "signed-out?lang=English&signed-out=true",
+    language: "en"
+  }) }}
+#}
+
+  <script>
+    req.session.data.error = "";
+  </script>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {# DRAFTS WORK IN PROGRESS #}
+      {% if data['sign-out-type'] == "system" %}
+        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" style="border-color: #d4351c !important">
+          <div class="govuk-notification-banner__header" style="background-color: #d4351c !important">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Important
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              Your last session timed out and your submission has been saved as a draft.
+            </p>
+            <p class="govuk-notification-banner__heading">
+              <a class="govuk-notification-banner__link" href="draft-prenotify?person-arranging-the-shipment-status=Completed&importer-consignee-status=Completed&quantity-status=Completed&recovery-operation-status=Completed&usual-description-of-the-waste-status=Completed&waste-identification-codes-status=Completed&transaction-id-status=Completed">View draft submission</a>.
+            </p>
+          </div>
+        </div>
+      {% endif %}
+      {# #}
+
+      <span class="govuk-caption-xl">
+        Export green list waste
+      </span>
+      <h1 class="govuk-heading-xl">
+        Home
+      </h1>
+      
+    </div>
+  </div>
+
+  <div class="flex-container grid-row">
+
+    <div class="card">
+      <div class="card-body active">
+        <h2 class="heading-medium card-heading"><a href="manual-bulk-api">Tell us about a waste export</a></h2>
+      </div>
+      <div class="card-action">
+        This will create an Annex VII for you to print out.
+      </div> 
+    </div>
+
+    {# DRAFTS WORK IN PROGRESS #}
+    <div class="card">
+      <div class="card-body active">
+        <h2 class="heading-medium card-heading"><a href="draft-exports?exporter-time-period=all-dates&draft-cancel=false">View draft waste exports</a></h2>
+      </div>
+      <div class="card-action">
+        Search, view, add and edit information for all draft waste exports. (View <a href="draft-exports?exporter-time-period=all-dates&option=a&draft-cancel=false">option A</a> or <a href="draft-exports?exporter-time-period=all-dates&option=b&draft-cancel=false">option B</a>)
+      </div> 
+    </div>
+    {# #}
+
+    <div class="card">
+      <div class="card-body active">
+        <h2 class="heading-medium card-heading"><a href="update-prenotifications">Update exports awaiting final details</a></h2>
+      </div>
+      <div class="card-action">
+        Add new information about weight, date of transport, or carrier details.
+      </div> 
+    </div>
+
+    <div class="card">
+      <div class="card-body active">
+        <h2 class="heading-medium card-heading"><a href="submitted-prenotifications?exporter-time-period=all-dates">View all submitted exports</a></h2>
+      </div>
+      <div class="card-action">
+        Search and view previous waste exports.
+      </div> 
+    </div>
+  
+    <div class="card">
+      <div class="card-body active">
+        <h2 class="heading-medium card-heading"><a href="prenotification-templates">View your saved templates</a></h2>
+      </div>
+      <div class="card-action">
+        Use templates to generate an Annex VII faster.
+      </div> 
+    </div>
+
+  </div>
+
+{% endblock %}

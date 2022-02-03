@@ -1,0 +1,54 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Update template name - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Update template name
+      </h1>
+
+      <form class="form" method="post">
+
+      {% call govukFieldset({
+      }) %}
+
+      {{ govukInput({
+        id: "new-rename-template-name",
+        name: "new-rename-template-name",
+        value: data['new-rename-template-name'],
+        value: data['template-name']
+      }) }}
+
+      {% endcall %}
+
+      <div class="govuk-button-group">
+
+        {{ govukButton({
+          text: 'Save'
+        }) }}
+
+        <a class="govuk-link" href="template-euromovement-edit">Cancel</a>
+
+      </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
