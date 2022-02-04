@@ -257,9 +257,19 @@
             Quantity of waste
           </dt>
           <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="quantity">
-              Change<span class="govuk-visually-hidden"> quantity of waste</span>
-            </a>
+            {% if data['actual-or-estimate'] == 'estimated' %}
+              <a class="govuk-link" href="enter-estimate-waste">
+                Change<span class="govuk-visually-hidden"> quantity of waste</span>
+              </a>
+            {% elif data['actual-or-estimate'] == 'actual' %}
+              <a class="govuk-link" href="enter-waste" aria-describedby="quantity-status">
+                Change<span class="govuk-visually-hidden"> quantity of waste</span>
+              </a>
+            {% else %}
+              <a class="govuk-link" href="quantity" aria-describedby="quantity-status">
+                Change<span class="govuk-visually-hidden"> quantity of waste</span>
+              </a>
+            {% endif %}
           </dd> 
         </div>
       </dl>

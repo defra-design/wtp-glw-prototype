@@ -59,9 +59,25 @@
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="quantity" aria-describedby="quantity-status">
-                  Quantity of waste (actual or estimate)
-                </a>
+                {% if data['quantity-status'] != 'Completed' %}
+                  <a href="quantity" aria-describedby="quantity-status">
+                    Quantity of waste (actual or estimate)
+                  </a>
+                {% else %}
+                  {% if data['actual-or-estimate'] == 'estimated' %}
+                    <a href="enter-estimate-waste" aria-describedby="quantity-status">
+                      Quantity of waste (actual or estimate)
+                    </a>
+                  {% elif data['actual-or-estimate'] == 'actual' %}
+                    <a href="enter-waste" aria-describedby="quantity-status">
+                      Quantity of waste (actual or estimate)
+                    </a>
+                  {% else %}
+                    <a href="quantity" aria-describedby="quantity-status">
+                      Quantity of waste (actual or estimate)
+                    </a>
+                  {% endif %}
+                {% endif %}
               </span>
               {% if data['quantity-status'] == null or data['quantity-status'] == 'Not started' %}
                 <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="quantity-status">Not started</strong>
