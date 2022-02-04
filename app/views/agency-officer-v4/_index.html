@@ -1,0 +1,97 @@
+
+{% extends "../layouts/design-iterations-layout.html" %}
+
+{% block pageTitle %}
+  Agency Officer prototype version 4
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  })}}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "Prototype"
+      },
+      html: 'Agency Officer'
+    }) }}
+  </div>
+  
+  <div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-l govuk-!-margin-top-6">
+      Version 4
+    </h1>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Implemented changes
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+            <li>Placeholders added for accessibility statement, cookies, and privacy policy</li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+
+    {{ govukButton({
+      text: "Journey 1. Sign in and ALERTS on home page",
+      href: "index?ao-alerts=homepage",
+      classes: "govuk-!-margin-right-2"
+    }) }}
+    <br>
+    {{ govukButton({
+      text: "Journey 2. Sign in and ALERTS in nav bar",
+      href: "index?ao-alerts=separate"
+    }) }}
+
+    <p class="govuk-body">
+      <a href="alerts-variant">Journey 2. Variation of alerts priortity ordering</a>
+    </p>
+
+    <h2 class="govuk-heading-l govuk-!-margin-top-8">
+      Research
+    </h2>
+       
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Session dates
+        </dt>
+        <dd class="govuk-summary-list__value">
+          7 Jun 2021 - 13 Jun 2021
+        </dd>
+      </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Participants
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>7 agency officers (experienced), one with BSL as first language</li>
+            <li>1 participant made use of Dragon</li>
+        </dd>
+      </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Insights
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <a href="#">Round 3 research findings</a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+{% endblock %}

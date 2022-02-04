@@ -1,0 +1,138 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+
+{% from "govuk/components/accordion/macro.njk"            import  govukAccordion %}
+{% from "govuk/components/back-link/macro.njk"            import  govukBackLink %}
+{% from "govuk/components/breadcrumbs/macro.njk"          import  govukBreadcrumbs %}
+{% from "govuk/components/button/macro.njk"               import  govukButton %}
+{% from "govuk/components/character-count/macro.njk"      import  govukCharacterCount %}
+{% from "govuk/components/checkboxes/macro.njk"           import  govukCheckboxes %}
+{% from "govuk/components/date-input/macro.njk"           import  govukDateInput %}
+{% from "govuk/components/details/macro.njk"              import  govukDetails %}
+{% from "govuk/components/error-message/macro.njk"        import  govukErrorMessage %}
+{% from "govuk/components/error-summary/macro.njk"        import  govukErrorSummary %}
+{% from "govuk/components/fieldset/macro.njk"             import  govukFieldset %}
+{% from "govuk/components/file-upload/macro.njk"          import  govukFileUpload %}
+{% from "govuk/components/input/macro.njk"                import  govukInput %}
+{% from "govuk/components/inset-text/macro.njk"           import  govukInsetText %}
+{% from "govuk/components/panel/macro.njk"                import  govukPanel %}
+{% from "govuk/components/phase-banner/macro.njk"         import  govukPhaseBanner %}
+{% from "govuk/components/radios/macro.njk"               import  govukRadios %}
+{% from "govuk/components/select/macro.njk"               import  govukSelect %}
+{% from "govuk/components/skip-link/macro.njk"            import  govukSkipLink %}
+{% from "govuk/components/summary-list/macro.njk"         import  govukSummaryList %}
+{% from "govuk/components/table/macro.njk"                import  govukTable %}
+{% from "govuk/components/tabs/macro.njk"                 import  govukTabs %}
+{% from "govuk/components/tag/macro.njk"                  import  govukTag %}
+{% from "govuk/components/textarea/macro.njk"             import  govukTextarea %}
+{% from "govuk/components/warning-text/macro.njk"         import  govukWarningText %}
+{% from "govuk/components/notification-banner/macro.njk"  import  govukNotificationBanner %}
+{% from "moj/components/pagination/macro.njk"             import  mojPagination %}
+{% from "moj/components/notification-badge/macro.njk"     import  mojNotificationBadge -%}
+{% from "hmrc/components/add-to-a-list/macro.njk"         import  hmrcAddToAList %}
+
+{% block head %}
+  {% include "includes/head.html" %}
+{% endblock %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <header class="moj-header" role="banner">
+    <div class="moj-header__container">
+      <div class="moj-header__logo">
+        {# Service name #}
+        <a class="moj-header__link moj-header__link--service-name govuk-!-font-weight-bold" href="/agency-officer-v3/dashboard">Export green list waste</a>
+      </div>
+      <div class="moj-header__content">
+        <nav class="moj-header__navigation" aria-label="Account navigation">
+          <ul class="moj-header__navigation-list">
+            {% if data['ao-alerts'] == 'separate' %}
+              <li class="moj-header__navigation-item">
+                {# Alerts #}
+                <a class="moj-header__navigation-link" href="alerts" aria-current="page">Alerts <span id="notifications" class="moj-notification-badge">6</span></a>
+              </li>
+            {% endif %}
+            <li class="moj-header__navigation-item">
+              {# Full name of current logged-in user #}
+              <a class="moj-header__navigation-link" href="#" aria-current="page">Elizabeth Wilkinson</a>
+            </li>
+            <li class="moj-header__navigation-item">
+              <a class="moj-header__navigation-link" href="/agency-officer-v3/sign-in">Sign out</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  {# Space for key details bar #}
+  {% block afterHeader %}{% endblock %}
+{% endblock %}
+
+{% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
+
+{% if useAutoStoreData %}
+  {% block footer %}
+    <footer class="govuk-footer " role="contentinfo">
+      <div class="govuk-width-container ">
+        <div class="govuk-footer__meta">
+          <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+            <h2 class="govuk-visually-hidden">Support links</h2>
+            
+            <ul class="govuk-footer__inline-list">
+              <li class="govuk-footer__inline-list-item">
+                <a class="govuk-footer__link" href="/agency-officer-v3/accessibility-statement">
+                  Accessibility statement
+                </a>
+              </li>
+              <li class="govuk-footer__inline-list-item">
+                <a class="govuk-footer__link" href="/agency-officer-v3/cookies">
+                  Cookies
+                </a>
+              </li>
+              <li class="govuk-footer__inline-list-item">
+                <a class="govuk-footer__link" href="/agency-officer-v3/privacy-notice">
+                  Privacy notice
+                </a>
+              </li>
+            </ul>
+
+            <ul class="govuk-footer__inline-list">
+              <li class="govuk-footer__inline-list-item">
+                <a class="govuk-footer__link" href="https://govuk-prototype-kit.herokuapp.com/">
+                  GOV.UK Prototype Kit {{ releaseVersion }}
+                </a>
+              </li>
+              <li class="govuk-footer__inline-list-item">
+                <a class="govuk-footer__link" href="/prototype-admin/clear-data">
+                  Clear data
+                </a>
+              </li>
+            </ul>
+
+            <svg aria-hidden="true" focusable="false" class="govuk-footer__licence-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 483.2 195.7" height="17" width="41">
+              <path fill="currentColor" d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145" />
+            </svg>
+            <span class="govuk-footer__licence-description">
+              All content is available under the
+              <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  {% endblock %}
+{% endif %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    {% include "includes/scripts.html" %}
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+  <!-- GOV.UK Prototype Kit {{releaseVersion}} -->
+{% endblock %}

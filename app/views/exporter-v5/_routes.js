@@ -326,10 +326,14 @@ router.post('/importer-consignee', function(req, res) {
 
 // quantity
 router.post('/quantity', function(req, res) {
-    if (req.session.data['actual-or-estimate'] == 'actual') {
-        res.redirect('enter-waste');
-    } else if (req.session.data['actual-or-estimate'] == 'estimated') {
-        res.redirect('enter-estimate-waste');
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        if (req.session.data['actual-or-estimate'] == 'actual') {
+            res.redirect('enter-waste');
+        } else if (req.session.data['actual-or-estimate'] == 'estimated') {
+            res.redirect('enter-estimate-waste');
+        }
     }
 })
 

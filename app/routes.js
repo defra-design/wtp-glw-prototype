@@ -46,6 +46,11 @@ router.use('/agency-officer-v3/', (req, res, next) => {
   return require(`./views/agency-officer-v3/_routes`)(req, res, next);
 })
 
+// Import Agency Officer V4 routes
+router.use('/agency-officer-v4/', (req, res, next) => {
+  return require(`./views/agency-officer-v4/_routes`)(req, res, next);
+})
+
 // Import Agency Officer V2 routes
 router.use('/agency-officer-v2/', (req, res, next) => {
   return require(`./views/agency-officer-v2/_routes`)(req, res, next);

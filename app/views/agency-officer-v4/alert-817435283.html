@@ -1,0 +1,866 @@
+
+{% extends "../layouts/layout-agency-officer-v4.html" %}
+
+{% block pageTitle %}
+  Alert: Transaction number 817435283 - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  <!-- HMRC PATTERN : ACCOUNT MENU -->
+  <nav id="secondary-nav" class="hmrc-account-menu" aria-label="Account" data-module="hmrc-account-menu">
+    <a href="dashboard" class="hmrc-account-menu__link hmrc-account-menu__link--home hmrc-account-menu__link--active">
+      <span class="hmrc-account-icon hmrc-account-icon--home">
+        Dashboard home </span>
+    </a>
+  </nav>
+  <!-- END ACCOUNT MENU -->
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l govuk-!-padding-bottom-4">
+        2 alerts on submission 817435283
+      </h1>
+
+      {% set alertsHtml %}
+        <form class="form" method="post">
+          <div class="govuk-form-group">
+            {{ govukSummaryList({
+              rows:
+              [
+                {
+                  key: {
+                    text: "Alert type",
+                    classes : 'govuk-!-width-one-quarter'
+                  },
+                  value: {
+                    text: "Named exporter, broker, or dealer is under investigation"
+                  }
+                },
+                {
+                  key: {
+                    text: "Details from export"
+                  },
+                  value: {
+                    html: "Euromovement Limited<br>Unit 15, Berryedge Park<br>Dunstable<br>LU5 4AX"
+                  }
+                }
+              ]
+            }) }}
+
+            <fieldset class="govuk-fieldset govuk-!-margin-bottom-9" aria-describedby="exporter-alert">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s govuk-!-margin-bottom-4">
+                <h2 class="govuk-fieldset__heading">
+                  Do you want to remove this alert?
+                </h2>
+              </legend>  
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="exporter" name="exporter" type="radio" value="email" data-aria-controls="conditional-suppress-exporter">
+                  <label class="govuk-label govuk-radios__label" for="exporter">
+                    Yes, remove alert
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-suppress-exporter">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                      Enter details
+                    </label>
+                    <input class="govuk-input" id="contact-by-email" name="contact-by-email" spellcheck="false" autocomplete="email">
+                  </div>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="exporter" name="exporter" type="radio" value="phone" data-aria-controls="conditional-contact-2">
+                  <label class="govuk-label govuk-radios__label" for="exporter">
+                    No
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+
+            {#<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">#}
+
+            {{ govukSummaryList({
+              rows:
+              [
+                {
+                  key: {
+                    text: "Alert type",
+                    classes : 'govuk-!-width-one-quarter'
+                  },
+                  value: {
+                    text: "Submitted less than 3 days ahead of shipment"
+                  }
+                },
+                {
+                  key: {
+                    text: "Details from export"
+                  },
+                  value: {
+                    html: "<p>Date submitted <span class='govuk-!-font-weight-bold'>2 June 2021</span></p><p class='govkuk-!-body'>Date waste picked up <span class='govuk-!-font-weight-bold'>4 June 2021</span></p>"
+                  }
+                }
+              ]
+            }) }}
+
+            <fieldset class="govuk-fieldset govuk-!-margin-bottom-9" aria-describedby="shipment-date-alert">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s govuk-!-margin-bottom-4">
+                <h2 class="govuk-fieldset__heading">
+                  Do you want to remove this alert?
+                </h2>
+              </legend>  
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="collection-date" name="collection-date" type="radio" value="email" data-aria-controls="conditional-suppress-date-alert">
+                  <label class="govuk-label govuk-radios__label" for="collection-date">
+                    Yes, remove alert
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-suppress-date-alert">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                      Enter details
+                    </label>
+                    <input class="govuk-input" id="contact-by-email" name="contact-by-email" spellcheck="false" autocomplete="email">
+                  </div>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="collection-date" name="collection-date" type="radio" value="phone">
+                  <label class="govuk-label govuk-radios__label" for="collection-date">
+                    No
+                  </label>
+                </div>
+              </div>
+            </fieldset>    
+
+          </div>
+
+          {{ govukButton({
+            text: 'Confirm'
+          }) }}
+
+        </form>
+
+      {% endset -%}
+
+      {% set submissionHtml %}
+
+        <h2 class="govuk-heading-m">
+          Alerts
+        </h2>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced govuk-!-padding-bottom-4">
+          <li>
+            <a class="govuk-link" href="#alert-named-exporter">Named exporter, broker, or dealer is under investigation ert</a>
+          </li>
+          <li>
+            <a class="govuk-link" href="#alert-submitted-less-than-three-days">Submitted less than 3 days ahead of shipment</a>
+          </li>
+        </ul>
+
+        <div style="border-left: solid 5px; padding-left: 15px; color: #d4351c" id="alert-named-exporter">
+          <!--===================================-->
+          <!-- PERSON ARRANGING SHIPMENT HEADING -->
+          <!--===================================-->
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+                Person arranging the export
+              </dt>
+            </div>
+          </dl>
+
+          <!-- PERSON ARRANGING SHIPMENT - Carrier details -->
+          <h3 class="govuk-heading-s">
+            Name and address
+          </h3>
+
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Euromovement Limited
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Unit 15, Berryedge Park<br>
+                Dunstable<br>
+                LU5 4AX
+              </dd>
+            </div>
+          </dl>
+
+          <!-- PERSON ARRANGING SHIPMENT - Contact details -->
+          <h3 class="govuk-heading-s">
+            Contact person and contact details
+          </h3>
+
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Full name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Gary Squires
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Email address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                gary.squires@euromovement.com
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Telephone number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                01790 243 3921
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Fax number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Not provided
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <!--============================-->
+        <!-- IMPORTER/CONSIGNEE HEADING -->
+        <!---===========================-->
+        <dl class="govuk-summary-list govuk-!-padding-top-6">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+              Importer or consignee
+            </dt>
+          </div>
+        </dl>
+
+        <!-- IMPORTER/CONSIGNEE - Carrier details -->
+        <h3 class="govuk-heading-s">
+          Name and address
+        </h3>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Bulk Papers
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              31st Floor, Rajbhavan Road<br>
+              Khairatabad<br>
+              Hyderabad<br>
+              Andhra Pradesh<br>
+              500004<br>
+              India
+            </dd>
+          </div>
+        </dl>
+
+        <!-- IMPORTER/CONSIGNEE - Contact details -->
+        <h3 class="govuk-heading-s">
+          Contact person and contact details
+        </h3>
+        
+        <dl class="govuk-summary-list govuk-!-padding-bottom-6">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Full name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Sakari Bhavsar
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              sakari.bhavsar@bulkpapers.in
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Telephone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              0091 98144 21012
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Fax number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Not provided
+            </dd>
+          </div>
+        </dl>
+
+        <!--==========-->
+        <!-- QUANTITY -->
+        <!--==========-->
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+              Quantity
+            </dt>
+          </div>
+        </dl>
+
+        <dl class="govuk-summary-list govuk-!-padding-bottom-6">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Weight
+            </dt>
+            <dd class="govuk-summary-list__value">
+              12 Cubic metres (m³)
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Actual or estimated
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Estimated quantity
+            </dd>
+          </div>
+        </dl>
+
+        <div style="border-left: solid 5px; padding-left: 15px; color: #d4351c" id="alert-submitted-less-than-three-days">
+          <!--=========================-->
+          <!-- ACTUAL DATE OF SHIPMENT -->
+          <!---========================-->
+          <h2 class="govuk-heading-m">
+            Date waste will be picked up
+          </h2>
+          
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Date
+              </dt>
+              <dd class="govuk-summary-list__value">
+                4 June 2021
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+                Actual or estimated
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Actual date
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <!--=======================-->
+        <!-- FIRST CARRIER HEADING -->
+        <!--=======================-->
+        <dl class="govuk-summary-list govuk-!-padding-top-6">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+              Carrier 1
+            </dt>
+          </div>
+        </dl>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              First carrier details?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Yes, the details are of the first carrier
+            </dd>
+          </div>
+        </dl>
+
+        <!-- FIRST CARRIER - Carrier details -->
+        <h3 class="govuk-heading-s">
+          Carrier name and address
+        </h3>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Complete CMA Shipping Limited
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              32 Carriers Road<br>
+              Crofts of Buinach<br>
+              IV30 1AZ
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Means of transport
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Road
+            </dd>
+          </div>
+        </dl>
+
+        <!-- FIRST CARRIER - Contact details -->
+        <h3 class="govuk-heading-s">
+          Contact person and contact details
+        </h3>
+
+        <dl class="govuk-summary-list govuk-!-padding-bottom-6">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Full name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Bob Walker
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              bob.walker@ccma.co.uk
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Telephone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              0708 4528089
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Fax number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Not provided
+            </dd>
+          </div>
+        </dl>
+
+        <!--=========================-->
+        <!-- WASTE GENERATOR HEADING -->
+        <!--=========================-->
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+              Waste collection point
+            </dt>
+          </div>
+        </dl>
+
+        <!-- WASTE GENERATOR - Carrier details -->
+        <h3 class="govuk-heading-s">
+          Name and address
+        </h3>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Perfect Print Limited
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              120 South Street<br>
+              Moelfre<br>
+              Derbyshire<br>
+              DE1 7LX
+            </dd>
+          </div>
+        </dl>
+
+        <!-- WASTE GENERATOR - Contact details -->
+        <h3 class="govuk-heading-s">
+          Contact person and contact details
+        </h3>
+
+        <dl class="govuk-summary-list govuk-!-padding-bottom-6">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Full name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Thomas Smith
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              contact@perfectprint.ltd.uk
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Telephone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              0702 859 8430
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Fax number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Not provided
+            </dd>
+          </div>
+        </dl>
+
+        <!--=========================================-->
+        <!-- RECOVERY FACILITY OR LABORATORY HEADING -->
+        <!--=========================================-->
+        <dl class="govuk-summary-list" id="prohibited-destination">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+              Recovery facility
+            </dt>
+          </div>
+        </dl>
+        <!-- RECOVERY FACILITY OR LABORATORY - Details -->
+        <h3 class="govuk-heading-s">
+          Recovery facility name and address
+        </h3>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Bulk Papers
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              31st Floor, Rajbhavan Road<br>
+              Khairatabad<br>
+              Hyderabad<br>
+              Andhra Pradesh<br>
+              500004<br>
+              India
+            </dd>
+          </div>
+        </dl>
+          <!-- RECOVERY FACILITY OR LABORATORY - Contact details -->
+        <h3 class="govuk-heading-s">
+          Contact person and contact details
+        </h3>
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Full name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Sakari Bhavsar
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              sakari.bhavsar@bulkpapers.in
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Telephone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              0091 98144 21012
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Fax number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Not provided
+            </dd>
+          </div>
+        </dl>
+
+        <!--====================-->
+        <!-- RECOVERY OPERATION --> 
+        <!---===================-->
+        <h2 class="govuk-heading-m govuk-!-padding-top-6">
+          Recovery or disposal code
+        </h2>
+        
+        <dl class="govuk-summary-list govuk-!-padding-bottom-6">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              R-code/D-code
+            </dt>
+            <dd class="govuk-summary-list__value">
+              R12: Exchange of wastes for submission to any of the operations numbered R01 to R11
+            </dd>
+          </div>
+        </dl>
+
+        <!--===================-->
+        <!-- USUAL DESCRIPTION -->
+        <!--===================-->
+        <h2 class="govuk-heading-m" id="usual-description">
+          Description of the waste
+        </h2>
+        
+        <dl class="govuk-summary-list govuk-!-padding-bottom-6">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Description
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Paper scrap - OCC
+            </dd>
+          </div>
+        </dl>
+
+        <!--==============================-->
+        <!-- WASTE IDENTIFICATION HEADING -->
+        <!--==============================-->
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+              Waste identification codes
+            </dt>
+          </div>
+        </dl>
+        
+        <dl class="govuk-summary-list govuk-!-padding-bottom-6">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Basel Annex IX
+            </dt>
+            <dd class="govuk-summary-list__value">
+              B3020: Paper, paperboard and paper product wastes
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              OECD code
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Not provided
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Annex IIIA
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Not provided
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Annex IIIB
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Not provided
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              EC list of wastes
+            </dt>
+            <dd class="govuk-summary-list__value">
+              150101: paper and cardboard packaging
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              National code
+            </dt>
+            <dd class="govuk-summary-list__value">
+              47079000
+            </dd>
+          </div>
+        </dl>
+
+        <!--==========================-->
+        <!-- COUNTRIES/STATES HEADING --> 
+        <!--==========================-->
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+              Countries the waste will travel through
+            </dt>
+          </div>
+        </dl>
+        
+        <dl class="govuk-summary-list govuk-!-padding-bottom-6">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Exporting country
+            </dt>
+            <dd class="govuk-summary-list__value">
+              United Kingdom (GB)
+            </dd>
+
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Transit country (or countries)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Not provided
+            </dd>
+
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Importing country
+            </dt>
+            <dd class="govuk-summary-list__value">
+              India (IN)
+            </dd>
+          </div>
+        </dl>
+
+        <!--===================-->
+        <!--  CONTAINER NUMBER -->
+        <!--===================-->
+        <h2 class="govuk-heading-m" id="check-transaction-id">
+          Container number
+        </h2>
+        
+        <dl class="govuk-summary-list govuk-!-padding-bottom-6">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Container number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Not provided
+            </dd>
+          </div>
+        </dl>
+
+        <!--=================-->
+        <!-- TRANSACTION IDs -->
+        <!--=================-->
+        <h2 class="govuk-heading-m" id="check-transaction-id">
+          Transaction number
+        </h2>
+        
+        <dl class="govuk-summary-list govuk-!-padding-bottom-6">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Transaction number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              HDJ2123F
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-quarter">
+              Reference number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Not provided
+            </dd>
+          </div>
+        </dl>
+      {% endset -%}
+
+      {# TABS #}
+
+      {{ govukTabs({
+        items: [
+          {
+            label: "Alerts",
+            id: "alerts",
+            panel: {
+              html: alertsHtml
+            }
+          },
+          {
+            label: "Submission",
+            id: "submission",
+            panel: {
+              html: submissionHtml
+            }
+          }
+        ]
+      }) }}
+
+    {# #}
+
+    </div>
+
+    {# Right hand side action panel
+    <div class="govuk-grid-column-one-third">
+
+      <div class="app-step-nav-related">
+        <h2 class="app-step-nav-related__heading">
+          <span class="app-step-nav-related__pretitle">View transaction details</span>
+          <p class="govkuk-body app-step-nav__paragraph">View full transaction details.</p>
+          <a href="alert-817435283-detail">
+            View transaction details
+          </a>
+        </h2>
+      </div>
+
+    </div>
+    #}
+
+  </div>
+
+{% endblock %}

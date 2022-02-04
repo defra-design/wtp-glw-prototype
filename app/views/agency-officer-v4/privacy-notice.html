@@ -1,0 +1,206 @@
+{% extends "../layouts/layout-agency-officer-v4.html" %}
+
+{% block pageTitle %}
+  Privacy notice - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'dashboard'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Privacy notice – Defra [short description of purpose]
+    </h1>
+
+    <h3 class="govuk-heading-s">
+      Who is collecting my personal data?
+    </h3>
+
+    <p class="govuk-body">
+      The data controller is the Department for Environment, Food and Rural Affairs (Defra). You can contact Defra’s Data Protection Manager 
+      by email at: <a class="govuk-link" href="mailto:data.protection@defra.gov.uk">data.protection@defra.gov.uk</a>.
+    </p>
+
+    <p class="govuk-body">
+      Any questions about how Defra is using your personal data and your associated rights should be sent to the above contact. 
+    </p>
+      
+    <p class="govuk-body">
+      The Data Protection Officer responsible for monitoring that Defra is meeting the requirements of the legislation can be contacted by 
+      email at: <a class="govuk-link" href="mailto:DefraGroupDataProtectionOfficer@defra.gov.uk">DefraGroupDataProtectionOfficer@defra.gov.uk</a>.
+    </p>
+
+    <h3 class="govuk-heading-s">
+      What personal data of mine is being used
+    </h3>
+    <div class="govuk-inset-text" style="border-left:0; padding:30px; background: #f3f2f1">
+      <p class="govuk-body">
+        [Drafting Note: Include this section only if the personal data (i.e. information relating to identifiable, living people) are gathered 
+        from sources other than the data subjects (i.e. the living, identifiable persons who are the subjects of the data); otherwise, it can 
+        be deleted.]
+      </p>
+    </div>
+
+    <h3 class="govuk-heading-s">
+      Where have you obtained my personal data from?
+    </h3>
+    <div class="govuk-inset-text" style="border-left:0; padding:30px; background: #f3f2f1">
+      <p class="govuk-body">
+        [Drafting Note: Include this section only if the personal data are gathered from sources other than the data subjects; otherwise, 
+        it can be deleted.  If this section is applicable, you must state the sources of the data and if the data are from publicly accessible 
+        sources.]
+      </p>
+    </div>
+
+    <h2 class="govuk-heading-m">
+      Why is Defra using my personal data? 
+    </h2>
+
+    <h3 class="govuk-heading-s">
+      What is the legal basis in data protection law for Defra’s use of my personal data?
+    </h3>
+    <div class="govuk-inset-text" style="border-left:0; padding:30px; background: #f3f2f1">
+      <p class="govuk-body">
+        [Drafting Note: the legal basis that you need to put here is one or more of the legal bases listed at Articles 6(1)(a) – (f) of the 
+        <a class="govuk-link" href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32016R0679&from=EN">UK GDPR</a>. Also, if 
+        you’re relying on Article 6(1)(f) legal basis (the use of the personal data is necessary for legitimate interests), you must state 
+        what those legitimate interests are.]
+      </p>
+    </div>
+
+    <h3 class="govuk-heading-s">
+      As you are relying on my consent to use my personal data, can I withdraw my consent?
+    </h3>
+    <div class="govuk-inset-text" style="border-left:0; padding:30px; background: #f3f2f1">
+      <p class="govuk-body">
+        [Drafting Note: Include this section only if the legal basis is consent (Article 6(1)(a) or Article 9(2)(a) UK GDPR); otherwise, it 
+        can be deleted.  If this is applicable, you must, separate to this Privacy Notice, also make available to the data subject in a prominent, 
+        stand-alone (i.e. not be included among text relating to other matters), clear, easy and unequivocal manner the data subjects’ right to 
+        opt out and the means for data subjects to be able to opt out.]
+      </p>
+    </div>
+
+    <h3 class="govuk-heading-s">
+      Am I required by law or contract (including entering into a contract) to provide Defra with my personal data that you are requesting? 
+    </h3>
+    <div class="govuk-inset-text" style="border-left:0; padding:30px; background: #f3f2f1">
+      <p class="govuk-body">
+        [Drafting Note: Include this section only if you are collecting personal data from the data subjects; otherwise, it can be deleted. If 
+        you are collecting the personal data from the data subjects, you need to state here whether the provision of personal data is a statutory 
+        or contractual requirement, or a requirement necessary to enter into a contract and whether the data subject is obliged to provide the 
+        personal data.]
+      </p>
+    </div>
+
+    <h3 class="govuk-heading-s">
+      What are the consequences for me if I don’t provide my personal data or allow it to be used by Defra?
+    </h3>
+    <div class="govuk-inset-text" style="border-left:0; padding:30px; background: #f3f2f1">
+      <p class="govuk-body">
+        [Drafting Note: This section is needed only if you are collecting personal data from the data subjects.]
+      </p>
+    </div>
+
+    <h3 class="govuk-heading-s">
+      Will my personal data be used for automated decision-making, including profiling?
+    </h3>
+    <p class="govuk-body">
+      Yes.
+    </p>
+    <div class="govuk-inset-text" style="border-left:0; padding:30px; background: #f3f2f1">
+      <p class="govuk-body">
+        [Drafting Note: Include this section only if Defra will use personal data for automated decision making; otherwise, it can be deleted. 
+        If it is included, you must provide “meaningful information about the logic involved, as well as the significance and the envisaged 
+        consequences of such processing for the data subject.”]
+      </p>
+    </div>
+
+    <h3 class="govuk-heading-s">
+      Will you use my personal data for ‘profiling’ and, if so, what are the consequences of this?
+    </h3>
+    <p class="govuk-body">
+      Yes.
+    </p>
+    <div class="govuk-inset-text" style="border-left:0; padding:30px; background: #f3f2f1">
+      <p class="govuk-body">
+        [Drafting Note: Include this section only if Defra will use personal data for profiling; otherwise, it can be deleted. ‘Profiling’ 
+        means any form of automated processing of personal data consisting of the use of personal data to evaluate certain personal aspects relating 
+        to a natural (i.e. living) person, in particular to analyse or predict aspects concerning that natural person’s performance at work, economic 
+        situation, health personal preferences, interests, reliability, behaviour, location or movements.]
+      </p>
+    </div>
+
+    <h3 class="govuk-heading-s">
+      Who will my personal data be shared with?
+    </h3>
+    <div class="govuk-inset-text" style="border-left:0; padding:30px; background: #f3f2f1">
+      <p class="govuk-body">
+        [Drafting Note: without naming people, you need to list the recipients or categories of recipients.  When stating recipients, include a 
+        sentence or two explaining the purposes for which they will each use the data.]  
+      </p>
+    </div>
+
+    <h3 class="govuk-heading-s">
+      Will my personal data go outside the UK?
+    </h3>
+    <div class="govuk-inset-text" style="border-left:0; padding:30px; background: #f3f2f1">
+      <p class="govuk-body">
+        [Drafting Note: Will personal data go outside the UK, including to EU member states and international organizations?  If not, you can delete 
+        this section, as there’s no obligation to state that personal data will be kept in the UK.  If personal data will be transferred outside the UK, you need to state that here in this Privacy Notice together with details of the existence or absence of a European Commission Adequacy Decision or adequate safeguards – Articles 46, 47 and 49(1) GDPR refer.  The Data and Information Assurance Team will assist you with the details needed in respect of the applicable Adequacy Decision or safeguards.] 
+      </p>
+    </div>
+
+    <h3 class="govuk-heading-s">
+      How long will my personal data be held for?
+    </h3>
+    <div class="govuk-inset-text" style="border-left:0; padding:30px; background: #f3f2f1">
+      <p class="govuk-body">
+        [Drafting Note: you need to put here the retention period or, if that is not possible, the criteria for the retention period.]
+      </p>
+    </div>
+
+    <h3 class="govuk-heading-s">
+      What are my rights?
+    </h3>
+    <p class="govuk-body">
+      A list of your rights under data protection law is accessible at: 
+      <a class="govuk-link" href="https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/individual-rights/">https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/individual-rights/</a>.
+    </p>
+
+    <h3 class="govuk-heading-s">
+      How do I complain?
+    </h3>
+    <p class="govuk-body">
+      You have the right to lodge a complaint about the use of your personal data at any time with the Information Commissioner’s Office 
+      (ICO – the data protection supervisory authority). If you wish to exercise that right, full details are available at: 
+      <a class="govuk-link" href="https://ico.org.uk/make-a-complaint/"> https://ico.org.uk/make-a-complaint/</a>.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      Defra’s Personal Information Charter
+    </h2>
+    <p class="govuk-body">
+      Please also see Defra’s Personal Information Charter, accessible by the following hyperlink, which broadly sets out details of Defra’s 
+      processing of personal data: 
+      <a class="govuk-link" href="https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs/about/personal-information-charter">https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs/about/personal-information-charter</a>.
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}
