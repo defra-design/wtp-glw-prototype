@@ -17,8 +17,7 @@ router.post('/cookies', function(req, res) {
 
 // index
 router.post('/index', function(req, res) {
-    
-    // Reset prenotify statuses
+    // Reset prenotify statuses (move into a function?)
     req.session.data['preparation-status'] = "Not started";
     req.session.data['person-arranging-the-shipment-status'] = "Not started";
     req.session.data['importer-consignee-status'] = "Not started";
@@ -177,6 +176,135 @@ router.post('/manual-bulk-api', function(req, res) {
     if (req.session.data['manual-bulk'] == 'bulk') {
         res.redirect('bulk');
     } else if (req.session.data['manual-bulk'] == 'manual') {
+
+        // Clear down prenotify variables (move into a function?)
+        req.session.data['who-arranged-company-name'] = "";
+        req.session.data['who-arranged-address-line-1'] = "";
+        req.session.data['who-arranged-address-line-2'] = "";
+        req.session.data['who-arranged-address-town'] = "";
+        req.session.data['who-arranged-address-county'] = "";
+        req.session.data['who-arranged-address-postcode'] = "";
+        req.session.data['who-arranged-address-country'] = "";
+        req.session.data['who-arranged-contact-full-name'] = "";
+        req.session.data['who-arranged-email'] = "";
+        req.session.data['who-arranged-telephone'] = "";
+        req.session.data['who-arranged-fax'] = "";
+        
+        req.session.data['importer-company-name'] = "";
+        req.session.data['importer-company-address-line-1'] = "";
+        req.session.data['importer-company-address-line-2'] = "";
+        req.session.data['importer-company-address-town'] = "";
+        req.session.data['importer-company-address-county'] = "";
+        req.session.data['importer-company-address-postcode'] = "";
+        req.session.data['importer-company-address-country'] = "";
+        req.session.data['importer-contact-full-name'] = "";
+        req.session.data['importer-email'] = "";
+        req.session.data['importer-telephone'] = "";
+        req.session.data['importer-fax'] = "";
+        
+        req.session.data['actual-or-estimate'] = "";
+        req.session.data['quantity-weight'] = "";
+        req.session.data['quantity-units'] = "";
+        
+        req.session.data['estimate-shipment-day'] = ""; 
+        req.session.data['estimate-shipment-month'] = "";
+        req.session.data['estimate-shipment-year'] = "";
+        
+        req.session.data['actual-shipment-day'] = ""; 
+        req.session.data['actual-shipment-month'] = "";
+        req.session.data['actual-shipment-year'] = "";
+                
+        //req.session.data['is-first-carrier-or-company'] = "";
+
+        req.session.data['add-first-carrier'] = "Yes";
+
+        req.session.data['first-carrier-name'] = "";
+        req.session.data['first-carrier-address-line-1'] = "";
+        req.session.data['first-carrier-address-line-2'] = "";
+        req.session.data['first-carrier-address-town'] = "";
+        req.session.data['first-carrier-address-county'] = "";
+        req.session.data['first-carrier-address-postcode'] = "";
+        req.session.data['first-carrier-address-country'] = "";
+        req.session.data['first-carrier-means-of-transport'] = "";
+        req.session.data['first-carrier-contact-full-name'] = "";
+        req.session.data['first-carrier-email'] = "";
+        req.session.data['first-carrier-telephone'] = "";
+        req.session.data['first-carrier-fax'] = "";
+        
+        req.session.data['second-carrier-name'] = "";
+        req.session.data['second-carrier-name'] = "";
+        req.session.data['second-carrier-address-line-1'] = "";
+        req.session.data['second-carrier-address-line-2'] = "";
+        req.session.data['second-carrier-address-town'] = "";
+        req.session.data['second-carrier-address-county'] = "";
+        req.session.data['second-carrier-address-postcode'] = "";
+        req.session.data['second-carrier-address-country'] = "";
+        req.session.data['second-carrier-means-of-transport'] = "";
+        req.session.data['second-carrier-contact-full-name'] = "";
+        req.session.data['second-carrier-email'] = "";
+        req.session.data['second-carrier-telephone'] = "";
+        req.session.data['second-carrier-fax'] = "";
+        
+        req.session.data['third-carrier-name'] = "";
+        req.session.data['third-carrier-name'] = "";
+        req.session.data['third-carrier-address-line-1'] = "";
+        req.session.data['third-carrier-address-line-2'] = "";
+        req.session.data['third-carrier-address-town'] = "";
+        req.session.data['third-carrier-address-county'] = "";
+        req.session.data['third-carrier-address-postcode'] = "";
+        req.session.data['third-carrier-address-country'] = "";
+        req.session.data['third-carrier-means-of-transport'] = "";
+        req.session.data['third-carrier-contact-full-name'] = "";
+        req.session.data['third-carrier-email'] = "";
+        req.session.data['third-carrier-telephone'] = "";
+        req.session.data['third-carrier-fax'] = "";
+        
+        req.session.data['waste-generator-company-name'] = "";
+        req.session.data['waste-generator-address-line-1'] = "";
+        req.session.data['waste-generator-address-line-2'] = "";
+        req.session.data['waste-generator-address-town'] = "";
+        req.session.data['waste-generator-address-county'] = "";
+        req.session.data['waste-generator-address-postcode'] = "";
+        req.session.data['waste-generator-address-country'] = "";
+        req.session.data['waste-generator-contact-full-name'] = "";
+        req.session.data['waste-generator-email'] = "";
+        req.session.data['waste-generator-telephone'] = "";
+        req.session.data['waste-generator-fax'] = "";
+        
+        req.session.data['facility-or-lab-choice'] = "";
+        req.session.data['facility-or-lab-carrier-name'] = "";
+        req.session.data['facility-or-lab-address-line-1'] = "";
+        req.session.data['facility-or-lab-address-line-2'] = "";
+        req.session.data['facility-or-lab-address-town'] = "";
+        req.session.data['facility-or-lab-address-county'] = "";
+        req.session.data['facility-or-lab-address-postcode'] = "";
+        req.session.data['facility-or-lab-address-country'] = "";
+        req.session.data['facility-or-lab-contact-full-name'] = "";
+        req.session.data['facility-or-lab-email'] = "";
+        req.session.data['facility-or-lab-telephone'] = "";
+        req.session.data['facility-or-lab-fax'] = "";
+        
+        req.session.data['recovery-operation-typeahead'] = "";
+        
+        req.session.data['usual-description'] = "";
+        
+        req.session.data['basel-annex-ix-typeahead'] = "";
+        req.session.data['oecd-typeahead'] = "";
+        req.session.data['annex-iiia-typeahead'] = "";
+        req.session.data['annex-iiib-typeahead'] = "";
+        req.session.data['ec-wastes-typeahead'] = "";
+        req.session.data['national-code-typeahead'] = "";
+        
+        req.session.data['export-country'] = "";
+        req.session.data['transit-country_1'] = "";
+        req.session.data['transit-country_2'] = "";
+        req.session.data['transit-country_3'] = "";
+        req.session.data['import-destination-typeahead'] = "";
+        
+        req.session.data['container-number-entered'] = "";
+        
+        req.session.data['unique-transaction-id'] = "";
+
         // Reset prenotify statuses
         req.session.data['first-trigger'] = 'yes';
         req.session.data['preparation-status'] = "Not started";
