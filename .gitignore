@@ -4,14 +4,9 @@ usage-data-config.json
 lib/extensions/_extensions.scss
 .env
 .sass-cache
-**/.DS_Store
+.DS_Store
 .start.pid
 .port.tmp
 public
 node_modules/*
 .tmuxp.*
-public/.DS_Store
-app/views/.DS_Store
-app/assets/.DS_Store
-app/.DS_Store
-.DS_Store
