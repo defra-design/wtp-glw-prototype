@@ -117,16 +117,14 @@
             value: data['facility-or-lab-address-postcode'],
             autocomplete: "postal-code"
           }) }}
-
-          {{ govukInput({
-            label: {
-              text: "Country"
-            },
-            classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-2",
-            id: "facility-or-lab-address-country",
-            name: "facility-or-lab-address-country",
-            value: data['facility-or-lab-address-country']
-          }) }} 
+                
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label">
+              Country
+            </label>
+          </h2>
+          <div id="facility-or-lab-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['facility-or-lab-typeahead'] }}">
+          </div>
         
         {% endcall %}
 
@@ -176,6 +174,9 @@
           classes: "govuk-input--width-20",
           label: {
             text: "Telephone number"
+          },
+          hint: {
+            text: "For international numbers include the country code"
           }
         }) }}
         
@@ -187,6 +188,9 @@
           classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
           label: {
             text: "Fax number (optional)"
+          },
+          hint: {
+            text: "For international numbers include the country code"
           }
         }) }}
 

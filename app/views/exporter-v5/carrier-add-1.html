@@ -126,16 +126,36 @@
         value: data['first-carrier-address-postcode'],
         autocomplete: "postal-code"
       }) }}
-      
-      {{ govukInput({
-        label: {
-          text: "Country"
-        },
-        classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-2",
-        id: "first-carrier-address-country",
-        name: "first-carrier-address-country",
-        value: data['first-carrier-address-country']
-      }) }}
+
+      <h2 class="govuk-label-wrapper">
+        <label class="govuk-label">
+          Country
+        </label>
+      </h2>
+      {% if data['waste-generator-address-country'] == 'england' %}
+        <div id="first-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="United Kingdom (England)">
+        </div>
+      {% elif data['waste-generator-address-country'] == 'northernireland' %}
+        <div id="first-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="United Kingdom (Northern Ireland)">
+        </div>
+      {% elif data['waste-generator-address-country'] == 'scotland' %}
+        <div id="first-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="United Kingdom (Scotland)">
+        </div>
+      {% elif data['waste-generator-address-country'] == 'wales' %}
+        <div id="first-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="United Kingdom (Wales)">
+        </div>
+      {% else %}
+        <div id="first-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['first-carrier-typeahead'] }}">
+        </div>
+      {% endif %}
+
+      {#<h2 class="govuk-label-wrapper">
+        <label class="govuk-label">
+          Country
+        </label>
+      </h2>
+      <div id="first-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['first-carrier-typeahead'] }}">
+      </div>#}
 
       {% endcall %}
 
@@ -185,6 +205,9 @@
         classes: "govuk-input--width-20",
         label: {
           text: "Telephone number"
+        },
+        hint: {
+          text: "For international numbers include the country code"
         }
       }) }}
       
@@ -196,6 +219,9 @@
         classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
         label: {
           text: "Fax number (optional)"
+        },
+        hint: {
+          text: "For international numbers include the country code"
         }
       }) }}
 

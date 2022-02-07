@@ -1561,3 +1561,88 @@ if ($('#import-destination-typeahead-container').length > 0) {
     dropdownArrow: () => ''
   })
 }
+
+// Importer/consignee autocomplete
+if ($('#importer-consignee-typeahead-container').length > 0) {
+  element = document.querySelector('#importer-consignee-typeahead-container')
+  id = 'importer-consignee-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: countryList,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}
+
+// First carrier autocomplete
+if ($('#first-carrier-typeahead-container').length > 0) {
+  element = document.querySelector('#first-carrier-typeahead-container')
+  id = 'first-carrier-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: countryList,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}
+
+// Second carrier autocomplete
+if ($('#second-carrier-typeahead-container').length > 0) {
+  element = document.querySelector('#second-carrier-typeahead-container')
+  id = 'second-carrier-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: countryList,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}
+
+// Third carrier autocomplete
+if ($('#third-carrier-typeahead-container').length > 0) {
+  element = document.querySelector('#third-carrier-typeahead-container')
+  id = 'third-carrier-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: countryList,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}
+
+// Facility or lab autocomplete
+if ($('#facility-or-lab-typeahead-container').length > 0) {
+  element = document.querySelector('#facility-or-lab-typeahead-container')
+  id = 'facility-or-lab-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: countryList,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}

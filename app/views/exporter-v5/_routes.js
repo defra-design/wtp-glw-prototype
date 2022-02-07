@@ -196,7 +196,8 @@ router.post('/manual-bulk-api', function(req, res) {
         req.session.data['importer-company-address-town'] = "";
         req.session.data['importer-company-address-county'] = "";
         req.session.data['importer-company-address-postcode'] = "";
-        req.session.data['importer-company-address-country'] = "";
+        //req.session.data['importer-company-address-country'] = "";
+        req.session.data['importer-consignee-typeahead'] = "";
         req.session.data['importer-contact-full-name'] = "";
         req.session.data['importer-email'] = "";
         req.session.data['importer-telephone'] = "";
@@ -224,7 +225,8 @@ router.post('/manual-bulk-api', function(req, res) {
         req.session.data['first-carrier-address-town'] = "";
         req.session.data['first-carrier-address-county'] = "";
         req.session.data['first-carrier-address-postcode'] = "";
-        req.session.data['first-carrier-address-country'] = "";
+        //req.session.data['first-carrier-address-country'] = "";
+        req.session.data['first-carrier-typeahead'] = "";
         req.session.data['first-carrier-means-of-transport'] = "";
         req.session.data['first-carrier-contact-full-name'] = "";
         req.session.data['first-carrier-email'] = "";
@@ -238,7 +240,8 @@ router.post('/manual-bulk-api', function(req, res) {
         req.session.data['second-carrier-address-town'] = "";
         req.session.data['second-carrier-address-county'] = "";
         req.session.data['second-carrier-address-postcode'] = "";
-        req.session.data['second-carrier-address-country'] = "";
+        //req.session.data['second-carrier-address-country'] = "";
+        req.session.data['second-carrier-typeahead'] = "";
         req.session.data['second-carrier-means-of-transport'] = "";
         req.session.data['second-carrier-contact-full-name'] = "";
         req.session.data['second-carrier-email'] = "";
@@ -252,7 +255,8 @@ router.post('/manual-bulk-api', function(req, res) {
         req.session.data['third-carrier-address-town'] = "";
         req.session.data['third-carrier-address-county'] = "";
         req.session.data['third-carrier-address-postcode'] = "";
-        req.session.data['third-carrier-address-country'] = "";
+        //req.session.data['third-carrier-address-country'] = "";
+        req.session.data['third-carrier-typeahead'] = "";
         req.session.data['third-carrier-means-of-transport'] = "";
         req.session.data['third-carrier-contact-full-name'] = "";
         req.session.data['third-carrier-email'] = "";
@@ -278,7 +282,8 @@ router.post('/manual-bulk-api', function(req, res) {
         req.session.data['facility-or-lab-address-town'] = "";
         req.session.data['facility-or-lab-address-county'] = "";
         req.session.data['facility-or-lab-address-postcode'] = "";
-        req.session.data['facility-or-lab-address-country'] = "";
+        //req.session.data['facility-or-lab-address-country'] = "";
+        req.session.data['facility-or-lab-typeahead'] = "";
         req.session.data['facility-or-lab-contact-full-name'] = "";
         req.session.data['facility-or-lab-email'] = "";
         req.session.data['facility-or-lab-telephone'] = "";

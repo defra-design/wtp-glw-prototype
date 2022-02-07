@@ -89,16 +89,14 @@
             autocomplete: "postal-code"
           }) }}
         
-          {{ govukInput({
-            label: {
-              text: "Country"
-            },
-            classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-4",
-            id: "importer-company-address-country",
-            name: "importer-company-address-country",
-            value: data['importer-company-address-country']
-          }) }} 
-        
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label">
+              Country
+            </label>
+          </h2>
+          <div id="importer-consignee-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['importer-consignee-typeahead'] }}">
+          </div>
+
         {% endcall %}
 
         {% call govukFieldset({
@@ -147,6 +145,9 @@
           classes: "govuk-input--width-20",
           label: {
             text: "Telephone number"
+          },
+          hint: {
+            text: "For international numbers include the country code"
           }
         }) }}
       
@@ -158,6 +159,9 @@
             classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
             label: {
               text: "Fax number (optional)"
+          },
+          hint: {
+            text: "For international numbers include the country code"
           }
         }) }}
 
