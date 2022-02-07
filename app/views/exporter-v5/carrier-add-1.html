@@ -127,6 +127,8 @@
         autocomplete: "postal-code"
       }) }}
 
+      {# Logic: if waste generator is England, Northern Ireland, Scotland, or Wales then pre-pop courier 1 country with the same value #}
+      {# UNSURE OF LOGI, SO REMOVING TEMPORARILY...
       <h2 class="govuk-label-wrapper">
         <label class="govuk-label">
           Country
@@ -147,15 +149,15 @@
       {% else %}
         <div id="first-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['first-carrier-typeahead'] }}">
         </div>
-      {% endif %}
+      {% endif %}#}
 
-      {#<h2 class="govuk-label-wrapper">
+      <h2 class="govuk-label-wrapper">
         <label class="govuk-label">
           Country
         </label>
       </h2>
       <div id="first-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['first-carrier-typeahead'] }}">
-      </div>#}
+      </div>
 
       {% endcall %}
 
