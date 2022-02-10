@@ -158,17 +158,17 @@
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="usual-description" aria-describedby="usual-description-of-the-waste-status">
-                  Waste description
+                <a href="waste-codes-and-description" aria-describedby="provide-waste-identification-details-status">
+                  Waste identification details
                 </a>
               </span>
               {% if data['usual-description-of-the-waste-status'] == null or data['usual-description-of-the-waste-status'] == 'Not started' %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="usual-description-of-the-waste-status">Not started</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="provide-waste-identification-details-status">Not started</strong>
               {% elif data['usual-description-of-the-waste-status'] == 'Completed' %}
-                <strong class="govuk-tag app-task-list__tag" id="usual-description-of-the-waste-status">Completed</strong>
+                <strong class="govuk-tag app-task-list__tag" id="provide-waste-identification-details-status">Completed</strong>
               {% endif %}
             </li>
-            <li class="app-task-list__item">
+            {#<li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="waste-identification-codes" aria-describedby="waste-identification-codes-status">
                   Waste identification codes
@@ -179,7 +179,7 @@
               {% elif data['waste-identification-codes-status'] == 'Completed' %}
                 <strong class="govuk-tag app-task-list__tag" id="waste-identification-codes-status">Completed</strong>
               {% endif %}
-            </li>
+            </li>#}
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="countries-states-concerned" aria-describedby="countries-states-concerned-status">

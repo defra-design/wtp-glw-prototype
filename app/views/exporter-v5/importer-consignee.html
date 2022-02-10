@@ -137,6 +137,7 @@
           }
         }) }}
 
+        {#
         <label class="govuk-label" for="importer-telephone">
           Telephone number
         </label>
@@ -150,16 +151,20 @@
           </div>
           <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-6" id="importer-telephone" name="importer-telephone" value="{{ data['importer-telephone'] }}" type="text" spellcheck="false">
         </div>
+        #}
 
         <div>
           <label class="govuk-label" for="importer-telephone">
             Telephone number
           </label>
+          <div id="telephone-number-hint" class="govuk-hint">
+            For international numbers include the country code
+          </div>
           <div>
             {% if "United Kingdom" in data['importer-consignee-typeahead'] %}
               <input class="govuk-input govuk-input--width-5 govuk-!-margin-right-4 govuk-!-margin-bottom-6" id="country-code-importer-telephone" name="country-code-importer-telephone" value="+44" type="text" spellcheck="false">
             {% else %}
-              <input class="govuk-input govuk-input--width-5 govuk-!-margin-right-4 govuk-!-margin-bottom-6" id="country-code-importer-telephone" name="country-code-importer-telephone" value="N/A" type="text" spellcheck="false">
+              <input class="govuk-input govuk-input--width-5 govuk-!-margin-right-4 govuk-!-margin-bottom-6" id="country-code-importer-telephone" name="country-code-importer-telephone" value="" type="text" spellcheck="false">
             {% endif %}
             <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-6" id="importer-telephone" name="importer-telephone" value="{{ data['importer-telephone'] }}" type="text" spellcheck="false">
           </div>
@@ -184,6 +189,24 @@
         }) }}
         #}
 
+        <div class="govuk-!-margin-bottom-2">
+          <label class="govuk-label" for="importer-fax">
+            Importer fax (optional)
+          </label>
+          <div id="importer-fax-hint" class="govuk-hint">
+            For international numbers include the country code
+          </div>
+          <div>
+            {% if "United Kingdom" in data['importer-consignee-typeahead'] %}
+              <input class="govuk-input govuk-input--width-5 govuk-!-margin-right-4 govuk-!-margin-bottom-6" id="country-code-importer-fax" name="country-code-importer-fax" value="+44" type="text" spellcheck="false">
+            {% else %}
+              <input class="govuk-input govuk-input--width-5 govuk-!-margin-right-4 govuk-!-margin-bottom-6" id="country-code-importer-fax" name="country-code-importer-fax" value="" type="text" spellcheck="false">
+            {% endif %}
+            <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-6" id="importer-fax" name="importer-fax" value="{{ data['importer-fax'] }}" type="text" spellcheck="false">
+          </div>
+        </div>
+
+        {#
         {{ govukInput({
           id: "importer-fax",
           name: "importer-fax",
@@ -197,6 +220,7 @@
             text: "For international numbers include the country code"
           }
         }) }}
+        #}
 
         {% endcall %}
 

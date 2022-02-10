@@ -1,0 +1,145 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Provide waste identification details - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Provide waste identification details
+      </h1>
+      
+      <p class="govuk-body">
+        You only need to fill in the relevant codes.
+      </p>
+
+      <form class="form" method="post">
+        
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label--m">
+              Select the relevant code
+            </label>
+          </h1>
+          <div id="event-name-hint" class="govuk-hint">
+            <p class="govuk-body">This could be a:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+              <li>Basel Annex XI code starting with the letter B. For example, B3011</li>
+              <li>OECD code starting with the letter G. For example, GC010 (these codes are only relevant if you do not have a Basel Annex XI code)</li>
+              <li>Annex IIIA code which are for specific mixtures of waste listed in Annex III</li>
+              <li>Annex IIIB code which are for additional green list waste awaiting inclusion into relevant regulation annexes</li>
+            </ul>
+          </div>
+          <div id="combinedWasteCodes-typeahead-container" data-default-value="{{ data['combinedWasteCodes-typeahead'] }}">
+          </div>
+        </div>
+
+        {#
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label--m">
+              Basel Annex IX
+            </label>
+          </h1>
+          <div id="event-name-hint" class="govuk-hint">
+            B code, e.g. B3011 or B3020
+          </div>
+          <div id="basel-annex-ix-typeahead-container" data-default-value="{{ data['basel-annex-ix-typeahead'] }}">
+          </div>
+        </div>
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label--m">
+              OECD (if different from Basel Annex IX)
+            </label>
+          </h1>
+          <div id="event-name-hint" class="govuk-hint">
+            G code, e.g. GC010 or GG030
+          </div>
+          <div id="oecd-typeahead-container" data-default-value="{{ data['oecd-typeahead'] }}">
+          </div>
+        </div>
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label--m">
+              Annex IIIA
+            </label>
+          </h1>
+          <div id="event-name-hint" class="govuk-hint">
+            Specific mixtures of wastes listed in Annex III
+          </div>
+          <div id="annex-iiia-typeahead-container" data-default-value="{{ data['annex-iiia-typeahead'] }}">
+          </div>
+        </div>
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label--m">
+              Annex IIIB
+            </label>
+          </h1>
+          <div id="event-name-hint" class="govuk-hint">
+            Additional green list waste awaiting inclusion into relevant regulation annexes
+          </div>
+            <div id="annex-iiib-typeahead-container" data-default-value="{{ data['annex-iiib-typeahead'] }}">
+          </div>
+        </div>
+        #}
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label--m">
+              Select an EC list of waste code (optional)
+            </label>
+          </h1>
+          <div id="event-name-hint" class="govuk-hint">
+            This is also known as an EWC. For example, 19 12 01. 
+          </div>
+            <div id="ec-wastes-typeahead-container" data-default-value="{{ data['ec-wastes-typeahead'] }}">
+          </div>
+        </div>
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label--m">
+              Select a national code (optional)
+            </label>
+          </h1>
+          <div id="event-name-hint" class="govuk-hint">
+            This is also known as a commodity code and is not required by UK regulators.
+          </div>
+            <div id="national-code-typeahead-container" data-default-value="{{ data['national-code-typeahead'] }}">
+          </div>
+        </div>        
+
+        {{ govukCharacterCount({
+          name: "usual-description",
+          id: "usual-description",
+          value: data['usual-description'],
+          maxlength: 200,
+          label: {
+            text: "Enter a description about the codes you've selected",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          hint: {
+            text: "You should include things like the type of waste and its form."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

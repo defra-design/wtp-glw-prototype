@@ -1027,6 +1027,7 @@
       <!--===================-->
       <!-- USUAL DESCRIPTION -->
       <!--===================-->
+      {#
       <h2 class="govuk-heading-m">
         Waste description
       </h2>
@@ -1047,6 +1048,7 @@
         </div>
       </dl>
       <br><br>
+      #}
 
       <!--==============================-->
       <!-- WASTE IDENTIFICATION HEADING -->
@@ -1054,21 +1056,31 @@
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
-            Waste identification codes
+            Waste identification details
           </dt>
           <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="waste-identification-codes">
-              Change<span class="govuk-visually-hidden"> waste identification</span>
+            <a class="govuk-link" href="waste-codes-and-description">
+              Change<span class="govuk-visually-hidden"> waste identification details</span>
             </a>
           </dd> 
         </div>
       </dl>
       
+      
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Basel Annex IX
+            Code
           </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['combinedWasteCodes-typeahead'] != '' %}
+              {{ data['combinedWasteCodes-typeahead'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+          {#
           <dd class="govuk-summary-list__value">
             {% if data['basel-annex-ix-typeahead'] != '' %}
               {{ data['basel-annex-ix-typeahead'] }}
@@ -1113,9 +1125,10 @@
             {% endif %}
           </dd>
         </div>
+        #}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            EC list of wastes
+            EC list of waste code
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['ec-wastes-typeahead'] != '' %}
@@ -1137,8 +1150,21 @@
             {% endif %}
           </dd>
         </div>
-    </dl>
-    <br><br>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Description
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['usual-description'] != '' %}
+              {{ data['usual-description'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      <br><br>
 
       <!--==========================-->
       <!-- COUNTRIES/STATES HEADING --> 
