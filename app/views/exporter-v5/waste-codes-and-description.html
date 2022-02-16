@@ -74,7 +74,12 @@
             <label class="govuk-label--s" for="usual-description">
               Enter a description about the codes you've selected
             </label>
-            <details class="govuk-details govuk-!-padding-top-2" data-module="govuk-details">
+             <textarea class="govuk-textarea govuk-js-character-count" id="usual-description" name="usual-description" rows="8" aria-describedby="usual-description-info usual-description-hint">{{ data['usual-description'] }}</textarea>
+          </div>
+          <div id="usual-description-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+            You can enter up to 200 characters
+          </div>
+          <details class="govuk-details govuk-!-padding-top-2" data-module="govuk-details">
               <summary class="govuk-details__summary">
                 <span class="govuk-details__summary-text">
                   What to include in your description
@@ -94,11 +99,6 @@
                 </p>
               </div>
             </details>
-             <textarea class="govuk-textarea govuk-js-character-count" id="usual-description" name="usual-description" rows="8" aria-describedby="usual-description-info usual-description-hint">{{ data['usual-description'] }}</textarea>
-          </div>
-          <div id="usual-description-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-            You can enter up to 200 characters
-          </div>
         </div>
 
         {{ govukButton({
