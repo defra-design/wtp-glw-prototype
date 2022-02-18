@@ -152,7 +152,7 @@
           <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-6" id="importer-telephone" name="importer-telephone" value="{{ data['importer-telephone'] }}" type="text" spellcheck="false">
         </div>
         #}
-
+{#
         <div>
           <label class="govuk-label" for="importer-telephone">
             Telephone number
@@ -169,8 +169,8 @@
             <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-6" id="importer-telephone" name="importer-telephone" value="{{ data['importer-telephone'] }}" type="text" spellcheck="false">
           </div>
         </div>
-
-        {#
+#}
+  
         {{ govukInput({
           id: "importer-telephone",
           name: "importer-telephone",
@@ -182,13 +182,10 @@
           },
           hint: {
             text: "For international numbers include the country code"
-          },
-          prefix: {
-            html: '{{ primary }}'
           }
         }) }}
-        #}
-
+  
+{#  
         <div class="govuk-!-margin-bottom-2">
           <label class="govuk-label" for="importer-fax">
             Importer fax (optional)
@@ -205,8 +202,7 @@
             <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-6" id="importer-fax" name="importer-fax" value="{{ data['importer-fax'] }}" type="text" spellcheck="false">
           </div>
         </div>
-
-        {#
+#}
         {{ govukInput({
           id: "importer-fax",
           name: "importer-fax",
@@ -220,8 +216,7 @@
             text: "For international numbers include the country code"
           }
         }) }}
-        #}
-
+  
         {% endcall %}
 
         {{ govukButton({
