@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% set _selectedAccount = "" %}
+<!--FOR loop over all keys (accounts) in myAnnexVIIData.accounts object-->
+{% for key, account in myAnnexVIIData.accounts %}
+    <!--IF check on each key to see if it matches the ID saved from the query string-->
+    {% if key == myAnnexVIIData.selectedAccount %}
+        {% set _selectedAccount = account %}
+    {% endif %}
+{% endfor %}
+
+{% block page_title %}
+  Annex VII data
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+	<div class="grid-row">
+		<div class="column-two-thirds">
+			<header> 
+				<h1 class="heading-large">
+					Annex VII data
+				<h1>
+			</header>
+		</div>
+		<div class="column-one-third">
+		</div>
+	</div>
+
+    {% if _selectedAccount != "" %}
+    <div class="grid-row">
+		<div class="column-two-thirds">
+
+            {% if _selectedAccount.users.length > 0 %}
+
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">Record ID</th>
+                            <th scope="col" class="govuk-table__header">Exporter full name</th>
+                            <th scope="col" class="govuk-table__header">Exporter email</th>
+                            <th scope="col" class="govuk-table__header">Shipment date</th>
+                            <th scope="col" class="govuk-table__header">Importing country</th>
+                            <th scope="col" class="govuk-table__header">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        {# Loop through entries in JSON file and format into GOVUK table #}
+                        {% for user in _selectedAccount.users %}
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell"><a href="view-record" class="govuk-link">{{user.record_id}}</a></td>
+                                <td class="govuk-table__cell">{{user.importer_contact_full_name}}</td>
+                                <td class="govuk-table__cell">{{user.importer_email}}</td>
+                                <td class="govuk-table__cell">{{user.shipment_day}} {{user.shipment_month}} {{user.shipment_year}}</td>
+                                <td class="govuk-table__cell">{{user.import_destination_typeahead}}</td>
+                                <td scope="row" class="govuk-table__cell"><strong class="govuk-tag">{{user.status}}</strong></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <form method="POST">
+                    <div class="form-section">
+
+                    </div>
+                </form>
+                
+            {% else %}
+                <p>No users on account</p>
+            {% endif %}
+
+		</div>
+		<div class="column-one-third">
+		</div>
+	</div>
+    {% endif %}
+
+</main>
+
+{% endblock %}

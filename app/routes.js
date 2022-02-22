@@ -11,9 +11,22 @@ var _myData = {
   }
 }
 
+/////////////////////////////////////////////////////////
+// myAnnexVIIData object to pass to prototype versions //
+/////////////////////////////////////////////////////////
+var _myAnnexVIIData = {
+  // Fake Data JSON Files //
+  accounts: {
+    "account-1": require(__dirname + '/data/annex-vii-data.json')
+  }
+}
+
 //Version 1-0 routing
 //Pass myData variable as parameter into version specific routes file
 require('./routes/import-json/routes.js')(router,JSON.parse(JSON.stringify(_myData)));
+
+//Pass myAnnexVIIData variable as parameter into version specific routes file
+require('./routes/annex-vii-data/routes.js')(router,JSON.parse(JSON.stringify(_myAnnexVIIData)));
 
 /////////////////////////////////////////////////
 // myData object to pass to prototype versions //

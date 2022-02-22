@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% set _selectedAccount = "" %}
+<!--FOR loop over all keys (accounts) in myData.accounts object-->
+{% for key, account in myData.accounts %}
+    <!--IF check on each key to see if it matches the ID saved from the query string-->
+    {% if key == myData.selectedAccount %}
+        {% set _selectedAccount = account %}
+    {% endif %}
+{% endfor %}
+
+{% block page_title %}
+  JSON Demo 1-0
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+	
+	<!--Breadcrumbs-->
+	<div class="grid-row">
+		<div class="column-two-thirds">
+            <a href="/index" class="link-back">Back</a>
+		</div>
+		<div class="column-one-third">
+		</div>
+	</div>
+
+	<div class="grid-row">
+		<div class="column-two-thirds">
+			<header> 
+				<h1 class="heading-large" >
+					Loop through account's users
+                    <span class="heading-secondary">
+                    {% if _selectedAccount != "" %}
+                        {{_selectedAccount.name}}, {{_selectedAccount.users.length}} users
+                    {% else %}
+                        Account doesn't exist
+                    {% endif %}
+                    </span>
+				<h1>
+			</header>
+		</div>
+		<div class="column-one-third">
+		</div>
+	</div>
+
+    {% if _selectedAccount != "" %}
+    <div class="grid-row">
+		<div class="column-two-thirds">
+
+            {% if _selectedAccount.users.length > 0 %}
+            <form method="POST">
+                <div class="form-section">
+                    <fieldset>
+                        <!--
+                            FOR loop over each user in account
+                        -->
+                        {% for user in _selectedAccount.users %}
+                        <div class="form-group">
+                            <label class="form-label" for="{{user.name}}-{{loop.index}}">
+                                <span class="font-medium">{{user.name}}'s age is <span class="bold">{{user.age}}</span></span>
+                            </label>
+                            <input class="form-control" id="{{user.name}}-{{loop.index}}" name="accountusers" type="number" value="{{user.age}}" >
+                        </div>
+                        {% endfor %}
+
+                    </fieldset>
+                    <input class="button" type="submit" value="Save">
+                </div>
+            </form>
+            {% else %}
+            <p>No users on account</p>
+            {% endif %}
+
+		</div>
+		<div class="column-one-third">
+		</div>
+	</div>
+    {% endif %}
+
+</main>
+
+{% endblock %}

@@ -1,5 +1,7 @@
 {
-    "JSON Ready": [
+    "id": "account-1",
+    "name": "Account 1",
+    "users": [
         {
             "record_id": "1",
             "status": "locked",
