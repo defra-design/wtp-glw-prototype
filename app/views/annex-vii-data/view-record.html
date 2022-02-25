@@ -1,14 +1,5 @@
 {% extends "layout.html" %}
 
-{% set _selectedAccount = "" %}
-<!--FOR loop over all keys (accounts) in myAnnexVIIData.accounts object-->
-{% for key, account in myAnnexVIIData.accounts %}
-    <!--IF check on each key to see if it matches the ID saved from the query string-->
-    {% if key == myAnnexVIIData.selectedAccount %}
-        {% set _selectedAccount = account %}
-    {% endif %}
-{% endfor %}
-
 {% block page_title %}
   View Annex VII data record
 {% endblock %}
@@ -22,13 +13,6 @@
 			<header> 
 				<h1 class="heading-large">
                     View Annex VII data record
-                    {#<span class="heading-secondary">
-                    {% if _selectedAccount != "" %}
-                        {{_selectedAccount.name}}, {{_selectedAccount.users.length}} users
-                    {% else %}
-                        Account doesn't exist
-                    {% endif %}
-                    </span>#}
 				<h1>
 			</header>
 		</div>
@@ -36,7 +20,6 @@
 		</div>
 	</div>
 
-    {% if _selectedAccount != "" %}
     <div class="grid-row">
 		<div class="column-two-thirds">
 
@@ -68,35 +51,10 @@
                     </tbody>
                 </table>
 
-            <form method="POST">
-                <div class="form-section">
-
-                    {#<fieldset>
-                        <!--
-                            FOR loop over each user in account
-                        -->
-                        {% for user in _selectedAccount.users %}
-                        <div class="form-group">
-                            <label class="form-label" for="{{user.name}}-{{loop.index}}">
-                                <span class="font-medium">{{user.name}}'s age is <span class="bold">{{user.age}}</span></span>
-                            </label>
-                            <input class="form-control" id="{{user.name}}-{{loop.index}}" name="accountusers" type="number" value="{{user.age}}" >
-                        </div>
-                        {% endfor %}
-
-                    </fieldset>
-                    <input class="button" type="submit" value="Save">#}
-                </div>
-            </form>
-            {% else %}
-                <p>No users on account</p>
             {% endif %}
 
 		</div>
-		<div class="column-one-third">
-		</div>
-	</div>
-    {% endif %}
+    </div>
 
 </main>
 

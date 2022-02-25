@@ -50,10 +50,40 @@
                         {# Loop through entries in JSON file and format into GOVUK table #}
                         {% for user in _selectedAccount.users %}
                             <tr class="govuk-table__row">
-                                <td class="govuk-table__cell"><a href="view-record" class="govuk-link">{{user.record_id}}</a></td>
+                                <td class="govuk-table__cell"><a href="view-record?record={{user.record.id}}" class="govuk-link">{{user.record_id}}</a></td>
                                 <td class="govuk-table__cell">{{user.importer_contact_full_name}}</td>
                                 <td class="govuk-table__cell">{{user.importer_email}}</td>
-                                <td class="govuk-table__cell">{{user.shipment_day}} {{user.shipment_month}} {{user.shipment_year}}</td>
+                                <td class="govuk-table__cell">
+                                    {{user.shipment_day}}
+                                    {% if data['user.shipment_month'] == '1' or data['user.shipment_month'] == '01' %}
+                                        January 
+                                    {% elif data['user.shipment_month'] == '2' or data['user.shipment_month'] == '02' %}
+                                        February 
+                                    {% elif data['user.shipment_month'] == '3' or data['user.shipment_month'] == '03' %}
+                                        March 
+                                    {% elif data['user.shipment_month'] == '4' or data['user.shipment_month'] == '04' %}
+                                        April 
+                                    {% elif data['user.shipment_month'] == '5' or data['user.shipment_month'] == '05' %}
+                                        May 
+                                    {% elif data['user.shipment_month'] == '6' or data['user.shipment_month'] == '06' %}
+                                        June 
+                                    {% elif data['user.shipment_month'] == '7' or data['user.shipment_month'] == '07' %}
+                                        July 
+                                    {% elif data['user.shipment_month'] == '8' or data['user.shipment_month'] == '08' %}
+                                        August 
+                                    {% elif data['user.shipment_month'] == '9' or data['user.shipment_month'] == '09' %}
+                                        September 
+                                    {% elif data['user.shipment_month'] == '10' or data['user.shipment_month'] == '10' %}
+                                        October 
+                                    {% elif data['user.shipment_month'] == '11' or data['user.shipment_month'] == '11' %}
+                                        November 
+                                    {% elif data['user.shipment_month'] == '12' or data['user.shipment_month'] == '12' %}
+                                        December 
+                                    {% else %}
+                                        January 
+                                    {% endif %}
+                                    {{user.shipment_year}}
+                                </td>
                                 <td class="govuk-table__cell">{{user.import_destination_typeahead}}</td>
                                 <td scope="row" class="govuk-table__cell"><strong class="govuk-tag">{{user.status}}</strong></td>
                             </tr>
