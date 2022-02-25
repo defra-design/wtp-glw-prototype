@@ -178,17 +178,33 @@ router.post('/manual-bulk-api', function(req, res) {
     } else if (req.session.data['manual-bulk'] == 'manual') {
 
         // Clear down prenotify variables (move into a function?)
-        req.session.data['who-arranged-company-name'] = "";
-        req.session.data['who-arranged-address-line-1'] = "";
-        req.session.data['who-arranged-address-line-2'] = "";
-        req.session.data['who-arranged-address-town'] = "";
-        req.session.data['who-arranged-address-county'] = "";
-        req.session.data['who-arranged-address-postcode'] = "";
-        req.session.data['who-arranged-address-country'] = "";
-        req.session.data['who-arranged-contact-full-name'] = "";
-        req.session.data['who-arranged-email'] = "";
-        req.session.data['who-arranged-telephone'] = "";
-        req.session.data['who-arranged-fax'] = "";
+    
+        // set-up auto-populated 'who is arranging' variables
+        if (req.session.data['userId'] == 'rogerparker') {
+            req.session.data['who-arranged-company-name'] = 'Lancelot Exports Limited';
+            req.session.data['who-arranged-address-line-1'] = '12 Manchester Way';
+            req.session.data['who-arranged-address-line-2'] = null;
+            req.session.data['who-arranged-address-town'] = 'Chatham';
+            req.session.data['who-arranged-address-county'] = 'Kent';
+            req.session.data['who-arranged-address-postcode'] = 'ME16 9PG';
+            req.session.data['who-arranged-address-country'] = 'england';
+            req.session.data['who-arranged-contact-full-name'] = 'Roger Parker';
+            req.session.data['who-arranged-email'] = 'rogerparker@lancelotexl.com';
+            req.session.data['who-arranged-telephone'] = '01634 256941';
+            req.session.data['who-arranged-fax'] = null;
+        } else {
+            req.session.data['who-arranged-company-name'] = "";
+            req.session.data['who-arranged-address-line-1'] = "";
+            req.session.data['who-arranged-address-line-2'] = "";
+            req.session.data['who-arranged-address-town'] = "";
+            req.session.data['who-arranged-address-county'] = "";
+            req.session.data['who-arranged-address-postcode'] = "";
+            req.session.data['who-arranged-address-country'] = "";
+            req.session.data['who-arranged-contact-full-name'] = "";
+            req.session.data['who-arranged-email'] = "";
+            req.session.data['who-arranged-telephone'] = "";
+            req.session.data['who-arranged-fax'] = "";
+        }
         
         req.session.data['importer-company-name'] = "";
         req.session.data['importer-company-address-line-1'] = "";
