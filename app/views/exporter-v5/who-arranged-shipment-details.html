@@ -9,69 +9,69 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if data['first-trigger'] != "yes" %}
-        {# Error summary #}
-        {% if data['who-arranged-company-name']|length == 0 or data['who-arranged-address-line-1']|length == 0 or data['who-arranged-address-town']|length == 0 or data['who-arranged-address-postcode']|length == 0 or data['who-arranged-address-country']|length == 0 or data['who-arranged-contact-full-name']|length == 0 or data['who-arranged-email']|length == 0 or data['who-arranged-telephone']|length == 0 %}
-          <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
-            <h2 class="govuk-error-summary__title" id="error-summary-title">
-              There is a problem
-            </h2>
-            <div class="govuk-error-summary__body">
-              <ul class="govuk-list govuk-error-summary__list">
-                {% if data['who-arranged-company-name']|length == 0 %}
-                <li>
-                  <a href="#who-arranged-company-name">Enter name of exporter</a>
-                </li>
-                {% endif %}
-                {% if data['who-arranged-address-line-1']|length == 0 %}
-                <li>
-                  <a href="#who-arranged-address-line-1">Enter a building and street</a>
-                </li>
-                {% endif %}
-                {% if data['who-arranged-address-town']|length == 0 %}
-                <li>
-                  <a href="#who-arranged-address-town">Enter a town or city</a>
-                </li>
-                {% endif %}
-                {% if data['who-arranged-address-postcode']|length == 0 %}
-                <li>
-                  <a href="#who-arranged-address-postcode">Enter a postcode</a>
-                </li>
-                {% endif %}
-                {% if data['who-arranged-address-country']|length == 0 %}
-                <li>
-                  <a href="#who-arranged-address-country">Select a country</a>
-                </li>
-                {% endif %}
-                {% if data['who-arranged-contact-full-name']|length == 0 %}
-                <li>
-                  <a href="#who-arranged-contact-full-name">Enter full name of contact person</a>
-                </li>
-                {% endif %}
-                {% if data['who-arranged-email']|length == 0 %}
-                <li>
-                  <a href="#who-arranged-email">Enter a contact email address</a>
-                </li>
-                {% endif %}
-                {% if data['who-arranged-telephone']|length == 0 %}
-                <li>
-                  <a href="#who-arranged-telephone">Enter a contact telephone number</a>
-                </li>
-                {% endif %}
-              </ul>
-            </div>
+    <!-- {% if data['first-trigger'] != "yes" %}
+      {# Error summary #}
+      {% if data['who-arranged-company-name']|length == 0 or data['who-arranged-address-line-1']|length == 0 or data['who-arranged-address-town']|length == 0 or data['who-arranged-address-postcode']|length == 0 or data['who-arranged-address-country']|length == 0 or data['who-arranged-contact-full-name']|length == 0 or data['who-arranged-email']|length == 0 or data['who-arranged-telephone']|length == 0 %}
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              {% if data['who-arranged-company-name']|length == 0 %}
+              <li>
+                <a href="#who-arranged-company-name">Enter name of exporter</a>
+              </li>
+              {% endif %}
+              {% if data['who-arranged-address-line-1']|length == 0 %}
+              <li>
+                <a href="#who-arranged-address-line-1">Enter a building and street</a>
+              </li>
+              {% endif %}
+              {% if data['who-arranged-address-town']|length == 0 %}
+              <li>
+                <a href="#who-arranged-address-town">Enter a town or city</a>
+              </li>
+              {% endif %}
+              {% if data['who-arranged-address-postcode']|length == 0 %}
+              <li>
+                <a href="#who-arranged-address-postcode">Enter a postcode</a>
+              </li>
+              {% endif %}
+              {% if data['who-arranged-address-country']|length == 0 %}
+              <li>
+                <a href="#who-arranged-address-country">Select a country</a>
+              </li>
+              {% endif %}
+              {% if data['who-arranged-contact-full-name']|length == 0 %}
+              <li>
+                <a href="#who-arranged-contact-full-name">Enter full name of contact person</a>
+              </li>
+              {% endif %}
+              {% if data['who-arranged-email']|length == 0 %}
+              <li>
+                <a href="#who-arranged-email">Enter a contact email address</a>
+              </li>
+              {% endif %}
+              {% if data['who-arranged-telephone']|length == 0 %}
+              <li>
+                <a href="#who-arranged-telephone">Enter a contact telephone number</a>
+              </li>
+              {% endif %}
+            </ul>
           </div>
-        {% endif %}
-      {% else %}
-        {# Do nothing #}
+        </div>
       {% endif %}
+    {% else %}
+      {# Do nothing #}
+    {% endif %} -->
 
       <h1 class="govuk-heading-l">
-        Who is arranging the export?
+        Who is arranging the export???
       </h1>
 
       <form class="form" method="post">
-     
+
         {# Name of exporter #}
         {% if (data['first-trigger'] != "yes") and (data['who-arranged-company-name']|length == 0) %}
           {{ govukInput({
@@ -232,7 +232,7 @@
             classes: "govuk-fieldset__legend--m"
           }
         }) %}
-        
+
         {# Contact person full name #}
         {% if (data['first-trigger'] != "yes") and data['who-arranged-contact-full-name']|length == 0 %}
           {{ govukInput({
@@ -298,7 +298,7 @@
             }
           }) }}
         {% endif %}
-      
+
         {# Contact telephone number #}
         {% if (data['first-trigger'] != "yes") and data['who-arranged-telephone']|length == 0 %}
           {{ govukInput({
@@ -326,7 +326,7 @@
             }
           }) }}
         {% endif %}
-        
+
         {# Contact fax number #}
         {{ govukInput({
           id: "who-arranged-fax",
@@ -339,7 +339,7 @@
           }
         }) }}
 
-        {% endcall %}  
+        {% endcall %}
 
         {{ govukButton({
           text: 'Save and continue'
