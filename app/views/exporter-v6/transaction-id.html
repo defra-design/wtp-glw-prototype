@@ -1,0 +1,67 @@
+  {% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Your transaction number - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Would you like to also add your own reference number?
+      </h1>
+
+        {% set referenceNumberHtml %}
+        {{ govukInput({
+          label: {
+            text: "Your reference number",
+            isPageHeading: false
+          },
+          id: "unique-transaction-id",
+          name: "unique-transaction-id",
+          value: data['unique-transaction-id']
+        }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "transaction-number",
+          name: "transaction-number",
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "This could be an invoice number, or other reference number you would like to identify this export by."
+          },
+          items: [
+            {
+              value: "transaction-yes",
+              text: "Yes",
+              conditional: {
+                html: referenceNumberHtml
+              },
+              checked: checked("transaction-number", "transaction-yes")
+            },
+            {
+              value: "transaction-no",
+              text: "No",
+              checked: checked("transaction-number", "transaction-no")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

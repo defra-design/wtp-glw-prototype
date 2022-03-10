@@ -1,0 +1,63 @@
+  {% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Do you know the container number? - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+        {% set containerNumberHtml %}
+        {{ govukInput({
+          label: {
+            text: "Container number",
+            isPageHeading: false
+          },
+          id: "container-number-entered",
+          name: "container-number-entered",
+          value: data['container-number-entered']
+        }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "container-number",
+          name: "container-number",
+          fieldset: {
+            legend: {
+              text: "Do you know the container number?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "container-yes",
+              text: "Yes",
+              conditional: {
+                html: containerNumberHtml
+              },
+              checked: checked("container-number", "container-yes")
+            },
+            {
+              value: "container-no",
+              text: "No",
+              checked: checked("container-number", "container-no")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and continue',
+          classes: "govuk-!-margin-top-2"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

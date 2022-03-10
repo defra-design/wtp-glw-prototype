@@ -1,0 +1,111 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Waste identification details - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Waste identification details
+      </h1>
+      
+      <form class="form" method="post">
+        
+        {# Relevent code #}
+        <div class="govuk-form-group">
+          <label class="govuk-label--s" for="combinedWasteCodes-typeahead-container">
+            Select a code
+          </label>
+          <details class="govuk-details govuk-!-padding-top-2 govuk-!-margin-bottom-2" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Help with identification codes
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <p class="govuk-body">
+                This could be a:
+              </p>
+              <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>Basel Annex XI code starting with the letter B. For example, B3011</li>
+                <li>OECD code starting with the letter G. For example, GC010 (these codes are only relevant if you do not have a Basel Annex XI code)</li>
+                <li>Annex IIIA code which are for specific mixtures of waste listed in Annex III</li>
+                <li>Annex IIIB code which are for additional green list waste awaiting inclusion into relevant regulation annexes</li>
+              </ul>
+            </div>
+          </details>
+          <div class="govuk-!-padding-bottom-2" id="combinedWasteCodes-typeahead-container" data-default-value="{{ data['combinedWasteCodes-typeahead'] }}">
+          </div>
+        </div>
+
+        {# EC list #}
+        <div class="govuk-form-group">
+          <label class="govuk-label--s" for="ec-wastes-typeahead-container">
+            Select an EC list of waste code
+          </label>
+          <div id="ec-wastes-typeahead-container-hint" class="govuk-hint">
+            This is also known as an EWC. For example, 19 12 01.
+          </div>
+          <div id="ec-wastes-typeahead-container" data-default-value="{{ data['ec-wastes-typeahead'] }}">
+          </div>
+        </div>
+
+        {# National code #}
+        <div class="govuk-form-group">
+          <label class="govuk-label--s" for="national-code-typeahead-container">
+            Select a national code (optional)
+          </label>
+          <div id="national-code-typeahead-hint" class="govuk-hint">
+            This is also known as a commodity code and is not required by UK regulators.
+          </div>
+          <div id="national-code-typeahead-container" data-default-value="{{ data['national-code-typeahead'] }}">
+          </div>
+        </div>
+
+        {# Description #}
+        <div class="govuk-character-count govuk-!-margin-bottom-6" data-module="govuk-character-count" data-maxlength="200">
+          <div class="govuk-form-group">
+            <label class="govuk-label--s" for="usual-description">
+              Enter a description about the codes you've selected
+            </label>
+            <details class="govuk-details govuk-!-padding-top-2 govuk-!-margin-bottom-2" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  What to include in your description
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">
+                  You should include things like international specification, grade or code. For example, it's:
+                </p>
+                <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                  <li>'EN 643 2.05.00' for paper</li>
+                  <li>'B' for glass</li>
+                  <li>'ISRI 200' for metal</li>
+                </ul>
+                <p class="govuk-body">
+                  For plastic waste you should include the polymer type. For example, 'LPDE, film' or 'HDPE, tubs'.
+                </p>
+              </div>
+            </details>
+             <textarea class="govuk-textarea govuk-js-character-count" id="usual-description" name="usual-description" rows="8" aria-describedby="usual-description-info usual-description-hint">{{ data['usual-description'] }}</textarea>
+          </div>
+          <div id="usual-description-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+            You can enter up to 200 characters
+          </div>
+        </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

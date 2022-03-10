@@ -1,0 +1,53 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Do you know the quantity of waste? - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+      {% call govukFieldset({
+      }) %}
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "actual-or-estimate",
+        name: "actual-or-estimate",
+        fieldset: {
+          legend: {
+            text: "Do you know the quantity of waste?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "actual",
+            text: "Yes",
+            checked: checked("actual-or-estimate", "actual")
+          },
+          {
+            value: "estimated",
+            text: "No, I'll enter an estimate",
+            checked: checked("actual-or-estimate", "estimated")
+          }
+        ]
+      }) }}
+
+      {% endcall %}
+
+      {{ govukButton({
+        text: 'Save and continue'
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

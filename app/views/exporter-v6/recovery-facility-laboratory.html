@@ -1,0 +1,208 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Who is the recovery facility or laboratory? - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Who is the recovery facility or laboratory?
+      </h1>
+
+      <p class="govuk-body govuk-!-padding-bottom-2">
+        This is the overseas site or facility where the waste will be treated (recovered, reprocessed, or tested).
+      </p>
+
+      <form class="form" method="post">
+
+        {% call govukFieldset({
+          legend: {
+            text: "Will the waste go to a recovery facility or a laboratory?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+        
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "facility-or-lab-choice",
+          name: "facility-or-lab-choice",
+          fieldset: {
+          },
+          items: [
+            {
+              value: "recovery-facility",
+              text: "Recovery facility",
+              checked: checked("facility-or-lab-choice", "recovery-facility")
+            },
+            {
+              value: "laboratory",
+              text: "Laboratory",
+              checked: checked("facility-or-lab-choice", "laboratory")
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+        {{ govukInput({
+          label: {
+            text: "Name of recovery facility or laboratory",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          id: "facility-or-lab-carrier-name",
+          name: "facility-or-lab-carrier-name",
+          value: data['facility-or-lab-carrier-name']
+        }) }}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Address",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+
+          {{ govukInput({
+            label: {
+              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+            },
+            id: "facility-or-lab-address-line-1",
+            name: "facility-or-lab-address-line-1",
+            value: data['facility-or-lab-address-line-1'],
+            autocomplete: "address-line1"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+            },
+            id: "facility-or-lab-address-line-2",
+            name: "facility-or-lab-address-line-2",
+            value: data['facility-or-lab-address-line-2'],
+            autocomplete: "address-line2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Town or city"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "facility-or-lab-address-town",
+            name: "facility-or-lab-address-town",
+            value: data['facility-or-lab-address-town'],
+            autocomplete: "address-level2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Region, state or county"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "facility-or-lab-address-county",
+            name: "facility-or-lab-address-county",
+            value: data['facility-or-lab-address-county']
+          }) }} 
+        
+          {{ govukInput({
+            label: {
+              text: "Postcode or ZIP code"
+            },
+            classes: "govuk-input--width-10",
+            id: "facility-or-lab-address-postcode",
+            name: "facility-or-lab-address-postcode",
+            value: data['facility-or-lab-address-postcode'],
+            autocomplete: "postal-code"
+          }) }}
+                
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label">
+              Country
+            </label>
+          </h2>
+          <div id="facility-or-lab-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['facility-or-lab-typeahead'] }}">
+          </div>
+        
+        {% endcall %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact person",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+        
+        {{ govukInput({
+          label: {
+            text: "Full name"
+          },
+          id: "facility-or-lab-contact-full-name",
+          name: "facility-or-lab-contact-full-name",
+          value: data['facility-or-lab-contact-full-name'],
+          autocomplete: "name",
+          spellcheck: false
+        }) }}
+
+        {% endcall %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact details",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+
+        {{ govukInput({
+          id: "facility-or-lab-email",
+          name: "facility-or-lab-email",
+          type: "email",
+          spellcheck: false,
+          value: data['facility-or-lab-email'],
+          label: {
+            text: "Email address"
+          }
+        }) }}
+        
+        {{ govukInput({
+          id: "facility-or-lab-telephone",
+          name: "facility-or-lab-telephone",
+          type: "tel",
+          value: data['facility-or-lab-telephone'],
+          classes: "govuk-input--width-20",
+          label: {
+            text: "Telephone number"
+          },
+          hint: {
+            text: "For international numbers include the country code"
+          }
+        }) }}
+        
+        {{ govukInput({
+          id: "facility-or-lab-fax",
+          name: "facility-or-lab-fax",
+          value: data['facility-or-lab-fax'],
+          type: "tel",
+          classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+          label: {
+            text: "Fax number (optional)"
+          },
+          hint: {
+            text: "For international numbers include the country code"
+          }
+        }) }}
+
+        {% endcall %}
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

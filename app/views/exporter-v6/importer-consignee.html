@@ -1,0 +1,231 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Who is the importer or consignee? - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Who is the importer or consignee?
+      </h1>
+
+      <p class="govuk-body govuk-!-padding-bottom-2">
+        The importer or consignee takes responsibility for importing the waste into the destination country.
+      </p>
+
+      <form class="form" method="post">
+        
+        {{ govukInput({
+          label: {
+            text: "Name of importer or consignee",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          id: "importer-company-name",
+          name: "importer-company-name",
+          value: data['importer-company-name']
+        }) }}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Address",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+
+          {{ govukInput({
+            label: {
+              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+            },
+            id: "importer-company-address-line-1",
+            name: "importer-company-address-line-1",
+            value: data['importer-company-address-line-1'],
+            autocomplete: "address-line1"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+            },
+            id: "importer-company-address-line-2",
+            name: "importer-company-address-line-2",
+            value: data['importer-company-address-line-2'],
+            autocomplete: "address-line2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Town or city"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "importer-company-address-town",
+            name: "importer-company-address-town",
+            value: data['importer-company-address-town'],
+            autocomplete: "address-level2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Region, state or county"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "importer-company-address-county",
+            name: "importer-company-address-county",
+            value: data['importer-company-address-county']
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Postcode or ZIP code"
+            },
+            classes: "govuk-input--width-10",
+            id: "importer-company-address-postcode",
+            name: "importer-company-address-postcode",
+            value: data['importer-company-address-postcode'],
+            autocomplete: "postal-code"
+          }) }}
+        
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label">
+              Country
+            </label>
+          </h2>
+          <div id="importer-consignee-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['importer-consignee-typeahead'] }}">
+          </div>
+
+        {% endcall %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact person",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+        
+        {{ govukInput({
+          label: {
+            text: "Full name"
+          },
+          id: "importer-contact-full-name",
+          name: "importer-contact-full-name",
+          value: data['importer-contact-full-name'],
+          autocomplete: "name",
+          spellcheck: false
+        }) }}
+
+        {% endcall %}
+        
+        {% call govukFieldset({
+          legend: {
+            text: "Contact details",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+
+        {{ govukInput({
+          id: "importer-email",
+          name: "importer-email",
+          type: "email",
+          spellcheck: false,
+          value: data['importer-email'],
+          label: {
+            text: "Email address"
+          }
+        }) }}
+
+        {#
+        <label class="govuk-label" for="importer-telephone">
+          Telephone number
+        </label>
+        <div class="govuk-input__wrapper">
+          <div class="govuk-input__prefix" aria-hidden="true">
+            {% if "United Kingdom" in data['importer-consignee-typeahead'] %}
+              +44
+            {% else %}
+              N/A
+            {% endif %}
+          </div>
+          <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-6" id="importer-telephone" name="importer-telephone" value="{{ data['importer-telephone'] }}" type="text" spellcheck="false">
+        </div>
+        #}
+{#
+        <div>
+          <label class="govuk-label" for="importer-telephone">
+            Telephone number
+          </label>
+          <div id="telephone-number-hint" class="govuk-hint">
+            For international numbers include the country code
+          </div>
+          <div>
+            {% if "United Kingdom" in data['importer-consignee-typeahead'] %}
+              <input class="govuk-input govuk-input--width-5 govuk-!-margin-right-4 govuk-!-margin-bottom-6" id="country-code-importer-telephone" name="country-code-importer-telephone" value="+44" type="text" spellcheck="false">
+            {% else %}
+              <input class="govuk-input govuk-input--width-5 govuk-!-margin-right-4 govuk-!-margin-bottom-6" id="country-code-importer-telephone" name="country-code-importer-telephone" value="" type="text" spellcheck="false">
+            {% endif %}
+            <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-6" id="importer-telephone" name="importer-telephone" value="{{ data['importer-telephone'] }}" type="text" spellcheck="false">
+          </div>
+        </div>
+#}
+  
+        {{ govukInput({
+          id: "importer-telephone",
+          name: "importer-telephone",
+          type: "tel",
+          value: data['importer-telephone'],
+          classes: "govuk-input--width-20",
+          label: {
+            text: "Telephone number"
+          },
+          hint: {
+            text: "For international numbers include the country code"
+          }
+        }) }}
+  
+{#  
+        <div class="govuk-!-margin-bottom-2">
+          <label class="govuk-label" for="importer-fax">
+            Importer fax (optional)
+          </label>
+          <div id="importer-fax-hint" class="govuk-hint">
+            For international numbers include the country code
+          </div>
+          <div>
+            {% if "United Kingdom" in data['importer-consignee-typeahead'] %}
+              <input class="govuk-input govuk-input--width-5 govuk-!-margin-right-4 govuk-!-margin-bottom-6" id="country-code-importer-fax" name="country-code-importer-fax" value="+44" type="text" spellcheck="false">
+            {% else %}
+              <input class="govuk-input govuk-input--width-5 govuk-!-margin-right-4 govuk-!-margin-bottom-6" id="country-code-importer-fax" name="country-code-importer-fax" value="" type="text" spellcheck="false">
+            {% endif %}
+            <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-6" id="importer-fax" name="importer-fax" value="{{ data['importer-fax'] }}" type="text" spellcheck="false">
+          </div>
+        </div>
+#}
+        {{ govukInput({
+          id: "importer-fax",
+          name: "importer-fax",
+          value: data['importer-fax'],
+          type: "tel",
+            classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+            label: {
+              text: "Fax number (optional)"
+          },
+          hint: {
+            text: "For international numbers include the country code"
+          }
+        }) }}
+  
+        {% endcall %}
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
