@@ -11,50 +11,48 @@
 
       <form class="form" method="post">
 
-        {% set containerNumberHtml %}
-        {{ govukInput({
-          label: {
-            text: "Container number",
-            isPageHeading: false
-          },
-          id: "container-number-entered",
-          name: "container-number-entered",
-          value: data['container-number-entered']
-        }) }}
-        {% endset -%}
+        <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Do you know the container number?
+        </h1>
+      </legend>
 
-        {{ govukRadios({
-          idPrefix: "container-number",
-          name: "container-number",
-          fieldset: {
-            legend: {
-              text: "Do you know the container number?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          items: [
-            {
-              value: "container-yes",
-              text: "Yes",
-              conditional: {
-                html: containerNumberHtml
-              },
-              checked: checked("container-number", "container-yes")
-            },
-            {
-              value: "container-no",
-              text: "No",
-              checked: checked("container-number", "container-no")
-            }
-          ]
-        }) }}
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
+          <label class="govuk-label govuk-radios__label" for="contact">
+            Yes
+          </label>
+        </div>
+        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="contact-3">
+              Enter container number
+            </label>
+            <div id="event-name-hint" class="govuk-hint">
+              For example, DEFR4121514
+            </div>
+            <input class="govuk-input govuk-!-width-one-third" id="conditional-contact-3" name="contact-by-email" type="email" spellcheck="false">
+          </div>
 
-        {{ govukButton({
-          text: 'Save and continue',
-          classes: "govuk-!-margin-top-2"
-        }) }}
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
+          <label class="govuk-label govuk-radios__label" for="contact-2">
+            No
+          </label>
+        </div>
+      </div>
 
+    </fieldset>
+  </div>
+
+
+  {{ govukButton({
+    text: 'Save and continue'
+  }) }}
       </form>
 
     </div>

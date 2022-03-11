@@ -1,0 +1,47 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+Submit export
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" method="post">
+
+<h1 class="govuk-heading-l">Submit export</h1>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
+    </legend>
+    <p class="govuk-body">By submitting this export, you confirm that all the information you’ve provided is correct to the best of your knowledge.<br>
+      <br>
+      If you’re unsure, you can check by going into each section on the <a href="prenotify" class="govuk-link">‘Export details’</a> page.<br>
+      <br>
+      If you’ve entered estimates, you'll need to provide the correct information once you know it.</p>
+
+
+  </fieldset>
+</div>
+
+
+                  {{ govukButton({
+                    text: 'Confirm and submit',
+                    classes: ' ',
+                    href: 'confirmation'
+                }) }}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
