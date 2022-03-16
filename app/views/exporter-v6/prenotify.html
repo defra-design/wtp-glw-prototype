@@ -235,7 +235,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="transaction-id" aria-describedby="read-declaration-status">
-                  Reference number
+                  Your unique reference number
                 </a>
               </span>
               {% if data['transaction-id-status'] == null or data['transaction-id-status'] == 'Not started' %}
@@ -254,22 +254,19 @@
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
-              {% if data['waste-codes-and-description-status'] == "Completed" and
+              {% if data['usual-description-of-the-waste-status'] == "Completed" and
               data['quantity-status'] == "Completed" and
               data['date-of-shipment-status'] == "Completed" and
-              data['who-arranged-shipment-details-status'] == "Completed" and
-              data['importer-consignee-status'] == "Completed" and
+              data['person-arranging-the-shipment-status'] == "Completed" and
               data['carrier-status'] == "Completed" and
               data['waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" and
               data['countries-states-concerned-status'] == "Completed" and
               data['recovery-facility-or-laboratory-status']  == "Completed" and
               data['recovery-operation-status'] == "Completed" and
-
-
-              data['usual-description-of-the-waste-status'] == "Completed" and
-              data['waste-identification-codes-status'] == "Completed" and
-
+              data['container-number-status'] == "Completed" and
               data['transaction-id-status'] == "Completed" %}
+
+
                 <span class="app-task-list__task-name">
                   <a href="declaration" aria-describedby="submit-export">
                     Submit export

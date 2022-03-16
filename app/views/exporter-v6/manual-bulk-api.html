@@ -11,7 +11,7 @@
     },
     html: 'This is not a live service.'
   }) }}
-  
+
   {{ govukBackLink({
     text: 'Back',
     href: 'dashboard'
@@ -24,48 +24,49 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form class="form" method="post">
-        
-      {{ govukRadios({
-        idPrefix: "manual-bulk",
-        name: "manual-bulk",
-        fieldset: {
-          legend: {
-            text: 'How do you want to enter the export details?',
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-          }
-        },
-        items: [
-          {
-            value: "manual",
-            text: "I will enter it manually",
-            hint: {
-              text: "This is best for a single waste export"
-            }
-          },
-          {
-            value: "use-template",
-            text: "I want to use a template",
-            hint: {
-              text: "Use a template to tell us about a green list export"
-            }
-          },
-          {
-            value: "bulk",
-            text: "I will upload a spreadsheet",
-            hint: {
-              text: "This is best for adding lots of waste exports"
-            }
-          },
-          {
-            value: "api",
-            text: "I want to bulk transfer data",
-            hint: {
-              text: "Use an Application Programming Interface (API) to integrate this service with your business systems"
-            }
-          }
-        ]
-      }) }}
+
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        How do you want to enter the export details?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="manual-bulk" name="manual-bulk" type="radio" value="manual" aria-describedby="sign-in-item-hint">
+        <label class="govuk-label govuk-radios__label" for="sign-in">
+          I will enter it manually
+        </label>
+        <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+          This is best for a single waste export
+        </div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="manual-bulk" name="manual-bulk" type="radio" value="use-template" aria-describedby="sign-in-2-item-hint">
+        <label class="govuk-label govuk-radios__label" for="sign-in-2">
+          I want to use a template
+        </label>
+        <div id="sign-in-2-item-hint" class="govuk-hint govuk-radios__hint">
+          Use a template to tell us about a green list export
+        </div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="manual-bulk" name="manual-bulk" type="radio" value="bulk" aria-describedby="sign-in-2-item-hint">
+        <label class="govuk-label govuk-radios__label" for="sign-in-2">
+          I will upload a spreadsheet
+        </label>
+        <div id="sign-in-2-item-hint" class="govuk-hint govuk-radios__hint">
+          This is best for adding lots of waste exports
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+
+
 
         {{ govukButton({
           text: 'Continue'

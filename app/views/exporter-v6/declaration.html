@@ -13,7 +13,7 @@ Submit export
   <div class="govuk-grid-column-two-thirds">
     <form class="form" method="post">
 
-<h1 class="govuk-heading-l">Submit export</h1>
+<h1 class="govuk-heading-l">Are you sure you want to submit this export?</h1>
 
 
 <div class="govuk-form-group">
@@ -21,11 +21,35 @@ Submit export
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
 
     </legend>
-    <p class="govuk-body">By submitting this export, you confirm that all the information you’ve provided is correct to the best of your knowledge.<br>
+    <p class="govuk-body">If you’re unsure about the information you’ve provided, you can check it by going into each section on the
+      <a href="prenotify" class="govuk-link">‘Export details’</a> page.<br>
       <br>
-      If you’re unsure, you can check by going into each section on the <a href="prenotify" class="govuk-link">‘Export details’</a> page.<br>
-      <br>
-      If you’ve entered estimates, you'll need to provide the correct information once you know it.</p>
+
+      <p class="govuk-body">By submitting this export, you:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>confirm that all the information you’ve provided is correct</li>
+        <li>understand that you’ll have a contractual relationship with the consignee</li>
+      </ul>
+
+
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="changed-name">
+                Yes, submit export
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                No
+              </label>
+            </div>
+          </div>
+
+
+
 
 
   </fieldset>
@@ -33,7 +57,7 @@ Submit export
 
 
                   {{ govukButton({
-                    text: 'Confirm and submit',
+                    text: 'Save and continue',
                     classes: ' ',
                     href: 'confirmation'
                 }) }}
