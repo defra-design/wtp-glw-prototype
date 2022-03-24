@@ -1,336 +1,167 @@
-
 {% extends "layouts/design-iterations-layout.html" %}
 
 {% block pageTitle %}
-  {{ serviceName }} prototype
+  Export green list waste
 {% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-      {{ govukPhaseBanner({
-        tag: {
-        text: "Prototype"
-        },
-        html: ''
-    }) }}
+  <div class="govuk-grid-column-full-width">
 
-    {# AGENCY OFFICER #}
-    <h1 class="govuk-heading-l govuk-!-padding-top-4">
-      Agency Officer
-    </h1>
+    <form method="post">
+
+    <p>This prototype is a way of exploring ideas and is subject to change.</p>
+
+        <p>Contact <a href="mailto:emma.hidalgolaw@defra.gov.uk">Emma Hidalgo-Law</a> (Interaction Designer)
+          or <a href="mailto:priya.nahar@defra.gov.uk">Priya Nahar</a> (Content Designer) if you have any questions.</p>
+        <br><br>
+
+        <h1 class="govuk-heading-l">Current prototypes</h1>
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--m">Exporter</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Version</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Sprint</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-half">Comments</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <a href="exporter-v6/dashboard">V6</a>
+              <td class="govuk-table__cell">14, 15</td>
+              <td class="govuk-table__cell">
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>Restructured task list page</li>
+                  <li>Changed content on unique reference number page</li>
+                  <li>Removed API option</li>
+                  <li>Added breadcrumbs</li>
+                  <li>Removed check you answers page and replaced with submit page</li>
+                  <li>Added hint text to container number page</li>
+                </ul>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <a href="exporter-v5/dashboard">V5</a>
+              <td class="govuk-table__cell">Unknown</td>
+              <td class="govuk-table__cell"></td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <br>
+        <br>
+
+
     <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Agency Officer</caption>
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th class="govuk-table__header" scope="col">Version</th>
-          <th class="govuk-table__header" scope="col">Sprint</th>
-          <th class="govuk-table__header" scope="col">Date</th>
-          <th class="govuk-table__header" scope="col">Status</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Version</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Sprint</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-half">Comments</th>
         </tr>
       </thead>
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
             <a href="agency-officer-v4/_index">V4</a>
-          </td>
-          <td class="govuk-table__cell">
-            N/A
-          </td>
-          <td class="govuk-table__cell">
-            To be confirmed
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--blue">
-              Transition / MVP
-            </strong>
-          </td>
+          <td class="govuk-table__cell">Unknown</td>
+          <td class="govuk-table__cell"></td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
             <a href="agency-officer-v3/_index">V3</a>
-          </td>
-          <td class="govuk-table__cell">
-            N/A
-          </td>
-          <td class="govuk-table__cell">
-            To be confirmed
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--blue">
-              In progress / Paused
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="agency-officer-v2/_index">V2</a>
-          </td>
-          <td class="govuk-table__cell">
-            N/A
-          </td>
-          <td class="govuk-table__cell">
-            To be confirmed
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--grey">
-              Complete
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="agency-officer-v1/_index">V1</a>
-          </td>
-          <td class="govuk-table__cell">
-            N/A
-          </td>
-          <td class="govuk-table__cell">
-            To be confirmed
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--grey">
-              Complete
-            </strong>
-          </td>
-        </tr>
-        {#
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="/documenting-design-iterations/stable">Dev</a></li>
-          </td>
-          <td class="govuk-table__cell">
-          </td>
-          <td class="govuk-table__cell">
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--green">
-              Stable
-            </strong>
-          </td>
-        </tr>
-        #}
-      </tbody>
-    </table>
-
-    {# EXPORTER #}
-    <h1 class="govuk-heading-l govuk-!-padding-top-4">
-      Exporter
-    </h1>
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header" scope="col">Version</th>
-          <th class="govuk-table__header" scope="col">Sprint</th>
-          <th class="govuk-table__header" scope="col">Date</th>
-          <th class="govuk-table__header" scope="col">Status</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="exporter-v6/dashboard">V6</a>
-          </td>
-          <td class="govuk-table__cell">
-            14
-          </td>
-          <td class="govuk-table__cell">
-            9 March 2022
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--blue">
-              In progress
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="exporter-v5/_index">V5</a>
-          </td>
-          <td class="govuk-table__cell">
-            N/A
-          </td>
-          <td class="govuk-table__cell">
-            To be confirmed
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--blue">
-              Transition / MVP
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="exporter-v4/_index">V4</a>
-          </td>
-          <td class="govuk-table__cell">
-            N/A
-          </td>
-          <td class="govuk-table__cell">
-            To be confirmed
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--blue">
-              In progress / Paused
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="exporter-v3/_index">V3</a>
-          </td>
-          <td class="govuk-table__cell">
-            N/A
-          </td>
-          <td class="govuk-table__cell">
-            To be confirmed
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--grey">
-              Complete
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="exporter-v2/_index">V2</a>
-          </td>
-          <td class="govuk-table__cell">
-            N/A
-          </td>
-          <td class="govuk-table__cell">
-            To be confirmed
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--grey">
-              Complete
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="exporter-v1/_index">V1</a>
-          </td>
-          <td class="govuk-table__cell">
-            N/A
-          </td>
-          <td class="govuk-table__cell">
-            To be confirmed
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--grey">
-              Complete
-            </strong>
-          </td>
-        </tr>
-        {#
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="/documenting-design-iterations/stable">Dev</a></li>
-          </td>
-          <td class="govuk-table__cell">
-          </td>
-          <td class="govuk-table__cell">
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--green">
-              Stable
-            </strong>
-          </td>
-        </tr>
-        #}
-      </tbody>
-    </table>
-
-    {# ASSESSMENTS #}
-    <h1 class="govuk-heading-l govuk-!-padding-top-4">
-      Assessments
-    </h1>
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header" scope="col">Phase</th>
-          <th class="govuk-table__header" scope="col">Actor</th>
-          <th class="govuk-table__header" scope="col">Date</th>
-          <th class="govuk-table__header" scope="col">Status</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="alpha-assessment-agency-officer/_index">Alpha</a>
-          </td>
-          <td class="govuk-table__cell">
-            Agency Officer
-          </td>
-          <td class="govuk-table__cell">
-            1 Jul 2021
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--green">
-              Passed
-            </strong>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="alpha-assessment-exporter/_index">Alpha</a>
-          </td>
-          <td class="govuk-table__cell">
-            Exporter
-          </td>
-          <td class="govuk-table__cell">
-            1 Jul 2021
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--green">
-              Passed
-            </strong>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    {# PLAYGROUND #}
-    <h1 class="govuk-heading-l govuk-!-padding-top-4">
-      Playground
-    </h1>
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header" scope="col">Feature</th>
-          <th class="govuk-table__header" scope="col">Date</th>
-          <th class="govuk-table__header" scope="col">Link</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            Import Annex VII data
-          </td>
-          <td class="govuk-table__cell">
-            21 Feb 2022
-          </td>
-          <td class="govuk-table__cell">
-            <a href="annex-vii-data/index">View</a>
-          </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            Import data from JSON file
-          </td>
-          <td class="govuk-table__cell">
-            21 Jan 2022
-          </td>
-          <td class="govuk-table__cell">
-            <a href="import-json/index">View</a>
-          </td>
+          <td class="govuk-table__cell">Unknown</td>
+          <td class="govuk-table__cell"></td>
         </tr>
       </tbody>
     </table>
 
 
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Previous prototypes",
+  classes: "govuk-button--secondary",
+  href: 'previous-prototypes'
+}) }}
+
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      View GDS assessments
+    </span>
+  </summary>
+  <h1 class="govuk-heading-l govuk-!-padding-top-4">
+    Assessments
+  </h1>
+  <table class="govuk-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="col">Phase</th>
+        <th class="govuk-table__header" scope="col">Actor</th>
+        <th class="govuk-table__header" scope="col">Date</th>
+        <th class="govuk-table__header" scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          <a href="alpha-assessment-agency-officer/_index">Alpha</a>
+        </td>
+        <td class="govuk-table__cell">
+          Agency Officer
+        </td>
+        <td class="govuk-table__cell">
+          1 Jul 2021
+        </td>
+        <td class="govuk-table__cell">
+          <strong class="govuk-tag govuk-tag--green">
+            Passed
+          </strong>
+        </td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          <a href="alpha-assessment-exporter/_index">Alpha</a>
+        </td>
+        <td class="govuk-table__cell">
+          Exporter
+        </td>
+        <td class="govuk-table__cell">
+          1 Jul 2021
+        </td>
+        <td class="govuk-table__cell">
+          <strong class="govuk-tag govuk-tag--green">
+            Passed
+          </strong>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</details>
+
+
+
+
+
+</form>
   </div>
 
 {% endblock %}
