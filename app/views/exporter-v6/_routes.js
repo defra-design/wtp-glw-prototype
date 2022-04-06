@@ -443,7 +443,7 @@ router.post('/who-arranged-shipment-details', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
     } else {
-        res.redirect('prenotify');
+        res.redirect('importer-consignee');
     }
 })
 
@@ -549,80 +549,90 @@ router.post('/date-of-shipment', function(req, res) {
     }
 })
 
+
+
 // carriers
-router.post('/carriers', function(req, res) {
 
-    if (req.session.data['add-fourth-carrier'] == 'Yes' || req.session.data['add-fourth-carrier'] == 'No') {
-        if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-            res.redirect('check-your-answers');
-        } else {
-            res.redirect('prenotify');
-        }
+router.post('/carrier-check', function(req, res) {
+if (req.session.data['add-third-carrier'] == 'Yes') {
+    res.redirect('carrier-add-3');
+} else if (req.session.data['add-third-carrier'] == 'No') {
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('waste-generator');
     }
-
-    if (req.session.data['add-third-carrier'] == 'Yes') {
-        res.redirect('carrier-add-3');
-    } else if (req.session.data['add-third-carrier'] == 'No') {
-        if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-            res.redirect('check-your-answers');
-        } else {
-            res.redirect('prenotify');
-        }
-    }
-
-    if (req.session.data['add-second-carrier'] == 'Yes') {
-        res.redirect('carrier-add-2');
-    } else if (req.session.data['add-second-carrier'] == 'No') {
-        if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-            res.redirect('check-your-answers');
-        } else {
-            res.redirect('prenotify');
-        }
-    }
-
-    if (req.session.data['add-first-carrier'] == 'Yes') {
-        res.redirect('carrier-add-1');
-    } else if (req.session.data['add-first-carrier'] == 'No') {
-        if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-            res.redirect('check-your-answers');
-        } else {
-            res.redirect('prenotify');
-        }
-    }
+}
 
 })
 
-// carrier-add-1
+router.post('/carriers', function(req, res) {
+if (req.session.data['add-second-carrier'] == 'Yes') {
+    res.redirect('carrier-add-3');
+} else if (req.session.data['add-second-carrier'] == 'No') {
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('waste-generator');
+    }
+}
+
+})
+
+
 router.post('/carrier-add-1', function(req, res) {
+    req.session.data['carrier-status'] = "Completed";
+    req.session.data['carrier-add-1'] = "true";
+    res.redirect('carrier-transport-1');
+})
+
+router.post('/carrier-transport-1', function(req, res) {
     req.session.data['carrier-status'] = "Completed";
     req.session.data['carrier-add-1'] = "true";
     res.redirect('carriers');
 })
 
-// carrier-add-2
 router.post('/carrier-add-2', function(req, res) {
     req.session.data['carrier-status'] = "Completed";
-    req.session.data['carrier-add-2'] = "true";
-    res.redirect('carriers');
+    req.session.data['carrier-add-1'] = "true";
+    res.redirect('carrier-transport-2');
 })
 
-// carrier-add-3
+router.post('/carrier-transport-2', function(req, res) {
+    req.session.data['carrier-status'] = "Completed";
+    req.session.data['carrier-add-1'] = "true";
+    res.redirect('carrier-check');
+})
+
 router.post('/carrier-add-3', function(req, res) {
     req.session.data['carrier-status'] = "Completed";
-    req.session.data['carrier-add-3'] = "true";
-    res.redirect('carriers');
+    req.session.data['carrier-add-1'] = "true";
+    res.redirect('carrier-transport-3');
 })
 
-// waste-generator
+router.post('/carrier-transport-3', function(req, res) {
+    req.session.data['carrier-status'] = "Completed";
+    req.session.data['carrier-add-1'] = "true";
+    res.redirect('carrier-check');
+})
+
+router.post('/carrier-delete', function(req, res) {
+    req.session.data['carrier-status'] = "Completed";
+    req.session.data['carrier-add-1'] = "true";
+    res.redirect('carrier-check');
+})
+
 router.post('/waste-generator', function(req, res) {
     req.session.data['waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
-
-    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-        res.redirect('check-your-answers');
-    } else {
-        res.redirect('prenotify');
-    }
+    req.session.data['carrier-add-1'] = "true";
+    res.redirect('countries-states-concerned');
 })
+
+
+
+
+
+
 
 // recovery-facility-laboratory
 router.post('/recovery-facility-laboratory', function(req, res) {
@@ -631,7 +641,7 @@ router.post('/recovery-facility-laboratory', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
     } else {
-        res.redirect('prenotify');
+        res.redirect('recovery-operation');
     }
 })
 
@@ -780,6 +790,40 @@ router.post('/delete-template', function(req, res) {
     req.session.data['template-name'] = undefined;
     res.redirect('delete-confirmation');
 })
+
+
+
+router.get('prenotify', function (req, res) {
+
+		var count = 0;
+
+		if(res.data['usual-description-of-the-waste-status'] == "Completed" && res.data['quantity-status'] == "Completed" && res.data['date-of-shipment-status'] == "Completed"){
+			//the three items in the first section are complete
+			count++; //add one to the count variable
+		}
+
+    if(res.data['person-arranging-the-shipment-status'] == "Completed" && res.data['importer-consignee-status'] == "Completed"){
+      //the three items in the first section are complete
+      count++; //add one to the count variable
+    }
+
+    if(res.data['carrier-status'] == "Completed" && res.data['waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" && res.data['countries-states-concerned-status'] == "Completed"){
+      //the three items in the first section are complete
+      count++; //add one to the count variable
+    }
+
+    if(res.data['recovery-facility-or-laboratory-status'] == "Completed" && res.data['recovery-operation-status'] == "Completed"){
+      //the three items in the first section are complete
+      count++; //add one to the count variable
+    }
+
+
+		//repeat the if statement for all your sections
+
+		res.render('prenotify', {
+			'sectionscompleted' : count
+		});
+	});
 
 // create-template-from-view-all
 //router.post('/create-template-from-view-all', function(req, res) {

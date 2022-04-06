@@ -38,7 +38,8 @@
       </h1>
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Submission incomplete</h2>
-<p class="govuk-body govuk-!-margin-bottom-7">You have completed 0 of 6 sections.</p>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{sectionscompleted}} of 6 sections.</p>
+
 
       <ol class="app-task-list">
 
@@ -198,7 +199,7 @@
           </ul>
         </li>
 
-        {# ADDITIONAL INFORMATION #}
+        <!-- {# ADDITIONAL INFORMATION #}
         <li>
           <h2 class="app-task-list__section">
             <span class="app-task-list__section-number">5. </span> Additional information
@@ -216,22 +217,22 @@
                 <strong class="govuk-tag app-task-list__tag" id="container-number-status">Completed</strong>
               {% endif %}
             </li>
-            <!-- <li class="app-task-list__item">
+            <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="#" aria-describedby="read-declaration-status">
                   Vehicle registration number
                 </a>
               </span>
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-and-generate-status">Not started</strong>
-            </li> -->
-            <!-- <li class="app-task-list__item">
+            </li>
+            <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="#" aria-describedby="eligibility-status">
                   Point of exit from the United Kingdom
                 </a>
               </span>
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-and-generate-status">Not started</strong>
-            </li> -->
+            </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="transaction-id" aria-describedby="read-declaration-status">
@@ -245,12 +246,12 @@
               {% endif %}
             </li>
           </ul>
-        </li>
+        </li> -->
 
         {# SUBMIT #}
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">6. </span> Submit
+            <span class="app-task-list__section-number">5. </span> Submit
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
@@ -262,9 +263,10 @@
               data['waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" and
               data['countries-states-concerned-status'] == "Completed" and
               data['recovery-facility-or-laboratory-status']  == "Completed" and
-              data['recovery-operation-status'] == "Completed" and
-              data['container-number-status'] == "Completed" and
-              data['transaction-id-status'] == "Completed" %}
+              data['recovery-operation-status'] == "Completed" %}
+
+              <!-- data['container-number-status'] == "Completed" and
+              data['transaction-id-status'] == "Completed" %} -->
 
 
                 <span class="app-task-list__task-name">
