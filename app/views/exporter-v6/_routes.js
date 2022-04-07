@@ -1,6 +1,7 @@
 const { red } = require('ansi-colors');
 const express = require('express')
 const router = express.Router()
+var version = "exporter-v6";
 
 // cookies
 router.post('/cookies', function(req, res) {
@@ -489,7 +490,7 @@ router.post('/enter-estimate-waste', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
     } else {
-        res.redirect('prenotify');
+        res.redirect('date-of-shipment');
     }
 })
 
@@ -503,6 +504,9 @@ router.post('/importer-consignee', function(req, res) {
         res.redirect('prenotify');
     }
 })
+
+
+
 
 // manual-bulk-api
 //router.post('/manual-bulk-api', function(req, res) {
@@ -549,7 +553,45 @@ router.post('/date-of-shipment', function(req, res) {
     }
 })
 
+//waste-codes
+router.post('/code-add-another', function(req, res) {
+if (req.session.data['add-ec-code'] == 'Yes') {
+    res.redirect('ec-code');
+} else if (req.session.data['add-ec-code'] == 'No') {
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('national-code');
+    }
+}
 
+})
+
+// router.post('/ec-code', function(req, res) {
+// if (req.session.data['ec-code'] == 'Yes') {
+//     res.redirect('code-add-another');
+// } else if (req.session.data['ec-code'] == 'No') {
+//     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+//         res.redirect('check-your-answers');
+//     } else {
+//         res.redirect('national-code');
+//     }
+// }
+
+// })
+
+router.post('/declaration', function(req, res) {
+if (req.session.data['declaration'] == 'yes') {
+    res.redirect('confirmation');
+} else if (req.session.data['declaration'] == 'no') {
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('prenotify');
+    }
+}
+
+})
 
 // carriers
 
@@ -603,12 +645,12 @@ router.post('/carrier-transport-2', function(req, res) {
     req.session.data['carrier-add-1'] = "true";
     res.redirect('carrier-check');
 })
-
-router.post('/carrier-add-3', function(req, res) {
-    req.session.data['carrier-status'] = "Completed";
-    req.session.data['carrier-add-1'] = "true";
-    res.redirect('carrier-transport-3');
-})
+//Overwritten below
+// router.post('/carrier-add-3', function(req, res) {
+//     req.session.data['carrier-status'] = "Completed";
+//     req.session.data['carrier-add-1'] = "true";
+//     res.redirect('carrier-transport-3');
+// })
 
 router.post('/carrier-transport-3', function(req, res) {
     req.session.data['carrier-status'] = "Completed";
@@ -663,7 +705,31 @@ router.post('/waste-codes-and-description', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
     } else {
-        res.redirect('prenotify');
+        res.redirect('ec-code');
+    }
+})
+
+
+// national-code
+router.post('/national-code', function(req, res) {
+    req.session.data['usual-description-of-the-waste-status'] = "Completed";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('waste-description');
+    }
+})
+
+
+// waste-description
+router.post('/waste-description', function(req, res) {
+    req.session.data['usual-description-of-the-waste-status'] = "Completed";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('quantity');
     }
 })
 
@@ -793,37 +859,99 @@ router.post('/delete-template', function(req, res) {
 
 
 
-router.get('prenotify', function (req, res) {
+router.get('/prenotify', function (req, res) {
 
 		var count = 0;
 
-		if(res.data['usual-description-of-the-waste-status'] == "Completed" && res.data['quantity-status'] == "Completed" && res.data['date-of-shipment-status'] == "Completed"){
-			//the three items in the first section are complete
-			count++; //add one to the count variable
+		if(req.session.data['usual-description-of-the-waste-status'] == "Completed" && req.session.data['quantity-status'] == "Completed" && req.session.data['date-of-shipment-status'] == "Completed"){
+			count++;
 		}
 
-    if(res.data['person-arranging-the-shipment-status'] == "Completed" && res.data['importer-consignee-status'] == "Completed"){
-      //the three items in the first section are complete
-      count++; //add one to the count variable
+    if(req.session.data['person-arranging-the-shipment-status'] == "Completed" && req.session.data['importer-consignee-status'] == "Completed"){
+      count++;
     }
 
-    if(res.data['carrier-status'] == "Completed" && res.data['waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" && res.data['countries-states-concerned-status'] == "Completed"){
-      //the three items in the first section are complete
-      count++; //add one to the count variable
+    if(req.session.data['carrier-status'] == "Completed" && req.session.data['waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" && req.session.data['countries-states-concerned-status'] == "Completed"){
+      count++;
     }
 
-    if(res.data['recovery-facility-or-laboratory-status'] == "Completed" && res.data['recovery-operation-status'] == "Completed"){
-      //the three items in the first section are complete
-      count++; //add one to the count variable
+    if(req.session.data['recovery-facility-or-laboratory-status'] == "Completed" && req.session.data['recovery-operation-status'] == "Completed"){
+      count++;
     }
 
-
-		//repeat the if statement for all your sections
-
-		res.render('prenotify', {
+		res.render(version+'/prenotify', {
 			'sectionscompleted' : count
 		});
-	});
+
+});
+
+
+
+//carrier counter
+  router.post('/carrier-add-3', function(req, res) {
+      if(typeof req.session.data['carrier-count'] == "undefined"){
+        req.session.data['carrier-count'] = 0;
+      }
+      else {
+        req.session.data['carrier-count']++;
+      }
+
+      req.session.data['carrier-name-'+req.session.data['carrier-count']] = req.body.additonalcarrier;
+      res.redirect('carrier-check');
+  });
+
+  router.get('/carrier-check', function (req, res) {
+    var carrierArray = [];
+
+    for (var i = 0; i <= req.session.data['carrier-count']; i++) {
+      carrierArray[i] = req.session.data['carrier-name-'+i];
+    }
+
+    res.render(version+'/carrier-check', {
+    	'items' : carrierArray });
+  });
+
+
+
+  //code counter
+    router.post('/ec-code', function(req, res) {
+        if(typeof req.session.data['code-count'] == "undefined"){
+          req.session.data['code-count'] = 0;
+        }
+        else {
+          req.session.data['code-count']++;
+        }
+
+        req.session.data['code-'+req.session.data['code-count']] = req.session.data['ec-wastes-typeahead'];
+        res.redirect('code-add-another');
+    });
+
+    router.get('/code-add-another', function (req, res) {
+      var carrierArray = [];
+
+      for (var i = 0; i <= req.session.data['code-count']; i++) {
+        carrierArray[i] = req.session.data['code-'+i];
+      }
+
+      res.render(version+'/code-add-another', {
+      	'codes' : carrierArray });
+    });
+
+    router.post('/ec-code-2', function(req, res) {
+          if(typeof req.session.data['code-count'] == "undefined"){
+            req.session.data['code-count'] = 0;
+          }
+          else {
+            req.session.data['code-count']++;
+          }
+
+          req.session.data['code-'+req.session.data['code-count']] = req.session.data['ec-wastes-typeahead'];
+          res.redirect('code-add-another');
+      });
+
+
+
+
 
 // create-template-from-view-all
 //router.post('/create-template-from-view-all', function(req, res) {

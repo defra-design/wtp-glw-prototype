@@ -1,0 +1,73 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  How will the first waste carrier transport the waste?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+        <form class="form" method="post">
+
+
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        How will the first waste carrier transport the waste?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="first-carrier-road" name="first-carrier-transport" type="radio" value="Road"
+        {% if data['first-carrier-transport'] == 'Road' %} checked="checked" {% endif %}>
+        <label class="govuk-label govuk-radios__label" for="first-carrier-road">
+          Road
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="first-carrier-rail" name="first-carrier-transport" type="radio" value="Rail"
+        {% if data['first-carrier-transport'] == 'Rail' %} checked="checked" {% endif %}>
+        <label class="govuk-label govuk-radios__label" for="first-carrier-rail">
+          Rail
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="first-carrier-sea" name="first-carrier-transport" type="radio" value="Sea"
+        {% if data['first-carrier-transport'] == 'Sea' %} checked="checked" {% endif %}>
+        <label class="govuk-label govuk-radios__label" for="first-carrier-sea">
+          Sea
+        </label>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="first-carrier-air" name="first-carrier-transport" type="radio" value="Air"
+        {% if data['first-carrier-transport'] == 'Air' %} checked="checked" {% endif %}>
+        <label class="govuk-label govuk-radios__label" for="first-carrier-air">
+          Air
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+
+
+
+
+
+
+      {{ govukButton({
+        text: 'Save and continue'
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,202 +1,153 @@
 {% extends "../layouts/layout-exporter-v5.html" %}
 
 {% block pageTitle %}
-  Add another carrier - Export green list waste
+  Enter the additional waste carrier’s details
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+        <form class="form" method="post">
 
     <h1 class="govuk-heading-l">
-      Add another carrier
+      Enter the additional waste carrier’s details
     </h1>
 
-    <form class="form" method="post">
-      
-      {{ govukInput({
-        label: {
-          text: "Name of carrier",
-          classes: "govuk-label--m",
-          isPageHeading: false
-        },
-        id: "third-carrier-name",
-        name: "third-carrier-name",
-        value: data["third-carrier-name"]
-      }) }}
+      <fieldset class="govuk-fieldset">
 
-      {% call govukFieldset({
-        legend: {
-          text: "Address",
-          classes: "govuk-fieldset__legend--m"
-        }
-      }) %}
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="additonalcarrier">
+            Name <span class="govuk-visually-hidden">name</span>
+          </label>
+          <input class="govuk-input" id="additonalcarrier" name="additonalcarrier" type="text">
+        </div>
 
-      {{ govukInput({
-        label: {
-          html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
-        },
-        id: "third-carrier-address-line-1",
-        name: "third-carrier-address-line-1",
-        value: data['third-carrier-address-line-1'],
-        autocomplete: "address-line1"
-      }) }}
-    
-      {{ govukInput({
-        label: {
-          html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
-        },
-        id: "third-carrier-address-line-2",
-        name: "third-carrier-address-line-2",
-        value: data['third-carrier-address-line-2'],
-        autocomplete: "address-line2"
-      }) }}
-    
-      {{ govukInput({
-        label: {
-          text: "Town or city"
-        },
-        classes: "govuk-!-width-two-thirds",
-        id: "third-carrier-address-town",
-        name: "third-carrier-address-town",
-        value: data['third-carrier-address-town'],
-        autocomplete: "address-level2"
-      }) }}
-    
-      {{ govukInput({
-        label: {
-          text: "Region, state or county"
-        },
-        classes: "govuk-!-width-two-thirds",
-        id: "third-carrier-address-county",
-        name: "third-carrier-address-county",
-        value: data['third-carrier-address-county']
-      }) }}
-    
-      {{ govukInput({
-        label: {
-          text: "Postcode or ZIP code"
-        },
-        classes: "govuk-input--width-10",
-        id: "third-carrier-address-postcode",
-        name: "third-carrier-address-postcode",
-        value: data['third-carrier-address-postcode'],
-        autocomplete: "postal-code"
-      }) }}
-            
-      <h2 class="govuk-label-wrapper">
-        <label class="govuk-label">
-          Country
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="carrier-3-address-line-1">
+      Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
+    </label>
+    <input class="govuk-input" id="carrier-3-address-line-1" name="carrier-3-address-line-1" type="text">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="carrier-3-address-line-2">
+      <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+    </label>
+    <input class="govuk-input" id="carrier-3-address-line-2" name="carrier-3-address-line-2" type="text">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="carrier-3-address-town">
+      Town or city
+    </label>
+    <input class="govuk-input govuk-!-width-two-thirds" id="carrier-3-address-town" name="carrier-3-address-town" type="text">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="carrier-3-county">
+      Region, state or county
+    </label>
+    <input class="govuk-input govuk-!-width-two-thirds" id="carrier-3-county" name="carrier-3-county" type="text">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="carrier-3-address-postcode">
+      Postcode or ZIP code
+    </label>
+    <input class="govuk-input govuk-input--width-10" id="carrier-3-address-postcode" name="carrier-3-address-postcode" type="text">
+  </div>
+
+  <h2 class="govuk-label-wrapper">
+    <label class="govuk-label">
+      Country
+    </label>
+  </h2>
+  <div id="third-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['third-carrier-typeahead'] }}">
+  </div>
+
+</fieldset>
+
+<br>
+<br>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Contact details
+      </h1>
+    </legend>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="contact-name-3">
+        Full name
+      </label>
+      <input class="govuk-input govuk-!-width-three-quarters" id="contact-name-3" name="contact-name-3" type="text">
+    </div>
+    <div id="contact-hint" class="govuk-hint">
+      Select all the options that are relevant them.
+    </div>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-checkboxes__label" for="contact">
+          Email
         </label>
-      </h2>
-      <div id="third-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['third-carrier-typeahead'] }}">
       </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-email-3">
+            Email address
+          </label>
+          <input class="govuk-input govuk-!-width-one-third" id="contact-by-email-3" name="contact-by-email-3" type="email" spellcheck="false">
+        </div>
 
-      {% endcall %}
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="contact-2" name="contact" type="checkbox" value="phone" data-aria-controls="conditional-contact-2">
+        <label class="govuk-label govuk-checkboxes__label" for="contact-2">
+          Phone
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-2">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-phone-3">
+            Phone number
+          </label>
+          <div id="contact-hint" class="govuk-hint">
+             Include the country code for international numbers.
+          </div>
+          <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone-3" name="contact-by-phone-3" type="tel" autocomplete="tel">
+        </div>
 
-      {% call govukFieldset({
-        legend: {
-          text: "Contact person",
-          classes: "govuk-fieldset__legend--m"
-        }
-      }) %}
-      
-      {{ govukInput({
-        label: {
-          text: "Full name"
-        },
-        id: "third-carrier-contact-full-name",
-        name: "third-carrier-contact-full-name",
-        value: data['third-carrier-contact-full-name'],
-        autocomplete: "name",
-        spellcheck: false
-      }) }}
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox" value="fax" data-aria-controls="conditional-contact-3">
+        <label class="govuk-label govuk-checkboxes__label" for="contact-3">
+          Fax
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-3">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-fax-3">
+            Fax number
+          </label>
+          <div id="contact-hint" class="govuk-hint">
+             Include the country code for international numbers.
+          </div>
+          <input class="govuk-input govuk-!-width-one-third" id="contact-by-fax-3" name="contact-by-fax-3" type="tel" autocomplete="tel">
+        </div>
 
-      {% endcall %}
+      </div>
+    </div>
 
-      {% call govukFieldset({
-        legend: {
-          text: "Contact details",
-          classes: "govuk-fieldset__legend--m"
-        }
-      }) %}
+  </fieldset>
+</div>
 
-      {{ govukInput({
-        id: "third-carrier-email",
-        name: "third-carrier-email",
-        type: "email",
-        spellcheck: false,
-        value: data['third-carrier-email'],
-        label: {
-          text: "Email address"
-        }
-      }) }}
-      
-      {{ govukInput({
-        id: "third-carrier-telephone",
-        name: "third-carrier-telephone",
-        type: "tel",
-        value: data['third-carrier-telephone'],
-        classes: "govuk-input--width-20",
-        label: {
-          text: "Telephone number"
-        },
-        hint: {
-          text: "For international numbers include the country code"
-        }
-      }) }}
-      
-      {{ govukInput({
-        id: "third-carrier-fax",
-        name: "third-carrier-fax",
-        value: data['third-carrier-fax'],
-        type: "tel",
-        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
-        label: {
-          text: "Fax number (optional)"
-        },
-        hint: {
-          text: "For international numbers include the country code"
-        }
-      }) }}
 
-      {% endcall %}  
 
-      {{ govukRadios({
-        idPrefix: "third-carrier-means-of-transport",
-        name: "third-carrier-means-of-transport",
-        classes: "govuk-!-margin-bottom-2",
-        fieldset: {
-          legend: {
-            text: "Means of transport",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--m"
-          }
-        },
-        items: [
-          {
-            value: "Road",
-            text: "Road",
-            checked: checked("third-carrier-means-of-transport", "Road")
-          },
-          {
-            value: "Rail",
-            text: "Rail",
-            checked: checked("third-carrier-means-of-transport", "Rail")
-          },
-          {
-            value: "Air",
-            text: "Air",
-            checked: checked("third-carrier-means-of-transport", "Air")
-          },
-          {
-            value: "Sea",
-            text: "Sea",
-            checked: checked("third-carrier-means-of-transport", "Sea")
-          }
-        ]
-      }) }}
+
 
       {{ govukButton({
         text: 'Save and continue'

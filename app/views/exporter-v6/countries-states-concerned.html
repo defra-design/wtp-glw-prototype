@@ -1,100 +1,52 @@
 {% extends "../layouts/layout-exporter-v5.html" %}
 
 {% block pageTitle %}
-  Which countries will the waste travel through? - Export green list waste
+  Are there any transit countries?
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+            <form class="form" method="post">
 
-      <h1 class="govuk-heading-l">
-        Which countries will the waste travel through?
-      </h1>
 
-      <form class="form" method="post">
+
+
         <div class="govuk-form-group">
 
-          {{ govukRadios({
-            classes: "govuk-radios--small govuk-radios--inline",
-            idPrefix: "export-country",
-            name: "export-country",
-            fieldset: {
-              legend: {
-                text: "Exporting country",
-                isPageHeading: false,
-                classes: "govuk-label govuk-!-font-weight-bold"
-              }
-            },
-            items: [
-              {
-                value: "england",
-                text: "England",
-                checked: checked("export-country", "england")
-              },
-              {
-                value: "northernireland",
-                text: "Northern Ireland",
-                checked: checked("export-country", "northernireland")
-              },
-              {
-                value: "scotland",
-                text: "Scotland",
-                checked: checked("export-country", "scotland")
-              },
-              {
-                value: "wales",
-                text: "Wales",
-                checked: checked("export-country", "wales")
-              }
-            ]
-          }) }}
-
-          <fieldset class="govuk-fieldset">
-            <div class="container">
-              <div class='govuk-form-group' id='div_1'>
-                <label class="govuk-label govuk-!-font-weight-bold" for="transit-country_1">
-                  Transit country 1 (optional)
-                </label>
-                <input class="govuk-input govuk-!-margin-bottom-0" type='text' name='transit-country_1' value="{{ data['transit-country_1'] }}">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Are there any transit countries?
+                </h1>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="yes" data-aria-controls="conditional-contact" {{ checked("contact", "yes") }}>
+                  <label class="govuk-label govuk-radios__label" for="contact">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="transit-countries">
+                      Enter transit countries
+                    </label>
+                    <textarea class="govuk-textarea" id="transit-countries" name="transit-countries" rows="5">{{ data['transit-countries'] }}</textarea>
+                  </div>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="no" data-aria-controls="conditional-contact-2" {{ checked("contact", "no") }}>
+                  <label class="govuk-label govuk-radios__label" for="contact-2">
+                    No
+                  </label>
+                </div>
               </div>
 
-              {% if data['transit-country_2'] %}
-              <div class='govuk-form-group' id='div_2'>
-                <label class="govuk-label govuk-!-font-weight-bold" for="transit-country_2">
-                  Transit country 2 (optional)
-                </label>
-                <input class="govuk-input" type='text' name='transit-country_2' value="{{ data['transit-country_2'] }}"> 
-                <span id='remove_2' style='float:right' class='govuk-button govuk-button--warning govuk-!-margin-top-2 govuk-!-margin-bottom-0 remove' aria-labelledby="remove_2">Remove country 2</span>
-              </div>
-              {% endif %}
-
-              {% if data['transit-country_3'] %}
-              <div class='govuk-form-group' id='div_3'>
-                <label class="govuk-label govuk-!-font-weight-bold" for="transit-country_3">
-                  Transit country 3 (optional)
-                </label>
-                <input class="govuk-input" type='text' name='transit-country_3' value="{{ data['transit-country_3'] }}"> 
-                <span id='remove_3' style='float:right' class="govuk-button govuk-button--warning govuk-!-margin-top-2 govuk-!-margin-bottom-0 remove" aria-labelledby="remove_3">Remove country 3</span>
-              </div>
-              {% endif %}
-
-            </div>
-          </fieldset>
-
-          <div class="govuk-button govuk-button--secondary govuk-!-margin-top-2 add" value="Add another country"> <!-- govuk-!-margin-top-4 govuk-!-margin-bottom-6 -->
-            Add another country
+            </fieldset>
           </div>
-
-          <h1 class="govuk-label-wrapper">
-            <label class="govuk-label govuk-!-font-weight-bold">
-              Importing country
-            </label>
-          </h1>
-          <div id="import-destination-typeahead-container" data-default-value="{{ data['import-destination-typeahead'] }}">
-          </div>
-
         </div>
 
         {{ govukButton({

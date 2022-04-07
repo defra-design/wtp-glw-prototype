@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-exporter-v5.html" %}
 
 {% block pageTitle %}
-Submit export
+Are you sure you want to submit this export?
 {% endblock %}
 
 {% block content %}
@@ -35,14 +35,14 @@ Submit export
 
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes">
-              <label class="govuk-label govuk-radios__label" for="changed-name">
+              <input class="govuk-radios__input" id="declaration" name="declaration" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="declaration">
                 Yes, submit export
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
-              <label class="govuk-label govuk-radios__label" for="changed-name-2">
+              <input class="govuk-radios__input" id="declaration-2" name="declaration" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="declaration-2">
                 No
               </label>
             </div>
@@ -56,12 +56,9 @@ Submit export
 </div>
 
 
-                  {{ govukButton({
-                    text: 'Save and continue',
-                    classes: ' ',
-                    href: 'confirmation'
-                }) }}
-
+{{ govukButton({
+  text: 'Save and continue'
+}) }}
 
       </form>
 

@@ -1,0 +1,47 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Describe the waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="" method="post">
+
+      <h1 class="govuk-heading-l">
+        Describe the waste
+      </h1>
+
+
+        <div class="govuk-character-count govuk-!-margin-bottom-6" data-module="govuk-character-count" data-maxlength="200">
+          <div class="govuk-form-group">
+            <p class="govuk-body">Your description should include things like:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>international specification or grade (for example, EN643 2.05.00 for paper)</li>
+              <li>polymer type for plastic (for example, LPDE film)</li>
+            </ul>
+             <textarea class="govuk-textarea govuk-js-character-count" id="usual-description" name="usual-description" rows="8"
+             aria-describedby="usual-description-info usual-description-hint">{{ data['usual-description'] }}</textarea>
+          </div>
+
+
+
+
+
+          <div id="usual-description-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+            You can enter up to 200 characters
+          </div>
+        </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -38,7 +38,7 @@
       </h1>
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Submission incomplete</h2>
-      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{sectionscompleted}} of 6 sections.</p>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{sectionscompleted}} of 5 sections.</p>
 
 
       <ol class="app-task-list">
@@ -52,7 +52,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="waste-codes-and-description" aria-describedby="eligibility-status">
-                  Waste identification details
+                  Waste codes and description
                 </a>
               </span>
               {% if data['usual-description-of-the-waste-status'] == null or data['usual-description-of-the-waste-status'] == 'Not started' %}
@@ -154,7 +154,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="countries-states-concerned" aria-describedby="read-declaration-status">
-                  Countries the waste will travel through
+                  Transit countries
                 </a>
               </span>
               {% if data['countries-states-concerned-status'] == null or data['countries-states-concerned-status'] == 'Not started' %}

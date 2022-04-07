@@ -25,7 +25,7 @@
             classes: "govuk-fieldset__legend--m"
           }
         }) %}
-        
+
         {{ govukRadios({
           classes: "govuk-radios--inline",
           idPrefix: "facility-or-lab-choice",
@@ -75,7 +75,7 @@
             value: data['facility-or-lab-address-line-1'],
             autocomplete: "address-line1"
           }) }}
-        
+
           {{ govukInput({
             label: {
               html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
@@ -85,7 +85,7 @@
             value: data['facility-or-lab-address-line-2'],
             autocomplete: "address-line2"
           }) }}
-        
+
           {{ govukInput({
             label: {
               text: "Town or city"
@@ -96,7 +96,7 @@
             value: data['facility-or-lab-address-town'],
             autocomplete: "address-level2"
           }) }}
-        
+
           {{ govukInput({
             label: {
               text: "Region, state or county"
@@ -105,8 +105,8 @@
             id: "facility-or-lab-address-county",
             name: "facility-or-lab-address-county",
             value: data['facility-or-lab-address-county']
-          }) }} 
-        
+          }) }}
+
           {{ govukInput({
             label: {
               text: "Postcode or ZIP code"
@@ -117,15 +117,18 @@
             value: data['facility-or-lab-address-postcode'],
             autocomplete: "postal-code"
           }) }}
-                
+
           <h2 class="govuk-label-wrapper">
             <label class="govuk-label">
               Country
             </label>
+            <div id="contact-hint" class="govuk-hint">
+              We’ll also use this as the importing country.
+            </div>
           </h2>
           <div id="facility-or-lab-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['facility-or-lab-typeahead'] }}">
           </div>
-        
+
         {% endcall %}
 
         {% call govukFieldset({
@@ -134,7 +137,7 @@
             classes: "govuk-fieldset__legend--m"
           }
         }) %}
-        
+
         {{ govukInput({
           label: {
             text: "Full name"
@@ -165,7 +168,7 @@
             text: "Email address"
           }
         }) }}
-        
+
         {{ govukInput({
           id: "facility-or-lab-telephone",
           name: "facility-or-lab-telephone",
@@ -179,7 +182,7 @@
             text: "For international numbers include the country code"
           }
         }) }}
-        
+
         {{ govukInput({
           id: "facility-or-lab-fax",
           name: "facility-or-lab-fax",
