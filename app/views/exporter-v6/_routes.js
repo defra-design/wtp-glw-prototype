@@ -479,7 +479,7 @@ router.post('/enter-waste', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
     } else {
-        res.redirect('prenotify');
+        res.redirect('date-of-shipment');
     }
 })
 
@@ -556,7 +556,7 @@ router.post('/date-of-shipment', function(req, res) {
 //waste-codes
 router.post('/code-add-another', function(req, res) {
 if (req.session.data['add-ec-code'] == 'Yes') {
-    res.redirect('ec-code');
+    res.redirect('ec-code-2');
 } else if (req.session.data['add-ec-code'] == 'No') {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
@@ -577,7 +577,7 @@ if (req.session.data['add-ec-code'] == 'Yes') {
 //         res.redirect('national-code');
 //     }
 // }
-
+//
 // })
 
 router.post('/declaration', function(req, res) {
@@ -913,18 +913,25 @@ router.get('/prenotify', function (req, res) {
 
 
 
-  //code counter
-    router.post('/ec-code', function(req, res) {
-        if(typeof req.session.data['code-count'] == "undefined"){
-          req.session.data['code-count'] = 0;
-        }
-        else {
-          req.session.data['code-count']++;
-        }
 
-        req.session.data['code-'+req.session.data['code-count']] = req.session.data['ec-wastes-typeahead'];
-        res.redirect('code-add-another');
-    });
+
+  //code counter
+  router.post('/ec-code', function(req, res) {
+          if(req.session.data['ec-code']=='Yes'){
+            if(typeof req.session.data['code-count'] == "undefined"){
+              req.session.data['code-count'] = 0;
+            }
+            else {
+              req.session.data['code-count']++;
+            }
+
+            req.session.data['code-'+req.session.data['code-count']] = req.session.data['ec-wastes-typeahead'];
+            res.redirect('code-add-another');
+          }
+          else if (req.session.data['ec-code']=='No') {
+            res.redirect('national-code');
+          }
+      });
 
     router.get('/code-add-another', function (req, res) {
       var carrierArray = [];
