@@ -567,18 +567,6 @@ if (req.session.data['add-ec-code'] == 'Yes') {
 
 })
 
-// router.post('/ec-code', function(req, res) {
-// if (req.session.data['ec-code'] == 'Yes') {
-//     res.redirect('code-add-another');
-// } else if (req.session.data['ec-code'] == 'No') {
-//     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-//         res.redirect('check-your-answers');
-//     } else {
-//         res.redirect('national-code');
-//     }
-// }
-//
-// })
 
 router.post('/declaration', function(req, res) {
 if (req.session.data['declaration'] == 'yes') {
@@ -594,19 +582,19 @@ if (req.session.data['declaration'] == 'yes') {
 })
 
 // carriers
-
 router.post('/carrier-check', function(req, res) {
 if (req.session.data['add-third-carrier'] == 'Yes') {
     res.redirect('carrier-add-3');
-} else if (req.session.data['add-third-carrier'] == 'No') {
-    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+} else if ((req.session.data['add-third-carrier'] == 'No') || (req.session.data['carrier-count'] == '4')) {
+    if (req.session.data.gPreviousLocation.includes('check-your-answers')) {
         res.redirect('check-your-answers');
     } else {
         res.redirect('waste-generator');
     }
 }
-
 })
+
+
 
 router.post('/carriers', function(req, res) {
 if (req.session.data['add-second-carrier'] == 'Yes') {

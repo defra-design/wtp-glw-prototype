@@ -96,7 +96,7 @@
 
       </div>
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="contact-2" name="contact" type="checkbox" value="phone" data-aria-controls="conditional-contact-2">
+        <input class="govuk-checkboxes__input" id="contact-2" name="contact" type="checkbox" value="phone" data-aria-controls="conditional-contact-2" {{ checked("contact", "phone") }}>
         <label class="govuk-label govuk-checkboxes__label" for="contact-2">
           Phone
         </label>
@@ -114,7 +114,7 @@
 
       </div>
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox" value="text message" data-aria-controls="conditional-contact-3">
+        <input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox" value="fax" data-aria-controls="conditional-contact-3" {{ checked("contact", "fax") }}>
         <label class="govuk-label govuk-checkboxes__label" for="contact-3">
           Fax
         </label>
