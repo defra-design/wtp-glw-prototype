@@ -582,18 +582,19 @@ if (req.session.data['declaration'] == 'yes') {
 })
 
 // carriers
-router.post('/carrier-check', function(req, res) {
-if (req.session.data['add-third-carrier'] == 'Yes') {
-    res.redirect('carrier-add-3');
-} else if ((req.session.data['add-third-carrier'] == 'No') || (req.session.data['carrier-count'] == '4')) {
-    if (req.session.data.gPreviousLocation.includes('check-your-answers')) {
-        res.redirect('check-your-answers');
-    } else {
-        res.redirect('waste-generator');
-    }
-}
-})
 
+router.post('/carrier-check', function(req, res) {
+  console.log(typeof req.session.data['carrier-count']);
+  if (req.session.data['add-third-carrier'] == 'Yes' && req.session.data['carrier-count'] <= 3) {
+      res.redirect('carrier-add-3');
+  } else if (req.session.data['add-third-carrier'] == 'No' || req.session.data['carrier-count'] >= 4) {
+      if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+          res.redirect('check-your-answers');
+      } else {
+          res.redirect('waste-generator');
+      }
+  }
+})
 
 
 router.post('/carriers', function(req, res) {
@@ -885,7 +886,7 @@ router.get('/prenotify', function (req, res) {
       }
 
       req.session.data['carrier-name-'+req.session.data['carrier-count']] = req.body.additonalcarrier;
-      res.redirect('carrier-check');
+      res.redirect('carrier-transport-2');
   });
 
   router.get('/carrier-check', function (req, res) {

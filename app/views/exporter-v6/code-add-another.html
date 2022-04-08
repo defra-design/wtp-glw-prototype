@@ -10,10 +10,28 @@
   <div class="govuk-grid-column-two-thirds">
         <form method="post" action="">
 
-
+          {% if data['code-count'] == '0' %}
     <h1 class="govuk-heading-l">
-      You have added {{data['code-count']+1}} EWC code
+      You have added 1 EWC code
     </h1>
+          {% elseif data['code-count'] == '1' %}
+    <h1 class="govuk-heading-l">
+      You have added 2 EWC codes
+    </h1>
+          {% elseif data['code-count'] == '2' %}
+    <h1 class="govuk-heading-l">
+      You have added 3 EWC codes
+    </h1>
+          {% elseif data['code-count'] == '3' %}
+    <h1 class="govuk-heading-l">
+      You have added 4 EWC codes
+    </h1>
+          {% elseif data['code-count'] == '4' %}
+    <h1 class="govuk-heading-l">
+      You have added 5 EWC codes
+    </h1>
+
+    {% endif %}
 
 
 <div class="govuk-form-group">
