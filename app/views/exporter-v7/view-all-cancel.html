@@ -1,0 +1,71 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Are you sure you want to cancel this submission? - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+        {% set cancelReasonHtml %}
+          {{ govukInput({
+            label: {
+              text: "Reason for cancellation?",
+              isPageHeading: false
+            },
+            id: "cancel-reason",
+            name: "cancel-reason",
+            value: data['cancel-reason']
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "view-all-cancel-confirmation",
+          name: "view-all-cancel-confirmation",
+          fieldset: {
+            legend: {
+              text: "Are you sure you want to cancel this submission?",
+              isPageheading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes",
+              conditional: {
+                html: cancelReasonHtml
+              }
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        })}}
+
+        {{ govukButton({
+          text: "Confirm",
+          classes: "govkuk-button"
+        })}}
+
+      </form>
+      
+    </div>
+  </div>
+
+{% endblock %}

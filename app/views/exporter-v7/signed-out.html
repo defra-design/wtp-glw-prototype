@@ -1,0 +1,56 @@
+
+{% extends "../layouts/layout-exporter-v5-no-nav.html" %}
+
+{% block pageTitle %}
+    You've signed out - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {#{% if data['sign-out-type'] == 'user' %}
+        <h1 class="govuk-heading-xl">
+          You've been signed out
+        </h1>
+      {% elif data['sign-out-type'] == 'system' %}
+        <h1 class="govuk-heading-xl">
+          For your security, we signed you out
+        </h1>
+      {% endif %}#}
+
+      <h1 class="govuk-heading-xl">
+        You've signed out
+      </h1>
+
+      <p class="govuk-body">
+        If you started a submission, we've saved any details entered.
+      </p>
+
+      <p class="govuk-body">
+        You can close this tab or <a href="login" class="govuk-link">sign in again</a>.
+      </p>
+
+      {#<div class="govuk-form-group">
+        {{ govukButton({
+          text: "Sign in",
+          id: "timeout-keep-signin-btn",
+          classes: "govuk-button govuk-!-margin-bottom-0",
+          href: "login"
+        }) }}
+      </div>#}
+
+    </div>
+  </div>
+
+{% endblock %}

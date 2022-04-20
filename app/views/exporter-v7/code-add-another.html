@@ -1,0 +1,109 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  You have added 1 EC list of waste
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+        <form method="post" action="">
+
+          {% if data['code-count'] == '0' %}
+    <h1 class="govuk-heading-l">
+      You have added 1 EWC code
+    </h1>
+          {% elseif data['code-count'] == '1' %}
+    <h1 class="govuk-heading-l">
+      You have added 2 EWC codes
+    </h1>
+          {% elseif data['code-count'] == '2' %}
+    <h1 class="govuk-heading-l">
+      You have added 3 EWC codes
+    </h1>
+          {% elseif data['code-count'] == '3' %}
+    <h1 class="govuk-heading-l">
+      You have added 4 EWC codes
+    </h1>
+          {% elseif data['code-count'] == '4' %}
+    <h1 class="govuk-heading-l">
+      You have added 5 EWC codes
+    </h1>
+
+    {% endif %}
+
+
+<div class="govuk-form-group">
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-1">
+{% for item in codes %}
+
+  <div class="govuk-summary-list__row">
+
+
+    <dt class="govuk-summary-list__key govuk-!-width-one-half">
+      {{item}}
+    </dt>
+    <dd class="govuk-summary-list__value">
+
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="">
+        Change<span class="govuk-visually-hidden"> change</span>
+      </a>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="">
+        Remove<span class="govuk-visually-hidden"> delete</span>
+      </a>
+    </dd>
+
+
+  </div>
+
+  {%endfor%}
+</dl>
+</div>
+
+
+<br>
+<br>
+
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="add-third-carrier-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+          Do you need to add another code?
+        </legend>
+        <div class="govuk-radios govuk-radios--inline">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="add-ec-code" name="add-ec-code" type="radio" value="Yes">
+            <label class="govuk-label govuk-radios__label" for="add-ec-code">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="add-ec-code" name="add-ec-code" type="radio" value="No">
+            <label class="govuk-label govuk-radios__label" for="add-ec-code">
+              No
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+
+    <button class="govuk-button" data-module="govuk-button">
+      Save and continue
+    </button>
+
+    </form>
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Enter an estimate for the quantity of waste - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Enter an estimate for the quantity of waste
+      </h1>
+
+      <p class="govuk-body">
+        Only provide the net weight or volume. Do not include the weight of the container or vehicle.  
+      </p>
+
+      <p class="govuk-body govuk-!-padding-bottom-2">
+        You'll need to come back and update this once you know the exact quantity. We'll send you an email reminder.
+      </p>
+
+      <form class="form" method="post">
+
+      {% call govukFieldset({
+      }) %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "quantity-units",
+        name: "quantity-units",
+        fieldset: {
+          legend: {
+            text: "Select the unit",
+            classes: "govuk-label--m"
+          }
+        },
+        items: [
+          {
+            value: "tonnes-mg",
+            text: "Tonnes, also known as megagrams (Mg)",
+            checked: checked("quantity-units", "tonnes-mg")
+          },
+          {
+            value: "cubic-metres",
+            text: "Cubic metres (m³)",
+            checked: checked("quantity-units", "cubic-metres")
+          }
+        ]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Enter quantity",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "weight",
+        name: "quantity-weight",
+        value: data['quantity-weight'],
+        classes: "govuk-!-width-one-third"
+      }) }}
+
+      {% endcall %}
+
+      {{ govukButton({
+        text: 'Save and continue'
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

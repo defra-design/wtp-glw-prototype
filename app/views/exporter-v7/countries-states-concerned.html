@@ -1,0 +1,61 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Are there any transit countries?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+            <form class="form" method="post">
+
+
+
+
+        <div class="govuk-form-group">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Are there any transit countries?
+                </h1>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="yes" data-aria-controls="conditional-contact" {{ checked("contact", "yes") }}>
+                  <label class="govuk-label govuk-radios__label" for="contact">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="transit-countries">
+                      Enter transit countries
+                    </label>
+                    <textarea class="govuk-textarea" id="transit-countries" name="transit-countries" rows="5">{{ data['transit-countries'] }}</textarea>
+                  </div>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="no" data-aria-controls="conditional-contact-2" {{ checked("contact", "no") }}>
+                  <label class="govuk-label govuk-radios__label" for="contact-2">
+                    No
+                  </label>
+                </div>
+              </div>
+
+            </fieldset>
+          </div>
+        </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

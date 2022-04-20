@@ -1,0 +1,70 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  How will the additional waste carrier transport the waste?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+        <form class="form" method="post">
+
+
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        How will the additional waste carrier transport the waste?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="additional-carrier-transport" name="additional-carrier-transport" type="radio" value="Road"
+        {% if data['additional-carrier-transport'] == 'Road' %} checked="checked" {% endif %}>
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+          Road
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="additional-carrier-transport-rail" name="additional-carrier-transport" type="radio" value="Rail"
+        {% if data['additional-carrier-transport'] == 'Rail' %} checked="checked" {% endif %}>
+        <label class="govuk-label govuk-radios__label" for="additional-carrier-transport-rail">
+          Rail
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="additional-carrier-transport-sea" name="additional-carrier-transport" type="radio" value="Sea"
+        {% if data['additional-carrier-transport'] == 'Sea' %} checked="checked" {% endif %}>
+        <label class="govuk-label govuk-radios__label" for="additional-carrier-transport-3-sea">
+          Sea
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="additional-carrier-transport-air" name="additional-carrier-transport" type="radio" value="Air"
+        {% if data['additional-carrier-transport'] == 'Air' %} checked="checked" {% endif %}>
+        <label class="govuk-label govuk-radios__label" for="additional-carrier-transport-air">
+          Air
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+
+
+
+
+
+
+      {{ govukButton({
+        text: 'Save and continue'
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

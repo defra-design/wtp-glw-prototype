@@ -1,0 +1,84 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Exporter's details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+
+      <h1 class="govuk-heading-l">
+        Exporter's details
+      </h1>
+
+
+      <p>28 Wakefield street<br>
+        Manchester<br>
+        M1 4YU <br>
+        <a href="exporter-postcode">Change address</a></p>
+
+
+        <br>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="address-line-1">
+            Organisation name <span class="govuk-visually-hidden">carrier-collect-name</span>
+          </label>
+          <input class="govuk-input govuk-!-width-three-quarters" id="carrier-collect-name" name="carrier-collect-name" type="text" value="{{data['carrier-collect-name']}}">
+        </div>
+
+
+
+        <br>
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h1 class="govuk-fieldset__heading">
+            Contact details
+          </h1>
+        </legend>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="carrier-collect-full-name">
+            Full name
+          </label>
+          <input class="govuk-input govuk-!-width-three-quarters" id="carrier-collect-full-name" name="carrier-collect-full-name" type="text" value="{{data['carrier-collect-full-name']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="exporter-email">
+            Email address
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="exporter-email" name="exporter-email" type="email" value="{{data['exporter-email']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="exporter-phone">
+            Phone number
+          </label>
+          <input class="govuk-input govuk-!-width-one-third" id="exporter-phone" name="exporter-phone" type="tel" value="{{data['exporter-phone']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="exporter-fax">
+            Fax number (optional)
+          </label>
+          <input class="govuk-input govuk-!-width-one-third" id="exporter-fax" name="exporter-fax" type="tel" value="{{data['exporter-fax']}}">
+        </div>
+
+
+      </fieldset>
+      </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  What's the exporter's address?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+
+      <h1 class="govuk-heading-l">
+        What's the exporter's address?
+      </h1>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="carrier-collect-address-line-1">
+        Address line 1 <span class="govuk-visually-hidden">line 1 of 2</span>
+      </label>
+      <input class="govuk-input" id="carrier-collect-address-line-1" name="carrier-collect-address-line-1" type="text" value="{{data['carrier-collect-address-line-1']}}">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="carrier-collect-address-line-2">
+        Address line 2 (optional) <span class="govuk-visually-hidden">line 2 of 2</span>
+      </label>
+      <input class="govuk-input" id="carrier-collect-address-line-2" name="carrier-collect-address-line-2" type="text" value="{{data['carrier-collect-address-line-2']}}">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="carrier-collect-address-town">
+        Town or city
+      </label>
+      <input class="govuk-input govuk-!-width-two-thirds" id="carrier-collect-address-town" name="carrier-collect-address-town" type="text" value="{{data['carrier-collect-address-town']}}">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="carrier-collect-address-postcode">
+        Postcode
+      </label>
+      <input class="govuk-input govuk-input--width-10" id="carrier-collect-address-postcode" name="carrier-collect-address-postcode" type="text" value="{{data['carrier-collect-address-postcode']}}">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="carrier-collect-address-country">
+        Country
+      </label>
+      <input class="govuk-input govuk-!-width-two-thirds" id="carrier-collect-address-country" name="carrier-collect-address-country" type="text" value="{{data['carrier-collect-address-country']}}">
+    </div>
+
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

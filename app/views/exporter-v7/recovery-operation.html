@@ -1,0 +1,36 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  What is the recovery or disposal code? - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l">
+              What is the recovery or disposal code?
+            </label>
+          </h1>
+          <div id="event-name-hint" class="govuk-hint">
+            This is also known as an R-code or D-code. It's the method used to treat your waste at the overseas reprocessing site.
+          </div>
+          <div id="recovery-operation-typeahead-container" data-default-value="{{ data['recovery-operation-typeahead'] }}">
+          </div>
+        </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

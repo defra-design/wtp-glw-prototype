@@ -1,0 +1,51 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Provide a description of the weaste - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+        
+        {{ govukCharacterCount({
+          name: "usual-description",
+          id: "usual-description",
+          value: data['usual-description'],
+          maxlength: 200,
+          label: {
+            text: "Provide a description of the waste",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "You do not need to include waste codes here."
+          }
+        }) }}
+
+        {#
+        <p>
+          You need to describe your waste giving relevant details such as the type of waste and its form.
+        </p>
+        <p>
+          Also state if there is an international specification, grade, or code (e.g. 'EN 643 2.05.00' for paper, 'B' for glass, 
+          ISRI 200 for metal).  For plastic wastes, you must state the polymer type(s) (e.g. 'LDPE, film' or 'HDPE, tubs').
+          </p>
+        <p>
+          There is no need to include waste codes here as they will be asked for later.
+        </p>
+        #}
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
