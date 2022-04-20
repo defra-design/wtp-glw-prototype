@@ -14,71 +14,23 @@
         Where will the first carrier collect the waste from?
       </h1>
 
-      <p class="govuk-body govuk-!-padding-bottom-2">
-        This could be from the waste generator, original producer, new producer or collector.
-      </p>
+      <p>5 Stafford Park<br>
+        Telford<br>
+        TF6 3RT<br>
+        <a href="carrier-collect-postcode">Change address</a></p>
 
 
+        <br>
 
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="address-line-1">
             Organisation name <span class="govuk-visually-hidden">carrier-collect-name</span>
           </label>
-          <input class="govuk-input" id="carrier-collect-name" name="carrier-collect-name" type="text" value="{{data['carrier-collect-name']}}">
+          <input class="govuk-input govuk-!-width-three-quarters" id="carrier-collect-name" name="carrier-collect-name" type="text" value="{{data['carrier-collect-name']}}">
         </div>
 
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="carrier-collect-address-line-1">
-        Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
-      </label>
-      <input class="govuk-input" id="carrier-collect-address-line-1" name="carrier-collect-address-line-1" type="text" value="{{data['carrier-collect-address-line-1']}}">
-    </div>
-
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="carrier-collect-address-line-2">
-        <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
-      </label>
-      <input class="govuk-input" id="carrier-collect-address-line-2" name="carrier-collect-address-line-2" type="text" value="{{data['carrier-collect-address-line-2']}}">
-    </div>
-
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="carrier-collect-address-town">
-        Town or city
-      </label>
-      <input class="govuk-input govuk-!-width-two-thirds" id="carrier-collect-address-town" name="carrier-collect-address-town" type="text" value="{{data['carrier-collect-address-town']}}">
-    </div>
-
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="carrier-collect-address-postcode">
-        Postcode
-      </label>
-      <input class="govuk-input govuk-input--width-10" id="carrier-collect-address-postcode" name="carrier-collect-address-postcode" type="text" value="{{data['carrier-collect-address-postcode']}}">
-    </div>
-
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="carrier-collect-address-country">
-        Country
-      </label>
-      <div id="contact-hint" class="govuk-hint">
-        We’ll also use this as the exporting country.
-      </div>
-      <input class="govuk-input govuk-!-width-two-thirds" id="carrier-collect-address-country" name="carrier-collect-address-country" type="text" value="{{data['carrier-collect-address-country']}}">
-    </div>
-
-    <!-- <h2 class="govuk-label-wrapper">
-      <label class="govuk-label">
-        Country
-      </label>
-      <div id="contact-hint" class="govuk-hint">
-        We’ll also use this as the exporting country.
-      </div>
-    </h2>
-    <div id="third-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['third-carrier-typeahead'] }}">
-    </div> -->
-
-<br>
-<br>
+        <br>
 
     <div class="govuk-form-group">
       <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
@@ -93,55 +45,26 @@
           </label>
           <input class="govuk-input govuk-!-width-three-quarters" id="carrier-collect-full-name" name="carrier-collect-full-name" type="text" value="{{data['carrier-collect-full-name']}}">
         </div>
-        <div id="contact-hint" class="govuk-hint">
-          Select all the options that are relevant to them.
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="carrier-collect-email">
+            Email address
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="carrier-collect-email" name="carrier-collect-email" type="email" value="{{data['carrier-collect-email']}}">
         </div>
-        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email" data-aria-controls="conditional-contact" {{ checked("contact", "email") }}>
-            <label class="govuk-label govuk-checkboxes__label" for="contact">
-              Email
-            </label>
-          </div>
-          <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
-            <div class="govuk-form-group">
-              <label class="govuk-label" for="carrier-collect-email">
-                Email address
-              </label>
-              <input class="govuk-input govuk-!-width-one-half" id="carrier-collect-email" name="carrier-collect-email" type="email" spellcheck="false" autocomplete="email" value="{{data['carrier-collect-email']}}">
-            </div>
 
-          </div>
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="contact-2" name="contact" type="checkbox" value="phone" data-aria-controls="conditional-contact-2" {{ checked("contact", "phone") }}>
-            <label class="govuk-label govuk-checkboxes__label" for="contact-2">
-              Phone
-            </label>
-          </div>
-          <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-2">
-            <div class="govuk-form-group">
-              <label class="govuk-label" for="carrier-collect-phone">
-                Phone number
-              </label>
-              <input class="govuk-input govuk-!-width-one-third" id="carrier-collect-phone" name="carrier-collect-phone" type="tel" autocomplete="tel" value="{{data['carrier-collect-phone']}}">
-            </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="carrier-collect-phone">
+            Phone number
+          </label>
+          <input class="govuk-input govuk-!-width-one-third" id="carrier-collect-phone" name="carrier-collect-phone" type="tel" value="{{data['carrier-collect-phone']}}">
+        </div>
 
-          </div>
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox" value="fax" data-aria-controls="conditional-contact-3" {{ checked("contact", "fax") }}>
-            <label class="govuk-label govuk-checkboxes__label" for="contact-3">
-              Fax
-            </label>
-          </div>
-          <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-3">
-            <div class="govuk-form-group">
-              <label class="govuk-label" for="carrier-collect-fax">
-                Fax number
-              </label>
-              <input class="govuk-input govuk-!-width-one-third" id="carrier-collect-fax" name="carrier-collect-fax" type="tel" autocomplete="tel" value="{{data['carrier-collect-fax']}}">
-            </div>
-
-          </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="carrier-collect-fax">
+            Fax number (optional)
+          </label>
+          <input class="govuk-input govuk-!-width-one-third" id="carrier-collect-fax" name="carrier-collect-fax" type="tel" value="{{data['carrier-collect-fax']}}">
         </div>
 
       </fieldset>

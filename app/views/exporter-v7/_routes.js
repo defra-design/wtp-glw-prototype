@@ -621,7 +621,7 @@ router.post('/carrier-check', function(req, res) {
       if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
           res.redirect('check-your-answers');
       } else {
-          res.redirect('waste-generator');
+          res.redirect('carrier-collect-postcode');
       }
   }
 })
@@ -634,7 +634,7 @@ if (req.session.data['add-second-carrier'] == 'Yes') {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
     } else {
-        res.redirect('waste-generator');
+        res.redirect('carrier-collect-postcode');
     }
 }
 
@@ -664,12 +664,6 @@ router.post('/carrier-transport-2', function(req, res) {
     req.session.data['carrier-add-1'] = "true";
     res.redirect('carrier-check');
 })
-//Overwritten below
-// router.post('/carrier-add-3', function(req, res) {
-//     req.session.data['carrier-status'] = "Completed";
-//     req.session.data['carrier-add-1'] = "true";
-//     res.redirect('carrier-transport-3');
-// })
 
 router.post('/carrier-transport-3', function(req, res) {
     req.session.data['carrier-status'] = "Completed";
@@ -683,10 +677,28 @@ router.post('/carrier-delete', function(req, res) {
     res.redirect('carrier-check');
 })
 
+router.post('/carrier-collect-postcode', function(req, res) {
+    req.session.data['waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
+    req.session.data['carrier-add-1'] = "true";
+    res.redirect('carrier-collect-address');
+})
+
+router.post('/carrier-collect-address', function(req, res) {
+    req.session.data['waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
+    req.session.data['carrier-add-1'] = "true";
+    res.redirect('waste-generator');
+})
+
 router.post('/waste-generator', function(req, res) {
     req.session.data['waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
     req.session.data['carrier-add-1'] = "true";
     res.redirect('countries-states-concerned');
+})
+
+router.post('/carrier-collect-address-manual', function(req, res) {
+    req.session.data['waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
+    req.session.data['carrier-add-1'] = "true";
+    res.redirect('waste-generator');
 })
 
 
