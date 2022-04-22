@@ -42,11 +42,12 @@
       <input class="govuk-input govuk-input--width-10" id="exporter-manual-address-postcode" name="exporter-manual-address-postcode" type="text" value="{{data['exporter-manual-address-postcode']}}">
     </div>
 
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="exporter-manual-address-country">
+    <h2 class="govuk-label-wrapper">
+      <label class="govuk-label">
         Country
       </label>
-      <input class="govuk-input govuk-!-width-two-thirds" id="exporter-manual-address-country" name="exporter-manual-address-country" type="text" value="{{data['exporter-manual-address-country']}}">
+    </h2>
+    <div id="nation-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['nation-typeahead-container'] }}">
     </div>
 
 

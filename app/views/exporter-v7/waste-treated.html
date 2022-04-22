@@ -1,0 +1,49 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Where will the waste be treated?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+
+
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Where will the waste be treated?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="waste-treated-recovery" name="waste-treated" type="radio" value="recovery-facility">
+              <label class="govuk-label govuk-radios__label" for="waste-treated-recovery">
+                Recovery facility
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="waste-treated-laboratory" name="waste-treated" type="radio" value="laboratory">
+              <label class="govuk-label govuk-radios__label" for="waste-treated-laboratory">
+                Laboratory
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -91,7 +91,7 @@
         {# EXPORTER AND IMPORTER DETAILS #}
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">2. </span> Exporter and importer details
+            <span class="app-task-list__section-number">2. </span> Exporter and importer
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
@@ -121,10 +121,10 @@
           </ul>
         </li>
 
-        {# TRANSPORT OF WASTE #}
+        {# JOURNEY OF WASTE #}
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">3. </span> Transport of waste
+            <span class="app-task-list__section-number">3. </span> Journey of waste
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
@@ -141,8 +141,8 @@
             </li>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="waste-generator" aria-describedby="read-declaration-status">
-                  Where the waste will be collected
+                <a href="carrier-collect-postcode" aria-describedby="read-declaration-status">
+                  Waste collection details
                 </a>
               </span>
               {% if data['waste-generator-original-producer-new-producer-or-collector-status'] == null or data['waste-generator-original-producer-new-producer-or-collector-status'] == 'Not started' %}
@@ -169,12 +169,12 @@
         {# RECOVERY OR DISPOSAL OF WASTE #}
         <li>
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">4. </span> Recovery or disposal of waste
+            <span class="app-task-list__section-number">4. </span> Treatment of waste
           </h2>
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="recovery-facility-laboratory" aria-describedby="eligibility-status">
+                <a href="waste-treated" aria-describedby="eligibility-status">
                   Recovery facility or laboratory
                 </a>
               </span>
@@ -184,7 +184,7 @@
                 <strong class="govuk-tag app-task-list__tag" id="recovery-facility-or-laboratory-status">Completed</strong>
               {% endif %}
             </li>
-            <li class="app-task-list__item">
+            <!-- <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="recovery-operation" aria-describedby="read-declaration-status">
                   Recovery or disposal code
@@ -195,7 +195,7 @@
               {% elif data['recovery-operation-status'] == 'Completed' %}
                 <strong class="govuk-tag app-task-list__tag" id="recovery-operation-status">Completed</strong>
               {% endif %}
-            </li>
+            </li> -->
           </ul>
         </li>
 

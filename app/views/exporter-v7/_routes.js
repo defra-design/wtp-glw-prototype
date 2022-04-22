@@ -189,7 +189,7 @@ router.post('/manual-bulk-api', function(req, res) {
             req.session.data['who-arranged-address-county'] = 'Kent';
             req.session.data['who-arranged-address-postcode'] = 'ME16 9PG';
             req.session.data['who-arranged-address-country'] = 'england';
-            req.session.data['who-arranged-contact-full-name'] = 'Roger Parker';
+            req.session.data['who-arranged-contact-full-name'] = 'Alex Fields';
             req.session.data['who-arranged-email'] = 'rogerparker@lancelotexl.com';
             req.session.data['who-arranged-telephone'] = '01634 256941';
             req.session.data['who-arranged-fax'] = null;
@@ -708,6 +708,16 @@ router.post('/carrier-collect-address-manual', function(req, res) {
 
 
 // recovery-facility-laboratory
+router.post('/waste-treated', function(req, res) {
+    req.session.data['recovery-facility-or-laboratory-status'] = "Completed";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('recovery-facility-laboratory');
+    }
+})
+
 router.post('/recovery-facility-laboratory', function(req, res) {
     req.session.data['recovery-facility-or-laboratory-status'] = "Completed";
 

@@ -42,11 +42,15 @@
       <input class="govuk-input govuk-input--width-10" id="carrier-collect-address-postcode" name="carrier-collect-address-postcode" type="text" value="{{data['carrier-collect-address-postcode']}}">
     </div>
 
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="carrier-collect-address-country">
+    <h2 class="govuk-label-wrapper">
+      <label class="govuk-label">
         Country
       </label>
-      <input class="govuk-input govuk-!-width-two-thirds" id="carrier-collect-address-country" name="carrier-collect-address-country" type="text" value="{{data['carrier-collect-address-country']}}">
+    </h2>
+    <div id="event-name-hint" class="govuk-hint">
+      We'll use this as the exporting country.
+    </div>
+    <div id="nation-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['nation-typeahead-container'] }}">
     </div>
 
 

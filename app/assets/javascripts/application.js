@@ -100,7 +100,7 @@ $(document).ready(function() {
 
   // Finding total number of elements added
   var total_element = $(".govuk-form-group").length;
- 
+
   // last <div> with element class id
   var lastid = $(".govuk-form-group:last").attr("id");
   var split_id = lastid.split("_");
@@ -114,18 +114,18 @@ $(document).ready(function() {
 
    // Adding label to <div>
    $("#div_" + nextindex).append("<label class='govuk-label govuk-!-font-weight-bold' for='transit-country_"+ nextindex +"'>Transit country "+ nextindex +" (optional)</label>");
- 
+
    // Adding element to <div>
    $("#div_" + nextindex).append("<input class='govuk-input' autocomplete='off' maxlength='9' type='text' name='transit-country_"+ nextindex +"'> <span style='float:right' id='remove_" + nextindex + "' class='govuk-button govuk-button--warning govuk-!-margin-top-2 govuk-!-margin-bottom-4 remove' >Remove country " + nextindex +"</span>");
    //Trying to make it a link: $("#div_" + nextindex).append("<input class='govuk-input' autocomplete='off' maxlength='9' type='text' name='transit-country_"+ nextindex +"'> <a href='#' class='govuk-link' id='remove_" + nextindex + "'>Remove country " + nextindex +"</a>");
-   
+
   }
- 
+
  });
 
  // Remove element
  $('.container').on('click','.remove',function(){
- 
+
   var id = this.id;
   var split_id = id.split("_");
   var deleteindex = split_id[1];
@@ -158,7 +158,7 @@ const recoveryOperation = [
   'R10: Land treatment resulting in benefit to agriculture or ecological improvement',
   'R11: Use of wastes obtained from any of the operations numbered R01 to R11',
   'R12: Exchange of wastes for submission to any of the operations numbered R01 to R11',
-  'R13: Storage of wastes pending any of the operations numbered R01 to R12 (excluding temporary storage, pending collection, on the site where it is produced).',  
+  'R13: Storage of wastes pending any of the operations numbered R01 to R12 (excluding temporary storage, pending collection, on the site where it is produced).',
   'D1: Deposit into or onto land',
   'D2: Land Treatment',
   'D3: Deep injection',
@@ -1400,6 +1400,30 @@ if ($('#national-code-typeahead-container').length > 0) {
     id: id,
     name: id,
     source: nationalCode,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}
+
+// Nation autocomplete
+const nationList = [
+  'England',
+  'Scotland',
+  'Wales',
+  'Northern Ireland'
+]
+
+if ($('#nation-typeahead-container').length > 0) {
+  element = document.querySelector('#nation-typeahead-container')
+  id = 'nation-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: nationList,
     minLength: 1,
     showAllValues: true,
     dropdownArrow: () => ''

@@ -1,122 +1,45 @@
 {% extends "../layouts/layout-exporter-v5.html" %}
 
 {% block pageTitle %}
-  Who is the recovery facility or laboratory? - Export green list waste
+  Recovery facility details
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+            <form class="form" method="post">
 
-      <h1 class="govuk-heading-l">
-        Who is the recovery facility or laboratory?
-      </h1>
+          {% if data ['waste-treated'] == "recovery-facility" %}
+          <h1 class="govuk-heading-l">
+            Recovery facility details
+          </h1>
+     
+           {% else %}
+          <h1 class="govuk-heading-l">
+            Laboratory details
+          </h1>
+        
+          {% endif %}
 
-      <p class="govuk-body govuk-!-padding-bottom-2">
-        This is the overseas site or facility where the waste will be treated (recovered, reprocessed, or tested).
-      </p>
 
-      <form class="form" method="post">
 
-        {% call govukFieldset({
-          legend: {
-            text: "Will the waste go to a recovery facility or a laboratory?",
-            classes: "govuk-fieldset__legend--m"
-          }
-        }) %}
+            <div class="govuk-form-group">
+            <label class="govuk-label" for="first-carrier-name">
+              {% if data ['waste-treated'] == "recovery-facility" %} Recovery facility name
+              {% else %} Laboratory name        
+               {% endif %}
+              <span class="govuk-visually-hidden">line 1 of 2</span>
+            </label>
+            <input class="govuk-input govuk-!-width-three-quarters" id="facility-name" name="facility-name" type="text" value="{{data['facility-name']}}">
+          </div>
 
-        {{ govukRadios({
-          classes: "govuk-radios--inline",
-          idPrefix: "facility-or-lab-choice",
-          name: "facility-or-lab-choice",
-          fieldset: {
-          },
-          items: [
-            {
-              value: "recovery-facility",
-              text: "Recovery facility",
-              checked: checked("facility-or-lab-choice", "recovery-facility")
-            },
-            {
-              value: "laboratory",
-              text: "Laboratory",
-              checked: checked("facility-or-lab-choice", "laboratory")
-            }
-          ]
-        }) }}
-
-        {% endcall %}
-
-        {{ govukInput({
-          label: {
-            text: "Name of recovery facility or laboratory",
-            classes: "govuk-label--m",
-            isPageHeading: false
-          },
-          id: "facility-or-lab-carrier-name",
-          name: "facility-or-lab-carrier-name",
-          value: data['facility-or-lab-carrier-name']
-        }) }}
-
-        {% call govukFieldset({
-          legend: {
-            text: "Address",
-            classes: "govuk-fieldset__legend--m"
-          }
-        }) %}
-
-          {{ govukInput({
-            label: {
-              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
-            },
-            id: "facility-or-lab-address-line-1",
-            name: "facility-or-lab-address-line-1",
-            value: data['facility-or-lab-address-line-1'],
-            autocomplete: "address-line1"
-          }) }}
-
-          {{ govukInput({
-            label: {
-              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
-            },
-            id: "facility-or-lab-address-line-2",
-            name: "facility-or-lab-address-line-2",
-            value: data['facility-or-lab-address-line-2'],
-            autocomplete: "address-line2"
-          }) }}
-
-          {{ govukInput({
-            label: {
-              text: "Town or city"
-            },
-            classes: "govuk-!-width-two-thirds",
-            id: "facility-or-lab-address-town",
-            name: "facility-or-lab-address-town",
-            value: data['facility-or-lab-address-town'],
-            autocomplete: "address-level2"
-          }) }}
-
-          {{ govukInput({
-            label: {
-              text: "Region, state or county"
-            },
-            classes: "govuk-!-width-two-thirds",
-            id: "facility-or-lab-address-county",
-            name: "facility-or-lab-address-county",
-            value: data['facility-or-lab-address-county']
-          }) }}
-
-          {{ govukInput({
-            label: {
-              text: "Postcode or ZIP code"
-            },
-            classes: "govuk-input--width-10",
-            id: "facility-or-lab-address-postcode",
-            name: "facility-or-lab-address-postcode",
-            value: data['facility-or-lab-address-postcode'],
-            autocomplete: "postal-code"
-          }) }}
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="facility-address">
+              Address
+            </label>
+            <textarea class="govuk-textarea" id="facility-address" name="facility-address" rows="5" autocomplete="street-address">{{ data['facility-address'] }}</textarea>
+          </div>
 
           <h2 class="govuk-label-wrapper">
             <label class="govuk-label">
@@ -129,75 +52,50 @@
           <div id="facility-or-lab-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['facility-or-lab-typeahead'] }}">
           </div>
 
-        {% endcall %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  Contact details
+                </h1>
+              </legend>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="facility-full-name">
+                  Full name
+                </label>
+                <input class="govuk-input govuk-!-width-three-quarters" id="facility-full-name" name="facility-full-name" type="text" value="{{data['facility-full-name']}}">
+              </div>
 
-        {% call govukFieldset({
-          legend: {
-            text: "Contact person",
-            classes: "govuk-fieldset__legend--m"
-          }
-        }) %}
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="facility-email">
+                  Email address
+                </label>
+                <input class="govuk-input govuk-!-width-one-half" id="facility-email" name="facility-email" type="email" value="{{data['facility-email']}}">
+              </div>
 
-        {{ govukInput({
-          label: {
-            text: "Full name"
-          },
-          id: "facility-or-lab-contact-full-name",
-          name: "facility-or-lab-contact-full-name",
-          value: data['facility-or-lab-contact-full-name'],
-          autocomplete: "name",
-          spellcheck: false
-        }) }}
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="facility-phone">
+                  Phone number
+                </label>
+                <div id="contact-hint" class="govuk-hint">
+                   Include the country code for international numbers.
+                </div>
+                <input class="govuk-input govuk-!-width-one-third" id="facility-phone" name="facility-phone" type="tel" value="{{data['facility-phone']}}">
+              </div>
 
-        {% endcall %}
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="facility-fax">
+                  Fax number (optional)
+                </label>
+                <div id="contact-hint" class="govuk-hint">
+                   Include the country code for international numbers.
+                </div>
+                <input class="govuk-input govuk-!-width-one-third" id="facility-fax" name="facility-fax" type="tel" value="{{data['facility-fax']}}">
+              </div>
 
-        {% call govukFieldset({
-          legend: {
-            text: "Contact details",
-            classes: "govuk-fieldset__legend--m"
-          }
-        }) %}
 
-        {{ govukInput({
-          id: "facility-or-lab-email",
-          name: "facility-or-lab-email",
-          type: "email",
-          spellcheck: false,
-          value: data['facility-or-lab-email'],
-          label: {
-            text: "Email address"
-          }
-        }) }}
-
-        {{ govukInput({
-          id: "facility-or-lab-telephone",
-          name: "facility-or-lab-telephone",
-          type: "tel",
-          value: data['facility-or-lab-telephone'],
-          classes: "govuk-input--width-20",
-          label: {
-            text: "Telephone number"
-          },
-          hint: {
-            text: "For international numbers include the country code"
-          }
-        }) }}
-
-        {{ govukInput({
-          id: "facility-or-lab-fax",
-          name: "facility-or-lab-fax",
-          value: data['facility-or-lab-fax'],
-          type: "tel",
-          classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
-          label: {
-            text: "Fax number (optional)"
-          },
-          hint: {
-            text: "For international numbers include the country code"
-          }
-        }) }}
-
-        {% endcall %}
+            </fieldset>
+          </div>
 
         {{ govukButton({
           text: 'Save and continue'

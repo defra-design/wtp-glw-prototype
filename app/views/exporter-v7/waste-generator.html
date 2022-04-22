@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-exporter-v5.html" %}
 
 {% block pageTitle %}
-  Where will the first carrier collect the waste from?
+  Waste collection details
 {% endblock %}
 
 {% block content %}
@@ -11,13 +11,21 @@
             <form class="form" method="post">
 
       <h1 class="govuk-heading-l">
-        Where will the first carrier collect the waste from?
+        Waste collection details
       </h1>
 
       <p>5 Stafford Park<br>
         Telford<br>
         TF6 3RT<br>
-        <a href="carrier-collect-postcode">Change address</a></p>
+        England<br>
+
+        <div id="event-name-hint" class="govuk-hint">
+          We'll use this as the exporting country.
+        </div>
+
+        <p><a href="carrier-collect-postcode">Change address</a></p>
+
+
 
 
         <br>
