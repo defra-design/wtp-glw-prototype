@@ -22,6 +22,9 @@
                   Are there any transit countries?
                 </h1>
               </legend>
+              <p class="govuk-body govuk-!-padding-bottom-2">
+                Do not include the exporting or importing country.
+              </p>
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="yes" data-aria-controls="conditional-contact" {{ checked("contact", "yes") }}>
@@ -31,9 +34,9 @@
                 </div>
                 <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="transit-countries">
-                      Enter transit countries
-                    </label>
+                    <div id="contact-hint" class="govuk-hint">
+                      Enter transit countries in order of travel
+                    </div>
                     <textarea class="govuk-textarea" id="transit-countries" name="transit-countries" rows="5">{{ data['transit-countries'] }}</textarea>
                   </div>
                 </div>
@@ -52,6 +55,9 @@
         {{ govukButton({
           text: 'Save and continue'
         }) }}
+
+        {% include "./includes/return-to-link.html" %}
+
 
       </form>
 

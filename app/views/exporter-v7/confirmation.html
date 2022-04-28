@@ -25,63 +25,46 @@
       {% if data['manual-bulk'] == 'bulk' %}
         {{ govukPanel({
           titleText: "Export submitted",
-          html: "Your unique transaction number is <strong>HDJ2123F</strong>"
+          html: "Your unique transaction number is <strong>GLW0001</strong>"
         }) }}
       {% else %}
         {{ govukPanel({
           titleText: "Export submitted",
-          html: "Your transaction number is <strong>HDJ2123F</strong>"
+          html: "Your transaction number is <strong>GLW0001</strong>"
         }) }}
       {% endif %}
 
       <p class="govuk-body">
-        You have been emailed a copy of this waste export.
+        We’ve sent you a confirmation email. We’ve also sent these details to the relevant regulatory authority.
       </p>
 
       <p class="govuk-heading-m govuk-!-padding-top-4">
-        What happens next
+        What you must do next
       </p>
-
-      <ol class="govuk-list govuk-list--number govuk-list--spaced">
-        <li>You must download, print, and sign the Annex VII form and send it with your waste export:</li>
-        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-          <li><a href="../public/pdfs/hdj2123f-annex-vii.pdf" download class="govuk-link govuk-link--no-visited-state">download the Annex VII form as a PDF document</a></li>
-        </ul>
-        <li>If any information has been estimated, as soon as you know the actual details you must:</li>
-        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-          <li>add them to the paper copy of the Annex VII</li>
-          <li>add them to the waste export using this service</li>
-        </ul>
-      </ol>
-
-      {#
-      <div class="govuk-inset-text">
-        <a href="pdf-container" class="govuk-link govuk-link--no-visited-state">Download the Annex VII form (PDF document)</a>
-      </div>
 
       <p class="govuk-body">
-        If any information has been estimated, as soon as you know the actual details you must:
+        It’s a legal requirement that a completed annex VII form travels with the waste.
       </p>
 
-      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-        <li>add them to the paper copy of the Annex VII</li>
-        <li>add them to the waste export using this service</li>
-      </ul>
-      #}
-
-
-
-      <!-- <h2 class="govuk-heading-m">
-        Create an Annex VII quicker next time
-      </h2>
       <p class="govuk-body">
-        You can save the details you've sent as a template to tell us about a green list waste export quicker next time.
-        You might find a template useful if you regularly pick up green list waste from the same site, for example.
+        You can use your own or <a href="../public/pdfs/hdj2123f-annex-vii.pdf" class="govuk-link">download the one we’ve created</a>
+        (PDF, 43.9 MB).
       </p>
-      <p class="govuk-body"><a href="save-as-template.html" class="govuk-link">Save this export as a template</a></p>
-      <p class="govuk-body">Or create a template later and <a href="dashboard" class="govuk-link">return to the home page</a>.</p> -->
 
-      <p class="govuk-body"><a href="dashboard" class="govuk-link">Return to the home page</a></p>
+      <br>
+
+      <p class="govuk-body">
+        <a href="dashboard" class="govuk-link">Return to green list waste exports</a>
+      </p>
+
+      <!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> -->
+
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+      </p>
+
+
 
 
     </div>

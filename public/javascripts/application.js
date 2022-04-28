@@ -158,7 +158,27 @@ const recoveryOperation = [
   'R10: Land treatment resulting in benefit to agriculture or ecological improvement',
   'R11: Use of wastes obtained from any of the operations numbered R01 to R11',
   'R12: Exchange of wastes for submission to any of the operations numbered R01 to R11',
-  'R13: Storage of wastes pending any of the operations numbered R01 to R12 (excluding temporary storage, pending collection, on the site where it is produced).',
+  'R13: Storage of wastes pending any of the operations numbered R01 to R12 (excluding temporary storage, pending collection, on the site where it is produced).'
+  ]
+
+if ($('#recovery-operation-typeahead-container').length > 0) {
+  element = document.querySelector('#recovery-operation-typeahead-container')
+  id = 'recovery-operation-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: recoveryOperation,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}
+
+// D-code autocomplete
+const dCode = [
   'D1: Deposit into or onto land',
   'D2: Land Treatment',
   'D3: Deep injection',
@@ -176,16 +196,16 @@ const recoveryOperation = [
   'D15: Storage pending any of the operations numbered D01 to D14 (excluding temporary storage, pending collection, on the site where it is produced).'
   ]
 
-if ($('#recovery-operation-typeahead-container').length > 0) {
-  element = document.querySelector('#recovery-operation-typeahead-container')
-  id = 'recovery-operation-typeahead' // To match it to the existing <label>.
+if ($('#d-code-typeahead-container').length > 0) {
+  element = document.querySelector('#d-code-typeahead-container')
+  id = 'd-code-typeahead' // To match it to the existing <label>.
 
   accessibleAutocomplete ({
     element: element,
     defaultValue: element.getAttribute('data-default-value'),
     id: id,
     name: id,
-    source: recoveryOperation,
+    source: dCode,
     minLength: 1,
     showAllValues: true,
     dropdownArrow: () => ''
@@ -426,7 +446,6 @@ if ($('#basel-annex-ix-typeahead-container').length > 0) {
 
 // OECD autocomplete
 const oecd = [
-  '0000: Not applicable',
   'GB040: Slags from precious metals and copper processing for further refining',
   'GC010: Electrical assemblies consisting only of metals or alloys',
   'GC020: Electronic scrap (e.g. printed circuit boards, electronic components, wire, etc.)',
@@ -459,7 +478,6 @@ if ($('#oecd-typeahead-container').length > 0) {
 
 // Basel Annex IIIA autocomplete
 const annexIIIA = [
-  '0000: Not applicable',
   'B1010 and B1050: mixtures of wastes classified under Basel entries B1010 and B1050',
   'B1010 and B1070: mixtures of wastes classified under Basel entries B1010 and B1070',
   'B3040 and B3080: mixtures of wastes classified under Basel entries B3040 and B3080',
@@ -492,7 +510,6 @@ if ($('#annex-iiia-typeahead-container').length > 0) {
 
 // Basel Annex IIIB autocomplete
 const annexIIIB = [
-  '0000: Not applicable',
   'BEU04: Composite packaging consisting of mainly paper and some plastic, not containing residues and not covered by Basel entry B3020',
   'BEU05: Clean biodegradable waste from agriculture, horticulture, forestry, gardens, parks and cemeteries'
 ]
@@ -515,7 +532,6 @@ if ($('#annex-iiib-typeahead-container').length > 0) {
 
 // EC wastes autocomplete
 const ecWastes = [
-  '0000: Not applicable',
   '010101: wastes from mineral metalliferous excavation',
   '010102: wastes from mineral non-metalliferous excavation',
   '010304*: acid-generating tailings from processing of sulphide ore',

@@ -21,6 +21,9 @@ Enter an EWC code
                         Enter an EWC code
                       </h1>
                     </legend>
+                    <div id="contact-hint" class="govuk-hint">
+                      Enter a keyword or number
+                    </div>
                     <div id="ec-wastes-typeahead-container" data-default-value="">
                     </div>
 
@@ -34,6 +37,9 @@ Enter an EWC code
             {{ govukButton({
               text: 'Save and continue'
             }) }}
+
+            {% include "./includes/return-to-link.html" %}
+
 
           </form>
 

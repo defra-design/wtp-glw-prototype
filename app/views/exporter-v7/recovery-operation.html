@@ -12,23 +12,41 @@
       <form class="form" method="post">
 
         <div class="govuk-form-group">
+
+          {% if data ['waste-treated'] == "recovery-facility" %}
           <h1 class="govuk-label-wrapper">
             <label class="govuk-label govuk-label--l">
-              {% if data ['waste-treated'] == "recovery-facility" %} What is the recovery code?
-              {% else %} What is the disposal code?     
-               {% endif %}
+              What is the recovery code?
             </label>
           </h1>
-          <!-- <div id="event-name-hint" class="govuk-hint">
-            This is also known as an R-code or D-code. It's the method used to treat your waste at the overseas reprocessing site.
-          </div> -->
+          <div id="contact-hint" class="govuk-hint">
+            Enter a keyword or number
+          </div>
           <div id="recovery-operation-typeahead-container" data-default-value="{{ data['recovery-operation-typeahead'] }}">
           </div>
+
+          {% else %}      
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l">
+              What is the disposal code?
+            </label>
+          </h1>
+          <div id="contact-hint" class="govuk-hint">
+            Enter a keyword or number
+          </div>
+          <div id="d-code-typeahead-container" data-default-value="{{ data['d-code-typeahead'] }}">
+          </div>
+
+          {% endif %}
+
         </div>
 
         {{ govukButton({
           text: 'Save and continue'
         }) }}
+
+        {% include "./includes/return-to-link.html" %}
+
 
       </form>
 

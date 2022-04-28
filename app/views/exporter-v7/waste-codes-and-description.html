@@ -24,10 +24,6 @@ What’s the waste code?
     </div>
 
 
-
-
-
-
     <div class="govuk-radios" data-module="govuk-radios">
 
       <div class="govuk-radios__item">
@@ -37,6 +33,9 @@ What’s the waste code?
         </label>
       </div>
       <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+        <div id="contact-hint" class="govuk-hint">
+          Enter a keyword or number
+        </div>
         <div class="govuk-form-group">
           <div class="govuk-!-padding-bottom-2" id="basel-annex-ix-typeahead-container" data-default-value="{{ data['basel-annex-ix-typeahead'] }} ">
           </div>
@@ -50,6 +49,9 @@ What’s the waste code?
         </label>
       </div>
       <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+        <div id="contact-hint" class="govuk-hint">
+          Enter a keyword or number
+        </div>
         <div class="govuk-form-group">
           <div id="oecd-typeahead-container" data-default-value="{{ data['oecd-typeahead'] }}">
           </div>
@@ -63,6 +65,9 @@ What’s the waste code?
         </label>
       </div>
       <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+        <div id="contact-hint" class="govuk-hint">
+          Enter a keyword or number
+        </div>
         <div class="govuk-form-group">
           <div id="annex-iiia-typeahead-container" data-default-value="{{ data['annex-iiia-typeahead'] }}">
           </div>
@@ -76,20 +81,38 @@ What’s the waste code?
           </label>
         </div>
         <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-4">
+          <div id="contact-hint" class="govuk-hint">
+            Enter a keyword or number
+          </div>
           <div class="govuk-form-group">
             <div id="annex-iiib-typeahead-container" data-default-value="{{ data['annex-iiib-typeahead'] }}">
           </div>
         </div>
       </div>
 
+      <div class="govuk-radios__divider">or</div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="code-not-applicable" name="code" type="radio" value="not-applicable" data-aria-controls="conditional-contact-5" {{ checked("code", "not-applicable") }}>
+        <label class="govuk-label govuk-radios__label" for="code-not-applicable">
+          Not applicable
+        </label>
+      </div>
+
+
     </div>
 
   </fieldset>
 </div>
 
+
         {{ govukButton({
           text: 'Save and continue'
         }) }}
+
+        {% include "./includes/return-to-link.html" %}
+
+
+
 
       </form>
 

@@ -31,6 +31,9 @@ Do you have any EC list of wastes?
                       </label>
                     </div>
                     <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact" name="eccode">
+                      <div id="contact-hint" class="govuk-hint">
+                        Enter a keyword or number
+                      </div>
                       <div class="govuk-form-group">
                         <div id="ec-wastes-typeahead-container" data-default-value="{{ data['ec-wastes-typeahead'] }}">
                         </div>
@@ -53,6 +56,9 @@ Do you have any EC list of wastes?
             {{ govukButton({
               text: 'Save and continue'
             }) }}
+
+            {% include "./includes/return-to-link.html" %}
+
 
           </form>
 

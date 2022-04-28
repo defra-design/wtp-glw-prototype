@@ -739,14 +739,17 @@ router.post('/recovery-operation', function(req, res) {
     }
 })
 
+
 // waste-codes-and-description
 router.post('/waste-codes-and-description', function(req, res) {
-    req.session.data['usual-description-of-the-waste-status'] = "Completed";
-
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
     } else {
-        res.redirect('ec-code');
+        if (req.session.data['code'] == 'not-applicable') {
+            res.redirect('ec-code-2');
+          } else {
+              res.redirect('ec-code');
+          }
     }
 })
 
