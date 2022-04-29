@@ -1839,6 +1839,23 @@ if ($('#third-carrier-typeahead-container').length > 0) {
   })
 }
 
+// Importer autocomplete
+if ($('#importer-typeahead-container').length > 0) {
+  element = document.querySelector('#importer-typeahead-container')
+  id = 'importer-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: countryList,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}
+
 // Facility or lab autocomplete
 if ($('#facility-or-lab-typeahead-container').length > 0) {
   element = document.querySelector('#facility-or-lab-typeahead-container')
