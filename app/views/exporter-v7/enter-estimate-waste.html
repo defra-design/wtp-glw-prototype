@@ -8,7 +8,27 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+            <form class="form" method="post">
 
+      {% if data ['code'] == "not-applicable" %}
+    <h1 class="govuk-heading-l">
+      Enter an estimate for the quantity of waste going to the laboratory
+    </h1>
+
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="weight">
+          Weight, in kilograms
+        </label>
+        <div id="contact-hint" class="govuk-hint">
+          This must be under 25kg. Do not include the weight of the container or vehicle.
+        </div>
+        <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="weight" name="weight" type="text" spellcheck="false">
+          <div class="govuk-input__suffix" aria-hidden="true">kg</div>
+        </div>
+        </div>
+
+        {% else %}
       <h1 class="govuk-heading-l">
         Enter an estimate for the quantity of waste
       </h1>
@@ -21,7 +41,7 @@
         You'll need to come back and update this once you know the exact quantity. We'll send you an email reminder.
       </p>
 
-      <form class="form" method="post">
+
 
       {% call govukFieldset({
       }) %}
@@ -63,6 +83,7 @@
       }) }}
 
       {% endcall %}
+      {% endif %}
 
       {{ govukButton({
         text: 'Save and continue'

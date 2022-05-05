@@ -13,19 +13,7 @@
 
         <div class="govuk-form-group">
 
-          {% if data ['waste-treated'] == "recovery-facility" %}
-          <h1 class="govuk-label-wrapper">
-            <label class="govuk-label govuk-label--l">
-              What is the recovery code?
-            </label>
-          </h1>
-          <div id="contact-hint" class="govuk-hint">
-            Enter a keyword or number
-          </div>
-          <div id="recovery-operation-typeahead-container" data-default-value="{{ data['recovery-operation-typeahead'] }}">
-          </div>
-
-          {% else %}      
+          {% if data ['code'] == "not-applicable" %}
           <h1 class="govuk-label-wrapper">
             <label class="govuk-label govuk-label--l">
               What is the disposal code?
@@ -35,6 +23,19 @@
             Enter a keyword or number
           </div>
           <div id="d-code-typeahead-container" data-default-value="{{ data['d-code-typeahead'] }}">
+          </div>
+
+
+          {% else %}      
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l">
+              What is the recovery code?
+            </label>
+          </h1>
+          <div id="contact-hint" class="govuk-hint">
+            Enter a keyword or number
+          </div>
+          <div id="recovery-operation-typeahead-container" data-default-value="{{ data['recovery-operation-typeahead'] }}">
           </div>
 
           {% endif %}

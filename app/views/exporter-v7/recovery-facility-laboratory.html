@@ -10,14 +10,14 @@
     <div class="govuk-grid-column-two-thirds">
             <form class="form" method="post">
 
-          {% if data ['waste-treated'] == "recovery-facility" %}
+          {% if data ['code'] == "not-applicable" %}
           <h1 class="govuk-heading-l">
-            Recovery facility details
+            Laboratory details
           </h1>
      
            {% else %}
           <h1 class="govuk-heading-l">
-            Laboratory details
+            Recovery facility details
           </h1>
         
           {% endif %}
@@ -26,8 +26,8 @@
 
             <div class="govuk-form-group">
             <label class="govuk-label" for="first-carrier-name">
-              {% if data ['waste-treated'] == "recovery-facility" %} Recovery facility name
-              {% else %} Laboratory name        
+              {% if data ['code'] == "not-applicable" %} Laboratory name
+              {% else %} Recovery facility name
                {% endif %}
               <span class="govuk-visually-hidden">line 1 of 2</span>
             </label>
