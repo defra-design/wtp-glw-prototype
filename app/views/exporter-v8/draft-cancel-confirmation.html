@@ -1,0 +1,35 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Submission has been cancelled - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Submission cancelled
+      </h1>
+
+      <p class="govuk-body">The submission has been cancelled.</p>
+
+      {% if (data['option'] == 'a') %}
+        <p class="govuk-body">Return to <a class="govuk-link" href="draft-exports?exporter-time-period=all-dates&option=a&draft-cancel=true">view all draft and partially submitted exports</a>.</p>
+      {% else %}
+        <p class="govuk-body">Return to <a class="govuk-link" href="draft-exports?exporter-time-period=all-dates&option=b&draft-cancel=true">view all draft and partially submitted exports</a>.</p>
+      {% endif %}
+
+    </div>
+  </div>
+
+{% endblock %}

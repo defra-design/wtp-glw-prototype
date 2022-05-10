@@ -1,0 +1,76 @@
+
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  {% if data['manual-bulk'] == 'bulk' %}
+    Spreadsheet submitted and Annex VII created - Export green list waste
+  {% else %}
+    Submission complete and Annex VII created - Export green list waste
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if data['manual-bulk'] == 'bulk' %}
+        {{ govukPanel({
+          titleText: "Export submitted",
+          html: "Your unique transaction number is <strong>GLW0001</strong>"
+        }) }}
+      {% else %}
+        {{ govukPanel({
+          titleText: "Export submitted",
+          html: "Your transaction number is <strong>GLW0001</strong>"
+        }) }}
+      {% endif %}
+
+      <p class="govuk-body">
+        We’ve sent you a confirmation email.
+        <br>
+        <br>
+        We’ve also sent these details to the relevant regulatory authority. You do not need to send them anything else.
+      </p>
+
+      <p class="govuk-heading-m govuk-!-padding-top-4">
+        What you must do next
+      </p>
+
+      <p class="govuk-body">
+        It’s a legal requirement that a completed annex VII form travels with the waste.
+      </p>
+
+      <p class="govuk-body">
+        You can use your own or <a href="../public/pdfs/hdj2123f-annex-vii.pdf" class="govuk-link">download the one we’ve created</a>
+        (PDF, 78 KB, 1 page).
+      </p>
+
+      <br>
+
+      <p class="govuk-body">
+        <a href="dashboard" class="govuk-link">Return to green list waste overview</a>
+      </p>
+
+      <!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> -->
+
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+      </p>
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

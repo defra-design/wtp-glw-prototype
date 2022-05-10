@@ -1,0 +1,85 @@
+
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Submission completed - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+      {{ govukPanel({
+        titleText: "Submission complete and Annex VII created",
+        html: "Your unique transaction number is <strong>HDJ2123F</strong>"
+      }) }}
+
+      <p class="govuk-heading-m govuk-!-padding-top-4">
+        Next steps
+      </p>
+
+      <ol class="govuk-list govuk-list--number govuk-list--spaced">
+        <li>You <strong>must</strong> download, print, and sign the Annex VII form and send it with your waste export:</li>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+          <li><a href="../public/pdfs/hdj2123f-annex-vii.pdf" download class="govuk-link govuk-link--no-visited-state">download the Annex VII form as a PDF document</a></li>
+        </ul>
+        <li>If any information has been estimated, as soon as you know the actual details you <strong>must</strong>:</li>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+          <li>add them to the paper copy of the Annex VII</li>
+          <li>add them to the waste export using this service</li>
+        </ul>
+      </ol>
+
+      {#
+      <p class="govuk-body">
+        You must download, print, and sign the Annex VII form and send it with your waste export.
+      </p>
+
+      <div class="govuk-inset-text">
+        <a href="pdf-container" class="govuk-link govuk-link--no-visited-state">Download the Annex VII form (PDF document)</a>
+      </div>
+
+      <p class="govuk-body">
+        If any information has been estimated, as soon as you know the actual details you must:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+        <li>add them to the paper copy of the Annex VII</li>
+        <li>add them to the waste export using this service</li>
+      </ul>
+      #}
+
+      {{ govukWarningText({
+        text: "Your environment regulator now knows about this export of green list waste. You do not need to send them any details.",
+        iconFallbackText: "Warning"
+      }) }}
+
+      <p class="govuk-body">
+        You have been emailed a copy of this waste export.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        What do you want to do now?
+      </h2>
+
+      <p class="govuk-body">
+        <ul class="govuk-list">
+          <li><a href="manual-bulk-api" class="govuk-link">Tell us about another waste export</a></li>
+          <li><a href="dashboard" class="govuk-link">Return to the main dashboard</a></li>
+        </ul>
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

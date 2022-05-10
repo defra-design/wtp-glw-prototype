@@ -1,0 +1,100 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+Who’s importing the waste to its final destination?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Who’s the importer?
+      </h1>
+
+      <form class="form" method="post">
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="carrier-name">
+            Organisation name <span class="govuk-visually-hidden">organisation name</span>
+          </label>
+          <input class="govuk-input govuk-!-width-three-quarters" id="carrier-name" name="carrier-name" type="text" value="{{data['carrier-name']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="importer-address">
+            Address
+          </label>
+          <textarea class="govuk-textarea" id="importer-address" name="importer-address" rows="5" autocomplete="street-address">{{ data['importer-address'] }}</textarea>
+        </div>
+
+        <h2 class="govuk-label-wrapper">
+          <label class="govuk-label">
+            Country
+          </label>
+        </h2>
+        <div id="importer-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['importer-typeahead'] }}">
+        </div>
+
+
+<br>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                Contact details
+              </h1>
+            </legend>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="contact-name">
+                Full name
+              </label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="contact-name" name="contact-name" type="text" value="{{data['contact-name']}}">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="contact-by-email">
+                Email address
+              </label>
+              <input class="govuk-input govuk-!-width-one-half" id="contact-by-email" name="contact-by-email" type="email" value="{{data['contact-by-email']}}">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="contact-by-phone">
+                Phone number
+              </label>
+              <div id="contact-hint" class="govuk-hint">
+                 Include the country code for international numbers.
+              </div>
+              <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contact-by-phone" type="tel" value="{{data['contact-by-phone']}}">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="contact-by-phone">
+                Fax number (optional)
+              </label>
+              <div id="contact-hint" class="govuk-hint">
+                 Include the country code for international numbers.
+              </div>
+              <input class="govuk-input govuk-!-width-one-third" id="contact-by-fax" name="contact-by-fax" type="tel" value="{{data['contact-by-fax']}}">
+            </div>
+
+
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+        {% include "./includes/return-to-link.html" %}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

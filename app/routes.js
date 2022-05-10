@@ -74,16 +74,22 @@ router.use('/agency-officer-v1/', (req, res, next) => {
   return require(`./views/agency-officer-v1/_routes`)(req, res, next);
 })
 
-// Import Exporter V6 routes
-router.use('/exporter-v6/', (req, res, next) => {
+// Import Exporter V8 routes
+router.use('/exporter-v8/', (req, res, next) => {
   //req.session.data["entered-criteria"] = undefined;
-  return require(`./views/exporter-v6/_routes`)(req, res, next);
+  return require(`./views/exporter-v8/_routes`)(req, res, next);
 })
 
 // Import Exporter V7 routes
 router.use('/exporter-v7/', (req, res, next) => {
   //req.session.data["entered-criteria"] = undefined;
   return require(`./views/exporter-v7/_routes`)(req, res, next);
+})
+
+// Import Exporter V6 routes
+router.use('/exporter-v6/', (req, res, next) => {
+  //req.session.data["entered-criteria"] = undefined;
+  return require(`./views/exporter-v6/_routes`)(req, res, next);
 })
 
 // Import Exporter V5 routes
