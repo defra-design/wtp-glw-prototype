@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-exporter-v5.html" %}
 
 {% block pageTitle %}
-Who’s importing the waste to its final destination?
+Who’s the importer?
 {% endblock %}
 
 {% block content %}
@@ -16,10 +16,10 @@ Who’s importing the waste to its final destination?
       <form class="form" method="post">
 
         <div class="govuk-form-group">
-          <label class="govuk-label" for="carrier-name">
+          <label class="govuk-label" for="importer-name">
             Organisation name <span class="govuk-visually-hidden">organisation name</span>
           </label>
-          <input class="govuk-input govuk-!-width-three-quarters" id="carrier-name" name="carrier-name" type="text" value="{{data['carrier-name']}}">
+          <input class="govuk-input govuk-!-width-three-quarters" id="importer-name" name="importer-name" type="text" value="{{data['importer-name']}}">
         </div>
 
         <div class="govuk-form-group">
@@ -48,37 +48,37 @@ Who’s importing the waste to its final destination?
               </h1>
             </legend>
             <div class="govuk-form-group">
-              <label class="govuk-label" for="contact-name">
+              <label class="govuk-label" for="importer-contact-name">
                 Full name
               </label>
-              <input class="govuk-input govuk-!-width-two-thirds" id="contact-name" name="contact-name" type="text" value="{{data['contact-name']}}">
+              <input class="govuk-input govuk-!-width-two-thirds" id="importer-contact-name" name="importer-contact-name" type="text" value="{{data['importer-contact-name']}}">
             </div>
 
             <div class="govuk-form-group">
-              <label class="govuk-label" for="contact-by-email">
+              <label class="govuk-label" for="importer-contact-by-email">
                 Email address
               </label>
-              <input class="govuk-input govuk-!-width-one-half" id="contact-by-email" name="contact-by-email" type="email" value="{{data['contact-by-email']}}">
+              <input class="govuk-input govuk-!-width-one-half" id="importer-contact-by-email" name="importer-contact-by-email" type="email" value="{{data['importer-contact-by-email']}}">
             </div>
 
             <div class="govuk-form-group">
-              <label class="govuk-label" for="contact-by-phone">
+              <label class="govuk-label" for="importer-contact-by-phone">
                 Phone number
               </label>
               <div id="contact-hint" class="govuk-hint">
                  Include the country code for international numbers.
               </div>
-              <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contact-by-phone" type="tel" value="{{data['contact-by-phone']}}">
+              <input class="govuk-input govuk-!-width-one-third" id="importer-contact-by-phone" name="importer-contact-by-phone" type="tel" value="{{data['importer-contact-by-phone']}}">
             </div>
 
             <div class="govuk-form-group">
-              <label class="govuk-label" for="contact-by-phone">
+              <label class="govuk-label" for="importer-contact-by-phone">
                 Fax number (optional)
               </label>
               <div id="contact-hint" class="govuk-hint">
                  Include the country code for international numbers.
               </div>
-              <input class="govuk-input govuk-!-width-one-third" id="contact-by-fax" name="contact-by-fax" type="tel" value="{{data['contact-by-fax']}}">
+              <input class="govuk-input govuk-!-width-one-third" id="importer-contact-by-fax" name="importer-contact-by-fax" type="tel" value="{{data['importer-contact-by-fax']}}">
             </div>
 
 

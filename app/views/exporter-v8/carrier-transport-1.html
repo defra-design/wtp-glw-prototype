@@ -54,33 +54,21 @@
           </div>
 
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Sea" data-aria-controls="conditional-contact-3" {{ checked("transport", "Sea") }}>
+            <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Sea" {{ checked("transport", "Sea") }}>
             <label class="govuk-label govuk-radios__label" for="transport">
               Sea
             </label>
           </div>
           <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
-            <div id="contact-hint" class="govuk-hint">
-              Enter container number (optional)
-            </div>
-            <div class="govuk-form-group">
-              <input class="govuk-input govuk-!-width-two-thirds" id="transport-sea" name="transport-sea" type="text" value="{{data['transport-sea']}}">
-              </div>
             </div>
 
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Air" data-aria-controls="conditional-contact-4" {{ checked("transport", "Air") }}>
+              <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Air" {{ checked("transport", "Air") }}>
               <label class="govuk-label govuk-radios__label" for="transport">
                 Air
               </label>
             </div>
             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-4">
-              <div id="contact-hint" class="govuk-hint">
-                Enter container number (optional)
-              </div>
-              <div class="govuk-form-group">
-                <input class="govuk-input govuk-!-width-two-thirds" id="transport-air" name="transport-air" type="text" value="{{data['transport-air']}}">
-                </div>
               </div>
 
 
