@@ -491,15 +491,14 @@ router.post('/importer-consignee', function(req, res) {
 
 // quantity
 router.post('/quantity', function(req, res) {
-    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-        res.redirect('check-your-answers');
-    } else {
+
         if (req.session.data['actual-or-estimate'] == 'actual') {
             res.redirect('enter-waste');
-        } else if (req.session.data['actual-or-estimate'] == 'estimated') {
+        }
+        else if (req.session.data['actual-or-estimate'] == 'estimated') {
             res.redirect('enter-estimate-waste');
         }
-    }
+
 })
 
 // enter-waste
@@ -644,13 +643,26 @@ if (req.session.data['add-second-carrier'] == 'Yes') {
 router.post('/carrier-add-1', function(req, res) {
     req.session.data['carrier-status'] = "Completed";
     req.session.data['carrier-add-1'] = "true";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
     res.redirect('carrier-transport-1');
+
+  }
 })
+
+
 
 router.post('/carrier-transport-1', function(req, res) {
     req.session.data['carrier-status'] = "Completed";
     req.session.data['carrier-add-1'] = "true";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
     res.redirect('carriers');
+  }
 })
 
 router.post('/carrier-add-2', function(req, res) {
@@ -852,7 +864,7 @@ router.post('/check-your-answers', function(req, res) {
     req.session.data['transaction-id-status'] = "Not started";
     req.session.data['submit-export'] = "Cannot start yet";
 
-    res.redirect('confirmation');
+    res.redirect('check-your-answers');
 })
 
 // search-sort-filter

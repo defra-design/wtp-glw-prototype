@@ -21,6 +21,9 @@
         <a class="govuk-breadcrumbs__link" href="dashboard">Green list waste overview</a>
       </li>
       <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="unique-ref">Unique reference number</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
         Submit an export
       </li>
     </ol>
@@ -33,12 +36,14 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">SA0003</span>
       <h1 class="govuk-heading-xl">
         Submit an export
       </h1>
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Submission incomplete</h2>
-      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{sectionscompleted}} of 5 sections.</p>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{sectionscompleted}} of 4 sections.</p>
 
 
       <ol class="app-task-list">
@@ -267,7 +272,7 @@
           </ul>
         </li> -->
 
-        {# SUBMIT #}
+        <!-- {# SUBMIT #}
         <li>
           <h2 class="app-task-list__section">
             <span class="app-task-list__section-number">5. </span> Submit
@@ -284,9 +289,6 @@
               data['recovery-facility-or-laboratory-status']  == "Completed" and
               data['recovery-operation-status'] == "Completed" %}
 
-              <!-- data['container-number-status'] == "Completed" and
-              data['transaction-id-status'] == "Completed" %} -->
-
 
                 <span class="app-task-list__task-name">
                   <a href="declaration" aria-describedby="submit-export">
@@ -301,10 +303,24 @@
                 <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-export">Cannot start yet</strong>
               {% endif %}
             </li>
-          </ul>
-
-
+          </ul> -->
       </ol>
+
+      <h2 class="govuk-heading-m">Final check</h2>
+
+      <form action="check-your-answers" method="post" novalidate>
+
+        <input type="hidden" name="answers-checked" value="true">
+
+        <button class="govuk-button" data-module="govuk-button">
+          Check this export
+        </button>
+
+      </form>
+
+      <p class="govuk-body"><a class="govuk-link" href="dashboard">Return to this draft later</a></p>
+
+
     </div>
 
 
