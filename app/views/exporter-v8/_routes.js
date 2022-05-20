@@ -341,6 +341,7 @@ router.post('/manual-bulk-api', function(req, res) {
         req.session.data['usual-description-of-the-waste-status'] = "Not started";
         req.session.data['waste-identification-codes-status'] = "Not started";
         req.session.data['countries-states-concerned-status'] = "Not started";
+        req.session.data['point-of-exit-status'] = "Not started";
         req.session.data['container-number-status'] = "Not started";
         req.session.data['transaction-id-status'] = "Not started";
         req.session.data['submit-export'] = "Cannot start yet";
@@ -704,7 +705,7 @@ router.post('/carrier-collect-address', function(req, res) {
 router.post('/waste-generator', function(req, res) {
     req.session.data['waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
     req.session.data['carrier-add-1'] = "true";
-    res.redirect('countries-states-concerned');
+    res.redirect('point-of-exit');
 })
 
 router.post('/carrier-collect-address-manual', function(req, res) {
@@ -766,7 +767,7 @@ router.post('/waste-codes-and-description', function(req, res) {
 })
 
 
-// national-code
+
 router.post('/national-code', function(req, res) {
     req.session.data['usual-description-of-the-waste-status'] = "Completed";
 
@@ -774,6 +775,27 @@ router.post('/national-code', function(req, res) {
         res.redirect('check-your-answers');
     } else {
         res.redirect('waste-description');
+    }
+})
+
+router.post('/unique-ref', function(req, res) {
+    req.session.data['usual-description-of-the-waste-status'] = "Completed";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('prenotify');
+    }
+})
+
+
+router.post('/point-of-exit', function(req, res) {
+    req.session.data['point-of-exit-status'] = "Completed";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('countries-states-concerned');
     }
 })
 
@@ -860,6 +882,7 @@ router.post('/check-your-answers', function(req, res) {
     req.session.data['usual-description-of-the-waste-status'] = "Not started";
     req.session.data['waste-identification-codes-status'] = "Not started";
     req.session.data['countries-states-concerned-status'] = "Not started";
+    req.session.data['point-of-exit-status'] = "Not started";
     req.session.data['container-number-status'] = "Not started";
     req.session.data['transaction-id-status'] = "Not started";
     req.session.data['submit-export'] = "Cannot start yet";

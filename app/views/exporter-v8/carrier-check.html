@@ -10,28 +10,20 @@
   <div class="govuk-grid-column-two-thirds">
         <form method="post" action="">
 
-          {% if data['carrier-count'] == '0' %}
-    <h1 class="govuk-heading-l">
-      You have added 1 additional waste carrier
-    </h1>
-          {% elseif data['carrier-count'] == '1' %}
-    <h1 class="govuk-heading-l">
-      You have added 2 additional waste carriers
-    </h1>
-          {% elseif data['carrier-count'] == '2' %}
-    <h1 class="govuk-heading-l">
-      You have added 3 additional waste carriers
-    </h1>
-          {% elseif data['carrier-count'] == '3' %}
-    <h1 class="govuk-heading-l">
-      You have added 4 additional waste carriers
-    </h1>
-          {% elseif data['carrier-count'] == '4' %}
-    <h1 class="govuk-heading-l">
-      You have added 5 additional waste carriers
-    </h1>
+          <h1 class="govuk-heading-l">
+            Waste carriers
+          </h1>
 
-    {% endif %}
+          <h2 class="govuk-heading-m">First waste carrier</h2>
+          <p class="govuk-body">{{data['first-carrier-org-name']}}</p>
+
+          <br>
+          <br>
+
+          <h2 class="govuk-heading-m">
+            Additional waste carriers
+          </h2>
+
 
 
 <div class="govuk-form-group">

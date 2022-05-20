@@ -15,6 +15,29 @@
 
                   <h1 class="govuk-heading-l">Check this export</h1>
 
+                  <h2 class="govuk-heading-m">Your reference number</h2>
+
+                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Reference number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {% if data ['ref-no'] == "yes" %}
+                        <p class="govuk-body">{{data['enter-ref']}}</p>
+
+                        {% elseif data ['ref-no'] == "no" %}
+                        <p class="govuk-body">Not provided</p>
+                        {% endif %}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="unique-ref">
+                          Change<span class="govuk-visually-hidden"> Reference number</span>
+                        </a>
+                      </dd>
+                    </div>
+                    </dl>
+
                   <h2 class="govuk-heading-m">About the waste</h2>
 
                   <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -59,7 +82,7 @@
                         <p class="govuk-body">010102: wastes from mineral non-metalliferous excavation</p>
 
                         {% elseif data ['ec-code'] == "No" %}
-                        <p class="govuk-body">No</p>
+                        <p class="govuk-body">Not provided</p>
                         {% endif %}
 
 
@@ -79,7 +102,7 @@
                         <p class="govuk-body">{{data['national-code']}}</p>
 
                         {% elseif data ['nat-code'] == "no" %}
-                        <p class="govuk-body">No</p>
+                        <p class="govuk-body">Not provided</p>
                         {% endif %}
 
                       </dd>
@@ -324,7 +347,7 @@
                           <p class="govuk-body">{{ data['additonal-carrier-fax'] }}</p>
 
                           {% elseif data ['add-second-carrier'] == "No" %}
-                          <p class="govuk-body">No</p>
+                          <p class="govuk-body">Not provided</p>
                           {% endif %}
 
 
@@ -356,14 +379,32 @@
                       </div>
                       <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                          Transit countries
+                          Point of leaving the UK
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {% if data ['exit'] == "yes" %}
+                          <p class="govuk-body">{{ data['exit-location'] }}</p>
+
+                          {% elseif data ['exit'] == "no" %}
+                          <p class="govuk-body">Not provided</p>
+                          {% endif %}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="point-of-exit">
+                            Change<span class="govuk-visually-hidden"> Leaving the UK</span>
+                          </a>
+                        </dd>
+                      </div>
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Countries waste will travel through
                         </dt>
                         <dd class="govuk-summary-list__value">
                           {% if data ['transit'] == "yes" %}
                           <p class="govuk-body">{{ data['transit-countries'] }}</p>
 
                           {% elseif data ['transit'] == "no" %}
-                          <p class="govuk-body">No</p>
+                          <p class="govuk-body">Not provided</p>
                           {% endif %}
                         </dd>
                         <dd class="govuk-summary-list__actions">
@@ -424,7 +465,6 @@
                   {% if data ['code'] == "not-applicable" %}
                   <ul class="govuk-list govuk-list--bullet">
                     <li>all the information you've provided is complete and correct to the best of your knowledge</li>
-                    <li>there is an effective written contractual obligation with the consignee</li>
                     <li>you've checked with the relevant authorities if there are any local controls that apply in any country involved in the journey of the waste</li>
                     <li>you've classified the waste appropriately</li>
                   </ul>
@@ -432,6 +472,7 @@
                   {% else %}
                   <ul class="govuk-list govuk-list--bullet">
                     <li>all the information you've provided is complete and correct to the best of your knowledge</li>
+                    <li>there is an effective written contractual obligation with the consignee</li>
                     <li>you've checked with the relevant authorities if there are any local controls that apply in any country involved in the journey of the waste</li>
                     <li>you've classified the waste appropriately</li>
                   </ul>
