@@ -438,6 +438,14 @@ router.post('/preparation', function(req, res) {
     res.redirect('prenotify');
 })
 
+router.post('/delete-export', function(req, res) {
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('draft-exports');
+    }
+})
+
 // exporter
 router.post('/exporter-postcode', function(req, res) {
     req.session.data['person-arranging-the-shipment-status'] = "Completed";
@@ -779,7 +787,6 @@ router.post('/national-code', function(req, res) {
 })
 
 router.post('/unique-ref', function(req, res) {
-    req.session.data['usual-description-of-the-waste-status'] = "Completed";
 
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
