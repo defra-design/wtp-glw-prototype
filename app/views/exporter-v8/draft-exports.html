@@ -97,9 +97,17 @@
 {% else %}
 
 <tr class="govuk-table__row">
-  <td class="govuk-table__cell">GW01537</td>
-  <td class="govuk-table__cell" data-sort-value="24">24 May 2022</td>
-  <td class="govuk-table__cell">B1010: Metal and metal-alloy wastes in metallic, non-dispersible form</td>
+  <td class="govuk-table__cell">{% if data ['ref-no'] == "yes" %} {{ data['enter-ref'] }}
+                                {% else %} Not provided
+                                {% endif %}</td>
+  <td class="govuk-table__cell" data-sort-value="8">8 June 2022</td>
+  <td class="govuk-table__cell">{% if data ['code'] == "basel" %} {{ data['basel-annex-ix-typeahead'] }}
+                                {% elseif data ['code'] == "oecd" %} {{ data['oecd-typeahead'] }}
+                                {% elseif data ['code'] == "annex-a" %} {{ data['annex-iiia-typeahead'] }}
+                                {% elseif data ['code'] == "annex-b" %} {{ data['annex-iiib-typeahead'] }}
+                                {% elseif data ['code'] == "not-applicable" %} Not applicable
+                                {% else %} Not provided
+                                     {% endif %}</td>
   <td class="govuk-table__cell"><a href="prenotify">Continue</a><br>
                                 <a href="delete-export">Delete</a></td>
 </tr>
@@ -108,7 +116,7 @@
 <tr class="govuk-table__row">
   <td class="govuk-table__cell">Not provided</td>
   <td class="govuk-table__cell" data-sort-value="16">16 May 2022</td>
-  <td class="govuk-table__cell">010305*: other tailings containing hazardous substances</td>
+  <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)
   <td class="govuk-table__cell"><a href="prenotify">Continue</a><br>
                                 <a href="delete-export">Delete</a></td>
 </tr>

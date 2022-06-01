@@ -79,7 +79,11 @@
                   Quantity of waste
                 </a>
               </span>
-              {% if data['quantity-status'] == null or data['quantity-status'] == 'Not started' %}
+              {% if data['usual-description-of-the-waste-status'] == null or data['usual-description-of-the-waste-status'] == 'Not started' and
+              data['quantity-status'] == null or data['quantity-status'] == 'Not started' %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-export">Cannot start yet</strong>
+
+              {% elseif data['quantity-status'] == null or data['quantity-status'] == 'Not started' %}
                 <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="quantity-status">Not started</strong>
               {% elif data['quantity-status'] == 'Completed' %}
                 <strong class="govuk-tag app-task-list__tag" id="quantity-status">Completed</strong>
