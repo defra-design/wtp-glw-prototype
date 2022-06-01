@@ -1,0 +1,113 @@
+
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Home - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="">Waste tracking service</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        Green list waste overview
+      </li>
+    </ol>
+  </div>
+
+{% endblock %}
+
+{% block content %}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+
+      <h1 class="govuk-heading-xl">
+        Green list waste overview
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Tell us about an export
+      </h2>
+      <p class="govuk-body"><a class="govuk-link" href="unique-ref">Submit an export</a></p>
+             <p class="govuk-body"><a class="govuk-link" href="draft-exports">Continue a draft export (6)</a></p>
+
+       <br>
+       <br>
+             <h2 class="govuk-heading-m">
+               All exports
+             </h2>
+
+       <p class="govuk-body"><a class="govuk-link" href="update-prenotifications">Update an export with actual details (50)</a></p>
+       <p class="govuk-body"><a class="govuk-link" href="submitted-prenotifications?exporter-time-period=all-dates">View submitted exports (50)</a></p>
+
+
+
+
+      <!-- <h2 class="govuk-heading-m">
+        Notify your agency about an export
+      </h2>
+      <ul class="govuk-list">
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="prenotify">
+            Submit one export
+          </a>
+        </li>
+
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="">
+            Submit multiple exports using a spreadsheet
+          </a>
+        </li>
+      </ul>
+
+<br>
+<br>
+      <h2 class="govuk-heading-m">
+        All exports
+      </h2>
+      <ul class="govuk-list">
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="draft-exports">
+            Continue an export (3)
+          </a>
+        </li>
+
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="update-prenotifications">
+            Update an export with correct details (1)
+          </a>
+        </li>
+
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="submitted-prenotifications?exporter-time-period=all-dates">
+            View all submitted exports (27)
+          </a>
+        </li>
+      </ul> -->
+
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+{% endblock %}
