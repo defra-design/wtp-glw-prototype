@@ -446,6 +446,14 @@ router.post('/delete-export', function(req, res) {
     }
 })
 
+router.post('/cancel-export', function(req, res) {
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('update-prenotifications');
+    }
+})
+
 // exporter
 router.post('/exporter-postcode', function(req, res) {
     req.session.data['person-arranging-the-shipment-status'] = "Completed";
@@ -498,20 +506,9 @@ router.post('/importer-consignee', function(req, res) {
     }
 })
 
-// quantity
-router.post('/quantity', function(req, res) {
-
-        if (req.session.data['actual-or-estimate'] == 'actual') {
-            res.redirect('enter-waste');
-        }
-        else if (req.session.data['actual-or-estimate'] == 'estimated') {
-            res.redirect('enter-estimate-waste');
-        }
-
-})
 
 // enter-waste
-router.post('/enter-waste', function(req, res) {
+router.post('/quantity', function(req, res) {
     req.session.data['quantity-status'] = "Completed";
 
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
@@ -521,8 +518,17 @@ router.post('/enter-waste', function(req, res) {
     }
 })
 
-// enter-estimate-waste
-router.post('/enter-estimate-waste', function(req, res) {
+router.post('/quantity-estimate-metres', function(req, res) {
+    req.session.data['quantity-status'] = "Completed";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('date-of-shipment');
+    }
+})
+
+router.post('/quantity-actual-metres', function(req, res) {
     req.session.data['quantity-status'] = "Completed";
 
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {

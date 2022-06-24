@@ -2,7 +2,7 @@
 {% extends "../layouts/layout-exporter-v5.html" %}
 
 {% block pageTitle %}
-Export submitted
+Export successfully updated
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,8 +18,12 @@ Export submitted
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+
+
+
         {{ govukPanel({
-          titleText: "Export submitted",
+          titleText: "Export successfully updated",
           html: "Your transaction number is <strong>GLW0001</strong>"
         }) }}
 
@@ -27,25 +31,21 @@ Export submitted
         We’ve sent you a confirmation email.
         <br>
         <br>
-        We’ve also sent these details to the relevant UK regulatory authority. You do not need to send them anything else.
+        We’ve also sent these updated details to the relevant UK regulatory authority. You do not need to send them anything else.
       </p>
-
-      <p class="govuk-heading-m govuk-!-padding-top-4">
-        Updating this export with actual details
-      </p>
-
-      <p class="govuk-body">If you've provided estimates for quantity of waste or collection date, you'll need to provide the actual details as soon as possible.</p>
-
-      <p class="govuk-body">You can also update first waste carrier details if you need to.</p>
 
       <p class="govuk-heading-m govuk-!-padding-top-4">
         What you must do next
       </p>
 
-      <p class="govuk-body">It’s a legal requirement that a completed annex VII form travels with the waste.</p>
+      <p class="govuk-body">
+        It’s a legal requirement that a completed annex VII form travels with the waste. It must include these actual details.
+      </p>
 
-      <p class="govuk-body">You can use your own or <a href="../public/pdfs/hdj2123f-annex-vii.pdf" class="govuk-link">download the one we’ve created</a>
-        (PDF, 78 KB, 1 page). Estimated details will not be shown.</p>
+      <p class="govuk-body">
+        You can use your own or <a href="../public/pdfs/hdj2123f-annex-vii.pdf" class="govuk-link">download the one we’ve created.</a>
+        (PDF, 78 KB, 1 page).
+      </p>
 
       <br>
 
@@ -59,6 +59,7 @@ Export submitted
       <p class="govuk-body">
         <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
       </p>
+
 
 
 

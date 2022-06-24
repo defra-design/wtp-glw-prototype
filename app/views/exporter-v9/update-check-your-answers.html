@@ -1,0 +1,286 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Update export with actual details
+{% endblock %}
+
+{% block content %}
+
+
+          <div class="govuk-width-container">
+
+
+            <main class="govuk-main-wrapper " id="main-content" role="main">
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds-from-desktop">
+
+                  <h1 class="govuk-heading-l">Update export with actual details</h1>
+
+                  <h2 class="govuk-heading-m">Your reference number</h2>
+
+                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Reference number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">{% if data ['ref-no'] == "yes" %} {{ data['enter-ref'] }}
+                                                      {% else %} Not provided
+                                                      {% endif %}</p>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
+                    </div>
+                    </dl>
+
+                  <h2 class="govuk-heading-m">About the waste</h2>
+
+                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Waste code
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">GC020: Electronic scrap (e.g. printed circuit boards, electronic components, wire, etc.)</p>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        EWC code
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">Not provided</p>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        National code
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">Not provided</p>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Waste description
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">Electronics including; wires and circuit boards</p>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Waste quantity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">Estimate<br>22 tonnes</p>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="update-quantity">
+                          Update<span class="govuk-visually-hidden"> waste quantity</span>
+                        </a>
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Collection date
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">Estimate<br>28 June 2022</p>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="">
+                          Update<span class="govuk-visually-hidden"> collection date</span>
+                        </a>
+                      </dd>
+                    </div>
+                  </dl>
+
+                  <h2 class="govuk-heading-m">Exporter and importer</h2>
+
+                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Exporter details
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">Waste Ltd</p>
+                      <p class="govuk-body">28 Wakefield street<br>Manchester<br>M1 4YU</p>
+                      <p class="govuk-body">Jerry Whitfield</p>
+                      <p class="govuk-body">jerry.whitfield@waste.com</p>
+                      <p class="govuk-body">01852 375 285</p>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Importer details
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">Zero Waste Lab</p>
+                        <p class="govuk-body">Dapperplein 45<br> 1093 XS Amsterdam<br> Netherlands<br></p>
+                        <p class="govuk-body">Philip Franc</p>
+                        <p class="govuk-body">philip.franc@zero-waste.com</p>
+                        <p class="govuk-body">+31 20 210 2355</p>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
+                    </div>
+                    </dl>
+
+                    <h2 class="govuk-heading-m">Journey of waste</h2>
+
+                    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          First waste carrier
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          <p class="govuk-body">{{ data['first-carrier-org-name'] }}</p>
+                          <p class="govuk-body">{{ data['first-carrier-address'] }}</p>
+                          <p class="govuk-body">{{ data['first-carrier-typeahead'] }}</p>
+                          <p class="govuk-body">{{ data['first-carrier-contact-name'] }}</p>
+                          <p class="govuk-body">{{ data['first-carrier-email'] }}</p>
+                          <p class="govuk-body">{{ data['first-carrier-phone'] }}</p>
+                          <p class="govuk-body">{{ data['first-carrier-fax'] }}</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="">
+                            Update<span class="govuk-visually-hidden"> first waste carrier</span>
+                          </a>
+                        </dd>
+                      </div>
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          First carrier transport waste
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {% if data ['transport'] == "Road" %}
+                          <p class="govuk-body">Road</p>
+                            <p class="govuk-body">{{ data['transport-road'] }}</p>
+
+                            {% elseif data ['transport'] == "Rail" %}
+                            <p class="govuk-body">Rail</p>
+                              <p class="govuk-body">{{ data['transport-rail'] }}</p>
+
+                              {% elseif data ['transport'] == "Sea" %}
+                              <p class="govuk-body">Sea</p>
+
+                              {% elseif data ['transport'] == "Air" %}
+                              <p class="govuk-body">Air</p>
+
+                            {% endif %}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="">
+                            Update<span class="govuk-visually-hidden"> first carrier transport waste</span>
+                          </a>
+                        </dd>
+                      </div>
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Additional waste carriers
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          <p class="govuk-body">Not provided</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                        </dd>
+                      </div>
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Waste collection details
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          <p class="govuk-body">{{ data['waste-name'] }}</p>
+                          <p class="govuk-body">5 Stafford Park<br>Telford<br>TF6 3RT<br>England</p>
+                          <p class="govuk-body">{{ data['carrier-collect-full-name'] }}</p>
+                          <p class="govuk-body">{{ data['carrier-collect-email'] }}</p>
+                          <p class="govuk-body">{{ data['carrier-collect-phone'] }}</p>
+                          <p class="govuk-body">{{ data['carrier-collect-fax'] }}</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                        </dd>
+                      </div>
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Point of leaving the UK
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          <p class="govuk-body">Felixstowe</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                        </dd>
+                      </div>
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Countries waste will travel through
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          <p class="govuk-body">Not provided</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                        </dd>
+                      </div>
+                      </dl>
+
+
+                      <h2 class="govuk-heading-m">Treatment of waste</h2>
+
+                      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            Recovery facility name
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            <p class="govuk-body">Zero Waste Lab</p>
+                            <p class="govuk-body">Dapperplein 45<br> 1093 XS Amsterdam<br> Netherlands<br></p>
+
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                          Recovery code
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            <p class="govuk-body">R4: Recycling/reclamation of metals and metal compounds</p>
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                          </dd>
+                        </div>
+                  </dl>
+
+
+                  <p class="govuk-body">You can only update this export once, so make sure the details you've provided are correct.</p>
+
+
+
+                  <form action="update-confirmation" method="post" novalidate>
+
+                    <input type="hidden" name="answers-checked" value="true">
+
+                    <button class="govuk-button" data-module="govuk-button">
+                      Update this export
+                    </button>
+
+
+                  </form>
+
+                </div>
+              </div>
+            </main>
+          </div>
+
+
+{% endblock %}

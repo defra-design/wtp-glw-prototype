@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-exporter-v5.html" %}
 
 {% block pageTitle %}
-  How will the first waste carrier transport the waste?
+  Update how the first waste carrier will transport the waste with actual details
 {% endblock %}
 
 {% block content %}
@@ -15,17 +15,16 @@
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
       <h1 class="govuk-fieldset__heading">
-        How will the first waste carrier transport the waste?
+        Update how the first waste carrier will transport the waste with actual details
       </h1>
     </legend>
-    <p class="govuk-body">You'll be able to update these details after submitting this export.</p>
 
 
 
     <div class="govuk-radios" data-module="govuk-radios">
 
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Road" data-aria-controls="conditional-contact" {{ checked("transport", "Road") }}>
+        <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Road" data-aria-controls="conditional-contact" {{ checked }}>
         <label class="govuk-label govuk-radios__label" for="transport">
           Road
         </label>
@@ -35,12 +34,12 @@
           Enter container number or vehicle registration number (optional)
         </div>
         <div class="govuk-form-group">
-          <input class="govuk-input govuk-!-width-two-thirds" id="transport-road" name="transport-road" type="text" value="{{data['transport-road']}}">
+          <input class="govuk-input govuk-!-width-two-thirds" id="transport-road" name="transport-road" type="text" value="Pre populated container or reg">
           </div>
         </div>
 
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Rail" data-aria-controls="conditional-contact-2" {{ checked("transport", "Rail") }}>
+          <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Rail" data-aria-controls="conditional-contact-2">
           <label class="govuk-label govuk-radios__label" for="transport">
             Rail
           </label>
@@ -55,7 +54,7 @@
           </div>
 
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Sea" {{ checked("transport", "Sea") }}>
+            <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Sea">
             <label class="govuk-label govuk-radios__label" for="transport">
               Sea
             </label>
@@ -64,7 +63,7 @@
             </div>
 
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Air" {{ checked("transport", "Air") }}>
+              <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Air">
               <label class="govuk-label govuk-radios__label" for="transport">
                 Air
               </label>
@@ -79,10 +78,9 @@
 </div>
 
       {{ govukButton({
-        text: 'Save and continue'
+        text: 'Save and update'
       }) }}
 
-      {% include "./includes/return-to-link.html" %}
 
 
     </form>
