@@ -36,6 +36,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "hmrc-frontend": "^4.4.0",
     "inquirer": "^8.2.0",
+    "jquery": "^3.6.0",
     "keypather": "^3.1.0",
     "lodash": "^4.17.21",
     "marked": "^3.0.8",
