@@ -21,6 +21,51 @@ Do you know the quantity of waste?
                 Do you know the quantity of waste?
               </h1>
             </legend>
+
+            {% if data ['code'] == "not-applicable" %}
+            <p class="govuk-body">
+              This must be under 25kg, only provide the net weight or volume. Do not include the weight of the container or vehicle.
+            </p>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="quantity" name="quantity" type="radio" value="yes" data-aria-controls="conditional-contact" {{ checked("quantity", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="quantity">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact" name="quantityactual">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="weight">
+                    Weight, in kilograms
+                  </label>
+                  <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="weight" name="quantity-weight-actual" value="{{ data['quantity-weight-actual'] }}" type="text" spellcheck="false">
+                    <div class="govuk-input__suffix" aria-hidden="true">kg</div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="quantity" name="quantity" type="radio" value="no" data-aria-controls="conditional-contact-2" {{ checked("quantity", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="quantity">
+                  No, I'll enter an estimate
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2" name="quantityestimate">
+                  <p class="govuk-body">You'll need to update this with actual details as soon as possible after submitting this export.</p>
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="weight">
+                    Weight, in kilograms
+                  </label>
+                  <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="weight" name="quantity-weight-estimate" value="{{ data['quantity-weight-estimate'] }}" type="text" spellcheck="false">
+                    <div class="govuk-input__suffix" aria-hidden="true">kg</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            {% else %}
             <p class="govuk-body">
               Only provide the net weight or volume. Do not include the weight of the container or vehicle.
             </p>
@@ -67,7 +112,7 @@ Do you know the quantity of waste?
           </fieldset>
         </div>
       </div>
-
+        {% endif %}
 
       {{ govukButton({
         text: 'Save and continue'
