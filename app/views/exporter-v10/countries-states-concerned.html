@@ -1,0 +1,67 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Are there any other countries the waste will travel through?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+            <form class="form" method="post">
+
+
+
+
+        <div class="govuk-form-group">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Are there any other countries the waste will travel through?
+                </h1>
+              </legend>
+              <p class="govuk-body govuk-!-padding-bottom-2">
+                Do not include the exporting or importing country.
+              </p>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="transit" name="transit" type="radio" value="yes" data-aria-controls="conditional-contact" {{ checked("transit", "yes") }}>
+                  <label class="govuk-label govuk-radios__label" for="transit">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                  <div class="govuk-form-group">
+                    <div id="contact-hint" class="govuk-hint">
+                      Enter countries in order of travel
+                    </div>
+                    <textarea class="govuk-textarea" id="transit-countries" name="transit-countries" rows="5">{{ data['transit-countries'] }}</textarea>
+                  </div>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="transit-2" name="transit" type="radio" value="no" data-aria-controls="conditional-contact-2" {{ checked("transit", "no") }}>
+                  <label class="govuk-label govuk-radios__label" for="transit-2">
+                    No
+                  </label>
+                </div>
+              </div>
+
+            </fieldset>
+          </div>
+        </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+        {% include "./includes/return-to-link.html" %}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -74,6 +74,12 @@ router.use('/agency-officer-v1/', (req, res, next) => {
   return require(`./views/agency-officer-v1/_routes`)(req, res, next);
 })
 
+// Import Exporter V10 routes
+router.use('/exporter-v10/', (req, res, next) => {
+  //req.session.data["entered-criteria"] = undefined;
+  return require(`./views/exporter-v10/_routes`)(req, res, next);
+})
+
 // Import Exporter V9 routes
 router.use('/exporter-v9/', (req, res, next) => {
   //req.session.data["entered-criteria"] = undefined;

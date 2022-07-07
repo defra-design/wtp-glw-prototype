@@ -1,0 +1,703 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Save a template - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Save a template
+      </h1>
+
+      <form class="form" method="post">
+
+        {% call govukFieldset({
+        }) %}
+
+        {{ govukInput({
+          label: {
+            text: "What would you like to call this template?",
+            classes: "govuk-label--s",
+            isPageHeading: false
+          },
+          id: "template",
+          name: "template-name",
+          value: data['template-name'],
+          value : ""
+        }) }}
+
+        {% endcall %}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: 'Save template'
+          }) }}
+
+          <a class="govuk-link" href="javascript:history.go(-1)">Cancel</a>
+        </div>
+
+      </form>
+
+      <h2 class="govuk-heading-l govuk-!-padding-top-4">
+        Template details
+      </h2>
+
+      <p class="govuk-body govuk-!-padding-bottom-2">
+        You need to add the pick up date, weight and first carrier details when you start a new export using this template.
+      </p>
+      <!-- START OF TEMPLATE -->
+
+      <!--===================================-->
+      <!-- PERSON ARRANGING SHIPMENT HEADING -->
+      <!--===================================-->
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Person arranging the export
+          </dt>
+          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
+          </dd> 
+        </div>
+      </dl>
+
+      <!-- PERSON ARRANGING SHIPMENT - Carrier details -->
+      <h3 class="govuk-heading-s">
+        Name and address
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Euromovement Limited
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Unit 15, Berryedge Park<br>
+            Dunstable<br>
+            LU5 4AX<br>
+            England
+          </dd>
+        </div>
+      </dl>
+
+      <!-- PERSON ARRANGING SHIPMENT - Contact details -->
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Gary Squires
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            gary.squires@euromovement.com
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            01790 243 3921
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Fax number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Not provided
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      <!--============================-->
+      <!-- IMPORTER/CONSIGNEE HEADING -->
+      <!--============================-->
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Importer or consignee
+          </dt>
+          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
+          </dd> 
+        </div>
+      </dl>
+
+      <!-- IMPORTER/CONSIGNEE - Carrier details -->
+      <h3 class="govuk-heading-s">
+        Importer or consignee name and address
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Bulk Papers
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            31st Floor, Rajbhavan Road<br>
+            Khairatabad<br>
+            Hyderabad<br>
+            Andhra Pradesh<br>
+            500004<br>
+            India
+          </dd>
+        </div>
+      </dl>
+
+      <!-- IMPORTER/CONSIGNEE - Contact details -->
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
+      </h3>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Sakari Bhavsar
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            sakari.bhavsar@bulkpapers.in
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            0091 98144 21012
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Fax number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Not provided
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      <!--==========-->
+      <!-- QUANTITY -->
+      <!--==========-->
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" id="update-quantity" style="display: block-inline; margin: 0; padding: 0;">
+            Quantity
+          </dt>
+          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
+          </dd> 
+        </div>
+      </dl>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Weight
+          </dt>
+          <dd class="govuk-summary-list__value">
+            12 Cubic metres (m³)
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Actual or estimated
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Estimated quantity
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+
+      <!--=========================--> 
+      <!-- ACTUAL DATE OF SHIPMENT -->
+      <!--=========================-->
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" id="update-date-of-shipment" style="margin: 0; padding: 0;">
+            Date waste will be picked up
+          </dt>
+          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
+          </dd> 
+        </div>
+      </dl>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            1 June 2021
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Actual or estimated
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Estimated shipment date
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      <!--=======================-->
+      <!-- FIRST CARRIER HEADING -->
+      <!--=======================-->
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Carrier 1
+          </dt>
+          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
+          </dd> 
+        </div>
+      </dl>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            First carrier details?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes, the details are of the first carrier
+          </dd>
+        </div>
+      </dl>
+
+      <!-- FIRST CARRIER - Carrier details -->
+      <h3 class="govuk-heading-s">
+        Carrier name and address
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Complete CMA Shipping Limited
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            32 Carriers Road<br>
+            Crofts of Buinach<br>
+            IV30 1AZ<br>
+            Scotland
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Means of transport
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Road
+          </dd>
+        </div>
+      </dl>
+
+      <!-- FIRST CARRIER - Contact details -->
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Bob Walker
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            bob.walker@ccma.co.uk
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            0708 4528089
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Fax number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Not provided
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      <!--=========================-->
+      <!-- WASTE GENERATOR HEADING -->
+      <!--=========================-->
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Waste collection point
+          </dt>
+          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
+          </dd> 
+        </div>
+      </dl>
+
+      <!-- WASTE GENERATOR - Carrier details -->
+      <h3 class="govuk-heading-s">
+        Name and address
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Perfect Print Limited
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            120 South Street<br>
+            Moelfre<br>
+            Derbyshire<br>
+            DE1 7LX<br>
+            England
+          </dd>
+        </div>
+      </dl>
+
+      <!-- WASTE GENERATOR - Contact details -->
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Thomas Smith
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            contact@perfectprint.ltd.uk
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            0702 859 8430
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Fax number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Not provided
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      <!--=========================================-->
+      <!-- RECOVERY FACILITY OR LABORATORY HEADING -->
+      <!--=========================================-->
+      <dl class="govuk-summary-list" id="prohibited-destination">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Recovery facility
+          </dt>
+          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
+          </dd> 
+        </div>
+      </dl>
+
+      <!-- RECOVERY FACILITY OR LABORATORY - Details -->
+      <h3 class="govuk-heading-s">
+        Recovery facility name and address
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Bulk Papers
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            31st Floor, Rajbhavan Road<br>
+            Khairatabad<br>
+            Hyderabad<br>
+            Andhra Pradesh<br>
+            500004<br>
+            India
+          </dd>
+        </div>
+      </dl>
+
+      <!-- RECOVERY FACILITY OR LABORATORY - Contact details -->
+      <h3 class="govuk-heading-s">
+        Contact person and contact details
+      </h3>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Sakari Bhavsar
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            sakari.bhavsar@bulkpapers.in
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            0091 98144 21012
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Fax number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Not provided
+          </dd>
+        </div>
+      </dl>
+      <br><br>
+
+      <!--====================-->
+      <!-- RECOVERY OPERATION --> 
+      <!--====================-->
+      <h2 class="govuk-heading-m">
+        Recovery or disposal code
+      </h2>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            R-code/D-code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            R12: Exchange of wastes for submission to any of the operations numbered R01 to R11
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          </dd> 
+        </div>
+      </dl>
+      <br><br>
+
+      <!--===================-->
+      <!-- USUAL DESCRIPTION -->
+      <!--===================-->
+      <h2 class="govuk-heading-m">
+        Description of the waste
+      </h2>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Description
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Paper scrap - OCC
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          </dd> 
+        </div>
+      </dl>
+      <br><br>
+
+      <!--==============================-->
+      <!-- WASTE IDENTIFICATION HEADING -->
+      <!--==============================-->
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Waste identification codes
+          </dt>
+          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
+          </dd> 
+        </div>
+      </dl>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Basel Annex IX
+          </dt>
+          <dd class="govuk-summary-list__value">
+            B3020: Paper, paperboard and paper product wastes
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            OECD code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Not provided
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Annex IIIA
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Not provided
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Annex IIIB
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Not provided
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            EC list of wastes
+          </dt>
+          <dd class="govuk-summary-list__value">
+            150101: paper and cardboard packaging
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            National code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            47079000
+          </dd>
+        </div>
+    </dl>
+    <br><br>
+
+      <!--==========================-->
+      <!-- COUNTRIES/STATES HEADING --> 
+      <!--==========================-->
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Countries the waste will travel through
+          </dt>
+          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
+          </dd> 
+        </div>
+      </dl>
+      
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Exporting country
+          </dt>
+          <dd class="govuk-summary-list__value">
+            United Kingdom (GB)
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Transit country (or countries)
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Not provided
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Importing country
+          </dt>
+          <dd class="govuk-summary-list__value">
+            India
+          </dd>
+        </div>
+      </dl>
+
+      <!-- END OF TEMPLATE -->
+
+    </div>
+  </div>
+
+{% endblock %}

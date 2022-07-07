@@ -1,0 +1,79 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  What is the recovery or disposal code? - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post" autocomplete="off">
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l">
+              What is the recovery or disposal code?
+            </label>
+          </h1>
+          <div id="event-name-hint" class="govuk-hint">
+            You may know this as an R-code or a D-code. This is the waste recovery or disposal method that 
+            will be used to treat your waste at the overseas reprocessing site.
+          </div>
+
+          <label class="govuk-label" for="sort">
+            Iteration 1:
+          </label>
+          <select class="govuk-select" name="recoveryOperation-exporter-v5" id="recoveryOperation-exporter-v5">
+            <option value="" selected></option>
+            <option value="R1: Use principally as a fuel or other means to generate energy">R1: Use principally as a fuel or other means to generate energy</option>
+            <option value="R2: Solvent reclamation/regeneration">R2: Solvent reclamation/regeneration</option>
+            <option value="R3: Recycling/reclamation of organic substances which are not used as solvents (including composting and other biological transformation processes)">R3: Recycling/reclamation of organic substances which are not used as solvents (including composting and other biological transformation processes)</option>
+            <option value="R4: Recycling/reclamation of metals and metal compounds">R4: Recycling/reclamation of metals and metal compounds</option>
+            <option value="R5: Recycling/reclamation of other inorganic materials">R5: Recycling/reclamation of other inorganic materials</option>
+            <option value="R6: Regeneration of acids or bases">R6: Regeneration of acids or bases</option>
+            <option value="R7: Recovery of components used for pollution abatement">R7: Recovery of components used for pollution abatement</option>
+            <option value="R8: Recovery of components from catalysts">R8: Recovery of components from catalysts</option>
+            <option value="R9: Oil refining or other re-uses of oil">R9: Oil refining or other re-uses of oil</option>
+            <option value="R10: Land treatment resulting in benefit to agriculture or ecological improvement">R10: Land treatment resulting in benefit to agriculture or ecological improvement</option>
+            <option value="R11: Use of wastes obtained from any of the operations numbered R01 to R11">R11: Use of wastes obtained from any of the operations numbered R01 to R11</option>
+            <option value="R12: Exchange of wastes for submission to any of the operations numbered R01 to R11">R12: Exchange of wastes for submission to any of the operations numbered R01 to R11</option>
+            <option value="R13: Storage of wastes pending any of the operations numbered R01 to R12 (excluding temporary storage, pending collection, on the site where it is produced).">R13: Storage of wastes pending any of the operations numbered R01 to R12 (excluding temporary storage, pending collection, on the site where it is produced).</option>
+            <option value="D1: Deposit into or onto land">D1: Deposit into or onto land</option>
+            <option value="D2: Land Treatment">D2: Land Treatment</option>
+            <option value="D3: Deep injection">D3: Deep injection</option>
+            <option value="D4: Surface impoundment">D4: Surface impoundment</option>
+            <option value="D5: Specially engineered landfill">D5: Specially engineered landfill</option>
+            <option value="D6: Release into a water body except seas/oceans">D6: Release into a water body except seas/oceans</option>
+            <option value="D7: Release into seas/oceans including seabed insertion">D7: Release into seas/oceans including seabed insertion</option>
+            <option value="D8: Biological treatment not specified elsewhere which results in final compounds or mixtures which are disposed of by any of the operations numbered D01 to D12">D8: Biological treatment not specified elsewhere which results in final compounds or mixtures which are disposed of by any of the operations numbered D01 to D12</option>
+            <option value="D9: Physico-chemical treatment not specified elsewhere which results in final compounds or mixtures which are disposed of by any of the operations numbered D01 to D12">D9: Physico-chemical treatment not specified elsewhere which results in final compounds or mixtures which are disposed of by any of the operations numbered D01 to D12</option>
+            <option value="D10: Incineration on land">D10: Incineration on land</option>
+            <option value="D11: Incineration at sea">D11: Incineration at sea</option>
+            <option value="D12: Permanent storage">D12: Permanent storage</option>
+            <option value="D13: Blending or mixing prior to submission to any of the operations numbered D01 to D12">D13: Blending or mixing prior to submission to any of the operations numbered D01 to D12</option>
+            <option value="D14: Repackaging prior to submission to any of the operations numbered D01 to D12">D14: Repackaging prior to submission to any of the operations numbered D01 to D12</option>
+            <option value="D15: Storage pending any of the operations numbered D01 to D14 (excluding temporary storage, pending collection, on the site where it is produced)">D15: Storage pending any of the operations numbered D01 to D14 (excluding temporary storage, pending collection, on the site where it is produced)</option>
+          </select>
+          
+          <br><br>
+
+          <label class="govuk-label" for="sort">
+            Iteration 2:
+          </label>
+          <div id="recovery-operation-typeahead-container" data-default-value="{{ data['recovery-operation-typeahead'] }}">
+          </div>
+
+        </div>
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

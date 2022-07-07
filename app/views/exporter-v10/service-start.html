@@ -1,0 +1,54 @@
+
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Export green list waste
+      </h1>
+      
+      <p class="govuk-body">You can use this service to tell us about the future export of green list waste.</p>
+      
+      {{ govukWarningText({
+        text: "Telling us about green list waste exports in advance will become a legal requirement 
+        from 1 April 2023, but you can start using the service today.",
+        iconFallbackText: "Warning"
+      }) }}
+      
+      <p class="govuk-body">
+        Using this service you can:
+      </p>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+        <li>produce an Annex VII form</li>
+        <li>print a copy of the Annex VII form to travel with the waste</li>
+        <li>send export details to your agency automatically</li>
+      </ul>
+
+      {{ govukButton({
+        text: "Sign in",
+        href: "../defra-id/login",
+        isStartButton: true
+      }) }}
+
+      <h2 class="govuk-heading-m">New user?</h2> 
+      <p class="govuk-body"><a href="service-start-gg-create">Create a Government Gateway and Defra account</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}
