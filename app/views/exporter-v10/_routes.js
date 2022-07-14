@@ -454,6 +454,14 @@ router.post('/update-delete-export', function(req, res) {
     }
 })
 
+router.post('/submitted-cancel-export', function(req, res) {
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('submitted-exports');
+    }
+})
+
 // exporter
 router.post('/exporter-postcode', function(req, res) {
     req.session.data['person-arranging-the-shipment-status'] = "Completed";

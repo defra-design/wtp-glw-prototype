@@ -51,7 +51,7 @@
 
       <tbody class="govuk-table__body">
 
-        {% if data ['cancel-export'] == "Yes" %}
+        {% if data ['update-cancel'] == "change"  or data ['update-cancel'] == "export" or data ['update-cancel'] == "other" %}
 
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">Not provided</td>
