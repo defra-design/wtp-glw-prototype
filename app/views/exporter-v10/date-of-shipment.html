@@ -20,9 +20,23 @@
                 Do you know when the waste will be collected?
               </h1>
             </legend>
-            <p class="govuk-body">
-              This must be on 11 July 2022 or after.
-            </p>
+
+            <!---------- DYNAMIC DATE +3 Days ---------->
+
+            <script>
+              const event = new Date();
+              const options = { year: 'numeric', month: 'long'};
+            </script>
+
+            <p class="govuk-body">The earliest this date can be is <script type="text/javascript"> document.write(event.getDate()+3);</script> <script type="text/javascript"> document.write(event.toLocaleDateString(undefined, options));</script></p>
+
+            <!---------- END DYNAMIC DATE ---------->
+
+            <!--        <p class="govuk-body">
+                      This must be on 11 July 2022 or after.
+                      </p> -->
+
+
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="actual-or-estimate-date" name="actual-or-estimate-date" type="radio" value="yes" data-aria-controls="conditional-contact">
