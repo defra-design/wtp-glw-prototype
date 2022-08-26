@@ -1,0 +1,62 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Delete favourite - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Delete the template called "{{ data['template-name'] or 'Fabric Society Waste mixed paper'}}"?
+      </h1>
+
+      <form class="form" method="post">
+
+        {#
+        {{ govukRadios({
+          idPrefix: "delete-template",
+          name: "delete-template",
+          fieldset: {
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes, delete the template",
+              hint: {
+                text: "You will not be able to recover the deleted template"
+              }
+            },
+            {
+              value: "no",
+              text: "No, do not delete the template"
+            }
+          ]
+        }) }}
+        #}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: 'Delete'
+          }) }}
+
+          <a class="govuk-link" href="javascript:history.go(-1)">Cancel</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

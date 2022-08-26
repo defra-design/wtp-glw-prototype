@@ -1,0 +1,97 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  What is the address of the interim site? - Export green list waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        What is the address of the interim site? 
+      </h1>
+
+      <form class="form" method="post">
+
+        {% call govukFieldset({
+          legend: {
+            text: "Address",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }) %}
+
+          {{ govukInput({
+            label: {
+              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+            },
+            id: "interim-site-address-line-1",
+            name: "interim-site-address-line-1",
+            value: data['interim-site-address-line-1'],
+            autocomplete: "address-line1"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+            },
+            id: "interim-site-address-line-2",
+            name: "interim-site-address-line-2",
+            value: data['interim-site-address-line-2'],
+            autocomplete: "address-line2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Town or city"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "interim-site-address-town",
+            name: "interim-site-address-town",
+            value: data['interim-site-address-town'],
+            autocomplete: "address-level2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Region, state or county"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "interim-site-address-county",
+            name: "interim-site-address-county",
+            value: data['interim-site-address-county']
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Postcode or ZIP code"
+            },
+            classes: "govuk-input--width-10",
+            id: "interim-site-address-postcode",
+            name: "interim-site-address-postcode",
+            value: data['interim-site-address-postcode'],
+            autocomplete: "postal-code"
+          }) }}
+        
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label">
+              Country
+            </label>
+          </h2>
+          <div id="interim-site-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['interim-site-typeahead'] }}">
+          </div>
+
+        {% endcall %}
+
+        {{ govukButton({
+          text: 'Save and continue',
+          classes: 'govuk-!-margin-top-2'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

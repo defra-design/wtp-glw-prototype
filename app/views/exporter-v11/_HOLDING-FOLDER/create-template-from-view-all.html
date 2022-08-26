@@ -1,0 +1,71 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Create as a favourite template - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Create as a favourite template
+      </h1>
+
+      <p class="govuk-body govuk-!-padding-bottom-2">
+        Create a favourite template from this export to send a new one quicker next time.
+      </p>
+
+      <p class="govuk-body">Favourite templates will require the following to be completed when used:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>quantity of waste (actual or estimate)</li>
+        <li>waste pick up date (actual or estimate)</li>
+        <li>the first waste carrier</li>
+      </ul>
+
+      <form class="form govuk-!-padding-top-2" method="post">
+
+      {% call govukFieldset({
+      }) %}
+
+      {{ govukInput({
+        label: {
+          text: "What would you like to name this favourite?",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "template-created-from-view-all",
+        name: "template-created-from-view-all",
+        value: data['template-created-from-view-all'],
+        value: ""
+      }) }}
+
+      {% endcall %}
+
+      <div class="govuk-button-group">
+
+        {{ govukButton({
+          text: 'Create favourite'
+        }) }}
+
+        <a class="govuk-link" href="submitted-prenotifications">Cancel</a>
+
+      </div>
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

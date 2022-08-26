@@ -1,0 +1,91 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Update how the first waste carrier will transport the waste with actual details
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+        <form class="form" method="post">
+
+
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Update how the first waste carrier will transport the waste with actual details
+      </h1>
+    </legend>
+
+
+
+    <div class="govuk-radios" data-module="govuk-radios">
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Road" data-aria-controls="conditional-contact" {{ checked }}>
+        <label class="govuk-label govuk-radios__label" for="transport">
+          Road
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+        <div id="contact-hint" class="govuk-hint">
+          Enter container number or vehicle registration number (optional)
+        </div>
+        <div class="govuk-form-group">
+          <input class="govuk-input govuk-!-width-two-thirds" id="transport-road" name="transport-road" type="text" value="Pre populated container or reg">
+          </div>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Rail" data-aria-controls="conditional-contact-2">
+          <label class="govuk-label govuk-radios__label" for="transport">
+            Rail
+          </label>
+        </div>
+        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+          <div id="contact-hint" class="govuk-hint">
+            Enter container number (optional)
+          </div>
+          <div class="govuk-form-group">
+            <input class="govuk-input govuk-!-width-two-thirds" id="transport-rail" name="transport-rail" type="text" value="{{data['transport-rail']}}">
+            </div>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Sea">
+            <label class="govuk-label govuk-radios__label" for="transport">
+              Sea
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Air">
+              <label class="govuk-label govuk-radios__label" for="transport">
+                Air
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-4">
+              </div>
+
+
+    </div>
+
+  </fieldset>
+</div>
+
+      {{ govukButton({
+        text: 'Save and update'
+      }) }}
+
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

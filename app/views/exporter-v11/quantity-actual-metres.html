@@ -1,0 +1,45 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+Enter quantity of waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+
+
+        <div class="govuk-form-group">
+
+            <h1 class="govuk-heading-l">
+              Enter quantity of waste
+            </h1>
+            <p class="govuk-body">
+              Only provide the net weight or volume. Do not include the weight of the container or vehicle.
+            </p>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="weight">
+                Weight, in cubic metres
+              </label>
+                <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="weight" name="actual-metres" value="{{ data['actual-metres'] }}" type="text" spellcheck="false">
+                <!-- <div class="govuk-input__suffix" aria-hidden="true">m3</div> -->
+              </div> 
+            </div>
+            </div>
+
+
+      {{ govukButton({
+        text: 'Save and continue'
+      }) }}
+
+      {% include "./includes/return-to-link.html" %}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
