@@ -1,0 +1,150 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  Do you know when the waste will be collected?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Do you know when the waste will be collected?
+              </h1>
+            </legend>
+
+            <!---------- DYNAMIC DATE +3 Days ---------->
+
+            <script>
+              const event = new Date();
+              const options = { year: 'numeric', month: 'long'};
+            </script>
+
+            <p class="govuk-body">The earliest this date can be is <script type="text/javascript"> document.write(event.getDate()+3);</script> <script type="text/javascript"> document.write(event.toLocaleDateString(undefined, options));</script></p>
+
+            <!---------- END DYNAMIC DATE ---------->
+
+            <!--        <p class="govuk-body">
+                      This must be on 11 July 2022 or after.
+                      </p> -->
+
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="actual-or-estimate-date" name="actual-or-estimate-date" type="radio" value="yes" data-aria-controls="conditional-contact">
+                <label class="govuk-label govuk-radios__label" for="actual-or-estimate-date">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact" name="quantityactual">
+                <fieldset class="govuk-fieldset" role="group" aria-describedby="actual-shipment-hint">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                    <h2 class="govuk-fieldset__heading">
+                      Enter the date
+                    </h2>
+                  </legend>
+                  <div id="actual-shipment-hint" class="govuk-hint">
+                    <p class="govuk-body">
+                      For example, 27 3 2022
+                    </p>
+                  </div>
+                  <div class="govuk-date-input" id="actual-shipment">
+                    <div class="govuk-date-input__item">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label" for="actual-shipment-day">
+                          Day
+                        </label>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="actual-shipment-day" name="actual-shipment-day" value="{{ data['actual-shipment-day'] }}" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                    </div>
+                    <div class="govuk-date-input__item">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label" for="actual-shipment-month">
+                          Month
+                        </label>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="actual-shipment-month" name="actual-shipment-month" value="{{ data['actual-shipment-month'] }}" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                    </div>
+                    <div class="govuk-date-input__item">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label" for="actual-shipment-year">
+                          Year
+                        </label>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="actual-shipment-year" name="actual-shipment-year" value="{{ data['actual-shipment-year'] }}" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="actual-or-estimate-date" name="actual-or-estimate-date" type="radio" value="no" data-aria-controls="conditional-contact-2">
+                <label class="govuk-label govuk-radios__label" for="actual-or-estimate-date">
+                  No, I'll enter an estimate
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2" name="quantityestimate">
+                <p class="govuk-body">You'll need to update this with actual details as soon as possible after submitting this export.</p>
+
+                  <fieldset class="govuk-fieldset" role="group" aria-describedby="estimate-shipment-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      <h2 class="govuk-fieldset__heading">
+                        Enter an estimate date
+                      </h2>
+                    </legend>
+                    <div id="estimate-shipment-hint" class="govuk-hint">
+                      <p class="govuk-body">
+                        For example, 27 3 2022
+                      </p>
+                    </div>
+                    <div class="govuk-date-input" id="estimate-shipment">
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="estimate-shipment-day">
+                            Day
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="estimate-shipment-day" name="estimate-shipment-day" value="{{ data['estimate-shipment-day'] }}" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="estimate-shipment-month">
+                            Month
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="estimate-shipment-month" name="estimate-shipment-month" value="{{ data['estimate-shipment-month'] }}" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="estimate-shipment-year">
+                            Year
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="estimate-shipment-year" name="estimate-shipment-year" value="{{ data['estimate-shipment-year'] }}" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+                      </div>
+                    </div>
+                  </fieldset>
+        </div>
+      </div>
+      </div>
+
+
+
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+
+      {% include "./includes/return-to-link.html" %}
+
+
+    </div>
+
+  </div>
+
+{% endblock %}

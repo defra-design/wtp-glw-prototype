@@ -1,0 +1,42 @@
+
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+  {% if data['manual-bulk'] == 'bulk' %}
+    Spreadsheet submitted and Annex VII created - Export green list waste
+  {% else %}
+    Submission complete and Annex VII created - Export green list waste
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: "Template deleted"
+      }) }} 
+
+      <p class="govuk-heading-m govuk-!-padding-top-4">
+        What would you like to do next?
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="prenotification-templates" class="govuk-link govuk-link--no-visited-state">View templates</a></li>
+        <li><a href="dashboard" class="govuk-link govuk-link--no-visited-state">Return to home</a></li>
+      </ul>
+
+    </div>
+  </div>
+
+{% endblock %}

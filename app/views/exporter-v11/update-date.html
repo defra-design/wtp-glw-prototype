@@ -1,0 +1,63 @@
+{% extends "../layouts/layout-exporter-v5.html" %}
+
+{% block pageTitle %}
+Update the collection date with actual details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="update-check-your-answers-3" method="post">
+
+        <h1 class="govuk-heading-l">
+          Update the collection date with actual details
+        </h1>
+
+
+            <div id="actual-shipment-hint" class="govuk-hint">
+              <p class="govuk-body">
+                For example, 27 3 2022
+              </p>
+            </div>
+            <div class="govuk-date-input" id="actual-shipment">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="actual-shipment-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="actual-shipment-day" name="actual-shipment-day" value="28" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="actual-shipment-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="actual-shipment-month" name="actual-shipment-month" value="06" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="actual-shipment-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="actual-shipment-year" name="actual-shipment-year" value="2022" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+              </div>
+            </div>
+    </div>
+        </div>
+
+
+
+      {{ govukButton({
+        text: 'Save and update'
+      }) }}
+
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
