@@ -1,6 +1,6 @@
 
 
-{% extends "../layouts/layout-exporter-v10.html" %}
+{% extends "../layouts/layout-exporter-v11.html" %}
 
 {% block pageTitle %}
   Do you want to add your own reference number to this export?
@@ -47,6 +47,13 @@
         Do you want to add your own reference number to this export?
       </h1>
     </legend>
+
+    <div id="contact-hint" class="govuk-hint">
+      Your reference number should be unique to the shipment. You can use it to search for your submission in the future.
+    </div>
+
+    <div class="govuk-!-padding-bottom-2"></div>
+
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="ref-no" name="ref-no" type="radio" value="yes" data-aria-controls="conditional-contact" {{ checked("ref-no", "yes") }}>
