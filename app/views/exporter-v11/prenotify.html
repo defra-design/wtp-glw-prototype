@@ -12,6 +12,8 @@
     html: 'This is not a live service.'
   }) }}
 
+  <!---------- Breadcrumbs ---------->
+
   <div class="govuk-breadcrumbs">
     <ol class="govuk-breadcrumbs__list">
       <li class="govuk-breadcrumbs__list-item">
@@ -55,12 +57,16 @@
 
       <ol class="app-task-list">
 
+        <!---------- SECTION 1 ---------->
         {# ABOUT THE WASTE #}
         <li>
           <h2 class="app-task-list__section">
             <span class="app-task-list__section-number">1. </span> About the waste
           </h2>
           <ul class="app-task-list__items">
+
+            <!---------- Waste codes and description ---------->
+
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="waste-codes-and-description" aria-describedby="eligibility-status">
@@ -73,6 +79,9 @@
                 <strong class="govuk-tag app-task-list__tag" id="provide-waste-identification-details-status">Completed</strong>
               {% endif %}
             </li>
+
+            <!---------- Quantity of waste ---------->
+
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="quantity" aria-describedby="read-declaration-status">
@@ -89,27 +98,20 @@
                 <strong class="govuk-tag app-task-list__tag" id="quantity-status">Completed</strong>
               {% endif %}
             </li>
-            <li class="app-task-list__item">
-              <span class="app-task-list__task-name">
-                <a href="date-of-shipment" aria-describedby="read-declaration-status">
-                  Collection date
-                </a>
-              </span>
-              {% if data['date-of-shipment-status'] == null or data['date-of-shipment-status'] == 'Not started' %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="date-of-shipment-status">Not started</strong>
-              {% elif data['date-of-shipment-status'] == 'Completed' %}
-                <strong class="govuk-tag app-task-list__tag" id="date-of-shipment-status">Completed</strong>
-              {% endif %}
-            </li>
+
           </ul>
         </li>
 
+        <!---------- SECTION 2 ---------->
         {# EXPORTER AND IMPORTER DETAILS #}
         <li>
           <h2 class="app-task-list__section">
             <span class="app-task-list__section-number">2. </span> Exporter and importer
           </h2>
           <ul class="app-task-list__items">
+
+            <!---------- Exporter details ---------->
+
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="exporter-postcode" aria-describedby="eligibility-status">
@@ -122,6 +124,9 @@
                 <strong class="govuk-tag app-task-list__tag" id="person-arranging-the-shipment-status">Completed</strong>
               {% endif %}
             </li>
+
+            <!---------- Importer details ---------->
+
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="importer-consignee" aria-describedby="read-declaration-status">
@@ -137,12 +142,31 @@
           </ul>
         </li>
 
+        <!---------- SECTION 3 ---------->
         {# JOURNEY OF WASTE #}
         <li>
           <h2 class="app-task-list__section">
             <span class="app-task-list__section-number">3. </span> Journey of waste
           </h2>
           <ul class="app-task-list__items">
+
+            <!---------- Date of shipment ---------->
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="date-of-shipment" aria-describedby="read-declaration-status">
+                  Collection date
+                </a>
+              </span>
+              {% if data['date-of-shipment-status'] == null or data['date-of-shipment-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="date-of-shipment-status">Not started</strong>
+              {% elif data['date-of-shipment-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="date-of-shipment-status">Completed</strong>
+              {% endif %}
+            </li>
+
+            <!---------- Waste carriers ---------->
+
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="carrier-add-1" aria-describedby="eligibility-status">
@@ -155,6 +179,9 @@
                 <strong class="govuk-tag app-task-list__tag" id="carrier-status">Completed</strong>
               {% endif %}
             </li>
+
+            <!---------- Waste collection details ---------->
+
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="carrier-collect-postcode" aria-describedby="read-declaration-status">
@@ -167,6 +194,9 @@
                 <strong class="govuk-tag app-task-list__tag" id="waste-generator-original-producer-new-producer-or-collector-status">Completed</strong>
               {% endif %}
             </li>
+
+            <!---------- Location waste leaves UK ---------->
+
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="point-of-exit" aria-describedby="leaving-the-uk">
@@ -179,6 +209,9 @@
                 <strong class="govuk-tag app-task-list__tag" id="countries-states-concerned-status">Completed</strong>
               {% endif %}
             </li>
+
+            <!---------- Countries waste will travel through ---------->
+
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="countries-states-concerned" aria-describedby="read-declaration-status">
@@ -194,7 +227,11 @@
           </ul>
         </li>
 
+        <!---------- SECTION 4 ---------->
         {# RECOVERY OR DISPOSAL OF WASTE #}
+
+        <!---------- Recovery or laboratory ---------->
+
         <li>
           <h2 class="app-task-list__section">
             <span class="app-task-list__section-number">4. </span> Treatment of waste

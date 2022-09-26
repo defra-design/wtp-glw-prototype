@@ -16,6 +16,8 @@ router.post('/cookies', function(req, res) {
     }
 })
 
+//---------------------------------------------------------------------------------------------------------
+
 // index
 router.post('/index', function(req, res) {
     // Reset prenotify statuses (move into a function?)
@@ -356,6 +358,8 @@ router.post('/manual-bulk-api', function(req, res) {
     }
 })
 
+//---------------------------------------------------------------------------------------------------------
+
 // template-euromovement
 router.post('/template-euromovement', function(req, res) {
     res.redirect('template-confirmation');
@@ -431,6 +435,8 @@ router.post('/who-arranged-shipment', function(req, res) {
         res.redirect('who-arranged-shipment-details');
     }
 })
+
+//---------------------------------------------------------------------------------------------------------
 
 // preparation
 router.post('/preparation', function(req, res) {
@@ -522,7 +528,7 @@ router.post('/quantity', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
     } else {
-        res.redirect('date-of-shipment');
+        res.redirect('prenotify');
     }
 })
 
@@ -532,7 +538,7 @@ router.post('/quantity-estimate-metres', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
     } else {
-        res.redirect('date-of-shipment');
+        res.redirect('prenotify');
     }
 })
 
@@ -558,7 +564,7 @@ router.post('/importer-consignee', function(req, res) {
 })
 
 
-
+//---------------------------------------------------------------------------------------------------------
 
 // manual-bulk-api
 //router.post('/manual-bulk-api', function(req, res) {
@@ -601,7 +607,7 @@ router.post('/date-of-shipment', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
     } else {
-        res.redirect('prenotify');
+        res.redirect('carrier-add-1');
     }
 })
 
@@ -887,6 +893,8 @@ router.post('/transaction-id', function(req, res) {
     }
 })
 
+//---------------------------------------------------------------------------------------------------------
+
 // check-your-answers
 router.post('/check-your-answers', function(req, res) {
 
@@ -957,13 +965,13 @@ router.post('/delete-template', function(req, res) {
     res.redirect('delete-confirmation');
 })
 
-
+//---------------------- SECTIONS COMPLETED -----------------------------
 
 router.get('/prenotify', function (req, res) {
 
 		var count = 0;
 
-		if(req.session.data['usual-description-of-the-waste-status'] == "Completed" && req.session.data['quantity-status'] == "Completed" && req.session.data['date-of-shipment-status'] == "Completed"){
+		if(req.session.data['usual-description-of-the-waste-status'] == "Completed" && req.session.data['quantity-status'] == "Completed"){
 			count++;
 		}
 
@@ -971,7 +979,7 @@ router.get('/prenotify', function (req, res) {
       count++;
     }
 
-    if(req.session.data['carrier-status'] == "Completed" && req.session.data['waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" && req.session.data['countries-states-concerned-status'] == "Completed"){
+    if(req.session.data['date-of-shipment-status'] == "Completed" && req.session.data['carrier-status'] == "Completed" && req.session.data['waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" && req.session.data['countries-states-concerned-status'] == "Completed"){
       count++;
     }
 
