@@ -17,11 +17,11 @@ Do you have any EC list of wastes?
                 <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
                   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h1 class="govuk-fieldset__heading">
-                      Do you have an EWC code?
+                        Are there any other countries the waste will travel through?
                     </h1>
                   </legend>
                   <div id="contact-hint" class="govuk-hint">
-                    An EWC code (European Waste Catalogue code) is also known as an EC list of waste.
+                    Do not include the exporting or importing country.
                   </div>
                   <div class="govuk-radios" data-module="govuk-radios">
                     <div class="govuk-radios__item">
@@ -32,10 +32,11 @@ Do you have any EC list of wastes?
                     </div>
                     <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact" name="eccode">
                       <div id="contact-hint" class="govuk-hint">
-                        Start typing, then choose from the list
+                        Enter the first country the waste will travel through
                       </div>
                       <div class="govuk-form-group">
-                        <div id="ec-wastes-typeahead-container" data-default-value="{{ data['ec-wastes-typeahead'] }}">
+                        <div id="importer-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['importer-typeahead'] }}">
+                        <!--<div id="ec-wastes-typeahead-container" data-default-value="{{ data['ec-wastes-typeahead'] }}">-->
                         </div>
                       </div>
                     </div>
