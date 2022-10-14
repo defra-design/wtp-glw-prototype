@@ -1754,6 +1754,23 @@ if ($('#transit-typeahead-container').length > 0) {
   })
 }
 
+// Countries autocomplete
+if ($('#countries-typeahead-container').length > 0) {
+  element = document.querySelector('#countries-typeahead-container')
+  id = 'countries-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: countryList,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}
+
 // Import/destination autocomplete
 if ($('#import-destination-typeahead-container').length > 0) {
   element = document.querySelector('#import-destination-typeahead-container')

@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-exporter-v11.html" %}
 
 {% block pageTitle %}
-Do you have any EC list of wastes?
+Are there any other countries the waste will travel through?
 {% endblock %}
 
 {% block content %}
@@ -25,24 +25,23 @@ Do you have any EC list of wastes?
                   </div>
                   <div class="govuk-radios" data-module="govuk-radios">
                     <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="ec-code" name="ec-code" type="radio" value="Yes" data-aria-controls="conditional-contact">
-                      <label class="govuk-label govuk-radios__label" for="ec-code">
+                      <input class="govuk-radios__input" id="countries-state" name="countries-state" type="radio" value="Yes" data-aria-controls="conditional-contact">
+                      <label class="govuk-label govuk-radios__label" for="countries-state">
                         Yes
                       </label>
                     </div>
-                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact" name="eccode">
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact" name="countriestate">
                       <div id="contact-hint" class="govuk-hint">
                         Enter the first country the waste will travel through
                       </div>
                       <div class="govuk-form-group">
-                        <div id="importer-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['importer-typeahead'] }}">
-                        <!--<div id="ec-wastes-typeahead-container" data-default-value="{{ data['ec-wastes-typeahead'] }}">-->
+                        <div id="transit-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['transit-typeahead'] }}">
                         </div>
                       </div>
                     </div>
                     <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="ec-code" name="ec-code" type="radio" value="No" data-aria-controls="conditional-contact-2">
-                      <label class="govuk-label govuk-radios__label" for="ec-code">
+                      <input class="govuk-radios__input" id="countries-state" name="countries-state" type="radio" value="No" data-aria-controls="conditional-contact-2">
+                      <label class="govuk-label govuk-radios__label" for="countries-state">
                         No
                       </label>
                     </div>

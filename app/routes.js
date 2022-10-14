@@ -74,6 +74,8 @@ router.use('/agency-officer-v1/', (req, res, next) => {
   return require(`./views/agency-officer-v1/_routes`)(req, res, next);
 })
 
+//---------------------------------------------------------------------
+
 // Import Exporter V11 routes
 router.use('/exporter-v11/', (req, res, next) => {
   //req.session.data["entered-criteria"] = undefined;
@@ -137,6 +139,9 @@ router.use('/exporter-v1/', (req, res, next) => {
     return require(`./views/exporter-v1/_routes`)(req, res, next);
 })
 
+
+//---------------------------------------------------------------------
+
 // Import alpha-assessment-defra-id
 router.use('/alpha-assessment-defra-id', require('./views/alpha-assessment-defra-id/_routes'));
 
@@ -149,6 +154,8 @@ router.use('/alpha-assessment-agency-officer/', (req, res, next) => {
 router.use('/alpha-assessment-exporter/', (req, res, next) => {
   return require(`./views/alpha-assessment-exporter/_routes`)(req, res, next);
 })
+
+//---------------------------------------------------------------------
 
 // SET GLOBAL PREVIOUS PAGE
 router.use('/', (req, res, next) => {

@@ -1,0 +1,49 @@
+{% extends "../layouts/layout-exporter-v11.html" %}
+
+{% block pageTitle %}
+Select another country
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+            <form class="form" method="post">
+
+              <div class="govuk-form-group">
+
+
+
+                <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                      <h1 class="govuk-fieldset__heading">
+                        Select another country
+                      </h1>
+                    </legend>
+                    <div id="contact-hint" class="govuk-hint">
+                        Do not include the exporting or importing country
+                    </div>
+                    <div id="transit-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['transit-typeahead'] }}">
+                    </div>
+
+                  </fieldset>
+                </div>
+
+            </div>
+
+
+
+            {{ govukButton({
+              text: 'Save and continue'
+            }) }}
+
+            {% include "./includes/return-to-link.html" %}
+
+
+          </form>
+
+        </div>
+      </div>
+
+    {% endblock %}
