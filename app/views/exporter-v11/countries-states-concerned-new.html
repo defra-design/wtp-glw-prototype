@@ -12,7 +12,6 @@ Are there any other countries the waste will travel through?
 
               <div class="govuk-form-group">
 
-
               <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
                   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -25,7 +24,7 @@ Are there any other countries the waste will travel through?
                   </div>
                   <div class="govuk-radios" data-module="govuk-radios">
                     <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="countries-state" name="countries-state" type="radio" value="Yes" data-aria-controls="conditional-contact">
+                      <input class="govuk-radios__input" id="countries-state" name="countries-state" type="radio" value="Yes" data-aria-controls="conditional-contact" {{ checked("countries-state", "yes") }}>
                       <label class="govuk-label govuk-radios__label" for="countries-state">
                         Yes
                       </label>
@@ -40,7 +39,7 @@ Are there any other countries the waste will travel through?
                       </div>
                     </div>
                     <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="countries-state" name="countries-state" type="radio" value="No" data-aria-controls="conditional-contact-2">
+                      <input class="govuk-radios__input" id="countries-state" name="countries-state" type="radio" value="No" data-aria-controls="conditional-contact-2" {{ checked("countries-state", "no") }}>
                       <label class="govuk-label govuk-radios__label" for="countries-state">
                         No
                       </label>

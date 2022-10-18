@@ -633,6 +633,7 @@ router.post('/countries-add-another', function(req, res) {
         if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
             res.redirect('check-your-answers');
         } else {
+            req.session.data['countries-states-concerned-status'] = "Completed";
             res.redirect('prenotify');
         }
     }
@@ -836,7 +837,7 @@ router.post('/point-of-exit', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
     } else {
-        res.redirect('countries-states-concerned');
+        res.redirect('countries-states-concerned-new');
     }
 })
 
@@ -875,7 +876,7 @@ router.post('/waste-identification-codes', function(req, res) {
 })
 
 // countries-states-concerned
-router.post('/countries-states-concerned', function(req, res) {
+router.post('/countries-states-concerne-new', function(req, res) {
     req.session.data['countries-states-concerned-status'] = "Completed";
 
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
@@ -1085,7 +1086,7 @@ router.get('/prenotify', function (req, res) {
  //------ countries-state country counter
  router.post('/countries-states-concerned-new', function(req, res) {
     console.log(typeof req.session.data['country-count']);
-    if(req.session.data['countries-states-concerned-new']=='Yes'){
+    if(req.session.data['countries-state']=='Yes'){
       if(typeof req.session.data['country-count'] == "undefined"){
         req.session.data['country-count'] = 0;
       }
@@ -1096,7 +1097,7 @@ router.get('/prenotify', function (req, res) {
       req.session.data['country-'+req.session.data['country-count']] = req.session.data['transit-typeahead'];
       res.redirect('countries-add-another');
     }
-    else if (req.session.data['countries-states-concerned-new']=='No') {
+    else if (req.session.data['countries-state']=='No') {
       res.redirect('prenotify');
     }
 });
@@ -1121,7 +1122,7 @@ router.post('/countries-add-2', function(req, res) {
     }
 
     req.session.data['country-'+req.session.data['country-count']] = req.session.data['transit-typeahead'];
-    res.redirect('countries-add-another');
+    res.redirect('countries-add-another');  
 });
 
 
