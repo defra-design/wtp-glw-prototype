@@ -876,7 +876,7 @@ router.post('/waste-identification-codes', function(req, res) {
 })
 
 // countries-states-concerned
-router.post('/countries-states-concerne-new', function(req, res) {
+router.post('/countries-states-concerned-new', function(req, res) {
     req.session.data['countries-states-concerned-status'] = "Completed";
 
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
