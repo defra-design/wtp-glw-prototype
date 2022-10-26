@@ -876,15 +876,15 @@ router.post('/waste-identification-codes', function(req, res) {
 })
 
 // countries-states-concerned
-router.post('/countries-states-concerned-new', function(req, res) {
-    req.session.data['countries-states-concerned-status'] = "Completed";
+/* router.post('/countries-states-concerned-new', function(req, res) {
+    //req.session.data['countries-states-concerned-status'] = "Completed";
 
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers#countries-concerned');
     } else {
         res.redirect('prenotify');
     }
-})
+}) */
 
 // consignmnet-number
 router.post('/container-number', function(req, res) {
@@ -1082,10 +1082,10 @@ router.get('/prenotify', function (req, res) {
 
 
 
-
  //------ countries-state country counter
+
  router.post('/countries-states-concerned-new', function(req, res) {
-    console.log(typeof req.session.data['country-count']);
+    console.log(req.session.data['country-state']);
     if(req.session.data['countries-state']=='Yes'){
       if(typeof req.session.data['country-count'] == "undefined"){
         req.session.data['country-count'] = 0;
@@ -1098,6 +1098,7 @@ router.get('/prenotify', function (req, res) {
       res.redirect('countries-add-another');
     }
     else if (req.session.data['countries-state']=='No') {
+    req.session.data['countries-states-concerned-status'] = "Completed";
       res.redirect('prenotify');
     }
 });
