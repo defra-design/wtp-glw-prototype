@@ -88,11 +88,33 @@
             <!---------- Quantity of waste ---------->
 
             <li class="app-task-list__item">
+
+              <!-- Turns the link on and off -->
               <span class="app-task-list__task-name">
+                
+                  {% if data ['code'] == "basel" or data ['code'] == "oecd" or data ['code'] == "annex-a" or data ['code'] == "annex-b" %}
+                  <a href="quantity" aria-describedby="eligibility-status">
+                  Quantity of waste
+                  {% elseif data ['code'] == "not-applicable" %}
+                  <span class="app-task-list__task-name">
+                    Quantity of waste
+                  </span>
+                  {% else %}
+                  <span class="app-task-list__task-name">
+                    Quantity of waste
+                  </span>
+                  {% endif %}
+                </a>
+              </span>
+
+              <!-- 
+                <span class="app-task-list__task-name">
                 <a href="quantity" aria-describedby="read-declaration-status">
                   Quantity of waste
                 </a>
               </span>
+             -->
+
               {% if data['usual-description-of-the-waste-status'] == null or data['usual-description-of-the-waste-status'] == 'Not started' and
               data['quantity-status'] == null or data['quantity-status'] == 'Not started' %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-export">Cannot start yet</strong>
@@ -248,6 +270,7 @@
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
 
+                <!-- Turns the link on and off -->
                   {% if data ['code'] == "not-applicable" %}
                   <a href="recovery-facility-laboratory" aria-describedby="eligibility-status">
                   Laboratory details
@@ -262,7 +285,7 @@
                 </a>
               </span>
 
-              <!-- Turns the link on and off -->
+              <!-- Sets the tag status -->
               {% if data['usual-description-of-the-waste-status'] == null or data['usual-description-of-the-waste-status'] == 'Not started' and
               data['quantity-status'] == null or data['quantity-status'] == 'Not started' %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-export">Cannot start yet</strong>
