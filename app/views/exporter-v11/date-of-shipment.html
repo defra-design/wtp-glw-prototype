@@ -1,4 +1,4 @@
-{% extends "../layouts/layout-exporter-v11.html" %}
+{% extends "../layouts/layout-exporter-current.html" %}
 
 {% block pageTitle %}
   Do you know when the waste will be collected?
@@ -21,7 +21,7 @@
               </h1>
             </legend>
 
-            <!---------- DYNAMIC DATE +3 Days ---------->
+<!--             ---------- DYNAMIC DATE +3 Days ----------
 
             <script>
               const event = new Date();
@@ -32,9 +32,8 @@
 
             <!---------- END DYNAMIC DATE ---------->
 
-            <!--        <p class="govuk-body">
-                      This must be on 11 July 2022 or after.
-                      </p> -->
+            <p class="govuk-body">
+                      The collection date must be at least 3 working days from today</p>
 
 
             <div class="govuk-radios" data-module="govuk-radios">

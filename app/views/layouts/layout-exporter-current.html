@@ -1,3 +1,6 @@
+{#----- This file needs to be cloned for every new version of the prototype and version references updated below! -----#}
+{#----- The previous version can then be used as a backup - this was started at V11. -----#}
+
 {#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
 {%- set assetPath = '/govuk/assets' -%}
 
@@ -77,6 +80,7 @@
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
+{# ----- Update the version number in the Phase banner here ------ #}
 {% block beforeContent %}
   <div class="govuk-phase-banner">
     <p class="govuk-phase-banner__content">
@@ -94,6 +98,7 @@
   }) }}
 {% endblock %}
 
+{# ----- Update links to version pages here ------ #}
 {% if useAutoStoreData %}
   {% block footer %}
     <footer class="govuk-footer " role="contentinfo">

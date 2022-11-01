@@ -1,16 +1,20 @@
-{% extends "../layouts/layout-exporter-v11.html" %}
+{% extends "../layouts/layout-exporter-current.html" %}
 
 {% block pageTitle %}
   Export green list waste
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "prototype"
-    },
-    html: 'This is not a live service.'
-  }) }}
+  <div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 11 - This is not a live service.
+    </span>
+  </p>
+  </div>
 
   <!---------- Breadcrumbs ---------->
 
@@ -57,7 +61,8 @@
 
       <ol class="app-task-list">
 
-        <!---------- SECTION 1 ---------->
+        <!------------------ SECTION 1 ------------------------>
+
         {# ABOUT THE WASTE #}
         <li>
           <h2 class="app-task-list__section">
@@ -102,7 +107,8 @@
           </ul>
         </li>
 
-        <!---------- SECTION 2 ---------->
+        <!----------------- SECTION 2 ---------------------->
+
         {# EXPORTER AND IMPORTER DETAILS #}
         <li>
           <h2 class="app-task-list__section">
@@ -142,7 +148,8 @@
           </ul>
         </li>
 
-        <!---------- SECTION 3 ---------->
+        <!------------------- SECTION 3 ------------------------->
+
         {# JOURNEY OF WASTE #}
         <li>
           <h2 class="app-task-list__section">
@@ -227,7 +234,8 @@
           </ul>
         </li>
 
-        <!---------- SECTION 4 ---------->
+        <!--------------------- SECTION 4 ----------------------------->
+
         {# RECOVERY OR DISPOSAL OF WASTE #}
 
         <!---------- Recovery or laboratory ---------->
@@ -254,6 +262,7 @@
                 </a>
               </span>
 
+              <!-- Turns the link on and off -->
               {% if data['usual-description-of-the-waste-status'] == null or data['usual-description-of-the-waste-status'] == 'Not started' and
               data['quantity-status'] == null or data['quantity-status'] == 'Not started' %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-export">Cannot start yet</strong>
@@ -263,7 +272,6 @@
 
               {% elseif data['recovery-facility-or-laboratory-status'] == 'Completed' %}
                 <strong class="govuk-tag app-task-list__tag" id="recovery-facility-or-laboratory-status">Completed</strong>
-
 
               {% endif %}
 
