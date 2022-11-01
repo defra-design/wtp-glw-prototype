@@ -812,7 +812,8 @@ router.post('/waste-codes-and-description', function(req, res) {
 
 
 router.post('/national-code', function(req, res) {
-    req.session.data['usual-description-of-the-waste-status'] = "Completed";
+    //req.session.data['usual-description-of-the-waste-status'] = "Completed";
+    req.session.data['usual-description-of-the-waste-status'] = "In Progress";
 
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
@@ -853,7 +854,8 @@ router.post('/waste-description', function(req, res) {
     }
 })
 
-// usual-description
+/* ** NO LONGER IN USE v11 ***
+// usual-description 
 router.post('/usual-description', function(req, res) {
     req.session.data['usual-description-of-the-waste-status'] = "Completed";
 
@@ -862,8 +864,10 @@ router.post('/usual-description', function(req, res) {
     } else {
         res.redirect('prenotify');
     }
-})
+}) 
+*/
 
+/* ** NO LONGER IN USE v11 ***
 // waste-identification-codes
 router.post('/waste-identification-codes', function(req, res) {
     req.session.data['waste-identification-codes-status'] = "Completed";
@@ -874,6 +878,7 @@ router.post('/waste-identification-codes', function(req, res) {
         res.redirect('prenotify');
     }
 })
+*/
 
 // countries-states-concerned
 /* router.post('/countries-states-concerned-new', function(req, res) {
