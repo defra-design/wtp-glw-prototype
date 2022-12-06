@@ -1,0 +1,104 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  Enter the additional waste carrier’s details
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+        <form class="form" method="post">
+
+    <h1 class="govuk-heading-l">
+      Enter the additional waste carrier’s details
+    </h1>
+
+      <fieldset class="govuk-fieldset">
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="additonalcarrier">
+            Organisation name <span class="govuk-visually-hidden">line 1 of 2</span>
+          </label>
+          <input class="govuk-input govuk-!-width-three-quarters" id="additonalcarrier" name="additonalcarrier" type="text" value="">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="additonal-carrier-address">
+            Address
+          </label>
+          <textarea class="govuk-textarea" id="additonal-carrier-address" name="additonal-carrier-address" rows="5" autocomplete="street-address"></textarea>
+        </div>
+
+        <h2 class="govuk-label-wrapper">
+          <label class="govuk-label">
+            Country
+          </label>
+        </h2>
+        <div id="third-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="">
+        </div>
+
+</fieldset>
+
+<br>
+<br>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Contact details
+      </h1>
+    </legend>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="additonal-carrier-contact-name">
+        Full name
+      </label>
+      <input class="govuk-input govuk-!-width-three-quarters" id="additonal-carrier-contact-name" name="additonal-carrier-contact-name" type="text">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="first-carrier-email">
+        Email address
+      </label>
+      <input class="govuk-input govuk-!-width-one-half" id="additonal-carrier-email" name="additonal-carrier-email" type="email" value="">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="additonal-carrier-phone">
+        Phone number
+      </label>
+      <div id="contact-hint" class="govuk-hint">
+         Include the country code for international numbers.
+      </div>
+      <input class="govuk-input govuk-!-width-one-third" id="additonal-carrier-phone" name="additonal-carrier-phone" type="tel" value="">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="additonal-carrier-fax">
+        Fax number (optional)
+      </label>
+      <div id="contact-hint" class="govuk-hint">
+         Include the country code for international numbers.
+      </div>
+      <input class="govuk-input govuk-!-width-one-third" id="additonal-carrier-fax" name="additonal-carrier-fax" type="tel" value="">
+    </div>
+
+
+  </fieldset>
+</div>
+
+      {{ govukButton({
+        text: 'Save and continue'
+      }) }}
+
+      {% include "./includes/return-to-link.html" %}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

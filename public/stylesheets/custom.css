@@ -252,3 +252,24 @@ button.button-as-link:hover {
 .govuk-width-container-email {
   max-width: 600px;
 }
+
+.div-line {
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: #d3d3d3;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.file-image-container {
+  float: left;
+  padding-right: 30px;
+}
+
+.file-download-details-container {
+  float: inline;
+}
+
+.error-table-cell {
+  width: 200px;
+}
