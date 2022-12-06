@@ -1,0 +1,489 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  Check this export
+{% endblock %}
+
+{% block content %}
+
+          <div class="govuk-width-container">
+
+
+            <main class="govuk-main-wrapper " id="main-content" role="main">
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds-from-desktop">
+
+                  <h1 class="govuk-heading-l">Check this export</h1>
+
+                  <h2 class="govuk-heading-m">Your reference number</h2>
+
+                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Reference number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {% if data ['ref-no'] == "yes" %}
+                        <p class="govuk-body">{{data['enter-ref']}}</p>
+
+                        {% elseif data ['ref-no'] == "no" %}
+                        <p class="govuk-body">Not provided</p>
+                        {% endif %}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="unique-ref">
+                          Change<span class="govuk-visually-hidden"> Reference number</span>
+                        </a>
+                      </dd>
+                    </div>
+                    </dl>
+
+                  <h2 class="govuk-heading-m">About the waste</h2>
+
+                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Waste code
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {% if data ['code'] == "basel" %}
+                        <p class="govuk-body">Basel</p>
+                          <p class="govuk-body">{{ data['basel-annex-ix-typeahead'] }}</p>
+
+                        {% elseif data ['code'] == "oecd" %}
+                        <p class="govuk-body">OECD</p>
+                          <p class="govuk-body">{{ data['oecd-typeahead'] }}</p>
+
+                        {% elseif data ['code'] == "annex-a" %}
+                        <p class="govuk-body">Annex IIIA</p>
+                          <p class="govuk-body">{{ data['annex-iiia-typeahead'] }}</p>
+
+                        {% elseif data ['code'] == "annex-b" %}
+                        <p class="govuk-body">Annex IIIB</p>
+                          <p class="govuk-body">{{ data['annex-iiib-typeahead'] }}</p>
+
+                        {% elseif data ['code'] == "not-applicable" %}
+                        <p class="govuk-body">Not applicable</p>
+                        {% endif %}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="waste-codes-and-description">
+                          Change<span class="govuk-visually-hidden"> waste code</span>
+                        </a>
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        EWC codes
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {% if data ['ec-code'] == "Yes" %}
+                        <p class="govuk-body">010101: wastes from mineral metalliferous excavation</p>
+                        <p class="govuk-body">010102: wastes from mineral non-metalliferous excavation</p>
+
+                        {% elseif data ['ec-code'] == "No" %}
+                        <p class="govuk-body">Not provided</p>
+                        {% endif %}
+
+
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="code-add-another">
+                          Change<span class="govuk-visually-hidden"> EWC codes</span>
+                        </a>
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        National code
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {% if data ['nat-code'] == "yes" %}
+                        <p class="govuk-body">{{data['national-code']}}</p>
+
+                        {% elseif data ['nat-code'] == "no" %}
+                        <p class="govuk-body">Not provided</p>
+                        {% endif %}
+
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="national-code">
+                          Change<span class="govuk-visually-hidden"> national code</span>
+                        </a>
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Waste description
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">{{ data['usual-description'] }}</p>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="waste-description">
+                          Change<span class="govuk-visually-hidden"> waste description</span>
+                        </a>
+                      </dd>
+                    </div>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Waste quantity
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">
+                          {% if data ['quantity'] == "yes" %}
+                          <p class="govuk-body">Actual<br>{{ data['quantity-weight-actual'] }} tonnes</p>
+
+                          {% elseif data ['quantity'] == "no" %}
+                          <p class="govuk-body">Estimate<br>{{ data['quantity-weight-estimate'] }} tonnes</p>
+                          {% endif %}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="quantity">
+                          Change<span class="govuk-visually-hidden"> waste quantity</span>
+                        </a>
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Collection date
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {% if data ['actual-or-estimate-date'] == "yes" %}
+                        <p class="govuk-body">Actual</p>
+
+                        {% elseif data ['actual-or-estimate-date'] == "no" %}
+                        <p class="govuk-body">Estimate</p>
+                        {% endif %}
+
+
+                        {% if data['actual-or-estimate-date'] == 'no' %}
+                          {# Estimated shipment date enrered #}
+                          {{ data['estimate-shipment-day'] }}
+                          {% if data['estimate-shipment-month'] == '1' or data['estimate-shipment-month'] == '01' %}
+                            January
+                          {% elif data['estimate-shipment-month'] == '2' or data['estimate-shipment-month'] == '02' %}
+                            February
+                          {% elif data['estimate-shipment-month'] == '3' or data['estimate-shipment-month'] == '03' %}
+                            March
+                          {% elif data['estimate-shipment-month'] == '4' or data['estimate-shipment-month'] == '04' %}
+                            April
+                          {% elif data['estimate-shipment-month'] == '5' or data['estimate-shipment-month'] == '05' %}
+                            May
+                          {% elif data['estimate-shipment-month'] == '6' or data['estimate-shipment-month'] == '06' %}
+                            June
+                          {% elif data['estimate-shipment-month'] == '7' or data['estimate-shipment-month'] == '07' %}
+                            July
+                          {% elif data['estimate-shipment-month'] == '8' or data['estimate-shipment-month'] == '08' %}
+                            August
+                          {% elif data['estimate-shipment-month'] == '9' or data['estimate-shipment-month'] == '09' %}
+                            September
+                          {% elif data['estimate-shipment-month'] == '10' or data['estimate-shipment-month'] == '10' %}
+                            October
+                          {% elif data['estimate-shipment-month'] == '11' or data['estimate-shipment-month'] == '11' %}
+                            November
+                          {% elif data['estimate-shipment-month'] == '12' or data['estimate-shipment-month'] == '12' %}
+                            December
+                          {% else %}
+                            January
+                          {% endif %}
+                          {{ data['estimate-shipment-year'] }}
+                        {% else %}
+                          {# Actual shipment date enrered #}
+                          {{ data['actual-shipment-day'] }}
+                          {% if data['actual-shipment-month'] == '1' or data['actual-shipment-month'] == '01' %}
+                            January
+                          {% elif data['actual-shipment-month'] == '2' or data['actual-shipment-month'] == '02' %}
+                            February
+                          {% elif data['actual-shipment-month'] == '3' or data['actual-shipment-month'] == '03' %}
+                            March
+                          {% elif data['actual-shipment-month'] == '4' or data['actual-shipment-month'] == '04' %}
+                            April
+                          {% elif data['actual-shipment-month'] == '5' or data['actual-shipment-month'] == '05' %}
+                            May
+                          {% elif data['actual-shipment-month'] == '6' or data['actual-shipment-month'] == '06' %}
+                            June
+                          {% elif data['actual-shipment-month'] == '7' or data['actual-shipment-month'] == '07' %}
+                            July
+                          {% elif data['actual-shipment-month'] == '8' or data['actual-shipment-month'] == '08' %}
+                            August
+                          {% elif data['actual-shipment-month'] == '9' or data['actual-shipment-month'] == '09' %}
+                            September
+                          {% elif data['actual-shipment-month'] == '10' or data['actual-shipment-month'] == '10' %}
+                            October
+                          {% elif data['actual-shipment-month'] == '11' or data['actual-shipment-month'] == '11' %}
+                            November
+                          {% elif data['actual-shipment-month'] == '12' or data['actual-shipment-month'] == '12' %}
+                            December
+                          {% else %}
+                            January
+                          {% endif %}
+                          {{ data['actual-shipment-year'] }}
+                        {% endif %}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="date-of-shipment">
+                          Change<span class="govuk-visually-hidden"> collection date</span>
+                        </a>
+                      </dd>
+                    </div>
+                  </dl>
+
+                  <h2 class="govuk-heading-m">Exporter and importer</h2>
+
+                  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Exporter details
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                      <p class="govuk-body">{{ data['exporter-full-name'] }}</p>
+                      <p class="govuk-body">28 Wakefield street<br>Manchester<br>M1 4YU</p>
+                      <p class="govuk-body">{{ data['exporter-email'] }}</p>
+                      <p class="govuk-body">{{ data['exporter-phone'] }}</p>
+                      <p class="govuk-body">{{ data['exporter-fax'] }}</p>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="who-arranged-shipment-details">
+                          Change<span class="govuk-visually-hidden"> exporter details</span>
+                        </a>
+                      </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Importer details
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <p class="govuk-body">{{ data['importer-name'] }}</p>
+                        <p class="govuk-body">{{ data['importer-address'] }}</p>
+                        <p class="govuk-body">{{ data['importer-typeahead'] }}</p>
+                        <p class="govuk-body">{{ data['importer-contact-name'] }}</p>
+                        <p class="govuk-body">{{ data['importer-contact-by-phone'] }}</p>
+                        <p class="govuk-body">{{ data['importer-contact-by-fax'] }}</p>
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a class="govuk-link" href="importer-consignee">
+                          Change<span class="govuk-visually-hidden"> importer details</span>
+                        </a>
+                      </dd>
+                    </div>
+                    </dl>
+
+                    <h2 class="govuk-heading-m">Journey of waste</h2>
+
+                    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          First waste carrier
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          <p class="govuk-body">{{ data['first-carrier-org-name'] }}</p>
+                          <p class="govuk-body">{{ data['first-carrier-address'] }}</p>
+                          <p class="govuk-body">{{ data['first-carrier-typeahead'] }}</p>
+                          <p class="govuk-body">{{ data['first-carrier-contact-name'] }}</p>
+                          <p class="govuk-body">{{ data['first-carrier-email'] }}</p>
+                          <p class="govuk-body">{{ data['first-carrier-phone'] }}</p>
+                          <p class="govuk-body">{{ data['first-carrier-fax'] }}</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="carrier-add-1">
+                            Change<span class="govuk-visually-hidden"> first waste carrier</span>
+                          </a>
+                        </dd>
+                      </div>
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          First carrier transport waste
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {% if data ['transport'] == "Road" %}
+                          <p class="govuk-body">Road</p>
+                            <p class="govuk-body">{{ data['transport-road'] }}</p>
+
+                            {% elseif data ['transport'] == "Rail" %}
+                            <p class="govuk-body">Rail</p>
+                              <p class="govuk-body">{{ data['transport-rail'] }}</p>
+
+                              {% elseif data ['transport'] == "Sea" %}
+                              <p class="govuk-body">Sea</p>
+
+                              {% elseif data ['transport'] == "Air" %}
+                              <p class="govuk-body">Air</p>
+
+                            {% endif %}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="carrier-transport-1">
+                            Change<span class="govuk-visually-hidden"> first carrier transport waste</span>
+                          </a>
+                        </dd>
+                      </div>
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Additional waste carriers
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {% if data ['add-second-carrier'] == "Yes" %}
+                          <p class="govuk-body">{{ data['additonalcarrier'] }}</p>
+                          <p class="govuk-body">{{ data['additonal-carrier-address'] }}</p>
+                          <p class="govuk-body">{{ data['third-carrier-typeahead'] }}</p>
+                          <p class="govuk-body">{{ data['additonal-carrier-contact-name'] }}</p>
+                          <p class="govuk-body">{{ data['additonal-carrier-email'] }}</p>
+                          <p class="govuk-body">{{ data['additonal-carrier-phone'] }}</p>
+                          <p class="govuk-body">{{ data['additonal-carrier-fax'] }}</p>
+
+                          {% elseif data ['add-second-carrier'] == "No" %}
+                          <p class="govuk-body">Not provided</p>
+                          {% endif %}
+
+
+
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="carrier-check">
+                            Change<span class="govuk-visually-hidden"> additional waste carriers</span>
+                          </a>
+                        </dd>
+                      </div>
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Waste collection details
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          <p class="govuk-body">{{ data['waste-name'] }}</p>
+                          <p class="govuk-body">5 Stafford Park<br>Telford<br>TF6 3RT<br>England</p>
+                          <p class="govuk-body">{{ data['carrier-collect-full-name'] }}</p>
+                          <p class="govuk-body">{{ data['carrier-collect-email'] }}</p>
+                          <p class="govuk-body">{{ data['carrier-collect-phone'] }}</p>
+                          <p class="govuk-body">{{ data['carrier-collect-fax'] }}</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="waste-generator">
+                            Change<span class="govuk-visually-hidden"> waste collection details</span>
+                          </a>
+                        </dd>
+                      </div>
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Location waste leaves the UK
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {% if data ['exit'] == "yes" %}
+                          <p class="govuk-body">{{ data['exit-location'] }}</p>
+
+                          {% elseif data ['exit'] == "no" %}
+                          <p class="govuk-body">Not provided</p>
+                          {% endif %}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="point-of-exit">
+                            Change<span class="govuk-visually-hidden"> Leaving the UK</span>
+                          </a>
+                        </dd>
+                      </div>
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Countries waste will travel through
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {% if data ['transit'] == "yes" %}
+                          <p class="govuk-body">{{ data['transit-countries'] }}</p>
+
+                          {% elseif data ['transit'] == "no" %}
+                          <p class="govuk-body">Not provided</p>
+                          {% endif %}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="countries-add-another">
+                            Change<span class="govuk-visually-hidden"> Transit countries</span>
+                          </a>
+                        </dd>
+                      </div>
+                      </dl>
+
+
+                      <h2 class="govuk-heading-m">Treatment of waste</h2>
+
+                      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            {% if data ['code'] == "not-applicable" %} Laboratory name
+                            {% else %} Recovery facility name
+                             {% endif %}
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            <p class="govuk-body">{{ data['facility-name'] }}</p>
+                            <p class="govuk-body">{{ data['facility-address'] }}</p>
+                            <p class="govuk-body">{{ data['facility-or-lab-typeahead'] }}</p>
+                            <p class="govuk-body">{{ data['facility-full-name'] }}</p>
+                            <p class="govuk-body">{{ data['facility-email'] }}</p>
+                            <p class="govuk-body">{{ data['facility-phone'] }}</p>
+                            <p class="govuk-body">{{ data['facility-fax'] }}</p>
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="recovery-facility-laboratory">
+                              Change<span class="govuk-visually-hidden"> recovery facility</span>
+                            </a>
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            {% if data ['code'] == "not-applicable" %} Disposal code
+                            {% else %} Recovery code
+                             {% endif %}
+
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            <p class="govuk-body">{{ data['recovery-operation-typeahead'] }}</p>
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="recovery-operation">
+                              Change<span class="govuk-visually-hidden"> recovery code</span>
+                            </a>
+                          </dd>
+                        </div>
+                  </dl>
+
+                  <h2 class="govuk-heading-m">Now submit export</h2>
+
+                  <p class="govuk-body">By submitting this export, you confirm that:</p>
+
+                  {% if data ['code'] == "not-applicable" %}
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>all the information you've provided is complete and correct to the best of your knowledge</li>
+                    <li>you've checked with the relevant authorities if there are any local controls that apply in any country involved in the journey of the waste</li>
+                    <li>you've classified the waste appropriately</li>
+                  </ul>
+
+                  {% else %}
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>all the information you've provided is complete and correct to the best of your knowledge</li>
+                    <li>there is an effective written contractual obligation with the consignee</li>
+                    <li>you've checked with the relevant authorities if there are any local controls that apply in any country involved in the journey of the waste</li>
+                    <li>you've classified the waste appropriately</li>
+                  </ul>
+
+                  {% endif %}
+
+
+
+                  <form action="confirmation" method="post" novalidate>
+
+                    <input type="hidden" name="answers-checked" value="true">
+
+                    <button class="govuk-button" data-module="govuk-button">
+                      Confirm and submit
+                    </button>
+
+                          {% include "./includes/return-to-link.html" %}
+
+                  </form>
+
+                </div>
+              </div>
+            </main>
+          </div>
+
+
+{% endblock %}

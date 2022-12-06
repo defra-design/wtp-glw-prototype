@@ -1,0 +1,44 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+Enter an EWC code
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+            <form class="form" method="post">
+
+              <div class="govuk-form-group">
+
+                <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                      <h1 class="govuk-fieldset__heading">
+                        Enter an EWC code
+                      </h1>
+                    </legend>
+                    <div id="contact-hint" class="govuk-hint">
+                      Start typing a code, then choose from the list
+                    </div>
+                    <div id="ec-wastes-lab-typeahead-container" data-default-value="">
+                    </div>
+
+                  </fieldset>
+                </div>
+
+            </div>
+
+            {{ govukButton({
+              text: 'Save and continue'
+            }) }}
+
+            {% include "./includes/return-to-link.html" %}
+
+          </form>
+
+        </div>
+      </div>
+
+    {% endblock %}
