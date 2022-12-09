@@ -3,7 +3,7 @@
 {% extends "../layouts/layout-exporter-current.html" %}
 
 {% block pageTitle %}
-Export green list waste - Correct all errors for Basel Annex IX code
+Export green list waste - Correct all errors for waste collection date
 {% endblock %}
 
 {% block beforeContent %}
@@ -45,15 +45,14 @@ Export green list waste - Correct all errors for Basel Annex IX code
     <div class="govuk-error-summary" data-module="govuk-error-summary">
         <div role="alert">
             <h2 class="govuk-error-summary__title">
-                Correct all errors for Basel Annex IX code
+              Correct all errors for waste collection date
             </h2>
             <div class="govuk-error-summary__body">
                 <ul class="govuk-list govuk-error-summary__list">
                     <li>
-                        Enter a waste description. Give the usual description of the waste. For example, baled PET bottles, bagged 
-                        HDPE pellets or OCC paper.
+                        Enter the date the waste will be collected. Use slashes between numbers. For example, DD/MM/YYYY.
                         <br><br>
-                        The waste description must be 200 characters or less.
+                        You must enter a date in the future.
                     </li>
                 </ul>
             </div>
@@ -73,13 +72,23 @@ Export green list waste - Correct all errors for Basel Annex IX code
             <tbody class="govuk-table__body">
 
               <tr class="govuk-table__row">
-                <td scope="row" class="govuk-table__cell">3</td>
+                <td scope="row" class="govuk-table__cell error-table-cell">3</td>
                 <td class="govuk-table__cell">No information provided</td>
               </tr>
 
               <tr class="govuk-table__row">
                 <td scope="row" class="govuk-table__cell">12</td>
-                <td class="govuk-table__cell">Waste description too long</td>
+                <td class="govuk-table__cell">Date is not in the correct format for example, DD/MM/YYYY</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">15</td>
+                <td class="govuk-table__cell">Date entered must be in the future </td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">38</td>
+                <td class="govuk-table__cell">No information provided</td>
               </tr>
     
             </tbody>
@@ -88,7 +97,7 @@ Export green list waste - Correct all errors for Basel Annex IX code
           <div class="govuk-!-padding-bottom-4"></div>
 
           <p class="govuk-body">
-            <a href="bulk-errors-2.html" class="govuk-link">Back to corrections table</a>
+            <a href="bulk-errors-1.html" class="govuk-link">Back to corrections table</a>
           </p>
 
     </div>
