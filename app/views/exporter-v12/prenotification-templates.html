@@ -70,14 +70,24 @@
                   <br><label class="govuk-body-s">{{ data['template-description'] }}</label>
                 </td>
                 <td class="govuk-table__cell">
-                  10 June 2022
+                  <!-- todays date -->
+                  <script>
+                    const event = new Date();
+                    const options = { year: 'numeric', month: 'long'};
+                  </script>
+
+                  <script type="text/javascript"> document.write(event.getDate());</script> <script type="text/javascript"> document.write(event.toLocaleDateString(undefined, options));</script>
+                  <!-- todays date end -->
                 </td>
+
                 <td class="govuk-table__cell">
-                  <a href="#" class="govuk-link">New export</a>
+                  <a href="template-new-export.html" class="govuk-link">New export</a>
                 </td>
+
                 <td class="govuk-table__cell">
                   <a href="delete-template" class="govuk-link">Delete</a>
                 </td>
+                
               </tr>
             {% endif %}
             {% endif %}
@@ -90,7 +100,7 @@
               7 June 2022
             </td>
             <td class="govuk-table__cell">
-              <a href="#" class="govuk-link">New export</a>
+              <a href="template-new-export.html" class="govuk-link">New export</a>
             </td>
             <td class="govuk-table__cell">
               <a href="delete-template" class="govuk-link">Delete</a>
@@ -106,7 +116,7 @@
               6 June 2022
             </td>
             <td class="govuk-table__cell">
-              <a href="#" class="govuk-link">New export</a>
+              <a href="template-new-export.html" class="govuk-link">New export</a>
             </td>
             <td class="govuk-table__cell">
               <a href="delete-template" class="govuk-link">Delete</a>
@@ -138,7 +148,7 @@
               4 June 2022
             </td>
             <td class="govuk-table__cell">
-              <a href="#" class="govuk-link">New export</a>
+              <a href="template-new-export.html" class="govuk-link">New export</a>
             </td>
             <td class="govuk-table__cell">
               <a href="delete-template" class="govuk-link">Delete</a>
@@ -147,7 +157,7 @@
 
           <tr class="govuk-table__row">
             <td scope="row" class="govuk-table__cell">
-              <a href="#" class="govuk-link"><b>Fabric Society Waste paper scrap</b></a>
+              <a href="template-new-export.html" class="govuk-link"><b>Fabric Society Waste paper scrap</b></a>
               <br><label class="govuk-body-s">Description of the waste</label>
             </td>
             <td class="govuk-table__cell">

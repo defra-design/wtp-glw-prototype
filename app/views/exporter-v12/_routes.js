@@ -162,7 +162,7 @@ router.post('/submitted-817435283-update-shipment', function(req, res) {
 
 //------------------------------- TEMPLATES ----------------------------------//
 
-// save-as-template
+// save-as-template-confirm
 router.post('/save-as-template', function(req, res) {
     res.redirect('create-template-success');
 })
@@ -170,6 +170,33 @@ router.post('/save-as-template', function(req, res) {
 // save-as-template
 router.post('/template-from-export-name', function(req, res) {
     res.redirect('template-created');
+})
+
+// create new template
+router.post('/template-create-new', function(req, res) {
+    res.redirect('prenotify-template');
+})
+
+// new template tasklist
+router.post('/prenotify-template', function(req, res) {
+    res.redirect('template-created');
+})
+
+// submit export from template (radios)
+router.post('/template-submit-export-radios', function(req, res) {
+     if (req.session.data['which-template'] == 'other') {
+        res.redirect('prenotification-templates');
+    } else if (req.session.data['which-template'] == 'euromove-paper') {
+        res.redirect('template-new-export');
+    } else if (req.session.data['which-template'] == 'waste-ltd') {
+        res.redirect('template-new-export');
+    } else if (req.session.data['which-template'] == 'excel-list') {
+        res.redirect('template-new-export');
+    } else if (req.session.data['which-template'] == 'euromove-card') {
+        res.redirect('template-new-export');
+    } else if (req.session.data['which-template'] == 'fabric-society') {
+        res.redirect('template-new-export');
+    } 
 })
 
 // template-edit-name
@@ -202,6 +229,15 @@ router.post('/delete-template', function(req, res) {
     }
     
 })
+
+// template-euromovement
+router.post('/template-euromovement', function(req, res) {
+    res.redirect('template-confirmation');
+})
+
+
+
+
 
 // manual-bulk-api
 router.post('/manual-bulk-api', function(req, res) {
@@ -387,7 +423,7 @@ router.post('/manual-bulk-api', function(req, res) {
     }
 })
 
-//---------------------------------------------------------------------------------------------------------
+//------------- BULK UPLOAD ROUTES --------------------------------------------------------------------------------------------
 
 // bulk file upload
 router.post('/bulk-upload', function(req, res) {
@@ -422,13 +458,6 @@ router.post('/bulk-errors-2', function(req, res) {
 // bulk declaration
 router.post('/bulk-declaration', function(req, res) {
     res.redirect('bulk-confirmation');
-})
-
-
-
-// template-euromovement
-router.post('/template-euromovement', function(req, res) {
-    res.redirect('template-confirmation');
 })
 
 // submitted-817435283-alert
@@ -681,7 +710,8 @@ if (req.session.data['add-ec-code'] == 'Yes') {
 
 })
 
-//----- TRANSIT COUNTRIES
+//------------------ TRANSIT COUNTRIES ---------------------------------
+
 router.post('/countries-add-another', function(req, res) {
     if (req.session.data['add-transit-country'] == 'Yes') {
         res.redirect('countries-add-2');
@@ -710,7 +740,7 @@ if (req.session.data['declaration'] == 'yes') {
 
 })
 
-// carriers
+//-------------- CARRIERS ----------------------------------------------------
 
 router.post('/carrier-check', function(req, res) {
   console.log(typeof req.session.data['carrier-count']);
@@ -1039,6 +1069,7 @@ router.get('*/update-prenotifications-form-validation', function (req, res) {
 
 //---------------------- SECTIONS COMPLETED -----------------------------
 
+//----- PRENOTIFY
 router.get('/prenotify', function (req, res) {
 
 		var count = 0;
@@ -1062,6 +1093,33 @@ router.get('/prenotify', function (req, res) {
 		res.render(version+'/prenotify', {
 			'sectionscompleted' : count
 		});
+
+});
+
+//------ PRENOTIFY TEMPLATE
+router.get('/prenotify-template', function (req, res) {
+
+    var count = 4;
+
+    if(req.session.data['usual-description-of-the-waste-status'] == "Completed" && req.session.data['quantity-status'] == "Completed"){
+        count++;
+    }
+
+if(req.session.data['person-arranging-the-shipment-status'] == "Completed" && req.session.data['importer-consignee-status'] == "Completed"){
+  count++;
+}
+
+if(req.session.data['date-of-shipment-status'] == "Completed" && req.session.data['carrier-status'] == "Completed" && req.session.data['waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" && req.session.data['countries-states-concerned-status'] == "Completed"){
+  count++;
+}
+
+if(req.session.data['recovery-facility-or-laboratory-status'] == "Completed" && req.session.data['recovery-operation-status'] == "Completed"){
+  count++;
+}
+
+    res.render(version+'/prenotify-template', {
+        'sectionscompleted' : count
+    });
 
 });
 
