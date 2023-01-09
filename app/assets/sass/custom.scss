@@ -270,6 +270,14 @@ button.button-as-link {
     padding-bottom: 10px;
 }
 
+.aside-container {
+    padding: 5px;
+   // padding-right: 5px;
+    padding-left: 15px;
+   // padding-bottom: 35px;
+    background-color: #F3F2F1;
+}
+
 .file-image-container {
     float: left;
     padding-right: 30px;
@@ -280,5 +288,23 @@ button.button-as-link {
 }
 
 .error-table-cell {
-    width: 200px;
+    width: 190px;
+}
+
+.template-name-container {
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-bottom: 35px;
+    background-color: #F3F2F1;
+}
+
+.template-name-button {
+    float: left;
+    padding-right: 30px;
+}
+
+.template-name-link {
+    float: inline;
+    padding-top: 8px;
 }

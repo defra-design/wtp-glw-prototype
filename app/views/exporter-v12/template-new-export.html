@@ -22,6 +22,23 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+<!--------------------- NOTIFICATION BANNER ----------------------------------------------------->
+
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            You’ve started a new export based on your template. Review and add information before you submit.
+          </p>
+        </div>
+      </div>
+
+
+      <span class="govuk-caption-l">New waste export from template:</span>
       <h1 class="govuk-heading-l">
         {% if data['template-name'] != undefined %}
           {{ data['template-name'] }}
@@ -32,50 +49,35 @@
 
 <!---------------------  TEMPLATE DETAILS ----------------------------------------------------->
 
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            <h2 class="govuk-heading-m">Template details</h2>
-          </dt>
-          <dd class="govuk-summary-list__value">
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="template-edit-name">
-              Change<span class="govuk-visually-hidden"> template name</span>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          <h2 class="govuk-heading-m">Your reference number</h2>
+        </dt>
+        <dd class="govuk-summary-list__value">
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        </dd> 
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Reference number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <strong class="govuk-tag govuk-tag--grey">
+            Add Information
+          </strong>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden">reference number</span>
             </a>
-          </dd> 
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Name
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <!-- DYNAMIC TEMPLATE NAME (set in local routes.js)-->
-            {% if data['template-name'] != undefined %}
-              {{ data['template-name'] }}
-            {% else %}
-              Euromovement paper waste movement
-            {% endif %}
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Description
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <!-- DYNAMIC TEMPLATE DESCRIPTION (set in local routes.js)-->
-            {% if data['template-description'] != undefined %}
-              {{ data['template-description'] }}
-            {% else %}
-              A description of the waste
-            {% endif %}
-            
-          </dd>
-        </div>
-      </dl>
+        </dd>
+      </div>
+      
+    </dl>
 
 <!---------------------  ABOUT THE WASTE ----------------------------------------------------->
 
@@ -312,7 +314,7 @@
 
 <!---------------------  TREATMENT OF WASTE ----------------------------------------------------->
 
-            <dl class="govuk-summary-list govuk-!-margin-bottom-9">          
+            <dl class="govuk-summary-list govuk-!-margin-bottom-7">          
 
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key govuk-!-width-one-third">
@@ -352,29 +354,35 @@
       </dl>
       <br>
 
-    </div>
+        <!--------- DECLARATION ------------------->
 
-<!---------------------  ASIDE ACTION PANEL (RIGHT) ----------------------------------------------------->
-
-    {# Right hand side action panel #}
-
-    <div class="govuk-grid-column-one-third">
-
-      <div class="app-step-nav-related">
-        <h2 class="app-step-nav-related__heading">
-          <span class="app-step-nav-related__pretitle">Actions</span>
+        <h2 class="govuk-heading-m">
+          Declaration
         </h2>
 
-        <p class="govuk-body govuk-!-margin-bottom-4">
-          <a class="govuk-link" href="template-euromovement-edit?just-edited=no">New export from this template</a>
-        </p>
+        <p class="govuk-body">By submitting these exports, you confirm that:</p>
+
+        <ul class="govuk-body">
+          <li>all the information you've provided is complete and correct to the best of your knowledge</li>
+          <li>there are effective written contractual obligations with the consignees (if this applies to your exports)</li>
+          <li>you've checked with the relevant authorities if there are any local controls that apply in any country involved in the journey of the waste</li>
+          <li>you've classified the waste appropriately</li>
+        </ul>
+
+        <div class="govuk-!-padding-bottom-4"></div>
+
+      <!--------- BUTTON AND LINK ------------------->
+
+      {{ govukButton({
+          text: 'Agree and submit'
+        }) }}
+
         <p class="govuk-body">
-          <a class="govuk-link" href="delete-template">Delete this template</a>
+          <a href="dashboard" class="govuk-link">Cancel and return to green list waste overview</a>
         </p>
-        <p class="govuk-body">
-          <a class="govuk-link" href="prenotification-templates">Return to template list</a>
-        </p>
-      </div>
+
+      </form>
+
     </div>
 
   </div>

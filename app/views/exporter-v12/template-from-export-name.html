@@ -30,6 +30,7 @@
 
 <form class="form" action="" method="post">
 
+<div class="template-name-container govuk-!-margin-bottom-6">
   <div class="govuk-form-group">
     <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="template-name">
         Enter your template name
@@ -45,11 +46,15 @@
     <input class="govuk-input" id="template-description" name="template-description" type="text">
   </div>
 
-  <button class="govuk-button" data-module="govuk-button">
-    Create template
-  </button>
-
-  <a class="govuk-link" href="javascript:history.go(-1)">Cancel and return to export</a>
+  <div class="template-name-button">
+    <button class="govuk-button" data-module="govuk-button">
+      Create template
+    </button>
+  </div>
+  <div class="template-name-link">
+    <a class="govuk-link" href="view-submitted-export.html">Cancel and return to export</a>
+  </div>
+</div>
 
 </form>
 
@@ -86,9 +91,7 @@
             EWC code
           </dt>
           <dd class="govuk-summary-list__value">
-            <strong class="govuk-tag govuk-tag--grey">
-              Add Information
-            </strong>
+              Not provided
           </dd>
           <dd class="govuk-summary-list__actions">
           </dd>
@@ -98,11 +101,9 @@
           <dt class="govuk-summary-list__key">
             National code
           </dt>
-          <dd class="govuk-summary-list__value">
-            <strong class="govuk-tag govuk-tag--grey">
-              Add Information
-            </strong>
-          </dd>
+            <dd class="govuk-summary-list__value">
+              Not provided
+            </dd>
           <dd class="govuk-summary-list__actions">
           </dd>
         </div>
@@ -122,11 +123,9 @@
           <dt class="govuk-summary-list__key">
             Waste quantity
           </dt>
-          <dd class="govuk-summary-list__value">
-            <strong class="govuk-tag govuk-tag--grey">
-              Add Information
-            </strong>
-          </dd>
+            <dd class="govuk-summary-list__value">
+              Not provided
+            </dd>
           <dd class="govuk-summary-list__actions">
           </dd>
         </div>
@@ -135,11 +134,9 @@
           <dt class="govuk-summary-list__key">
             Collection date
           </dt>
-          <dd class="govuk-summary-list__value">
-            <strong class="govuk-tag govuk-tag--grey">
-              Add Information
-            </strong>
-          </dd>
+            <dd class="govuk-summary-list__value">
+              Not provided
+            </dd>
           <dd class="govuk-summary-list__actions">
           </dd>
         </div>
@@ -238,12 +235,10 @@
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Additional waste carriers
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <strong class="govuk-tag govuk-tag--grey">
-                Add Information
-              </strong>
-            </dd>
+            </dt>             
+              <dd class="govuk-summary-list__value">
+                Not provided
+              </dd>
             <dd class="govuk-summary-list__actions">
             </dd>
           </div>
@@ -277,9 +272,7 @@
               Countries waste will travel through
             </dt>
             <dd class="govuk-summary-list__value">
-              <strong class="govuk-tag govuk-tag--grey">
-                Add Information
-              </strong>
+              Not provided
             </dd>
             <dd class="govuk-summary-list__actions">
             </dd>

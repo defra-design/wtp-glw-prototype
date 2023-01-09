@@ -110,15 +110,17 @@ Do you know the quantity of waste?
               </div>
             </div>
 
-
           </fieldset>
         </div>
       </div>
+      
+      <div class="govuk-!-padding-bottom-9"></div>
+
         {% endif %}
 
-      {{ govukButton({
-        text: 'Save and continue'
-      }) }}
+        <button class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
 
       {% include "./includes/return-to-link.html" %}
 
