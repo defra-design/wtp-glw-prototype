@@ -66,7 +66,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="waste-codes-and-description" aria-describedby="eligibility-status">
+                <a href="#" aria-describedby="eligibility-status">
                   Waste codes and description
                 </a>
               </span>
@@ -86,7 +86,7 @@
               <span class="app-task-list__task-name">
                 
                   {% if data ['code'] == "basel" or data ['code'] == "oecd" or data ['code'] == "annex-a" or data ['code'] == "annex-b" %}
-                  <a href="quantity" aria-describedby="eligibility-status">
+                  <a href="#" aria-describedby="eligibility-status">
                   Quantity of waste
                   {% elseif data ['code'] == "not-applicable" %}
                   <span class="app-task-list__task-name">
@@ -137,7 +137,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="exporter-postcode" aria-describedby="eligibility-status">
+                <a href="#" aria-describedby="eligibility-status">
                   Exporter details
                 </a>
               </span>
@@ -153,7 +153,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="importer-consignee" aria-describedby="read-declaration-status">
+                <a href="#" aria-describedby="read-declaration-status">
                   Importer details
                 </a>
               </span>
@@ -180,7 +180,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="date-of-shipment" aria-describedby="read-declaration-status">
+                <a href="#" aria-describedby="read-declaration-status">
                   Collection date
                 </a>
               </span>
@@ -196,7 +196,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="carrier-add-1" aria-describedby="eligibility-status">
+                <a href="#" aria-describedby="eligibility-status">
                   Waste carriers
                 </a>
               </span>
@@ -212,7 +212,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="carrier-collect-postcode" aria-describedby="read-declaration-status">
+                <a href="#" aria-describedby="read-declaration-status">
                   Waste collection details
                 </a>
               </span>
@@ -228,7 +228,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="point-of-exit" aria-describedby="leaving-the-uk">
+                <a href="#" aria-describedby="leaving-the-uk">
                   Location waste leaves the UK
                 </a>
               </span>
@@ -244,7 +244,7 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="countries-states-concerned-new" aria-describedby="read-declaration-status">
+                <a href="#" aria-describedby="read-declaration-status">
                   Countries waste will travel through
                 </a>
               </span>
@@ -274,10 +274,10 @@
 
                 <!-- Turns the link on and off -->
                   {% if data ['code'] == "not-applicable" %}
-                  <a href="recovery-facility-laboratory" aria-describedby="eligibility-status">
+                  <a href="#" aria-describedby="eligibility-status">
                   Laboratory details
                   {% elseif data ['code'] == "basel" or data ['code'] == "oecd" or data ['code'] == "annex-a" or data ['code'] == "annex-b" %}
-                  <a href="recovery-facility-laboratory" aria-describedby="eligibility-status">
+                  <a href="#" aria-describedby="eligibility-status">
                   Recovery facility details
                   {% else %}
                   <span class="app-task-list__task-name">
@@ -301,7 +301,6 @@
                 <strong class="govuk-tag app-task-list__tag" id="recovery-facility-or-laboratory-status">Completed</strong>
 
               {% endif %}
-
             </li>
 
           </ul>
@@ -314,7 +313,7 @@
       <form class="form" action="" method="post">
 
         <button class="govuk-button" data-module="govuk-button">
-          Continue
+          Create template
         </button>
 
       </form>
