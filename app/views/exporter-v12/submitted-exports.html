@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-exporter-current.html" %}
 
 {% block pageTitle %}
-  View submitted exports
+  Check submitted exports
 {% endblock %}
 
 {% block beforeContent %}
@@ -28,7 +28,7 @@
         <a class="govuk-breadcrumbs__link" href="dashboard">Green list waste overview</a>
       </li>
       <li class="govuk-breadcrumbs__list-item">
-        View submitted exports
+        All submitted exports
       </li>
     </ol>
   </div>
@@ -41,7 +41,7 @@
             <form method="post" action="">
 
     <h1 class="govuk-heading-l">
-      View submitted exports
+      All submitted exports
     </h1>
 
     <p class="govuk-body"><a href="" class="govuk-link">Download all submitted exports</a>
@@ -51,7 +51,7 @@
 
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header" >Your reference number</th>
+          <th scope="col" class="govuk-table__header" >Your reference</th>
           <th scope="col" class="govuk-table__header" aria-sort="ascending">Collection date</th>
           <th scope="col" class="govuk-table__header" >Waste code</th>
           <th scope="col" class="govuk-table__header" >Transaction number</th>
@@ -62,6 +62,8 @@
 
 {% if data ['submitted-cancel'] == "change"  or data ['submitted-cancel'] == "export" or data ['submitted-cancel'] == "other" %}
 
+<!---------- SUMMARY TABLE #1 ---------->
+
 
       <tbody class="govuk-table__body">
 
@@ -71,7 +73,7 @@
 <td class="govuk-table__cell" data-sort-value="16">16 May 2022</td>
 <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)
   <td class="govuk-table__cell">GLW50372</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -80,7 +82,7 @@
 <td class="govuk-table__cell" data-sort-value="12">12 May 2022</td>
 <td class="govuk-table__cell">B4020: Wastes from production, formulation and use of resins, latex, plasticisers</td>
 <td class="govuk-table__cell">GLW57463</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -89,7 +91,7 @@
 <td class="govuk-table__cell" data-sort-value="29">29 April 2022</td>
 <td class="govuk-table__cell">B4020: Wastes from production, formulation and use of resins, latex, plasticisers</td>
 <td class="govuk-table__cell">GLW73528</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -98,7 +100,7 @@
 <td class="govuk-table__cell" data-sort-value="29">29 April 2022</td>
 <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)</td>
 <td class="govuk-table__cell">GLW18263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -107,7 +109,7 @@
 <td class="govuk-table__cell" data-sort-value="25">25 April 2022</td>
 <td class="govuk-table__cell">GE020: Glass fibre waste</td>
 <td class="govuk-table__cell">GLW98263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -116,7 +118,7 @@
 <td class="govuk-table__cell" data-sort-value="8">5 July 2022</td>
 <td class="govuk-table__cell">B1010: Metal and metal-alloy wastes in metallic, non-dispersible form</td>
               <td class="govuk-table__cell">GLW28364</td>
-<td class="govuk-table__cell"><a href="view-submitted-export">View</a><br>
+<td class="govuk-table__cell"><a href="view-submitted-export">Check export</a>
 
 </tr>
 
@@ -126,7 +128,7 @@
 <td class="govuk-table__cell" data-sort-value="16">16 May 2022</td>
 <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)
   <td class="govuk-table__cell">GLW50372</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -135,7 +137,7 @@
 <td class="govuk-table__cell" data-sort-value="12">12 May 2022</td>
 <td class="govuk-table__cell">B4020: Wastes from production, formulation and use of resins, latex, plasticisers</td>
 <td class="govuk-table__cell">GLW57463</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -144,7 +146,7 @@
 <td class="govuk-table__cell" data-sort-value="29">29 April 2022</td>
 <td class="govuk-table__cell">B4020: Wastes from production, formulation and use of resins, latex, plasticisers</td>
 <td class="govuk-table__cell">GLW73528</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -153,7 +155,7 @@
 <td class="govuk-table__cell" data-sort-value="29">29 April 2022</td>
 <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)</td>
 <td class="govuk-table__cell">GLW18263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -162,7 +164,7 @@
 <td class="govuk-table__cell" data-sort-value="25">25 April 2022</td>
 <td class="govuk-table__cell">GE020: Glass fibre waste</td>
 <td class="govuk-table__cell">GLW98263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -171,7 +173,7 @@
 <td class="govuk-table__cell" data-sort-value="8">5 July 2022</td>
 <td class="govuk-table__cell">B1010: Metal and metal-alloy wastes in metallic, non-dispersible form</td>
               <td class="govuk-table__cell">GLW28364</td>
-<td class="govuk-table__cell"><a href="view-submitted-export">View</a><br>
+<td class="govuk-table__cell"><a href="view-submitted-export">Check export</a>
 
 </tr>
 
@@ -181,7 +183,7 @@
 <td class="govuk-table__cell" data-sort-value="16">16 May 2022</td>
 <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)
   <td class="govuk-table__cell">GLW50372</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -190,7 +192,7 @@
 <td class="govuk-table__cell" data-sort-value="12">12 May 2022</td>
 <td class="govuk-table__cell">B4020: Wastes from production, formulation and use of resins, latex, plasticisers</td>
 <td class="govuk-table__cell">GLW57463</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -199,7 +201,7 @@
 <td class="govuk-table__cell" data-sort-value="29">29 April 2022</td>
 <td class="govuk-table__cell">B4020: Wastes from production, formulation and use of resins, latex, plasticisers</td>
 <td class="govuk-table__cell">GLW73528</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -208,7 +210,7 @@
 <td class="govuk-table__cell" data-sort-value="29">29 April 2022</td>
 <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)</td>
 <td class="govuk-table__cell">GLW18263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -217,7 +219,7 @@
 <td class="govuk-table__cell" data-sort-value="25">25 April 2022</td>
 <td class="govuk-table__cell">GE020: Glass fibre waste</td>
 <td class="govuk-table__cell">GLW98263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -226,7 +228,7 @@
 <td class="govuk-table__cell" data-sort-value="29">29 April 2022</td>
 <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)</td>
 <td class="govuk-table__cell">GLW18263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -235,7 +237,7 @@
 <td class="govuk-table__cell" data-sort-value="25">25 April 2022</td>
 <td class="govuk-table__cell">GE020: Glass fibre waste</td>
 <td class="govuk-table__cell">GLW98263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -244,14 +246,25 @@
 
       {% else %}
 
+<!---------- SUMMARY TABLE #2 ---------->
+
       <tbody class="govuk-table__body">
 
 <tr class="govuk-table__row">
 <td class="govuk-table__cell">01546</td>
-<td class="govuk-table__cell" data-sort-value="8">5 July 2022</td>
+<td class="govuk-table__cell" data-sort-value="8">
+  <!-- todays date -->
+    <script>
+      const event = new Date();
+      const options = { year: 'numeric', month: 'short'};
+    </script>
+
+    <script type="text/javascript"> document.write(event.getDate());</script> <script type="text/javascript"> document.write(event.toLocaleDateString(undefined, options));</script>
+  <!-- todays date end -->
+</td>
 <td class="govuk-table__cell">GC020: Electronic scrap (e.g. printed circuit boards, electronic components, wire, etc.)</td>
               <td class="govuk-table__cell">GLW28364</td>
-<td class="govuk-table__cell"><a href="view-submitted-export">View</a><br>
+<td class="govuk-table__cell"><a href="view-submitted-export">Check export</a>
 
 </tr>
 
@@ -261,7 +274,7 @@
 <td class="govuk-table__cell" data-sort-value="16">16 May 2022</td>
 <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)
   <td class="govuk-table__cell">GLW50372</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -270,7 +283,7 @@
 <td class="govuk-table__cell" data-sort-value="12">12 May 2022</td>
 <td class="govuk-table__cell">B4020: Wastes from production, formulation and use of resins, latex, plasticisers</td>
 <td class="govuk-table__cell">GLW57463</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -279,7 +292,7 @@
 <td class="govuk-table__cell" data-sort-value="29">29 April 2022</td>
 <td class="govuk-table__cell">B4020: Wastes from production, formulation and use of resins, latex, plasticisers</td>
 <td class="govuk-table__cell">GLW73528</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -288,7 +301,7 @@
 <td class="govuk-table__cell" data-sort-value="29">29 April 2022</td>
 <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)</td>
 <td class="govuk-table__cell">GLW18263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -297,7 +310,7 @@
 <td class="govuk-table__cell" data-sort-value="25">25 April 2022</td>
 <td class="govuk-table__cell">GE020: Glass fibre waste</td>
 <td class="govuk-table__cell">GLW98263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -306,7 +319,7 @@
 <td class="govuk-table__cell" data-sort-value="8">5 July 2022</td>
 <td class="govuk-table__cell">B1010: Metal and metal-alloy wastes in metallic, non-dispersible form</td>
               <td class="govuk-table__cell">GLW28364</td>
-<td class="govuk-table__cell"><a href="view-submitted-export">View</a><br>
+<td class="govuk-table__cell"><a href="view-submitted-export">Check export</a>
 
 </tr>
 
@@ -316,7 +329,7 @@
 <td class="govuk-table__cell" data-sort-value="16">16 May 2022</td>
 <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)
   <td class="govuk-table__cell">GLW50372</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -325,7 +338,7 @@
 <td class="govuk-table__cell" data-sort-value="12">12 May 2022</td>
 <td class="govuk-table__cell">B4020: Wastes from production, formulation and use of resins, latex, plasticisers</td>
 <td class="govuk-table__cell">GLW57463</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -334,7 +347,7 @@
 <td class="govuk-table__cell" data-sort-value="29">29 April 2022</td>
 <td class="govuk-table__cell">B4020: Wastes from production, formulation and use of resins, latex, plasticisers</td>
 <td class="govuk-table__cell">GLW73528</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -343,7 +356,7 @@
 <td class="govuk-table__cell" data-sort-value="29">29 April 2022</td>
 <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)</td>
 <td class="govuk-table__cell">GLW18263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -352,7 +365,7 @@
 <td class="govuk-table__cell" data-sort-value="25">25 April 2022</td>
 <td class="govuk-table__cell">GE020: Glass fibre waste</td>
 <td class="govuk-table__cell">GLW98263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -361,7 +374,7 @@
 <td class="govuk-table__cell" data-sort-value="8">5 July 2022</td>
 <td class="govuk-table__cell">B1010: Metal and metal-alloy wastes in metallic, non-dispersible form</td>
               <td class="govuk-table__cell">GLW28364</td>
-<td class="govuk-table__cell"><a href="view-submitted-export">View</a><br>
+<td class="govuk-table__cell"><a href="view-submitted-export">Check export</a>
 
 </tr>
 
@@ -371,7 +384,7 @@
 <td class="govuk-table__cell" data-sort-value="16">16 May 2022</td>
 <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)
   <td class="govuk-table__cell">GLW50372</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -380,7 +393,7 @@
 <td class="govuk-table__cell" data-sort-value="12">12 May 2022</td>
 <td class="govuk-table__cell">B4020: Wastes from production, formulation and use of resins, latex, plasticisers</td>
 <td class="govuk-table__cell">GLW57463</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -389,7 +402,7 @@
 <td class="govuk-table__cell" data-sort-value="29">29 April 2022</td>
 <td class="govuk-table__cell">B4020: Wastes from production, formulation and use of resins, latex, plasticisers</td>
 <td class="govuk-table__cell">GLW73528</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -398,7 +411,7 @@
 <td class="govuk-table__cell" data-sort-value="29">29 April 2022</td>
 <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)</td>
 <td class="govuk-table__cell">GLW18263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -407,7 +420,7 @@
 <td class="govuk-table__cell" data-sort-value="25">25 April 2022</td>
 <td class="govuk-table__cell">GE020: Glass fibre waste</td>
 <td class="govuk-table__cell">GLW98263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -416,7 +429,7 @@
 <td class="govuk-table__cell" data-sort-value="29">29 April 2022</td>
 <td class="govuk-table__cell">GC050: Spent fluid catalytic cracking (FCC) catalysts (e.g. aluminium oxide, zeolites)</td>
 <td class="govuk-table__cell">GLW18263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
 
@@ -425,17 +438,14 @@
 <td class="govuk-table__cell" data-sort-value="25">25 April 2022</td>
 <td class="govuk-table__cell">GE020: Glass fibre waste</td>
 <td class="govuk-table__cell">GLW98263</td>
-<td class="govuk-table__cell"><a href="">View</a><br>
+<td class="govuk-table__cell"><a href="">Check export</a>
 
 </tr>
-
 
       </tbody>
 
         {% endif %}
     </table>
-
-
 
     <nav class="govuk-pagination" role="navigation" aria-label="results">
   <ul class="govuk-pagination__list">
@@ -462,7 +472,7 @@
   </div>
 </nav>
 
-    <p class="govuk-body"><a class="govuk-link" href="">View cancelled exports</a></p>
+    <p class="govuk-body"><a class="govuk-link" href="">Check cancelled exports</a></p>
 
 
 </form>

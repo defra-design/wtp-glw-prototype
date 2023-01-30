@@ -46,10 +46,8 @@
         Create an export template
       </h1>
 
-      <!-- <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Submission incomplete</h2> 
-      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{sectionscompleted}} of 4 sections.</p>-->
-      <p class="govuk-body govuk-!-margin-bottom-7">You have completed 4 of 4 sections.</p>
-
+      <!-- <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Submission incomplete</h2>-->
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{sectionscompleted}} of 4 sections.</p>
 
       <ol class="app-task-list">
 
@@ -66,15 +64,14 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="eligibility-status">
+                <a href="template-waste-codes-and-description.html" aria-describedby="eligibility-status">
                   Waste codes and description
                 </a>
               </span>
-              {% if data['usual-description-of-the-waste-status'] == null or data['usual-description-of-the-waste-status'] == 'Not started' %}
-              <strong class="govuk-tag app-task-list__tag" id="provide-waste-identification-details-status">Completed</strong>
-                <!--<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="provide-waste-identification-details-status">Not started</strong>-->
-              {% elif data['usual-description-of-the-waste-status'] == 'Completed' %}
-                <strong class="govuk-tag app-task-list__tag" id="provide-waste-identification-details-status">Completed</strong>
+              {% if data['template-usual-description-of-the-waste-status'] == null or data['template-usual-description-of-the-waste-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="template-provide-waste-identification-details-status">Not started</strong>
+              {% elif data['template-usual-description-of-the-waste-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="template-provide-waste-identification-details-status">Completed</strong>
               {% endif %}
             </li>
 
@@ -85,10 +82,10 @@
               <!-- Turns the link on and off -->
               <span class="app-task-list__task-name">
                 
-                  {% if data ['code'] == "basel" or data ['code'] == "oecd" or data ['code'] == "annex-a" or data ['code'] == "annex-b" %}
-                  <a href="#" aria-describedby="eligibility-status">
+                  {% if data ['code'] == "basel" or data ['template-code'] == "oecd" or data ['template-code'] == "annex-a" or data ['template-code'] == "annex-b" %}
+                  <a href="template-quantity.html" aria-describedby="eligibility-status">
                   Quantity of waste
-                  {% elseif data ['code'] == "not-applicable" %}
+                  {% elseif data ['template-code'] == "not-applicable" %}
                   <span class="app-task-list__task-name">
                     Quantity of waste
                   </span>
@@ -108,16 +105,14 @@
               </span>
              -->
 
-              {% if data['usual-description-of-the-waste-status'] == null or data['usual-description-of-the-waste-status'] == 'Not started' and
-              data['quantity-status'] == null or data['quantity-status'] == 'Not started' %}
-              <strong class="govuk-tag app-task-list__tag" id="quantity-status">Completed</strong>
-              <!--<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-export">Cannot start yet</strong>-->
+              {% if data['template-usual-description-of-the-waste-status'] == null or data['template-usual-description-of-the-waste-status'] == 'Not started' and
+              data['template-quantity-status'] == null or data['template-quantity-status'] == 'Not started' %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="template-submit-export">Cannot start yet</strong>
 
-              {% elseif data['quantity-status'] == null or data['quantity-status'] == 'Not started' %}
-              <strong class="govuk-tag app-task-list__tag" id="quantity-status">Completed</strong>  
-              <!--<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="quantity-status">Not started</strong>-->
-              {% elif data['quantity-status'] == 'Completed' %}
-                <strong class="govuk-tag app-task-list__tag" id="quantity-status">Completed</strong>
+              {% elseif data['template-quantity-status'] == null or data['template-quantity-status'] == 'Not started' %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="template-quantity-status">Not started</strong>
+              {% elif data['template-quantity-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="template-quantity-status">Completed</strong>
               {% endif %}
             </li>
 
@@ -137,15 +132,14 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="eligibility-status">
+                <a href="template-exporter-postcode.html" aria-describedby="eligibility-status">
                   Exporter details
                 </a>
               </span>
-              {% if data['person-arranging-the-shipment-status'] == null or data['person-arranging-the-shipment-status'] == 'Not started' %}
-              <strong class="govuk-tag app-task-list__tag" id="person-arranging-the-shipment-status">Completed</strong>  
-              <!--<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="person-arranging-the-shipment-status">Not started</strong>-->
-              {% elif data['person-arranging-the-shipment-status'] == 'Completed' %}
-                <strong class="govuk-tag app-task-list__tag" id="person-arranging-the-shipment-status">Completed</strong>
+              {% if data['template-person-arranging-the-shipment-status'] == null or data['template-person-arranging-the-shipment-status'] == 'Not started' %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="template-person-arranging-the-shipment-status">Not started</strong>
+              {% elif data['template-person-arranging-the-shipment-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="template-person-arranging-the-shipment-status">Completed</strong>
               {% endif %}
             </li>
 
@@ -153,15 +147,14 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="read-declaration-status">
+                <a href="template-importer-consignee.html" aria-describedby="read-declaration-status">
                   Importer details
                 </a>
               </span>
-              {% if data['importer-consignee-status'] == null or data['importer-consignee-status'] == 'Not started' %}
-              <strong class="govuk-tag app-task-list__tag" id="importer-consignee-status">Completed</strong>  
-              <!--<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="importer-consignee-status">Not started</strong>-->
-              {% elif data['importer-consignee-status'] == 'Completed' %}
-                <strong class="govuk-tag app-task-list__tag" id="importer-consignee-status">Completed</strong>
+              {% if data['template-importer-consignee-status'] == null or data['template-importer-consignee-status'] == 'Not started' %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="template-importer-consignee-status">Not started</strong>
+              {% elif data['template-importer-consignee-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="template-importer-consignee-status">Completed</strong>
               {% endif %}
             </li>
           </ul>
@@ -180,15 +173,14 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="read-declaration-status">
+                <a href="template-date-of-shipment.html" aria-describedby="read-declaration-status">
                   Collection date
                 </a>
               </span>
-              {% if data['date-of-shipment-status'] == null or data['date-of-shipment-status'] == 'Not started' %}
-              <strong class="govuk-tag app-task-list__tag" id="date-of-shipment-status">Completed</strong>  
-              <!--<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="date-of-shipment-status">Not started</strong>-->
-              {% elif data['date-of-shipment-status'] == 'Completed' %}
-                <strong class="govuk-tag app-task-list__tag" id="date-of-shipment-status">Completed</strong>
+              {% if data['template-date-of-shipment-status'] == null or data['template-date-of-shipment-status'] == 'Not started' %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="template-date-of-shipment-status">Not started</strong>
+              {% elif data['template-date-of-shipment-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="template-date-of-shipment-status">Completed</strong>
               {% endif %}
             </li>
 
@@ -196,15 +188,14 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="eligibility-status">
+                <a href="template-carrier-add-1.html" aria-describedby="eligibility-status">
                   Waste carriers
                 </a>
               </span>
-              {% if data['carrier-status'] == null or data['carrier-status'] == 'Not started' %}
-              <strong class="govuk-tag app-task-list__tag" id="carrier-status">Completed</strong>  
-              <!--<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="carrier-status">Not started</strong>-->
-              {% elif data['carrier-status'] == 'Completed' %}
-                <strong class="govuk-tag app-task-list__tag" id="carrier-status">Completed</strong>
+              {% if data['template-carrier-status'] == null or data['template-carrier-status'] == 'Not started' %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="template-carrier-status">Not started</strong>
+              {% elif data['template-carrier-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="template-carrier-status">Completed</strong>
               {% endif %}
             </li>
 
@@ -212,15 +203,14 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="read-declaration-status">
+                <a href="template-carrier-collect-postcode.html" aria-describedby="read-declaration-status">
                   Waste collection details
                 </a>
               </span>
-              {% if data['waste-generator-original-producer-new-producer-or-collector-status'] == null or data['waste-generator-original-producer-new-producer-or-collector-status'] == 'Not started' %}
-              <strong class="govuk-tag app-task-list__tag" id="waste-generator-original-producer-new-producer-or-collector-status">Completed</strong>  
-              <!--<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="waste-generator-original-producer-new-producer-or-collector-status">Not started</strong>-->
-              {% elif data['waste-generator-original-producer-new-producer-or-collector-status'] == 'Completed' %}
-                <strong class="govuk-tag app-task-list__tag" id="waste-generator-original-producer-new-producer-or-collector-status">Completed</strong>
+              {% if data['template-waste-generator-original-producer-new-producer-or-collector-status'] == null or data['template-waste-generator-original-producer-new-producer-or-collector-status'] == 'Not started' %} 
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="template-waste-generator-original-producer-new-producer-or-collector-status">Not started</strong>
+              {% elif data['template-waste-generator-original-producer-new-producer-or-collector-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="template-waste-generator-original-producer-new-producer-or-collector-status">Completed</strong>
               {% endif %}
             </li>
 
@@ -228,15 +218,14 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="leaving-the-uk">
+                <a href="template-point-of-exit.html" aria-describedby="leaving-the-uk">
                   Location waste leaves the UK
                 </a>
               </span>
-              {% if data['point-of-exit-status'] == null or data['point-of-exit-status'] == 'Not started' %}
-              <strong class="govuk-tag app-task-list__tag" id="countries-states-concerned-status">Completed</strong>  
-              <!--<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="countries-states-concerned-status">Not started</strong>-->
-              {% elif data['point-of-exit-status'] == 'Completed' %}
-                <strong class="govuk-tag app-task-list__tag" id="countries-states-concerned-status">Completed</strong>
+              {% if data['template-point-of-exit-status'] == null or data['template-point-of-exit-status'] == 'Not started' %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="template-point-of-exit-status">Not started</strong>
+              {% elif data['template-point-of-exit-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="template-point-of-exit-status">Completed</strong>
               {% endif %}
             </li>
 
@@ -244,15 +233,14 @@
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="#" aria-describedby="read-declaration-status">
+                <a href="template-countries-states-concerned-new.html" aria-describedby="read-declaration-status">
                   Countries waste will travel through
                 </a>
               </span>
-              {% if data['countries-states-concerned-status'] == null or data['countries-states-concerned-status'] == 'Not started' %}
-              <strong class="govuk-tag app-task-list__tag" id="countries-states-concerned-status">Completed</strong>  
-              <!--<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="countries-states-concerned-status">Not started</strong>-->
-              {% elif data['countries-states-concerned-status'] == 'Completed' %}
-                <strong class="govuk-tag app-task-list__tag" id="countries-states-concerned-status">Completed</strong>
+              {% if data['template-countries-states-concerned-status'] == null or data['template-countries-states-concerned-status'] == 'Not started' %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="template-countries-states-concerned-status">Not started</strong>
+              {% elif data['template-countries-states-concerned-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="template-countries-states-concerned-status">Completed</strong>
               {% endif %}
             </li>
           </ul>
@@ -274,10 +262,10 @@
 
                 <!-- Turns the link on and off -->
                   {% if data ['code'] == "not-applicable" %}
-                  <a href="#" aria-describedby="eligibility-status">
+                  <a href="template-recovery-facility-laboratory.html" aria-describedby="eligibility-status">
                   Laboratory details
-                  {% elseif data ['code'] == "basel" or data ['code'] == "oecd" or data ['code'] == "annex-a" or data ['code'] == "annex-b" %}
-                  <a href="#" aria-describedby="eligibility-status">
+                  {% elseif data ['template-code'] == "basel" or data ['template-code'] == "oecd" or data ['template-code'] == "annex-a" or data ['template-code'] == "annex-b" %}
+                  <a href="template-recovery-facility-laboratory.html" aria-describedby="eligibility-status">
                   Recovery facility details
                   {% else %}
                   <span class="app-task-list__task-name">
@@ -288,17 +276,15 @@
               </span>
 
               <!-- Sets the tag status -->
-              {% if data['usual-description-of-the-waste-status'] == null or data['usual-description-of-the-waste-status'] == 'Not started' and
-              data['quantity-status'] == null or data['quantity-status'] == 'Not started' %}
-              <strong class="govuk-tag app-task-list__tag" id="recovery-facility-or-laboratory-status">Completed</strong>
-              <!--<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-export">Cannot start yet</strong>-->
+              {% if data['template-usual-description-of-the-waste-status'] == null or data['template-usual-description-of-the-waste-status'] == 'Not started' and
+              data['template-quantity-status'] == null or data['template-quantity-status'] == 'Not started' %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="template-submit-export">Cannot start yet</strong>
 
-              {% elseif data['recovery-facility-or-laboratory-status'] == null or data['recovery-facility-or-laboratory-status'] == 'Not started' %}
-              <strong class="govuk-tag app-task-list__tag" id="recovery-facility-or-laboratory-status">Completed</strong>  
-              <!--<strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="recovery-facility-or-laboratory-status">Not started</strong>-->
+              {% elseif data['template-recovery-facility-or-laboratory-status'] == null or data['template-recovery-facility-or-laboratory-status'] == 'Not started' %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="template-recovery-facility-or-laboratory-status">Not started</strong>
 
-              {% elseif data['recovery-facility-or-laboratory-status'] == 'Completed' %}
-                <strong class="govuk-tag app-task-list__tag" id="recovery-facility-or-laboratory-status">Completed</strong>
+              {% elseif data['template-recovery-facility-or-laboratory-status'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="template-recovery-facility-or-laboratory-status">Completed</strong>
 
               {% endif %}
             </li>
@@ -308,21 +294,17 @@
 
       </ol>
 
-
-
       <form class="form" action="" method="post">
 
         <button class="govuk-button" data-module="govuk-button">
-          Create template
+          Save template
         </button>
 
       </form>
 
       <p class="govuk-body"><a class="govuk-link" href="dashboard">Return to green list overview</a></p>
 
-
     </div>
-
 
   </div>
 
