@@ -160,7 +160,7 @@ router.post('/submitted-817435283-update-shipment', function(req, res) {
     }
 })
 
-//------------------------------- TEMPLATES ----------------------------------//
+//------------------------------- TEMPLATES ------------------------------------------------------//
 
 // save-as-template-confirm
 router.post('/save-as-template', function(req, res) {
@@ -172,72 +172,435 @@ router.post('/template-from-export-name', function(req, res) {
     res.redirect('template-created');
 })
 
+// select template type
+router.post('/template-type', function(req, res) {
+    res.redirect('template-create-new');
+})
+
 // create new template
 router.post('/template-create-new', function(req, res) {
     res.redirect('prenotify-template');
 })
 
+//------ create new template journey
+
+    // template-waste-codes-and-description
+        router.post('/template-waste-codes-and-description', function(req, res) {
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#about-waste');
+            } {
+                if (req.session.data['template-code'] == 'not-applicable') {
+                    res.redirect('template-ec-code-2');
+                  } else {
+                      res.redirect('template-ec-code');
+                  }
+            }
+        })
+
+
+    //-----------------
+
+    // template-ec-code (code counter)
+        router.post('/template-ec-code', function(req, res) {
+            if(req.session.data['template-ec-code']=='Yes'){
+            if(typeof req.session.data['code-count'] == "undefined"){
+                req.session.data['template-code-count'] = 0;
+            }
+            else {
+                req.session.data['template-code-count']++;
+            }
+
+            req.session.data['template-code-'+req.session.data['template-code-count']] = req.session.data['ec-wastes-typeahead'];
+            res.redirect('template-code-add-another');
+            }
+            else if (req.session.data['template-ec-code']=='No') {
+            res.redirect('template-national-code');
+            }
+        });
+
+        router.get('/template-code-add-another', function (req, res) {
+        var carrierArray = [];
+
+        for (var i = 0; i <= req.session.data['template-code-count']; i++) {
+        carrierArray[i] = req.session.data['template-code-'+i];
+        }
+
+        res.render(version+'/template-code-add-another', {
+            'codes' : carrierArray });
+        });
+
+        router.post('/template-ec-code-2', function(req, res) {
+            if(typeof req.session.data['template-code-count'] == "undefined"){
+            req.session.data['template-code-count'] = 0;
+            }
+            else {
+            req.session.data['template-code-count']++;
+            }
+
+            req.session.data['template-code-'+req.session.data['template-code-count']] = req.session.data['ec-wastes-typeahead'];
+            res.redirect('template-code-add-another');
+        });
+
+     //-----------------
+
+     //template-waste-codes
+        router.post('/template-code-add-another', function(req, res) {
+            if (req.session.data['template-add-ec-code'] == 'Yes') {
+                res.redirect('template-ec-code-2');
+            } else if (req.session.data['template-add-ec-code'] == 'No') {    
+                res.redirect('template-national-code');
+                }
+            
+            })
+
+     // template-national-code
+        router.post('/template-national-code', function(req, res) {
+            //req.session.data['usual-description-of-the-waste-status'] = "Completed";
+            req.session.data['template-usual-description-of-the-waste-status'] = "In Progress";
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export#about-waste');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#about-waste');
+            } else {
+            res.redirect('template-waste-description');
+            }
+        })
+
+    // template-waste-description
+        router.post('/template-waste-description', function(req, res) {
+            req.session.data['template-usual-description-of-the-waste-status'] = "Completed";
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export#about-waste');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#about-waste');
+            } else {
+            res.redirect('template-quantity');
+            }
+        })
+
+    // template-new-waste-description
+        router.post('/template-new-waste-description', function(req, res) { 
+            req.session.data['template-new-description'] = req.session.data['template-new-description'];
+            //req.session.data['just-edited'] = 'yes';
+            
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export#about-waste');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#about-waste');
+            } else {
+             res.redirect('template-new-export');
+            }
+         })
+
+    // template-quantity
+        router.post('/template-quantity', function(req, res) {
+            req.session.data['template-quantity-status'] = "Completed";
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export#about-waste');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#about-waste');
+            } else {
+            res.redirect('prenotify-template');
+            }
+        })
+
+    // template-exporter
+        router.post('/template-exporter-postcode', function(req, res) {
+            req.session.data['template-person-arranging-the-shipment-status'] = "Completed";
+            res.redirect('template-exporter-address');
+            
+        })
+
+        router.post('/template-exporter-address', function(req, res) {
+            req.session.data['template-person-arranging-the-shipment-status'] = "Completed";
+            res.redirect('template-who-arranged-shipment-details');
+            
+        })
+
+        router.post('/template-exporter-address-manual', function(req, res) {
+            req.session.data['template-person-arranging-the-shipment-status'] = "Completed";
+            res.redirect('template-who-arranged-shipment-details');
+            
+        })
+
+        router.post('/template-who-arranged-shipment-details', function(req, res) {
+            req.session.data['template-person-arranging-the-shipment-status'] = "Completed";
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export#exporter-importer');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#exporter-importer');
+            } else {
+            res.redirect('template-importer-consignee');
+            }
+            
+        })
+        
+    // template-importer-consignee
+        router.post('/template-importer-consignee', function(req, res) {
+            req.session.data['template-importer-consignee-status'] = "Completed";
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export#exporter-importer');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#exporter-importer');
+            } else {
+            res.redirect('prenotify-template');
+            }
+        })
+
+    // template-actual-date-of-shipment
+        router.post('/template-date-of-shipment', function(req, res) {
+            req.session.data['template-date-of-shipment-status'] = "Completed";
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export#waste-journey');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#waste-journey');
+            } else {
+            res.redirect('template-carrier-add-1');
+            }
+         })
+
+    // template carriers ----------------------------------------------------
+
+        router.post('/template-carrier-check', function(req, res) {
+            console.log(typeof req.session.data['template-carrier-count']);
+            if (req.session.data['template-add-third-carrier'] == 'Yes' && req.session.data['template-carrier-count'] <= 3) {
+                res.redirect('template-carrier-add-3');
+            } else if (req.session.data['template-add-third-carrier'] == 'No' || req.session.data['template-carrier-count'] >= 4) {
+                if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                    res.redirect('template-new-export#waste-journey');
+                } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                    res.redirect('template-euromovement-selected#waste-journey');
+                } else {
+                    res.redirect('template-carrier-collect-postcode');
+                }
+            }
+        })
+        
+        router.post('/template-carriers', function(req, res) {
+        if (req.session.data['template-add-second-carrier'] == 'Yes') {
+            res.redirect('template-carrier-add-3');
+        } else if (req.session.data['template-add-second-carrier'] == 'No') {
+            if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+                res.redirect('check-your-answers');
+            } else {
+                res.redirect('template-carrier-collect-postcode');
+            }
+        }
+        })
+        
+        router.post('/template-carrier-add-1', function(req, res) {
+            req.session.data['template-carrier-status'] = "Completed";
+            req.session.data['template-carrier-add-1'] = "true";
+        
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export#waste-journey');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#waste-journey');
+            } else {
+            res.redirect('template-carrier-transport-1');
+            }
+        })
+        
+        router.post('/template-carrier-transport-1', function(req, res) {
+            req.session.data['template-carrier-status'] = "Completed";
+            req.session.data['template-carrier-add-1'] = "true";
+        
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export#waste-journey');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#waste-journey');
+            } else {
+            res.redirect('template-carriers');
+            }
+        })
+        
+        router.post('/template-carrier-add-2', function(req, res) {
+            req.session.data['template-carrier-status'] = "Completed";
+            req.session.data['template-carrier-add-1'] = "true";
+            res.redirect('template-carrier-transport-2');
+        })
+        
+        router.post('/template-carrier-transport-2', function(req, res) {
+            req.session.data['template-carrier-status'] = "Completed";
+            req.session.data['template-carrier-add-1'] = "true";
+            res.redirect('template-carrier-check');
+        })
+
+        router.post('/template-carrier-add-3', function(req, res) {
+            req.session.data['template-carrier-status'] = "Completed";
+            req.session.data['template-carrier-add-1'] = "true";
+            res.redirect('template-carrier-transport-3');
+        })
+        
+        router.post('/template-carrier-transport-3', function(req, res) {
+            req.session.data['template-carrier-status'] = "Completed";
+            req.session.data['template-carrier-add-1'] = "true";
+            res.redirect('template-carrier-check');
+        })
+        
+        router.post('/template-carrier-delete', function(req, res) {
+            req.session.data['template-carrier-status'] = "Completed";
+            req.session.data['template-carrier-add-1'] = "true";
+            res.redirect('template-carrier-check');
+        })
+        
+        router.post('/template-carrier-collect-postcode', function(req, res) {
+            req.session.data['template-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
+            req.session.data['template-carrier-add-1'] = "true";
+            res.redirect('template-carrier-collect-address');
+        })
+        
+        router.post('/template-carrier-collect-address', function(req, res) {
+            req.session.data['template-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
+            req.session.data['template-carrier-add-1'] = "true";
+            res.redirect('template-waste-generator');
+        })
+        
+        router.post('/template-carrier-collect-address-manual', function(req, res) {
+            req.session.data['template-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
+            req.session.data['template-carrier-add-1'] = "true";
+            res.redirect('template-waste-generator');
+        })
+
+        router.post('/template-waste-generator', function(req, res) {
+            req.session.data['template-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
+            req.session.data['template-carrier-add-1'] = "true";
+
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export#waste-journey');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#waste-journey');
+            } else {
+            res.redirect('template-point-of-exit');
+            }
+        })
+
+        //-----------------
+
+        // template location wate leaves
+        router.post('/template-point-of-exit', function(req, res) {
+            req.session.data['template-point-of-exit-status'] = "Completed";
+        
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export#waste-journey');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#waste-journey');
+            } else { {
+                res.redirect('template-countries-states-concerned-new');
+            }
+        }
+        })
+
+        // template recovery facility
+        router.post('/template-recovery-facility-laboratory', function(req, res) {
+            req.session.data['template-recovery-facility-or-laboratory-status'] = "Completed";
+        
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export#waste-treatment');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#waste-treatment');
+            } else {
+                res.redirect('template-recovery-operation');
+            }
+        })
+
+        // template recovery code
+        router.post('/template-recovery-operation', function(req, res) {
+            req.session.data['template-recovery-operation-status'] = "Completed";
+
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export#waste-treatment');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#waste-treatment');
+            } else {
+                res.redirect('template-prenotify');
+            }
+        })
+
+
+
+
+
+
 // new template tasklist
-router.post('/prenotify-template', function(req, res) {
-    res.redirect('template-created');
-})
+    router.post('/prenotify-template', function(req, res) {
+        res.redirect('template-created');
+    })
 
 // submit export from template (radios)
-router.post('/template-submit-export-radios', function(req, res) {
-     if (req.session.data['which-template'] == 'other') {
-        res.redirect('prenotification-templates');
-    } else if (req.session.data['which-template'] == 'euromove-paper') {
-        res.redirect('template-new-export');
-    } else if (req.session.data['which-template'] == 'waste-ltd') {
-        res.redirect('template-new-export');
-    } else if (req.session.data['which-template'] == 'excel-list') {
-        res.redirect('template-new-export');
-    } else if (req.session.data['which-template'] == 'euromove-card') {
-        res.redirect('template-new-export');
-    } else if (req.session.data['which-template'] == 'fabric-society') {
-        res.redirect('template-new-export');
-    } 
-})
+    router.post('/template-submit-export-radios', function(req, res) {
+        if (req.session.data['which-template'] == 'other') {
+            res.redirect('prenotification-templates');
+        } else if (req.session.data['which-template'] == 'euromove-paper') {
+            res.redirect('template-new-export');
+        } else if (req.session.data['which-template'] == 'waste-ltd') {
+            res.redirect('template-new-export');
+        } else if (req.session.data['which-template'] == 'excel-list') {
+            res.redirect('template-new-export');
+        } else if (req.session.data['which-template'] == 'euromove-card') {
+            res.redirect('template-new-export');
+        } else if (req.session.data['which-template'] == 'fabric-society') {
+            res.redirect('template-new-export');
+        } 
+    })
 
 // template-edit-name
-router.post('/template-edit-name', function(req, res) {
-    //res.redirect('prenotification-templates');
-    req.session.data['template-name'] = req.session.data['rename-template-name'];
-    req.session.data['template-name'] = req.session.data['new-rename-template-name'];
-    req.session.data['template-description'] = req.session.data['rename-template-description'];
-    req.session.data['template-description'] = req.session.data['new-rename-template-description'];
+    router.post('/template-edit-name', function(req, res) {
+        //res.redirect('prenotification-templates');
+        req.session.data['template-name'] = req.session.data['rename-template-name'];
+        req.session.data['template-name'] = req.session.data['new-rename-template-name'];
+        req.session.data['template-description'] = req.session.data['rename-template-description'];
+        req.session.data['template-description'] = req.session.data['new-rename-template-description'];
+        req.session.data['just-edited'] = 'yes';
+        res.redirect('template-euromovement-selected');
+    })
+
+// template-new-unique-ref
+router.post('/template-new-unique-ref', function(req, res) {
+    req.session.data['template-add-unique-ref'] = req.session.data['added-unique-ref'];
     req.session.data['just-edited'] = 'yes';
-    res.redirect('template-euromovement-selected');
+    res.redirect('template-new-export');
 })
 
 /* // template-edit-description
-router.post('/template-edit-name', function(req, res) {
-    //res.redirect('prenotification-templates');
-    req.session.data['template-description'] = req.session.data['rename-template-description'];
-    req.session.data['template-description'] = req.session.data['new-rename-template-description'];
-    req.session.data['just-edited'] = 'yes';
-    res.redirect('template-euromovement-selected');
-}) */
+    router.post('/template-edit-name', function(req, res) {
+        //res.redirect('prenotification-templates');
+        req.session.data['template-description'] = req.session.data['rename-template-description'];
+        req.session.data['template-description'] = req.session.data['new-rename-template-description'];
+        req.session.data['just-edited'] = 'yes';
+        res.redirect('template-euromovement-selected');
+    }) */
 
 // delete-template
-router.post('/delete-template', function(req, res) {
-    //req.session.data['template-name'] = undefined;
-    if (req.session.data['delete-template-check'] == 'Yes') {
-        res.redirect('delete-confirmation');
-    } else if (req.session.data['delete-template-check'] == 'No') {
-        res.redirect('prenotification-templates');
-    }
-    
-})
+    router.post('/delete-template', function(req, res) {
+        //req.session.data['template-name'] = undefined;
+        if (req.session.data['delete-template-check'] == 'Yes') {
+            res.redirect('delete-confirmation');
+        } else if (req.session.data['delete-template-check'] == 'No') {
+            res.redirect('prenotification-templates');
+        }
+        
+    })
 
 // template-euromovement
-router.post('/template-euromovement', function(req, res) {
-    res.redirect('template-confirmation');
-})
+    router.post('/template-euromovement', function(req, res) {
+        res.redirect('template-confirmation');
+    })
+
+// template-new-export
+    router.post('/template-new-export', function(req, res) {
+        if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+            res.redirect('template-export-confirmation');
+        } else {
+            res.redirect('template-export-confirmation');
+        }
+    })
 
 
 
-
+//------------- BULK UPLOAD API --------------------------------------------------------------------------------------------
 
 // manual-bulk-api
 router.post('/manual-bulk-api', function(req, res) {
@@ -606,7 +969,7 @@ router.post('/importer-consignee', function(req, res) {
 })
 
 
-// enter-waste
+// enter-waste-quantity
 router.post('/quantity', function(req, res) {
     req.session.data['quantity-status'] = "Completed";
 
@@ -1099,21 +1462,21 @@ router.get('/prenotify', function (req, res) {
 //------ PRENOTIFY TEMPLATE
 router.get('/prenotify-template', function (req, res) {
 
-    var count = 4;
+    var count = 0;
 
-    if(req.session.data['usual-description-of-the-waste-status'] == "Completed" && req.session.data['quantity-status'] == "Completed"){
+    if(req.session.data['template-usual-description-of-the-waste-status'] == "Completed" && req.session.data['template-quantity-status'] == "Completed"){
         count++;
     }
 
-if(req.session.data['person-arranging-the-shipment-status'] == "Completed" && req.session.data['importer-consignee-status'] == "Completed"){
+if(req.session.data['template-person-arranging-the-shipment-status'] == "Completed" && req.session.data['template-importer-consignee-status'] == "Completed"){
   count++;
 }
 
-if(req.session.data['date-of-shipment-status'] == "Completed" && req.session.data['carrier-status'] == "Completed" && req.session.data['waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" && req.session.data['countries-states-concerned-status'] == "Completed"){
+if(req.session.data['template-date-of-shipment-status'] == "Completed" && req.session.data['template-carrier-status'] == "Completed" && req.session.data['template-waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" && req.session.data['template-countries-states-concerned-status'] == "Completed"){
   count++;
 }
 
-if(req.session.data['recovery-facility-or-laboratory-status'] == "Completed" && req.session.data['recovery-operation-status'] == "Completed"){
+if(req.session.data['template-recovery-facility-or-laboratory-status'] == "Completed" && req.session.data['template-recovery-operation-status'] == "Completed"){
   count++;
 }
 
@@ -1125,7 +1488,7 @@ if(req.session.data['recovery-facility-or-laboratory-status'] == "Completed" && 
 
 
 
-//carrier counter
+//------ carrier counter
   router.post('/carrier-add-3', function(req, res) {
       if(typeof req.session.data['carrier-count'] == "undefined"){
         req.session.data['carrier-count'] = 0;
@@ -1151,9 +1514,35 @@ if(req.session.data['recovery-facility-or-laboratory-status'] == "Completed" && 
 
 
 
+  //------ TEMPLATE-carrier-counter
+  router.post('/template-carrier-add-3', function(req, res) {
+    if(typeof req.session.data['template-carrier-count'] == "undefined"){
+      req.session.data['template-carrier-count'] = 0;
+    }
+    else {
+      req.session.data['template-carrier-count']++;
+    }
+
+    req.session.data['template-carrier-name-'+req.session.data['template-carrier-count']] = req.body.additonalcarrier;
+    res.redirect('template-carrier-transport-2');
+});
+
+router.get('/template-carrier-check', function (req, res) {
+  var carrierArray = [];
+
+  for (var i = 0; i <= req.session.data['template-carrier-count']; i++) {
+    carrierArray[i] = req.session.data['template-carrier-name-'+i];
+  }
+
+  res.render(version+'/template-carrier-check', {
+      'items' : carrierArray });
+});
 
 
-  //code counter
+
+
+
+  //------ EWC code counter
   router.post('/ec-code', function(req, res) {
           if(req.session.data['ec-code']=='Yes'){
             if(typeof req.session.data['code-count'] == "undefined"){
@@ -1241,6 +1630,65 @@ router.post('/countries-add-2', function(req, res) {
 });
 
 
+//------ TEMPLATE countries-state country counter
+
+router.post('/template-countries-states-concerned-new', function(req, res) {
+    console.log(req.session.data['template-country-state']);
+    if(req.session.data['template-countries-state']=='Yes'){
+      if(typeof req.session.data['template-country-count'] == "undefined"){
+        req.session.data['template-country-count'] = 0;
+      }
+      else {
+        req.session.data['template-country-count']++;
+      }
+
+      req.session.data['template-country-'+req.session.data['template-country-count']] = req.session.data['transit-typeahead'];
+      res.redirect('template-countries-add-another');
+    }
+    else if (req.session.data['template-countries-state']=='No') {
+    req.session.data['template-countries-states-concerned-status'] = "Completed";
+      res.redirect('prenotify-template');
+    }
+});
+
+router.get('/template-countries-add-another', function (req, res) {
+var carrierArray = [];
+
+for (var i = 0; i <= req.session.data['template-country-count']; i++) {
+  carrierArray[i] = req.session.data['template-country-'+i];
+}
+
+res.render(version+'/template-countries-add-another', {
+    'countries' : carrierArray });
+});
+
+router.post('/template-countries-add-2', function(req, res) {
+    if(typeof req.session.data['template-country-count'] == "undefined"){
+      req.session.data['template-country-count'] = 0;
+    }
+    else {
+      req.session.data['template-country-count']++;
+    }
+
+    req.session.data['template-country-'+req.session.data['template-country-count']] = req.session.data['transit-typeahead'];
+    res.redirect('template-countries-add-another');  
+});
+
+router.post('/template-countries-add-another', function(req, res) {
+    if (req.session.data['template-add-transit-country'] == 'Yes') {
+        res.redirect('template-countries-add-2');
+    } else if (req.session.data['template-add-transit-country'] == 'No') {
+        if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+            res.redirect('template-new-export#waste-journey');
+        } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+            res.redirect('template-euromovement-selected#waste-journey');
+        } else {
+            req.session.data['template-countries-states-concerned-status'] = "Completed";
+            res.redirect('prenotify-template');
+        }
+    }
+    
+    })
 
 // create-template-from-view-all
 //router.post('/create-template-from-view-all', function(req, res) {
