@@ -74,7 +74,7 @@ router.use('/agency-officer-v1/', (req, res, next) => {
   return require(`./views/agency-officer-v1/_routes`)(req, res, next);
 })
 
-//---------------------------------------------------------------------
+//----------------------- EXPORT ----------------------------------------------
 
 // Import Exporter V13 routes
 router.use('/exporter-v13/', (req, res, next) => {
@@ -152,7 +152,7 @@ router.use('/exporter-v1/', (req, res, next) => {
 })
 
 
-//---------------------------------------------------------------------
+//-------------------- IMPORT -------------------------------------------------
 
 // Import alpha-assessment-defra-id
 router.use('/alpha-assessment-defra-id', require('./views/alpha-assessment-defra-id/_routes'));

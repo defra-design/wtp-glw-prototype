@@ -16,70 +16,45 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
       {{ govukPanel({
-        titleText: "Submission complete and Annex VII created",
-        html: "Your unique transaction number is <strong>HDJ2123F</strong>"
+        titleText: "Export submitted",
+        html: "Your transaction number is <strong>GLW0001</strong>"
       }) }}
 
-      <p class="govuk-heading-m govuk-!-padding-top-4">
-        Next steps
-      </p>
+      <p class="govuk-body govuk-!-padding-top-2">We’ve sent a confirmation email to <b>email@emailaddress.com</b>. </p>
 
-      <ol class="govuk-list govuk-list--number govuk-list--spaced">
-        <li>You <strong>must</strong> download, print, and sign the Annex VII form and send it with your waste export:</li>
-        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-          <li><a href="../public/pdfs/hdj2123f-annex-vii.pdf" download class="govuk-link govuk-link--no-visited-state">download the Annex VII form as a PDF document</a></li>
-        </ul>
-        <li>If any information has been estimated, as soon as you know the actual details you <strong>must</strong>:</li>
-        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-          <li>add them to the paper copy of the Annex VII</li>
-          <li>add them to the waste export using this service</li>
-        </ul>
-      </ol>
+      <p class="govuk-body">We’ve also sent these details to the relevant UK regulatory authority, You do not need to send them anything else.</p>
 
-      {#
-      <p class="govuk-body">
-        You must download, print, and sign the Annex VII form and send it with your waste export.
-      </p>
+      <h3 class="govuk-heading-s govuk-!-padding-top-2">
+        Updating this export with actual details
+      </h3>
 
-      <div class="govuk-inset-text">
-        <a href="pdf-container" class="govuk-link govuk-link--no-visited-state">Download the Annex VII form (PDF document)</a>
-      </div>
+        <p class="govuk-body">If you’ve provided estimates, you’ll need to provide actual details as soon as possible. This includes the</p>
 
-      <p class="govuk-body">
-        If any information has been estimated, as soon as you know the actual details you must:
-      </p>
+          <ul class="govuk-body">
+            <li>weight</li>
+            <li>collection date</li>
+            <li>first carrier</li>
+            <li>vehicle or container number</li>
+          </ul>
 
-      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-        <li>add them to the paper copy of the Annex VII</li>
-        <li>add them to the waste export using this service</li>
-      </ul>
-      #}
+        <h3 class="govuk-heading-s govuk-!-padding-top-2">
+          What you must do next
+        </h3>
 
-      {{ govukWarningText({
-        text: "Your environment regulator now knows about this export of green list waste. You do not need to send them any details.",
-        iconFallbackText: "Warning"
-      }) }}
+        <p class="govuk-body">It’s a legal requirement that a completed Annex VII form travels with each waste shipment. </p>
+
+        <p class="govuk-body">You can use your own or <a href="../public/pdfs/hdj2123f-annex-vii.pdf" class="govuk-link">download the Annex VII document created for this export</a>. Estimated details will not appear on the downloaded form. </p>
+
+        <br>
 
       <p class="govuk-body">
-        You have been emailed a copy of this waste export.
+        <a href="dashboard" class="govuk-link">Return to green list waste overview</a>
       </p>
 
-      <h2 class="govuk-heading-m">
-        What do you want to do now?
-      </h2>
-
-      <p class="govuk-body">
-        <ul class="govuk-list">
-          <li><a href="manual-bulk-api" class="govuk-link">Tell us about another waste export</a></li>
-          <li><a href="dashboard" class="govuk-link">Return to the main dashboard</a></li>
-        </ul>
-      </p>
-
-    </div>
   </div>
+</div>
 
 {% endblock %}
