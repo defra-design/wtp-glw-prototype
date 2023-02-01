@@ -1,0 +1,43 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  What is the recovery code?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="lab-prenotify-3" method="post">
+
+        <div class="govuk-form-group">
+
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l">
+              What is the disposal code?
+            </label>
+          </h1>
+          <div id="contact-hint" class="govuk-hint">
+            Start typing, then choose from the list
+          </div>
+          <div id="d-code-typeahead-container" data-default-value="{{ data['d-code-typeahead'] }}">
+          </div>
+
+
+        </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+        <p class="govuk-body"><a class="govuk-link" href="lab-prenotify-2">Return to submit an export page</a></p>
+
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

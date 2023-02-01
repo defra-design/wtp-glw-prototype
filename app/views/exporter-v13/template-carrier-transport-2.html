@@ -1,0 +1,63 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  How will the additional waste carrier transport the waste?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+        <form class="form" method="post">
+
+
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        How will the additional waste carrier transport the waste?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="template-additional-carrier-transport" name="template-additional-carrier-transport" type="radio" value="Road">
+        <label class="govuk-label govuk-radios__label" for="template-where-do-you-live">
+          Road
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="template-additional-carrier-transport-rail" name="template-additional-carrier-transport" type="radio" value="Rail">
+        <label class="govuk-label govuk-radios__label" for="template-additional-carrier-transport-rail">
+          Rail
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="template-additional-carrier-transport-sea" name="template-additional-carrier-transport" type="radio" value="Sea">
+        <label class="govuk-label govuk-radios__label" for="template-additional-carrier-transport-3-sea">
+          Sea
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="template-additional-carrier-transport-air" name="template-additional-carrier-transport" type="radio" value="Air">
+        <label class="govuk-label govuk-radios__label" for="template-additional-carrier-transport-air">
+          Air
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+      {{ govukButton({
+        text: 'Save and continue'
+      }) }}
+
+      {% include "./includes/template-return-to-link.html" %}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
