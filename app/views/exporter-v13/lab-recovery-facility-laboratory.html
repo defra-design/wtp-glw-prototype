@@ -1,0 +1,104 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  Recovery facility details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="lab-recovery-operation" method="post">
+
+          <h1 class="govuk-heading-l">
+            Laboratory details
+          </h1>
+
+       
+
+
+
+            <div class="govuk-form-group">
+            <label class="govuk-label" for="first-carrier-name">
+              Laboratory name
+              <span class="govuk-visually-hidden">line 1 of 2</span>
+            </label>
+            <input class="govuk-input govuk-!-width-three-quarters" id="facility-name" name="facility-name" type="text" value="{{data['facility-name']}}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="facility-address">
+              Address
+            </label>
+            <textarea class="govuk-textarea" id="facility-address" name="facility-address" rows="5" autocomplete="street-address">{{ data['facility-address'] }}</textarea>
+          </div>
+
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label">
+              Country
+            </label>
+            <div id="contact-hint" class="govuk-hint">
+              We’ll also use this as the importing country.
+            </div>
+          </h2>
+          <div id="facility-or-lab-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['facility-or-lab-typeahead'] }}">
+          </div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  Contact details
+                </h1>
+              </legend>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="facility-full-name">
+                  Full name
+                </label>
+                <input class="govuk-input govuk-!-width-three-quarters" id="facility-full-name" name="facility-full-name" type="text" value="{{data['facility-full-name']}}">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="facility-email">
+                  Email address
+                </label>
+                <input class="govuk-input govuk-!-width-one-half" id="facility-email" name="facility-email" type="email" value="{{data['facility-email']}}">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="facility-phone">
+                  Phone number
+                </label>
+                <div id="contact-hint" class="govuk-hint">
+                   Include the country code for international numbers.
+                </div>
+                <input class="govuk-input govuk-!-width-one-third" id="facility-phone" name="facility-phone" type="tel" value="{{data['facility-phone']}}">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="facility-fax">
+                  Fax number (optional)
+                </label>
+                <div id="contact-hint" class="govuk-hint">
+                   Include the country code for international numbers.
+                </div>
+                <input class="govuk-input govuk-!-width-one-third" id="facility-fax" name="facility-fax" type="tel" value="{{data['facility-fax']}}">
+              </div>
+
+
+            </fieldset>
+          </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+        <p class="govuk-body"><a class="govuk-link" href="lab-prenotify-2">Return to submit an export page</a></p>
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

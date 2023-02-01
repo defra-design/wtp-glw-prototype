@@ -1,0 +1,50 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  Are you sure you want to cancel this export?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+        <form method="post" action="">
+
+
+    </form>
+
+
+    <form method="post" action="">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="add-second-carrier-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--l">
+            Are you sure you want to delete this export?
+          </legend>
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="cancel-export" name="cancel-export" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="cancel-export">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="cancel-export" name="cancel-export" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="cancel-export">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Confirm and delete
+      </button>
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

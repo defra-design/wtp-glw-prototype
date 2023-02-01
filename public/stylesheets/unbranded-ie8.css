@@ -9971,6 +9971,10 @@ button.button-as-link:hover {
   padding-top: 8px;
 }
 
+.csv-howto-list li {
+  margin-bottom: 0.8em;
+}
+
 .govuk-modal-overlay {
   position: fixed;
   z-index: 2;

@@ -1,0 +1,70 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  Why do you want to cancel this export?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+        <form method="post" action="">
+
+
+          <div class="govuk-form-group">
+
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Why do you want to cancel this export?
+                </h1>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="submitted-cancel-change" name="submitted-cancel" type="radio" value="change" data-aria-controls="conditional-contact-2" {{ checked("submitted-cancel", "change") }}>
+                  <label class="govuk-label govuk-radios__label" for="submitted-cancel-change">
+                    Change of recovery facility or laboratory
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="submitted-cancel-export" name="submitted-cancel" type="radio" value="export" data-aria-controls="conditional-contact-2" {{ checked("submitted-cancel", "export") }}>
+                  <label class="govuk-label govuk-radios__label" for="submitted-cancel-export">
+                    No longer exporting this waste
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="submitted-cancel-other" name="submitted-cancel" type="radio" value="other" data-aria-controls="conditional-contact" {{ checked("submitted-cancel", "other") }}>
+                  <label class="govuk-label govuk-radios__label" for="submitted-cancel-other">
+                    Other
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                  <div class="govuk-form-group">
+                    <div id="contact-hint" class="govuk-hint">
+                      Enter a reason
+                    </div>
+                    <textarea class="govuk-textarea" id="submitted-cancel-reason" name="submitted-cancel-reason" rows="5"></textarea>
+                  </div>
+                </div>
+
+              </div>
+
+            </fieldset>
+          </div>
+        </div>
+
+
+
+        <button class="govuk-button govuk-button--warning" data-module="govuk-button">
+          Cancel this export
+        </button>
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

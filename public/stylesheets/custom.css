@@ -297,3 +297,7 @@ button.button-as-link:hover {
   float: inline;
   padding-top: 8px;
 }
+
+.csv-howto-list li {
+  margin-bottom: 0.8em;
+}

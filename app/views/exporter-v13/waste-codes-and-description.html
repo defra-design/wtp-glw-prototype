@@ -1,0 +1,125 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+What’s the waste code?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <form class="form" action="" method="post">
+
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        What’s the waste code?
+      </h1>
+    </legend>
+    <div id="contact-hint" class="govuk-hint">
+      Select one option.
+    </div>
+
+    <div class="govuk-radios" data-module="govuk-radios">
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="code-basel" name="code" type="radio" value="basel" data-aria-controls="conditional-contact" {{ checked("code-basel", "basel") }}>
+        <label class="govuk-label govuk-radios__label" for="code">
+          Basel Annex IX
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+        <div id="contact-hint" class="govuk-hint">
+          Start typing, then choose from the list
+        </div>
+        <div class="govuk-form-group">
+          <div class="govuk-!-padding-bottom-2" id="basel-annex-ix-typeahead-container" data-default-value="{{ data['basel-annex-ix-typeahead'] }} ">
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="code-oecd" name="code" type="radio" value="oecd" data-aria-controls="conditional-contact-2" {{ checked("code", "oecd") }}>
+        <label class="govuk-label govuk-radios__label" for="code-oecd">
+          OECD
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+        <div id="contact-hint" class="govuk-hint">
+          Start typing, then choose from the list
+        </div>
+        <div class="govuk-form-group">
+          <div id="oecd-typeahead-container" data-default-value="{{ data['oecd-typeahead'] }}">
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="code-a" name="code" type="radio" value="annex-a" data-aria-controls="conditional-contact-3" {{ checked("code", "annex-a") }}>
+        <label class="govuk-label govuk-radios__label" for="code-a">
+          Annex IIIA
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+        <div id="contact-hint" class="govuk-hint">
+          Start typing, then choose from the list
+        </div>
+        <div class="govuk-form-group">
+          <div id="annex-iiia-typeahead-container" data-default-value="{{ data['annex-iiia-typeahead'] }}">
+          </div>
+        </div>
+        </div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="code-b" name="code" type="radio" value="annex-b" data-aria-controls="conditional-contact-4" {{ checked("code", "annex-b") }}>
+          <label class="govuk-label govuk-radios__label" for="code-b">
+            Annex IIIB
+          </label>
+        </div>
+        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-4">
+          <div id="contact-hint" class="govuk-hint">
+            Start typing, then choose from the list
+          </div>
+          <div class="govuk-form-group">
+            <div id="annex-iiib-typeahead-container" data-default-value="{{ data['annex-iiib-typeahead'] }}">
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-radios__divider">or</div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="code-not-applicable" name="code" type="radio" value="not-applicable" data-aria-controls="conditional-contact-5" {{ checked("code", "not-applicable") }}>
+        <label class="govuk-label govuk-radios__label" for="code-not-applicable">
+          Not applicable
+        </label>
+        <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+          Only select this option if the waste is going to a laboratory.
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </fieldset>
+</div>
+
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+        {% include "./includes/return-to-link.html" %}
+
+
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
