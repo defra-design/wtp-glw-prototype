@@ -1214,6 +1214,14 @@ router.post('/carrier-transport-1', function(req, res) {
   }
 })
 
+ //------------ TEMP ROUTE FOR TEST PAGE
+
+ router.post('/carrier-transport-1b', function(req, res) {
+    res.redirect('carriers');
+}) 
+
+//-----------------------------------------
+
 router.post('/carrier-add-2', function(req, res) {
     req.session.data['carrier-status'] = "Completed";
     req.session.data['carrier-add-1'] = "true";
