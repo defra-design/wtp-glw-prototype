@@ -8,10 +8,10 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-        <form class="form" method="post">
-
+    <form class="form" method="post">
 
       <div class="govuk-form-group">
+        
   <fieldset class="govuk-fieldset">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
       <h1 class="govuk-fieldset__heading">
@@ -24,6 +24,8 @@
 
     <div class="govuk-radios" data-module="govuk-radios">
 
+      <!-- SHIPPING CONTAINER -->
+
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Shipping" data-aria-controls="conditional-contact" {{ checked("transport", "Shipping") }}>
         <label class="govuk-label govuk-radios__label" for="transport">
@@ -35,13 +37,15 @@
           Enter the shipping container number
         </div>
         <div class="govuk-form-group">
-          <input class="govuk-input govuk-!-width-two-thirds" id="transport-road" name="transport-shipping" type="text" value="{{data['transport-shipping']}}">
+          <input class="govuk-input govuk-!-width-two-thirds" id="transport-ship" name="transport-shipping" type="text" value="{{data['transport-shipping']}}">
           </div>
         </div>
 
+        <!-- TRAILER -->
+
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="Trailer" data-aria-controls="conditional-contact-2" {{ checked("transport", "Trailer") }}>
-          <label class="govuk-label govuk-radios__label" for="transport">
+          <input class="govuk-radios__input" id="transport-2" name="transport" type="radio" value="Trailer" data-aria-controls="conditional-contact-2" {{ checked("transport", "Trailer") }}>
+          <label class="govuk-label govuk-radios__label" for="transport-2">
             Trailer
           </label>
         </div>
@@ -50,13 +54,15 @@
             Enter the trailer number
           </div>
           <div class="govuk-form-group">
-            <input class="govuk-input govuk-!-width-two-thirds" id="transport-rail" name="transport-trailer" type="text" value="{{data['transport-trailer']}}">
+            <input class="govuk-input govuk-!-width-two-thirds" id="transport-trailer" name="transport-trailer" type="text" value="{{data['transport-trailer']}}">
             </div>
           </div>
 
+          <!-- ISO TANK -->
+
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="ISO" data-aria-controls="conditional-contact-3" {{ checked("transport", "ISO-tank") }}>
-            <label class="govuk-label govuk-radios__label" for="transport">
+            <input class="govuk-radios__input" id="transport-3" name="transport" type="radio" value="ISO" data-aria-controls="conditional-contact-3" {{ checked("transport", "ISO-tank") }}>
+            <label class="govuk-label govuk-radios__label" for="transport-3">
               ISO tank
             </label>
           </div>
@@ -69,20 +75,22 @@
             </div>
           </div>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="transport" name="transport" type="radio" value="bulk-vessel" {{ checked("transport", "Bulk-vessel") }}>
-              <label class="govuk-label govuk-radios__label" for="transport">
-                Bulk vesssel
-              </label>
+          <!-- BULK VESSEL -->
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="transport-4" name="transport" type="radio" value="bulk-vessel" data-aria-controls="conditional-contact-4" {{ checked("transport", "bulk-vessel") }}>
+            <label class="govuk-label govuk-radios__label" for="transport-4">
+              Bulk vessel
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-4">
+            <div id="contact-hint" class="govuk-hint">
+                Enter the vessel number
             </div>
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-4">
-              <div id="contact-hint" class="govuk-hint">
-                  Enter the vessel number
-              </div>
-              <div class="govuk-form-group">
-                <input class="govuk-input govuk-!-width-two-thirds" id="transport-vessel" name="transport-vessel" type="text" value="{{data['transport-vessel']}}">
-              </div>
+            <div class="govuk-form-group">
+              <input class="govuk-input govuk-!-width-two-thirds" id="transport-vessel" name="transport-bulk-vessel" type="text" value="{{data['transport-bulk-vessel']}}">
             </div>
+          </div>
 
     </div>
 
