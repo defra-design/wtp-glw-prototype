@@ -54,6 +54,7 @@
             <th scope="col" class="govuk-table__header">Template name</th>
             <th scope="col" class="govuk-table__header">Last used</th>
             <th scope="col" class="govuk-table__header">Actions</th>
+            <th scope="col" class="govuk-table__header"></th>
           </tr>
         </thead>
         
@@ -70,7 +71,14 @@
                   <br><label class="govuk-body-s">{{ data['template-description'] }}</label>
                 </td>
                 <td class="govuk-table__cell">
-                  10 June 2022
+                  <!-- todays date -->
+                  <script>
+                    const event = new Date();
+                    const options = { year: 'numeric', month: 'long'};
+                  </script>
+
+                  <script type="text/javascript"> document.write(event.getDate());</script> <script type="text/javascript"> document.write(event.toLocaleDateString(undefined, options));</script>
+                  <!-- todays date end -->
                 </td>
                 <td class="govuk-table__cell">
                   <a href="#" class="govuk-link">New export</a>

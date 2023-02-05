@@ -53,7 +53,7 @@
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key govuk-!-width-one-third">
-          <h2 class="govuk-heading-m">Your reference number</h2>
+          <h2 class="govuk-heading-m">Your unique reference</h2>
         </dt>
         <dd class="govuk-summary-list__value">
         </dd>
@@ -63,7 +63,7 @@
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Reference number
+          Unique reference
         </dt>
         <dd class="govuk-summary-list__value">
           <!-- DYNAMIC TEMPLATE NAME (set in local routes.js)-->
@@ -139,7 +139,7 @@
           <dd class="govuk-summary-list__value">
             <!-- DYNAMIC EWC code (set in local routes.js)-->
             {% if data ['template-ec-code'] == "Yes" %}
-            <p class="govuk-body">{{data['template-ec-code']}}</p>
+            <p class="govuk-body">{{data['ec-wastes-typeahead']}}</p>
             {% else %}
             <p class="govuk-body">200136: discarded electrical and electronic equipment other than those mentioned in 20 01 21, 20 01 23 and 20 01 35</p>
             {% endif %}
@@ -398,10 +398,11 @@
             First carrier transport waste
           </dt>
           <dd class="govuk-summary-list__value">
-            <p class="govuk-body">Road</p>
+            <p class="govuk-body">Trailer</p>
+            <p class="govuk-body">A1234567</p>
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="template-carrier-transport-1.html">
+            <a class="govuk-link" href="template-carrier-transport-1b.html">
               Change<span class="govuk-visually-hidden">waste carrier address</span>
             </a>
           </dd>

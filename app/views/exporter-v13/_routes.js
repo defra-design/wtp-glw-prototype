@@ -444,22 +444,22 @@ router.post('/template-create-new', function(req, res) {
             } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
                 res.redirect('template-euromovement-selected#waste-journey');
             } else {
-            res.redirect('template-carrier-transport-1');
+            res.redirect('template-carrier-transport-1b');          //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
             }
         })
 
 
-        router.post('/template-carrier-add-1b', function(req, res) {  
+        /*  router.post('/template-carrier-add-1b', function(req, res) {  
             if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
                 res.redirect('template-new-export#waste-journey');
             } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
                 res.redirect('template-euromovement-selected#waste-journey');
                 } 
         
-        })
+        }) */
 
         
-        router.post('/template-carrier-transport-1', function(req, res) {
+        router.post('/template-carrier-transport-1b', function(req, res) {  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
             req.session.data['template-carrier-status'] = "Completed";
             req.session.data['template-carrier-add-1'] = "true";
         
@@ -472,13 +472,13 @@ router.post('/template-create-new', function(req, res) {
             }
         })
         
-        router.post('/template-carrier-add-2', function(req, res) {
+        router.post('/template-carrier-add-2', function(req, res) { //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
             req.session.data['template-carrier-status'] = "Completed";
             req.session.data['template-carrier-add-1'] = "true";
-            res.redirect('template-carrier-transport-2');
+            res.redirect('template-carrier-transport-2b');          //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
         })
         
-        router.post('/template-carrier-transport-2', function(req, res) {
+        router.post('/template-carrier-transport-2b', function(req, res) {  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
             req.session.data['template-carrier-status'] = "Completed";
             req.session.data['template-carrier-add-1'] = "true";
             res.redirect('template-carrier-check');
@@ -487,10 +487,10 @@ router.post('/template-create-new', function(req, res) {
         router.post('/template-carrier-add-3', function(req, res) {
             req.session.data['template-carrier-status'] = "Completed";
             req.session.data['template-carrier-add-1'] = "true";
-            res.redirect('template-carrier-transport-3');
+            res.redirect('template-carrier-transport-3b');                  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
         })
         
-        router.post('/template-carrier-transport-3', function(req, res) {
+        router.post('/template-carrier-transport-3b', function(req, res) {  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
             req.session.data['template-carrier-status'] = "Completed";
             req.session.data['template-carrier-add-1'] = "true";
             res.redirect('template-carrier-check');
@@ -571,7 +571,7 @@ router.post('/template-create-new', function(req, res) {
             } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
                 res.redirect('template-euromovement-selected#waste-treatment');
             } else {
-                res.redirect('template-prenotify');
+                res.redirect('prenotify-template');
             }
         })
 
@@ -1196,14 +1196,14 @@ router.post('/carrier-add-1', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
     } else {
-    res.redirect('carrier-transport-1');
+    res.redirect('carrier-transport-1b'); //---------  <<<< Changed from carrier-transport-1 <<<<<<<<< ---//
 
   }
 })
 
 
 
-router.post('/carrier-transport-1', function(req, res) {
+router.post('/carrier-transport-1b', function(req, res) { //---------  <<<< Changed from carrier-transport-1 <<<<<<<<< ---//
     req.session.data['carrier-status'] = "Completed";
     req.session.data['carrier-add-1'] = "true";
 
@@ -1216,25 +1216,25 @@ router.post('/carrier-transport-1', function(req, res) {
 
  //------------ TEMP ROUTE FOR TEST PAGE
 
- router.post('/carrier-transport-1b', function(req, res) {
+/*  router.post('/carrier-transport-1b', function(req, res) {
     res.redirect('carriers');
-}) 
+})  */
 
 //-----------------------------------------
 
 router.post('/carrier-add-2', function(req, res) {
     req.session.data['carrier-status'] = "Completed";
     req.session.data['carrier-add-1'] = "true";
-    res.redirect('carrier-transport-2');
+    res.redirect('carrier-transport-2b');  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
 })
 
-router.post('/carrier-transport-2', function(req, res) {
+router.post('/carrier-transport-2b', function(req, res) {  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
     req.session.data['carrier-status'] = "Completed";
     req.session.data['carrier-add-1'] = "true";
     res.redirect('carrier-check');
 })
 
-router.post('/carrier-transport-3', function(req, res) {
+router.post('/carrier-transport-3b', function(req, res) {  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
     req.session.data['carrier-status'] = "Completed";
     req.session.data['carrier-add-1'] = "true";
     res.redirect('carrier-check');
@@ -1562,7 +1562,7 @@ if(req.session.data['template-recovery-facility-or-laboratory-status'] == "Compl
       }
 
       req.session.data['carrier-name-'+req.session.data['carrier-count']] = req.body.additonalcarrier;
-      res.redirect('carrier-transport-2');
+      res.redirect('carrier-transport-2b');  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
   });
 
   router.get('/carrier-check', function (req, res) {
@@ -1588,7 +1588,7 @@ if(req.session.data['template-recovery-facility-or-laboratory-status'] == "Compl
     }
 
     req.session.data['template-carrier-name-'+req.session.data['template-carrier-count']] = req.body.additonalcarrier;
-    res.redirect('template-carrier-transport-2');
+    res.redirect('template-carrier-transport-2b');
 });
 
 router.get('/template-carrier-check', function (req, res) {
