@@ -128,7 +128,7 @@
       <dd class="govuk-summary-list__value">
         <!-- DYNAMIC EWC code (set in local routes.js)-->
         {% if data ['template-ec-code'] == "Yes" %}
-        <p class="govuk-body">{{data['template-ec-code']}}</p>
+        <p class="govuk-body">{{data['ec-wastes-typeahead']}}</p>
         {% else %}
         <p class="govuk-body">200136: discarded electrical and electronic equipment other than those mentioned in 20 01 21, 20 01 23 and 20 01 35</p>
         {% endif %}
@@ -192,7 +192,7 @@
           {% elseif data ['template-quantity'] == "no" %}
           <p class="govuk-body">Estimate<br>{{ data['template-quantity-weight-estimate'] }} tonnes</p>
           {% else %}  
-        <strong class="govuk-tag govuk-tag--grey">
+        <strong class="govuk-tag govuk-tag--blue">
           Add Information
         </strong> 
         {% endif %}
@@ -312,7 +312,7 @@
                 December
 
               {% else %}
-              <strong class="govuk-tag govuk-tag--grey">
+              <strong class="govuk-tag govuk-tag--blue">
                 Add Information
               </strong>
                 {#January#}
@@ -348,7 +348,7 @@
               {% elif data['template-actual-shipment-month'] == '12' or data['template-actual-shipment-month'] == '12' %}
                 December
             {% else %}
-            <strong class="govuk-tag govuk-tag--grey">
+            <strong class="govuk-tag govuk-tag--blue">
               Add Information
             </strong>
                 {#January#}
@@ -388,10 +388,11 @@
               First carrier transport waste
             </dt>
             <dd class="govuk-summary-list__value">
-              <p class="govuk-body">Road</p>
+              <p class="govuk-body">Trailer</p>
+              <p class="govuk-body">A1234567</p>
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="template-carrier-transport-1.html">
+              <a class="govuk-link" href="template-carrier-transport-1b.html">
                 Change<span class="govuk-visually-hidden">waste carrier address</span>
               </a>
             </dd>

@@ -297,19 +297,21 @@
                           First carrier transport waste
                         </dt>
                         <dd class="govuk-summary-list__value">
-                          {% if data ['transport'] == "Road" %}
-                          <p class="govuk-body">Road</p>
-                            <p class="govuk-body">{{ data['transport-road'] }}</p>
+                          {% if data ['transport'] == "Shipping" %}
+                          <p class="govuk-body">Shipping Container</p>
+                            <p class="govuk-body">{{ data['transport-shipping'] }}</p>
 
-                            {% elseif data ['transport'] == "Rail" %}
-                            <p class="govuk-body">Rail</p>
-                              <p class="govuk-body">{{ data['transport-rail'] }}</p>
+                            {% elseif data ['transport'] == "Trailer" %}
+                            <p class="govuk-body">Trailer</p>
+                              <p class="govuk-body">{{ data['transport-trailer'] }}</p>
 
-                              {% elseif data ['transport'] == "Sea" %}
+                              {% elseif data ['transport'] == "ISO Tank" %}
                               <p class="govuk-body">Sea</p>
+                                <p class="govuk-body">{{ data['transport-iso-tank'] }}</p>
 
-                              {% elseif data ['transport'] == "Air" %}
-                              <p class="govuk-body">Air</p>
+                              {% elseif data ['transport'] == "Bulk vessel" %}
+                              <p class="govuk-body">Bulk vessel</p>
+                                <p class="govuk-body">{{ data['transport-bulk-vessel'] }}</p>
 
                             {% endif %}
                         </dd>
