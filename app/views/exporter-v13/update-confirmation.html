@@ -6,12 +6,16 @@ Export successfully updated
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "prototype"
-    },
-    html: 'This is not a live service.'
-  }) }}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 13 - This is not a live service.
+    </span>
+  </p>
+  </div>
 {% endblock %}
 
 {% block content %}
@@ -19,50 +23,28 @@ Export successfully updated
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-
-
-
         {{ govukPanel({
           titleText: "Export successfully updated",
           html: "Your transaction number is <strong>GLW0001</strong>"
         }) }}
 
-      <p class="govuk-body">
-        We’ve sent you a confirmation email.
-        <br>
-        <br>
-        We’ve also sent these updated details to the relevant UK regulatory authority. You do not need to send them anything else.
-      </p>
+        <p class="govuk-body govuk-!-padding-top-2">We’ve sent a confirmation email to <b>email@emailaddress.com</b>. </p>
 
-      <p class="govuk-heading-m govuk-!-padding-top-4">
-        What you must do next
-      </p>
-
-      <p class="govuk-body">
-        It’s a legal requirement that a completed annex VII form travels with the waste. It must include these actual details.
-      </p>
-
-      <p class="govuk-body">
-        You can use your own or <a href="../public/pdfs/hdj2123f-annex-vii.pdf" class="govuk-link">download the one we’ve created.</a>
-        (PDF, 78 KB, 1 page).
-      </p>
-
-      <br>
-
-      <p class="govuk-body">
-        <a href="dashboard" class="govuk-link">Return to green list waste overview</a>
-      </p>
-
-      <!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> -->
-
-
-      <p class="govuk-body">
-        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
-      </p>
-
-
-
-
+        <p class="govuk-body">We’ve also sent these details to the relevant UK regulatory authority. You do not need to send them anything else.</p>
+  
+          <h3 class="govuk-heading-s govuk-!-padding-top-2">
+            What you must do next
+          </h3>
+  
+          <p class="govuk-body">It’s a legal requirement that a completed Annex VII form travels with each waste shipment. </p>
+  
+          <p class="govuk-body">You can use your own or <a href="../public/pdfs/hdj2123f-annex-vii.pdf" class="govuk-link">download the Annex VII document created for this export</a>. Estimated details will not appear on the downloaded form. </p>
+  
+          <br>
+  
+        <p class="govuk-body">
+          <a href="dashboard" class="govuk-link">Return to green list waste overview</a>
+        </p>
 
     </div>
   </div>
