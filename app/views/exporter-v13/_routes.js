@@ -53,7 +53,7 @@ router.post('/index', function(req, res) {
     // reset template name variable
     req.session.data['template-name'] = undefined;
     req.session.data['rename-template-name'] = "Fabric Society Waste mixed paper";
-    req.session.data['new-rename-template-name'] = "Euromovement paper waste movement";
+    req.session.data['new-rename-template-name'] = "Euromovement WEEE waste export";
     req.session.data['total-favs'] = "6";
 
     req.session.data['just-edited'] = 'no';
@@ -123,7 +123,7 @@ router.post('/login', function(req, res) {
     // reset template name variable
     req.session.data['template-name'] = undefined;
     req.session.data['rename-template-name'] = "Fabric Society Waste mixed paper";
-    req.session.data['new-rename-template-name'] = "Euromovement paper waste movement";
+    req.session.data['new-rename-template-name'] = "Euromovement WEEE waste export";
     req.session.data['total-favs'] = "6";
 
     req.session.data['just-edited'] = 'no';
@@ -174,7 +174,7 @@ router.post('/template-from-export-name', function(req, res) {
 
 // select template type
 router.post('/template-type', function(req, res) {
-    res.redirect('template-create-new');
+    res.redirect('template-create-how');
 })
 
 // create new template
@@ -582,8 +582,44 @@ router.post('/template-create-new', function(req, res) {
 
 // new template tasklist
     router.post('/prenotify-template', function(req, res) {
-        res.redirect('template-created');
+        res.redirect('template-saved');
     })
+
+
+// Create new template options
+router.post('/template-create-how', function(req, res) {
+    if (req.session.data['template-create'] == 'template-blank') {
+        res.redirect('template-create-new');
+    } else if (req.session.data['template-create'] == 'template-exist') {
+        res.redirect('template-create-export-radios');
+    } else if (req.session.data['template-create'] == 'template-prev') {
+        res.redirect('submitted-exports');
+    }
+})
+
+
+// create template from existing (radios)
+router.post('/template-create-export-radios', function(req, res) {
+    if (req.session.data['duplicate-which-template'] == 'other') {
+        res.redirect('prenotification-templates');
+    } else if (req.session.data['duplicate-which-template'] == 'euromove-paper') {
+        res.redirect('template-euromovement-duplicate');
+    } else if (req.session.data['duplicate-which-template'] == 'waste-ltd') {
+        res.redirect('template-euromovement-duplicate');
+    } else if (req.session.data['duplicate-which-template'] == 'excel-list') {
+        res.redirect('template-euromovement-duplicate');
+    } else if (req.session.data['duplicate-which-template'] == 'euromove-card') {
+        res.redirect('template-euromovement-duplicate');
+    } else if (req.session.data['duplicate-which-template'] == 'fabric-society') {
+        res.redirect('template-euromovement-duplicate');
+    } 
+})
+
+// Duplicated template
+router.post('/template-euromovement-duplicate', function(req, res) {
+    res.redirect('template-duplicate-saved');
+})
+
 
 // submit export from template (radios)
     router.post('/template-submit-export-radios', function(req, res) {
@@ -602,16 +638,29 @@ router.post('/template-create-new', function(req, res) {
         } 
     })
 
+
 // template-edit-name
     router.post('/template-edit-name', function(req, res) {
         //res.redirect('prenotification-templates');
-        req.session.data['template-name'] = req.session.data['rename-template-name'];
+       // req.session.data['template-name'] = req.session.data['rename-template-name'];
         req.session.data['template-name'] = req.session.data['new-rename-template-name'];
-        req.session.data['template-description'] = req.session.data['rename-template-description'];
+        //req.session.data['template-description'] = req.session.data['rename-template-description'];
         req.session.data['template-description'] = req.session.data['new-rename-template-description'];
         req.session.data['just-edited'] = 'yes';
         res.redirect('template-euromovement-selected');
     })
+
+// template-edit-DUPLICATE-name
+    router.post('/template-edit-duplicate-name', function(req, res) {
+        //res.redirect('prenotification-templates');
+        //req.session.data['duplicate-template-name'] = req.session.data['rename-template-name'];
+        req.session.data['duplicate-template-name'] = req.session.data['duplicate-rename-template-name'];
+        //req.session.data['duplicate-template-description'] = req.session.data['rename-template-description'];
+        req.session.data['duplicate-template-description'] = req.session.data['duplicate-rename-template-description'];
+        req.session.data['just-edited'] = 'yes';
+        res.redirect('template-euromovement-duplicate');
+    })
+
 
 // template-new-unique-ref
 router.post('/template-new-unique-ref', function(req, res) {
@@ -619,6 +668,7 @@ router.post('/template-new-unique-ref', function(req, res) {
     req.session.data['just-edited'] = 'yes';
     res.redirect('template-new-export');
 })
+
 
 /* // template-edit-description
     router.post('/template-edit-name', function(req, res) {
