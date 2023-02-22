@@ -60,22 +60,22 @@
 
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="ref-no" name="ref-no" type="radio" value="yes" data-aria-controls="conditional-contact" {{ checked("ref-no", "yes") }}>
-        <label class="govuk-label govuk-radios__label" for="ref-no">
+        <input class="govuk-radios__input" id="ref-no" name="template-ref" type="radio" value="yes" data-aria-controls="conditional-contact" {{ checked("template-ref", "yes") }}>
+        <label class="govuk-label govuk-radios__label" for="template-ref">
           Yes
         </label>
       </div>
       <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
         <div class="govuk-form-group">
-          <label class="govuk-label" for="national-code">
+          <label class="govuk-label" for="unique-ref">
             Enter your reference
           </label>
-          <input class="govuk-input govuk-!-width-two-thirds" id="enter-ref" name="enter-ref" type="text" value="{{data['enter-ref']}}">
+          <input class="govuk-input govuk-!-width-two-thirds" id="template-enter-ref" name="template-enter-ref" type="text" value="{{data['template-enter-ref']}}">
         </div>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="ref-no-2" name="ref-no" type="radio" value="no" data-aria-controls="conditional-contact-2" {{ checked("ref-no", "no") }}>
-        <label class="govuk-label govuk-radios__label" for="ref-no-2">
+        <input class="govuk-radios__input" id="ref-no-2" name="template-ref" type="radio" value="no" data-aria-controls="conditional-contact-2" {{ checked("template-ref", "no") }}>
+        <label class="govuk-label govuk-radios__label" for="template-ref-2">
           No
         </label>
       </div>

@@ -39,45 +39,63 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-        <form class="form" method="post">
+          <form class="form" method="post">
 
-            <div class="govuk-form-group">
-                <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
-                    Enter your reference number to this export
-                  </label>
-                </h1>
-                <div id="event-name-hint" class="govuk-hint">
-                    Your reference number should be unique to the shipment. You can use it to search for your submission in the future.
-                </div>
-                    {% call govukFieldset({
-                    }) %}
+<div class="govuk-form-group">
 
-                    {{ govukInput({
-                    id: "added-unique-ref",
-                    name: "added-unique-ref",
-                    value: data['added-unique-ref'],
-                    value: data['template-add-unique-ref']
-                    }) }}
 
-                    {% endcall %}
-                <!-- <input class="govuk-input" id="event-name" name="event-name" type="text" aria-describedby="event-name-hint"> -->
-            </div>
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Do you want to add your own reference to this export?
+      </h1>
+    </legend>
 
-            <div class="govuk-button-group">
-
-                {{ govukButton({
-                  text: 'Save'
-                }) }}
-        
-                <a class="govuk-link" href="template-new-export">Cancel</a>
-        
-              </div>
-
-        </form>
-
+    <div id="contact-hint" class="govuk-hint">
+      Your reference number should be unique to the shipment. You can use it to help you find your submission.
     </div>
+
+    <div class="govuk-!-padding-bottom-2"></div>
+
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="ref-no" name="template-ref" type="radio" value="yes" data-aria-controls="conditional-contact" {{ checked("template-ref", "yes") }}>
+        <label class="govuk-label govuk-radios__label" for="template-ref">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="unique-ref">
+            Enter your reference
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="template-enter-ref" name="template-enter-ref" type="text" value="{{data['template-enter-ref']}}">
+        </div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="ref-no-2" name="template-ref" type="radio" value="no" data-aria-controls="conditional-contact-2" {{ checked("template-ref", "no") }}>
+        <label class="govuk-label govuk-radios__label" for="template-ref-2">
+          No
+        </label>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
 </div>
 
-      
+
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+
+
+      </form>
+
+    </div>
+  </div>
 
 {% endblock %}

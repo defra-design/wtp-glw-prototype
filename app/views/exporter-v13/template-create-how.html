@@ -34,24 +34,31 @@
             <fieldset class="govuk-fieldset">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 <h1 class="govuk-fieldset__heading">
-                    What is this template for?
+                    How do you want to create your new template?
                 </h1>
               </legend>
 
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="glw-template-type" name="glw-template-type" type="radio" value="export-glw">
-                  <label class="govuk-label govuk-radios__label" for="glw-template-type">
-                    Exporting green list waste
+                  <input class="govuk-radios__input" id="template-create-blank" name="template-create" type="radio" value="template-blank" {{ checked("template-create", "template-blank") }}>
+                  <label class="govuk-label govuk-radios__label" for="template-create-blank">
+                    Start a blank template
                   </label>
                 </div>
 
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="glw-template-type-2" name="glw-template-type" type="radio" value="import-glw">
-                  <label class="govuk-label govuk-radios__label" for="glw-template-type-2">
-                    Importing green list waste
+                  <input class="govuk-radios__input" id="template-create-exist" name="template-create" type="radio" value="template-exist" {{ checked("template-create", "template-exist") }}>
+                  <label class="govuk-label govuk-radios__label" for="template-create-exist">
+                    Duplicate an existing template
                   </label>
                 </div>
+
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="template-create-prev" name="template-create" type="radio" value="template-prev" {{ checked("template-create", "template-prev") }}>
+                    <label class="govuk-label govuk-radios__label" for="template-create-prev">
+                        Use a previously submitted export
+                    </label>
+                  </div>
 
               </div>
             </fieldset>

@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-exporter-current.html" %}
 
 {% block pageTitle %}
-  {{ data['template-name'] }}
+    Change the details of your duplicated template      
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,16 +19,16 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
+<div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        {% if data['template-name'] != undefined %}
-          {{ data['template-name'] }}
-        {% else %}
-          Euromovement WEEE waste export
-        {% endif %}
+        Change the details of your duplicated template 
       </h1>
+
+      <div class="govuk-inset-text">
+        This new template must be different from your <b>Euromovement WEEE waste export</b> template. Make changes and save.
+      </div>
 
 <!---------------------  TEMPLATE DETAILS ----------------------------------------------------->
 
@@ -41,8 +41,8 @@
           <dd class="govuk-summary-list__value">
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="template-edit-name">
-              Change<span class="govuk-visually-hidden"> template name</span>
+            <a class="govuk-link" href="template-edit-duplicate-name">
+              Change<span class="govuk-visually-hidden">template name</span>
             </a>
           </dd> 
         </div>
@@ -53,10 +53,12 @@
           </dt>
           <dd class="govuk-summary-list__value">
             <!-- DYNAMIC TEMPLATE NAME (set in local routes.js)-->
-            {% if data['template-name'] != undefined %}
-              {{ data['template-name'] }}
+            {% if data['duplicate-rename-template-name'] != undefined %}
+              {{ data['duplicate-rename-template-name'] }}
             {% else %}
-              Euromovement WEEE waste export
+            <strong class="govuk-tag govuk-tag--blue">
+                Add Information
+              </strong> 
             {% endif %}
           </dd>
         </div>
@@ -67,10 +69,12 @@
           </dt>
           <dd class="govuk-summary-list__value">
             <!-- DYNAMIC TEMPLATE DESCRIPTION (set in local routes.js)-->
-            {% if data['template-description'] != undefined %}
-              {{ data['template-description'] }}
+            {% if data['duplicate-rename-template-description'] != undefined %}
+              {{ data['duplicate-rename-template-description'] }}
             {% else %}
-              A description of the waste
+            <strong class="govuk-tag govuk-tag--blue">
+                Add Information
+              </strong> 
             {% endif %}
             
           </dd>
@@ -466,8 +470,10 @@
         </dl>
   
   <!---------------------  TREATMENT OF WASTE ----------------------------------------------------->
+
+  <form action="" method="post" novalidate>
   
-              <dl class="govuk-summary-list govuk-!-margin-bottom-7">          
+        <dl class="govuk-summary-list govuk-!-margin-bottom-7">          
   
               <div id="waste-treatment" class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key govuk-!-width-one-third">
@@ -494,6 +500,7 @@
                   </a>
                 </dd>
               </div>
+
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                 Recovery code
@@ -511,38 +518,25 @@
                   </a>
                 </dd>
               </div>
-      </dl>
+        </dl>
       <br>
 
-    </div>
+    <!--------- BUTTON AND LINK ------------------->
 
-<!---------------------  ASIDE ACTION PANEL (RIGHT) ----------------------------------------------------->
-
-    {# Right hand side action panel #}
-
-    <div class="govuk-grid-column-one-third">
-
-      <div class="app-step-nav-related aside-container">
-        <h2 class="app-step-nav-related__heading">
-          <span class="app-step-nav-related__pretitle">Actions</span>
-        </h2>
-
-        <p class="govuk-body govuk-!-margin-bottom-4">
-          <a class="govuk-link" href="template-new-export.html">New export from template</a>
-        </p>
-        <p class="govuk-body govuk-!-margin-bottom-4">
-          <a class="govuk-link" href="template-euromovement-duplicate.html">Duplicate template</a>
-        </p>
-        <p class="govuk-body">
-          <a class="govuk-link" href="delete-template">Delete template</a>
-        </p>
-        <p class="govuk-body">
-          <a class="govuk-link" href="prenotification-templates">Return to template list</a>
-        </p>
+      <div class="govuk-button-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Save as a new template
+        </button>
       </div>
 
+      <p class="govuk-body">
+        <a href="prenotification-templates.html" class="govuk-link">Cancel and return to manage your templates</a>
+      </p>
+
+      </form>
+
     </div>
 
-  </div>
+</div>
 
 {% endblock %}

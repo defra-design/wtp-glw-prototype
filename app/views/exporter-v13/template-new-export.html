@@ -43,7 +43,7 @@
         {% if data['template-name'] != undefined %}
           {{ data['template-name'] }}
         {% else %}
-          Euromovement paper waste movement
+          Euromovement WEEE waste export
         {% endif %}
       </h1>
 
@@ -66,14 +66,16 @@
           Unique reference
         </dt>
         <dd class="govuk-summary-list__value">
-          <!-- DYNAMIC TEMPLATE NAME (set in local routes.js)-->
-          {% if data['template-add-unique-ref'] != undefined %}
-          {{ data['template-add-unique-ref'] }}
-          {% else %}
+          <!-- DYNAMIC national code (set in local routes.js)-->
+          {% if data ['template-ref'] == "yes" %}
+          <p class="govuk-body">{{data['template-enter-ref']}}</p>
+          {% elseif data ['template-ref'] == "no" %}
+          <p class="govuk-body">Not applicable</p>
+          {% else %}            
           <strong class="govuk-tag govuk-tag--blue">
             Add Information
           </strong>
-          {% endif %}
+           {% endif %}
           
           <!-- <strong class="govuk-tag govuk-tag--blue">
             Add Information
@@ -335,7 +337,7 @@
               {{ data['template-actual-shipment-day'] }}
               {% if data['template-actual-shipment-month'] == '1' or data['template-actual-shipment-month'] == '01' %}
                 January
-              {% elif data['template-template-actual-shipment-month'] == '2' or data['template-actual-shipment-month'] == '02' %}
+              {% elif data['template-actual-shipment-month'] == '2' or data['template-actual-shipment-month'] == '02' %}
                 February
               {% elif data['template-actual-shipment-month'] == '3' or data['template-actual-shipment-month'] == '03' %}
                 March

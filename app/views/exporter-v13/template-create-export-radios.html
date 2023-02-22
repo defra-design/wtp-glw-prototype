@@ -17,7 +17,7 @@
   </p>
 </div>
 
-<a href="dashboard" class="govuk-back-link">Back</a>
+<a href="template-create-how.html" class="govuk-back-link">Back</a>
 
 {% endblock %}
 
@@ -33,12 +33,12 @@
             <fieldset class="govuk-fieldset aria-describedby="template-desc-hint">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 <h1 class="govuk-fieldset__heading">
-                    Which template would you like to use?
+                    Which template would you like to duplicate?
                 </h1>
               </legend>
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="which-template" name="which-template" type="radio" value="euromove-paper" {{ checked("which-template", "euromove-paper") }}>
+                  <input class="govuk-radios__input" id="which-template" name="duplicate-which-template" type="radio" value="euromove-paper" {{ checked("duplicate-which-template", "euromove-paper") }}>
                   <label class="govuk-label govuk-radios__label" for="which-template">
                     Euromovement WEEE waste export
                   </label>
@@ -47,7 +47,7 @@
                   </div>
                 </div>
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="which-template-2" name="which-template" type="radio" value="waste-ltd" {{ checked("which-template", "waste-ltd") }}>
+                  <input class="govuk-radios__input" id="which-template-2" name="duplicate-which-template" type="radio" value="waste-ltd" {{ checked("duplicate-which-template", "waste-ltd") }}>
                   <label class="govuk-label govuk-radios__label" for="which-template-2">
                     Waste Ltd heavy melting steel
                   </label>
@@ -56,7 +56,7 @@
                   </div>
                 </div>
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="which-template-3" name="which-template" type="radio" value="excel-list" {{ checked("which-template", "excel-list") }}>
+                  <input class="govuk-radios__input" id="which-template-3" name="duplicate-which-template" type="radio" value="excel-list" {{ checked("duplicate-which-template", "excel-list") }}>
                   <label class="govuk-label govuk-radios__label" for="which-template-3">
                     Excel List Movements heavy melting steel
                   </label>
@@ -65,7 +65,7 @@
                   </div>
                 </div>
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="which-template-4" name="which-template" type="radio" value="euromove-card" {{ checked("which-template", "euromove-card") }}>
+                  <input class="govuk-radios__input" id="which-template-4" name="which-template" type="radio" value="euromove-card" {{ checked("duplicate-which-template", "euromove-card") }}>
                   <label class="govuk-label govuk-radios__label" for="which-template-4">
                     Euromovement card waste movement                  
                     </label>
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="which-template-4" name="which-template" type="radio" value="fabric-society" {{ checked("which-template", "fabric-society") }}>
+                    <input class="govuk-radios__input" id="which-template-4" name="which-template" type="radio" value="fabric-society" {{ checked("duplicate-which-template", "fabric-society") }}>
                     <label class="govuk-label govuk-radios__label" for="which-template-4">
                     Fabric Society Waste paper scrap                  
                     </label>
@@ -84,7 +84,7 @@
                   </div>
                 <div class="govuk-radios__divider">or</div>
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="which-template-6" name="which-template" type="radio" value="other" {{ checked("which-template", "other") }}>
+                  <input class="govuk-radios__input" id="which-template-6" name="which-template" type="radio" value="other" {{ checked("duplicate-which-template", "other") }}>
                   <label class="govuk-label govuk-radios__label" for="which-template-6">
                     one of my other templates
                   </label>
