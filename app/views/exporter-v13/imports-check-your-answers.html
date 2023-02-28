@@ -522,17 +522,18 @@
 
       <!--------- BUTTON AND LINK ------------------->
 
-      <form action="" method="post" novalidate>
+      <form class="form" method="post"></form>
+      <!-- <form action="" method="post" novalidate> -->
 
         <!-- <input type="hidden" name="imports-answers-checked" value="true">
 
         <button class="govuk-button" data-module="govuk-button">
           Confirm and submit
         </button> -->
-
-        {{ govukButton({
-          text: 'Confirm and submit'
-        }) }}
+        
+        <a href="imports-confirmation.html"><button class="govuk-button" data-module="govuk-button">
+          Confirm and submit
+        </button></a>
 
         <p class="govuk-body">
           <a href="imports-dashboard" class="govuk-link">Cancel and return to green list waste overview</a>
