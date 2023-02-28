@@ -459,7 +459,7 @@ router.post('/template-create-new', function(req, res) {
         }) */
 
         
-        router.post('/template-carrier-transport-1b', function(req, res) {  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+        /* router.post('/template-carrier-transport-1b', function(req, res) {  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
             req.session.data['template-carrier-status'] = "Completed";
             req.session.data['template-carrier-add-1'] = "true";
         
@@ -468,9 +468,36 @@ router.post('/template-create-new', function(req, res) {
             } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
                 res.redirect('template-euromovement-selected#waste-journey');
             } else {
-            res.redirect('template-carriers');
+            res.redirect('template-carrier-transport-1b');
+            }
+        }) */
+
+        // Carrier transport options
+        router.post('/template-carrier-transport-1b', function(req, res) {
+            if (req.session.data['transport'] == 'shipping') {
+                res.redirect('template-carrier-1b-shipping');
+            } else if (req.session.data['transport'] == 'trailer') {
+                res.redirect('template-carrier-1b-trailer');
+            } else if (req.session.data['transport'] == 'bulk-vessel') {
+                res.redirect('template-carrier-1b-vessel');
             }
         })
+
+        // Carrier transport shipping
+        router.post('/template-carrier-1b-shipping', function(req, res) {
+                res.redirect('template-carriers');
+        })
+
+        // Carrier transport trailer
+        router.post('/template-carrier-1b-trailer', function(req, res) {
+                res.redirect('template-carriers');    
+        })
+
+        // Carrier transport bulk-vessel
+        router.post('/template-carrier-1b-vessel', function(req, res) {
+            res.redirect('template-carriers');    
+        })
+        
         
         router.post('/template-carrier-add-2', function(req, res) { //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
             req.session.data['template-carrier-status'] = "Completed";
@@ -1209,7 +1236,7 @@ if (req.session.data['declaration'] == 'yes') {
 
 })
 
-//-------------- CARRIERS ----------------------------------------------------
+//------------------ CARRIERS ----------------------------------------------------
 
 router.post('/carrier-check', function(req, res) {
   console.log(typeof req.session.data['carrier-count']);
@@ -1319,11 +1346,6 @@ router.post('/carrier-collect-address-manual', function(req, res) {
     req.session.data['carrier-add-1'] = "true";
     res.redirect('waste-generator');
 })
-
-
-
-
-
 
 
 // recovery-facility-laboratory
@@ -1476,7 +1498,7 @@ router.post('/transaction-id', function(req, res) {
     }
 })
 
-//----- TASK LIST STATUS ----------------------------------------------------------------------------------------------------
+//------------------ TASK LIST STATUS ----------------------------------------------------------------------------------------------------
 
 // check-your-answers
 router.post('/check-your-answers', function(req, res) {
@@ -1601,6 +1623,34 @@ if(req.session.data['template-recovery-facility-or-laboratory-status'] == "Compl
 });
 
 
+//------ PRENOTIFY IMPORTS
+router.get('/imports-prenotify', function (req, res) {
+
+    var count = 0;
+
+    if(req.session.data['imports-usual-description-of-the-waste-status'] == "Completed" && req.session.data['imports-quantity-status'] == "Completed"){
+        count++;
+    }
+
+if(req.session.data['imports-person-arranging-the-shipment-status'] == "Completed" && req.session.data['imports-importer-consignee-status'] == "Completed"){
+  count++;
+}
+
+if(req.session.data['imports-date-of-shipment-status'] == "Completed" && req.session.data['imports-carrier-status'] == "Completed" && req.session.data['imports-waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" && req.session.data['imports-countries-states-concerned-status'] == "Completed"){
+  count++;
+}
+
+if(req.session.data['imports-recovery-facility-or-laboratory-status'] == "Completed" && req.session.data['imports-recovery-operation-status'] == "Completed"){
+  count++;
+}
+
+    res.render(version+'/imports-prenotify', {
+        'sectionscompleted' : count
+    });
+
+});
+
+
 
 //------ carrier counter
   router.post('/carrier-add-3', function(req, res) {
@@ -1651,9 +1701,6 @@ router.get('/template-carrier-check', function (req, res) {
   res.render(version+'/template-carrier-check', {
       'items' : carrierArray });
 });
-
-
-
 
 
   //------ EWC code counter
@@ -1803,6 +1850,376 @@ router.post('/template-countries-add-another', function(req, res) {
     }
     
     })
+
+
+//------------****** IMPORTS (from v13 onwards) ******---------------------------------------------------------------------
+
+// Submit import options
+router.post('/imports-submit-how', function(req, res) {
+    if (req.session.data['imports-create'] == 'imports-blank') {
+        res.redirect('imports-unique-ref');
+    } else if (req.session.data['imports-create'] == 'imports-exist') {
+        res.redirect('prenotification-templates');
+    } else if (req.session.data['imports-create'] == 'imports-csv') {
+        res.redirect('imports-submit-how');
+    }
+})
+
+// imports-unique-ref
+router.post('/imports-unique-ref', function(req, res) {
+    req.session.data['imports-add-unique-ref'] = req.session.data['added-unique-ref'];
+    req.session.data['just-edited'] = 'yes';
+    res.redirect('imports-prenotify');
+})
+
+
+//------------ IMPORTS - ABOUT THE WASTE --------------------------------
+
+// imports-waste-codes-and-description
+router.post('/imports-waste-codes-and-description', function(req, res) {
+        if (req.session.data['imports-code'] == 'not-applicable') {
+            res.redirect('imports-ec-code-2');
+          } else {
+              res.redirect('imports-ec-code');
+          }
+})
+
+//-----------------
+
+        // imports-ec-code (code counter)
+        router.post('/imports-ec-code', function(req, res) {
+            if(req.session.data['imports-ec-code']=='Yes'){
+            if(typeof req.session.data['imports-code-count'] == "undefined"){
+                req.session.data['imports-code-count'] = 0;
+            }
+            else {
+                req.session.data['imports-code-count']++;
+            }
+
+            req.session.data['imports-code-'+req.session.data['imports-code-count']] = req.session.data['ec-wastes-typeahead'];
+            res.redirect('imports-code-add-another');
+            }
+            else if (req.session.data['imports-ec-code']=='No') {
+            res.redirect('imports-national-code');
+            }
+        });
+
+        router.get('/imports-code-add-another', function (req, res) {
+        var carrierArray = [];
+
+        for (var i = 0; i <= req.session.data['imports-code-count']; i++) {
+        carrierArray[i] = req.session.data['imports-code-'+i];
+        }
+
+        res.render(version+'/imports-code-add-another', {
+            'codes' : carrierArray });
+        });
+
+        router.post('/imports-ec-code-2', function(req, res) {
+            if(typeof req.session.data['imports-code-count'] == "undefined"){
+            req.session.data['imports-code-count'] = 0;
+            }
+            else {
+            req.session.data['imports-code-count']++;
+            }
+
+            req.session.data['imports-code-'+req.session.data['imports-code-count']] = req.session.data['ec-wastes-typeahead'];
+            res.redirect('imports-code-add-another');
+        });
+
+
+
+/* // imports-waste-codes-and-description
+router.post('/imports-waste-codes-and-description', function(req, res) {
+        if (req.session.data['imports-code'] == 'not-applicable') {
+            res.redirect('imports-ec-code-2');
+          } else {
+              res.redirect('imports-ec-code');
+          }
+}) */
+
+// imports-ec-code
+router.post('/imports-ec-code', function(req, res) {
+          res.redirect('imports-code-add-another');
+})
+
+// imports-code-add-another
+router.post('/imports-code-add-another', function(req, res) {
+    res.redirect('imports-national-code');
+})
+
+
+/* // imports-code-add-another
+router.post('/imports-code-add-another', function(req, res) {
+    if (req.session.data['imports-add-ec-code'] == 'Yes') {
+        res.redirect('imports-ec-code-2');
+    } else if (req.session.data['imports-add-ec-code'] == 'No') {    
+        res.redirect('imports-national-code');
+        }
+    
+    }) */
+
+// imports-national-code
+router.post('/imports-national-code', function(req, res) {
+    req.session.data['imports-usual-description-of-the-waste-status'] = "Completed";
+    res.redirect('imports-waste-description');
+})
+
+// imports-waste-description
+router.post('/imports-waste-description', function(req, res) {
+    req.session.data['imports-quantity-status'] = "Completed";
+    res.redirect('imports-quantity');
+})
+
+// imports-quantity
+router.post('/imports-quantity', function(req, res) {
+    req.session.data['imports-quantity-status'] = "Completed";
+    res.redirect('imports-prenotify');
+})
+
+
+//------------ IMPORTS - EXPORTER IMPORTER --------------------------------
+
+
+// imports-EXPORTER-details  <<<<<<--------- now EXPORTER details
+router.post('/imports-importer-consignee', function(req, res) {
+    req.session.data['imports-importer-consignee-status'] = "Completed";
+    res.redirect('imports-exporter-postcode');
+})
+
+// imports-exporter-postcode
+router.post('/imports-exporter-postcode', function(req, res) {
+    req.session.data['imports-person-arranging-the-shipment-status'] = "Completed";
+    res.redirect('imports-exporter-address'); 
+})
+
+// imports-IMPORTER-address <<<<<<--------- now IMPORTER details
+router.post('/imports-exporter-address', function(req, res) {
+    req.session.data['imports-person-arranging-the-shipment-status'] = "Completed";
+    res.redirect('imports-who-arranged-shipment-details');
+})
+
+// imports-IMPORTER-address-manual
+router.post('/imports-exporter-address-manual', function(req, res) {
+    req.session.data['imports-person-arranging-the-shipment-status'] = "Completed";
+    res.redirect('imports-who-arranged-shipment-details');
+})
+
+// imports-IMPORTER-details
+router.post('/imports-who-arranged-shipment-details', function(req, res) {
+    req.session.data['imports-person-arranging-the-shipment-status'] = "Completed";
+    res.redirect('imports-person-arranged-signed');
+})
+
+// imports-person-arranged-signed
+router.post('/imports-person-arranged-signed', function(req, res) {
+    req.session.data['imports-person-arranged-signed'] = "Completed";
+    res.redirect('imports-recovery-details');
+})
+
+// imports-recovery-details
+router.post('/imports-recovery-details', function(req, res) {
+    req.session.data['imports-recovery-details'] = "Completed";
+    res.redirect('imports-recovery-weight');
+})
+
+// imports-recovery-weight
+router.post('/imports-recovery-weight', function(req, res) {
+    req.session.data['imports-recovery-weight'] = "Completed";
+    res.redirect('imports-prenotify');
+})
+
+
+
+//------------ IMPORTS - JOURNEY OF WASTE --------------------------------
+
+// imports-date-of-shipment
+router.post('/imports-date-of-shipment', function(req, res) {
+    req.session.data['imports-date-of-shipment-status'] = "Completed";
+    res.redirect('imports-carrier-add-1');
+ })
+
+ router.post('/imports-carrier-add-1', function(req, res) {
+    req.session.data['imports-carrier-status'] = "Completed";
+    req.session.data['imports-carrier-add-1'] = "true";
+
+    res.redirect('imports-carrier-transport-1b');          //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+    
+})
+
+        // Carrier transport options
+        router.post('/imports-carrier-transport-1b', function(req, res) {
+            if (req.session.data['imports-transport'] == 'shipping') {
+                res.redirect('imports-carrier-1b-shipping');
+            } else if (req.session.data['imports-transport'] == 'trailer') {
+                res.redirect('imports-carrier-1b-trailer');
+            } else if (req.session.data['imports-transport'] == 'bulk-vessel') {
+                res.redirect('imports-carrier-1b-vessel');
+            }
+        })
+
+        // Carrier transport shipping
+        router.post('/imports-carrier-1b-shipping', function(req, res) {
+                res.redirect('imports-carriers');
+        })
+
+        // Carrier transport trailer
+        router.post('/imports-carrier-1b-trailer', function(req, res) {
+                res.redirect('imports-carriers');    
+        })
+
+        // Carrier transport bulk-vessel
+        router.post('/imports-carrier-1b-vessel', function(req, res) {
+            res.redirect('imports-carriers');    
+        })
+
+        router.post('/imports-carriers', function(req, res) {
+            if (req.session.data['imports-add-second-carrier'] == 'Yes') {
+                res.redirect('imports-carrier-add-3');
+            } else if (req.session.data['imports-add-second-carrier'] == 'No') {
+                if ((req.session.data.gPreviousLocation).includes('imports-check-your-answers')) {
+                    res.redirect('imports-check-your-answers');
+                } else {
+                    res.redirect('imports-carrier-collect-postcode');
+                }
+            }
+            })
+        
+        router.post('/imports-carrier-check', function(req, res) {
+            console.log(typeof req.session.data['imports-carrier-count']);
+            if (req.session.data['imports-add-third-carrier'] == 'Yes' && req.session.data['imports-carrier-count'] <= 3) {
+                res.redirect('imports-carrier-add-3');
+            } else if (req.session.data['imports-add-third-carrier'] == 'No' || req.session.data['imports-carrier-count'] >= 4) {
+                     res.redirect('imports-carrier-collect-postcode');
+             }
+            })
+
+        router.post('/imports-carrier-add-2', function(req, res) { //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+            req.session.data['imports-carrier-status'] = "Completed";
+            req.session.data['imports-carrier-add-1'] = "true";
+            res.redirect('imports-carrier-transport-2b');          //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+        })
+        
+        router.post('/imports-carrier-transport-2b', function(req, res) {  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+            req.session.data['imports-carrier-status'] = "Completed";
+            req.session.data['imports-carrier-add-1'] = "true";
+            res.redirect('imports-carrier-check');
+        })
+
+        router.post('/imports-carrier-add-3', function(req, res) {
+            req.session.data['imports-carrier-status'] = "Completed";
+            req.session.data['imports-carrier-add-1'] = "true";
+            res.redirect('imports-carrier-transport-3b');                  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+        })
+        
+        router.post('/imports-carrier-transport-3b', function(req, res) {  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+            req.session.data['imports-carrier-status'] = "Completed";
+            req.session.data['imports-carrier-add-1'] = "true";
+            res.redirect('imports-carrier-check');
+        })
+        
+        router.post('/imports-carrier-delete', function(req, res) {
+            req.session.data['imports-carrier-status'] = "Completed";
+            req.session.data['imports-carrier-add-1'] = "true";
+            res.redirect('imports-carrier-check');
+        })
+        
+        router.post('/imports-carrier-collect-postcode', function(req, res) {
+            req.session.data['imports-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
+            req.session.data['imports-carrier-add-1'] = "true";
+            res.redirect('imports-carrier-collect-address');
+        })
+        
+        router.post('/imports-carrier-collect-address', function(req, res) {
+            req.session.data['imports-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
+            req.session.data['imports-carrier-add-1'] = "true";
+            res.redirect('imports-waste-generator');
+        })
+        
+        router.post('/imports-carrier-collect-address-manual', function(req, res) {
+            req.session.data['imports-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
+            req.session.data['imports-carrier-add-1'] = "true";
+            res.redirect('imports-waste-generator');
+        })
+
+        router.post('/imports-waste-generator', function(req, res) {
+            req.session.data['imports-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
+            req.session.data['imports-carrier-add-1'] = "true";
+            res.redirect('imports-point-of-exit');
+            
+        })
+
+        //-----------------
+
+        // imports location waste leaves
+        router.post('/imports-point-of-exit', function(req, res) {
+            req.session.data['imports-point-of-exit-status'] = "Completed";
+            res.redirect('imports-countries-states-concerned-new');
+        })
+
+        router.post('/imports-countries-states-concerned-new', function(req, res) {
+            console.log(req.session.data['imports-country-state']);
+            if(req.session.data['imports-countries-state']=='Yes'){
+              if(typeof req.session.data['imports-country-count'] == "undefined"){
+                req.session.data['imports-country-count'] = 0;
+              }
+              else {
+                req.session.data['imports-country-count']++;
+              }
+        
+              req.session.data['imports-country-'+req.session.data['imports-country-count']] = req.session.data['transit-typeahead'];
+              res.redirect('imports-countries-add-another');
+            }
+            else if (req.session.data['imports-countries-state']=='No') {
+            req.session.data['imports-countries-states-concerned-status'] = "Completed";
+              res.redirect('imports-prenotify');
+            }
+        });
+        
+        router.get('/imports-countries-add-another', function (req, res) {
+        var carrierArray = [];
+        
+        for (var i = 0; i <= req.session.data['imports-country-count']; i++) {
+          carrierArray[i] = req.session.data['imports-country-'+i];
+        }
+        
+        res.render(version+'/imports-countries-add-another', {
+            'countries' : carrierArray });
+        });
+        
+        router.post('/imports-countries-add-2', function(req, res) {
+            if(typeof req.session.data['imports-country-count'] == "undefined"){
+              req.session.data['imports-country-count'] = 0;
+            }
+            else {
+              req.session.data['imports-country-count']++;
+            }
+        
+            req.session.data['imports-country-'+req.session.data['imports-country-count']] = req.session.data['transit-typeahead'];
+            res.redirect('imports-countries-add-another');  
+        });
+        
+        router.post('/imports-countries-add-another', function(req, res) {
+            if (req.session.data['imports-add-transit-country'] == 'Yes') {
+                res.redirect('imports-countries-add-2');
+            } else if (req.session.data['imports-add-transit-country'] == 'No') {
+                    req.session.data['imports-countries-states-concerned-status'] = "Completed";
+                    res.redirect('imports-prenotify');
+            }
+            })
+
+
+        // imports recovery facility
+        router.post('/imports-recovery-facility-laboratory', function(req, res) {
+            req.session.data['imports-recovery-facility-or-laboratory-status'] = "Completed";
+            res.redirect('imports-recovery-operation');
+        })
+
+        // imports recovery code
+        router.post('/imports-recovery-operation', function(req, res) {
+            req.session.data['imports-recovery-operation-status'] = "Completed";
+            res.redirect('imports-prenotify');
+        })
 
 // create-template-from-view-all
 //router.post('/create-template-from-view-all', function(req, res) {

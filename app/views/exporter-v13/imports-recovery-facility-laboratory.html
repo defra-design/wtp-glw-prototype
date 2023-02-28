@@ -1,0 +1,112 @@
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+  Recovery facility details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+            <form class="form" method="post">
+
+          {% if data ['imports-code'] == "not-applicable" %}
+          <h1 class="govuk-heading-l">
+            Laboratory details
+          </h1>
+     
+           {% else %}
+          <h1 class="govuk-heading-l">
+            Recovery facility details
+          </h1>
+        
+          {% endif %}
+
+
+
+            <div class="govuk-form-group">
+            <label class="govuk-label" for="first-carrier-name">
+              {% if data ['imports-code'] == "not-applicable" %} Laboratory name
+              {% else %} Recovery facility name
+               {% endif %}
+              <span class="govuk-visually-hidden">line 1 of 2</span>
+            </label>
+            <input class="govuk-input govuk-!-width-three-quarters" id="imports-facility-name" name="imports-facility-name" type="text" value="{{data['imports-facility-name']}}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="imports-facility-address">
+              Address
+            </label>
+            <textarea class="govuk-textarea" id="imports-facility-address" name="imports-facility-address" rows="5" autocomplete="street-address" value="{{data['imports-facility-address']}}"></textarea>
+          </div>
+
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label">
+              Country
+            </label>
+            <div id="contact-hint" class="govuk-hint">
+              We’ll also use this as the importing country.
+            </div>
+          </h2>
+          <div id="facility-or-lab-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['facility-or-lab-typeahead'] }}">
+          </div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  Contact details
+                </h1>
+              </legend>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="facility-full-name">
+                  Full name
+                </label>
+                <input class="govuk-input govuk-!-width-three-quarters" id="imports-facility-full-name" name="imports-facility-full-name" type="text" value="{{data['imports-facility-full-name']}}">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="imports-facility-email">
+                  Email address
+                </label>
+                <input class="govuk-input govuk-!-width-one-half" id="imports-facility-email" name="imports-facility-email" type="email" value="{{data['imports-facility-email']}}">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="imports-facility-phone">
+                  Phone number
+                </label>
+                <div id="contact-hint" class="govuk-hint">
+                   Include the country code for international numbers.
+                </div>
+                <input class="govuk-input govuk-!-width-one-third" id="imports-facility-phone" name="imports-facility-phone" type="tel" value="{{data['imports-facility-phone']}}">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="imports-facility-fax">
+                  Fax number (optional)
+                </label>
+                <div id="contact-hint" class="govuk-hint">
+                   Include the country code for international numbers.
+                </div>
+                <input class="govuk-input govuk-!-width-one-third" id="imports-facility-fax" name="imports-facility-fax" type="tel" value="{{data['imports-facility-fax']}}">
+              </div>
+
+
+            </fieldset>
+          </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+        {% include "./includes/imports-return-to-link.html" %}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,106 @@
+
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+  Home - Export and import green list waste
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 13 - This is not a live service.
+    </span>
+  </p>
+</div>
+
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="">Waste tracking service</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        Green list waste overview
+      </li>
+    </ol>
+  </div>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">Green list waste overview</h1>
+
+        <div class="govuk-grid-row">
+
+            <!---------- EXPORT COLUMN ----------->
+
+            <div id="import-column" class="govuk-grid-column-one-half">
+
+                  <h2 class="govuk-heading-m">
+                    Tell us about an export
+                  </h2>
+                    <!-- <p class="govuk-body"><a class="govuk-link" href="unique-ref">Submit a waste export</a></p>
+                    <p class="govuk-body"><a class="govuk-link" href="draft-exports">Continue a draft export (6)</a></p> -->
+                    <p class="govuk-body"><a class="govuk-link" href="#">Submit a waste export</a></p>
+                    <p class="govuk-body"><a class="govuk-link" href="#">Continue a draft export (6)</a></p>
+            
+                   <br>
+                   <br>
+            
+                  <h2 class="govuk-heading-m">
+                    All exports
+                  </h2>
+                    <!-- <p class="govuk-body"><a class="govuk-link" href="update-prenotifications">Update an export with actual details (3)</a></p>
+                    <p class="govuk-body"><a class="govuk-link" href="submitted-exports">Check all submitted exports (20)</a></p> -->
+                    <p class="govuk-body"><a class="govuk-link" href="#">Update an export with actual details (3)</a></p>
+                    <p class="govuk-body"><a class="govuk-link" href="#">Check all submitted exports (20)</a></p>
+            
+                   <br>
+                   <br>
+            
+            </div>
+
+            <!---------- IMPORT COLUMN ----------->
+
+            <div id="import-column" class="govuk-grid-column-one-half">
+                <h2 class="govuk-heading-m">
+                    Tell us about an import
+                  </h2>
+                    <p class="govuk-body"><a class="govuk-link" href="imports-submit-how.html">Submit an accepted waste import</a></p>
+                    <p class="govuk-body"><a class="govuk-link" href="imports-drafts">Continue a draft import (4)</a></p>
+                    <p class="govuk-body"><a class="govuk-link" href="#">Submit a rejected waste import</a></p>
+            
+                   <br>
+                   <br>
+            
+                  <h2 class="govuk-heading-m">
+                    All imports
+                  </h2>
+                    <p class="govuk-body"><a class="govuk-link" href="imports-submitted">Check all submitted exports (20)</a></p>
+            
+                   <br>
+                   <br>
+            
+            </div>
+
+        </div>
+
+        <h2 class="govuk-heading-m">
+            Templates
+          </h2>
+            <p class="govuk-body"><a class="govuk-link" href="template-type.html">Create a new template</a></p>
+            <p class="govuk-body"><a class="govuk-link" href="prenotification-templates.html">Manage your templates</a></p>
+
+    </div>
+  </div>
+
+
+
+{% endblock %}

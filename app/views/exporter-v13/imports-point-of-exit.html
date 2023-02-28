@@ -1,0 +1,67 @@
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+Do you know the location at which the waste will leave the United Kingdom?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="" method="post">
+
+              <div class="govuk-form-group">
+
+              <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                      Do you know the location where the waste entered the UK?
+                    </h1>
+                  </legend>
+
+                  <p class="govuk-body">For example, a town, port or terminal.</p>
+
+                  <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="imports-exit" name="imports-exit" type="radio" value="yes" data-aria-controls="conditional-contact" {{ checked("imports-exit", "yes") }}>
+                      <label class="govuk-label govuk-radios__label" for="imports-exit">
+                        Yes
+                      </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="imports-exit-location">
+                          Enter location
+                        </label>
+                        <!-- <div id="contact-hint" class="govuk-hint">
+                          This could be a port, airport or Eurotunnel.
+                        </div> -->
+                        <input class="govuk-input govuk-!-width-two-thirds" id="imports-exit-location" name="imports-exit-location" type="text" value="{{data['imports-exit-location']}}">
+                      </div>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="imports-exit-2" name="imports-exit" type="radio" value="no" data-aria-controls="conditional-contact-2" {{ checked("imports-exit", "no") }}>
+                      <label class="govuk-label govuk-radios__label" for="imports-exit-2">
+                        No
+                      </label>
+                    </div>
+                  </div>
+
+                </fieldset>
+              </div>
+            </div>
+
+            {{ govukButton({
+              text: 'Save and continue'
+            }) }}
+
+            {% include "./includes/imports-return-to-link.html" %}
+
+
+          </form>
+
+        </div>
+      </div>
+
+    {% endblock %}
