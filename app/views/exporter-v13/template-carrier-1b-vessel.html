@@ -1,0 +1,51 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  How will the first waste carrier transport the waste?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" method="post">
+
+        <div class="govuk-form-group">
+        
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    Bulk vessel details
+                </h1>
+                </legend>
+
+                <p class="govuk-hint govuk-!-margin-bottom-6">If you do not know these details yet, leave them blank and continue.</p>
+
+                <!-- BULK VESSEL NUMBER -->
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label" for="vessel-number">
+                        Enter the International Maritime Organisation (IMO) number
+                    </label>
+                    <div id="vessel-number-hint" class="govuk-hint">
+                        You must update this when the waste is collected
+                    </div>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="transport-vessel" name="transport-bulk-vessel" type="text" value="{{data['transport-bulk-vessel']}}">
+                </div>
+
+            </fieldset>
+        </div>
+
+      {{ govukButton({
+        text: 'Save and continue'
+      }) }}
+
+      {% include "./includes/template-return-to-link.html" %}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

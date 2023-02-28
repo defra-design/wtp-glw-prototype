@@ -1,0 +1,77 @@
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+  Do you know when the waste will be collected?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="waste-shipped-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
+                <h1 class="govuk-fieldset__heading">
+                    What date was the waste shipped?
+                </h1>
+
+              </legend>
+              <div id="waste-shipped-hint" class="govuk-hint">
+                For example, 27 3 2023
+              </div>
+
+              <div class="govuk-date-input" id="waste-shipped">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="waste-shipped-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="waste-shipped-day" name="waste-shipped-day" type="text" inputmode="numeric">
+                  </div>
+                </div>
+
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="waste-shipped-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="waste-shipped-month" name="waste-shipped-month" type="text" inputmode="numeric">
+                  </div>
+                </div>
+
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="waste-shipped-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="waste-shipped-year" name="waste-shipped-year" type="text" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+      </div>
+      </div>
+
+
+
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+      </form>
+
+      {% include "./includes/imports-return-to-link.html" %}
+
+
+    </div>
+
+  </div>
+
+{% endblock %}

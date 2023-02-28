@@ -1,0 +1,138 @@
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+Do you know the quantity of waste?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+        <div class="govuk-form-group">
+
+        <!----------------- Recovery / Lab route --------------------->
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Enter the actual quantity of waste
+              </h1>
+            </legend>
+
+            {% if data ['imports-code'] == "not-applicable" %}
+            <div class="govuk-hint">
+              This must be under 25kg. Do not include the weight of the container or vehicle.
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="imports-quantity" name="imports-quantity" type="radio" value="yes" data-aria-controls="conditional-contact" {{ checked("imports-quantity", "weight") }}>
+                <label class="govuk-label govuk-radios__label" for="imports-quantity">
+                    Weight, in kilograms
+                </label>
+              </div>
+              
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact" name="imports-quantity-weight">
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="imports-weight">
+                    Enter the weight
+                  </label>
+                  <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="imports-weight" name="imports-quantity-weight" value="{{ data['imports-quantity-weight'] }}" type="text" spellcheck="false">
+                    <div class="govuk-input__suffix" aria-hidden="true">kg</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="imports-quantity" name="imports-quantity" type="radio" value="no" data-aria-controls="conditional-contact-2" {{ checked("imports-quantity", "volume") }}>
+                <label class="govuk-label govuk-radios__label" for="imports-quantity">
+                    Volume, in cubic metres
+                </label>
+              </div>
+
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2" name="imports-quantity-volume">
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="imports-volume">
+                    Enter the volume
+                  </label>
+                  <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="imports-volume" name="imports-quantity-volume" value="{{ data['imports-quantity-volume'] }}" type="text" spellcheck="false">
+                    <div class="govuk-input__suffix" aria-hidden="true">kg</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="govuk-!-padding-bottom-6"></div>
+
+            <!----------------- END Recovery / Lab route --------------------->
+
+            <!----------------- Waste code route --------------------->
+
+            {% else %}
+            <div class="govuk-hint">
+              Only provide the net weight or volume. Do not include the weight of the container or vehicle.
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="imports-quantity" name="imports-quantity" type="radio" value="yes" data-aria-controls="conditional-contact" {{ checked("imports-quantity", "weight") }}>
+                <label class="govuk-label govuk-radios__label" for="imports-quantity">
+                    Weight, in tonnes
+                </label>
+              </div>
+
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact" name="imports-quantity-weight">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="imports-weight">
+                    Enter the weight
+                  </label>
+                  <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="imports-weight" name="imports-quantity-weight" value="{{ data['imports-quantity-weight'] }}" type="text" spellcheck="false">
+                  </div>
+                </div>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="imports-quantity" name="imports-quantity" type="radio" value="no" data-aria-controls="conditional-contact-2" {{ checked("imports-quantity", "volume") }}>
+                <label class="govuk-label govuk-radios__label" for="imports-quantity">
+                  Volume, in cubic metres
+                </label>
+              </div>
+
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2" name="imports-volume">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="imports-volume">
+                    Enter the volume
+                  </label>
+                  <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="weight" name="imports-volume" value="{{ data['imports-quantity-volume'] }}" type="text" spellcheck="false">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="govuk-!-padding-bottom-3"></div>
+
+          </fieldset>
+        </div>
+      </div>
+      
+
+
+        {% endif %}
+
+        <button class="govuk-button" data-module="govuk-button">
+          Save and continue
+        </button>
+
+      {% include "./includes/imports-return-to-link.html" %}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

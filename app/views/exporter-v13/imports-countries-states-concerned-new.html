@@ -1,0 +1,67 @@
+s{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+Are there any other countries the waste will travel through?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+            <form class="form" method="post">
+
+              <div class="govuk-form-group">
+
+              <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                      Did the waste travel through other countries?
+                    </h1>
+                  </legend>
+                  <div id="contact-hint" class="govuk-hint">
+                    Do not include the importing or exporting country.
+                  </div>
+                  <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="imports-countries-state" name="imports-countries-state" type="radio" value="Yes" data-aria-controls="conditional-contact" {{ checked("imports-countries-state", "yes") }}>
+                      <label class="govuk-label govuk-radios__label" for="imports-countries-state">
+                        Yes
+                      </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact" name="imports-countriestate">
+                      <div id="contact-hint" class="govuk-hint">
+                        Enter the first country the waste will travel through
+                      </div>
+                      <div class="govuk-form-group">
+                        <div id="transit-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['transit-typeahead'] }}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="imports-countries-state" name="imports-countries-state" type="radio" value="No" data-aria-controls="conditional-contact-2" {{ checked("imports-countries-state", "no") }}>
+                      <label class="govuk-label govuk-radios__label" for="imports-countries-state">
+                        No
+                      </label>
+                    </div>
+                  </div>
+
+                </fieldset>
+              </div>
+            </div>
+
+
+
+            {{ govukButton({
+              text: 'Save and continue'
+            }) }}
+
+            {% include "./includes/imports-return-to-link.html" %}
+
+
+          </form>
+
+        </div>
+      </div>
+
+    {% endblock %}

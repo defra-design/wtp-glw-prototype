@@ -1,0 +1,87 @@
+
+
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+  Do you want to add your own reference to this import?
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 13 - This is not a live service.
+    </span>
+  </p>
+  </div>
+
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <form class="form" method="post">
+
+            <div class="govuk-form-group">
+
+
+            <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    Has the person who arranged the shipment signed the declaration?
+                </h1>
+                </legend>
+
+                <div id="contact-hint" class="govuk-hint">
+                    Block 12 of your Annex VII form should be signed and dated. 
+                </div>
+
+                <div class="govuk-!-padding-bottom-2"></div>
+
+                <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="imports-person-signed" name="imports-person-signed" type="radio" value="yes" data-aria-controls="conditional-contact" {{ checked("imports-person-signed", "yes") }}>
+                    <label class="govuk-label govuk-radios__label" for="imports-person-signed-num">
+                    Yes
+                    </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                    <div class="govuk-form-group">
+                    <label class="govuk-label" for="imports-person-signed">
+                        Enter the person's name
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="imports-enter-person-signed" name="imports-enter-person-signed" type="text" value="{{data['imports-enter-person-signed']}}">
+                    </div>  
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="imports-person-signed-2" name="imports-person-signed" type="radio" value="no" data-aria-controls="conditional-contact-2" {{ checked("imports-person-signed", "no") }}>
+                    <label class="govuk-label govuk-radios__label" for="imports-person-signed-2">
+                    No
+                    </label>
+                </div>
+                </div>
+
+            </fieldset>
+            </div>
+            </div>
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
