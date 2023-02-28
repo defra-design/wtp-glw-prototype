@@ -322,7 +322,7 @@
 
       <h2 class="govuk-heading-m">Final check</h2>
 
-      {% if data['usual-description-of-the-waste-status'] == "Completed" and
+      {% if data['imports-usual-description-of-the-waste-status'] == "Completed" and
       data['imports-quantity-status'] == "Completed" and
       data['imports-date-of-shipment-status'] == "Completed" and
       data['imports-person-arranging-the-shipment-status'] == "Completed" and
@@ -333,13 +333,15 @@
       data['imports-point-of-exit-status']  == "Completed" and
       data['imports-recovery-operation-status'] == "Completed" %}
 
-      <form action="check-your-answers" method="post" novalidate>
+      <form class="form" method="post"></form>
+      <!-- <form action="imports-check-your-answers" method="post" novalidate> -->
 
-        <input type="hidden" name="answers-checked" value="true">
+       <!--  <input type="hidden" name="answers-checked" value="true"> -->
 
-        <button class="govuk-button" data-module="govuk-button">
+        <a href="imports-check-your-answers.html"><button class="govuk-button" data-module="govuk-button">
           Check this import
-        </button>
+        </button></a>
+
 
         {% else %}
         <p class="govuk-body">You'll be able to check and submit this import once you've completed all the sections.</p>
@@ -347,7 +349,7 @@
 
       </form>
 
-      <p class="govuk-body"><a class="govuk-link" href="imports-dashboard">Return to this draft later</a></p>
+       <p class="govuk-body"><a class="govuk-link" href="imports-dashboard">Return to this draft later</a></p>
 
 
     </div>

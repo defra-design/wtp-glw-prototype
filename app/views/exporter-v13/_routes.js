@@ -2221,6 +2221,16 @@ router.post('/imports-date-of-shipment', function(req, res) {
             res.redirect('imports-prenotify');
         })
 
+        // imports-prenotify
+        router.post('/imports-prenotify', function(req, res) {
+            res.redirect('imports-check-your-answers');
+         })
+
+        // imports-check-your-answers
+        router.post('/imports-check-your-answers', function(req, res) {
+            res.redirect('imports-check-your-answers');
+         })
+
 // create-template-from-view-all
 //router.post('/create-template-from-view-all', function(req, res) {
 //    res.redirect('create-template-success');
