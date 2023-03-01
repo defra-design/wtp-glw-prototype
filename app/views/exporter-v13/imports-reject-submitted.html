@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-importer-current.html" %}
 
 {% block pageTitle %}
-  Check this import
+    Submitted import
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,9 +21,10 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
+    
+    <span class="govuk-caption-l">Transaction number: GLW28364</span>
       <h1 class="govuk-heading-l">
-        Check this import
+        Submitted import
       </h1>
 
 <!---------------------  imports DETAILS ----------------------------------------------------->
@@ -46,9 +47,9 @@
         </dt>
         <dd class="govuk-summary-list__value">
           <!-- DYNAMIC national code (set in local routes.js)-->
-          {% if data ['imports-ref'] == "yes" %}
-          <p class="govuk-body">{{data['imports-enter-ref']}}</p>
-          {% elseif data ['imports-ref'] == "no" %}
+          {% if data ['imports-reject-ref'] == "yes" %}
+          <p class="govuk-body">{{data['imports-reject-enter-ref']}}</p>
+          {% elseif data ['imports-reject-ref'] == "no" %}
           <p class="govuk-body">Not applicable</p>          
            {% endif %}
           
@@ -57,9 +58,7 @@
           </strong> -->
         </dd>
         <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
-              Change<span class="govuk-visually-hidden">reference number</span>
-            </a>
+
         </dd>
       </div>
       
@@ -103,9 +102,7 @@
               {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
-              Change<span class="govuk-visually-hidden">waste codes, description, weight and collection date</span>
-            </a>
+
           </dd>
         </div>
 
@@ -122,9 +119,7 @@
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
-              Change<span class="govuk-visually-hidden">EWC code</span>
-            </a>
+
           </dd>
         </div>
 
@@ -141,9 +136,7 @@
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
-              Change<span class="govuk-visually-hidden">National code</span>
-            </a>
+
           </dd>
         </div>
 
@@ -161,9 +154,7 @@
 
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
-              Change<span class="govuk-visually-hidden">Waste description</span>
-            </a>
+
           </dd>
         </div>
 
@@ -187,9 +178,7 @@
             {% endif %} -->
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
-              Change<span class="govuk-visually-hidden">Waste quantity</span>
-            </a>
+
           </dd>
         </div>
 
@@ -214,16 +203,14 @@
       Exporter details
     </dt>
     <dd class="govuk-summary-list__value">
-      <p class="govuk-body">Zero Waste</p>
+      <p class="govuk-body">Zero Waste Lab</p>
       <p class="govuk-body">Dapperplein 45<br> 1093 XS Amsterdam<br> Netherlands<br></p>
       <p class="govuk-body">Philip Franc</p>
       <p class="govuk-body">philip.franc@zero-waste.com</p>
       <p class="govuk-body">+31 20 210 2355</p>
     </dd>
     <dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="#">
-        Change<span class="govuk-visually-hidden">Exporter</span>
-      </a>
+
     </dd>
   </div>
   <div id="importer-details" class="govuk-summary-list__row">
@@ -238,9 +225,7 @@
       <p class="govuk-body">01852 375 285</p>
     </dd>
     <dd class="govuk-summary-list__actions">
-      <a class="govuk-link" href="#">
-        Change<span class="govuk-visually-hidden">Importer</span>
-      </a>
+
     </dd>
   </div>
 </dl>
@@ -367,9 +352,7 @@
             <p class="govuk-body"></p>
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
-              Change<span class="govuk-visually-hidden">first carrier</span>
-            </a>
+
           </dd>
         </div>
 
@@ -382,9 +365,7 @@
             <p class="govuk-body">A1234567</p>
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
-              Change<span class="govuk-visually-hidden">waste carrier address</span>
-            </a>
+
           </dd>
         </div>
 
@@ -396,9 +377,7 @@
             <p class="govuk-body">Not applicable</p>
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
-              Change<span class="govuk-visually-hidden">waste carriers method</span>
-            </a>
+
           </dd>
         </div>
 
@@ -414,9 +393,7 @@
             <p class="govuk-body">+31 20 210 2355</p>
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
-              Change<span class="govuk-visually-hidden">waste collect address</span>
-            </a>
+
           </dd>
         </div>
 
@@ -432,9 +409,7 @@
             {% endif %}         
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
-              Change<span class="govuk-visually-hidden">waste exit</span>
-            </a>
+
           </dd>
         </div>
 
@@ -446,9 +421,7 @@
             <p class="govuk-body">Not applicable</p>
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
-              Change<span class="govuk-visually-hidden">waste travel countries</span>
-            </a>
+
           </dd>
         </div>
 
@@ -481,9 +454,7 @@
 
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">
-                  Change<span class="govuk-visually-hidden">recovery name</span>
-                </a>
+
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -498,9 +469,7 @@
                 {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">
-                  Change<span class="govuk-visually-hidden">recovery date</span>
-                </a>
+
               </dd>
             </div>
       </dl>
@@ -533,7 +502,7 @@
           Confirm and submit
         </button> -->
         
-        <a href="imports-confirmation.html"><button class="govuk-button" data-module="govuk-button">
+        <a href="imports-reject-whatnext-options.html"><button class="govuk-button" data-module="govuk-button">
           Confirm and submit
         </button></a>
 

@@ -46,9 +46,9 @@
         </dt>
         <dd class="govuk-summary-list__value">
           <!-- DYNAMIC national code (set in local routes.js)-->
-          {% if data ['imports-ref'] == "yes" %}
-          <p class="govuk-body">{{data['imports-enter-ref']}}</p>
-          {% elseif data ['imports-ref'] == "no" %}
+          {% if data ['imports-reject-ref'] == "yes" %}
+          <p class="govuk-body">{{data['imports-reject-enter-ref']}}</p>
+          {% elseif data ['imports-reject-ref'] == "no" %}
           <p class="govuk-body">Not applicable</p>          
            {% endif %}
           
@@ -214,7 +214,7 @@
       Exporter details
     </dt>
     <dd class="govuk-summary-list__value">
-      <p class="govuk-body">Zero Waste</p>
+      <p class="govuk-body">Zero Waste Lab</p>
       <p class="govuk-body">Dapperplein 45<br> 1093 XS Amsterdam<br> Netherlands<br></p>
       <p class="govuk-body">Philip Franc</p>
       <p class="govuk-body">philip.franc@zero-waste.com</p>
@@ -533,7 +533,7 @@
           Confirm and submit
         </button> -->
         
-        <a href="imports-confirmation.html"><button class="govuk-button" data-module="govuk-button">
+        <a href="imports-reject-whatnext-options.html"><button class="govuk-button" data-module="govuk-button">
           Confirm and submit
         </button></a>
 
