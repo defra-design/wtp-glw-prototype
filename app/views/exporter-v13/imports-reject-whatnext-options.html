@@ -1,0 +1,103 @@
+
+
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+    What would you like to do with the rejected import? 
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 13 - This is not a live service.
+    </span>
+  </p>
+  </div>
+
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+          
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="reason-hint">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                        What would you like to do with the rejected import?
+                    </h1>
+                  </legend>
+                  <div id="reason-hint" class="govuk-hint">
+                    Select one option.
+                  </div>
+
+                  <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="reason" name="reason" type="radio" value="match" data-aria-controls="conditional-reason">
+                      <label class="govuk-label govuk-radios__label" for="reason">
+                        Send it back to the exporter
+                      </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="reason-2" name="reason" type="radio" value="contaminated" data-aria-controls="conditional-reason-2">
+                      <label class="govuk-label govuk-radios__label" for="reason-2">
+                        Send it to another UK recovery facility able to reprocess the waste
+                      </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="reason-3" name="reason" type="radio" value="waste-type" data-aria-controls="conditional-reason-3">
+                      <label class="govuk-label govuk-radios__label" for="reason-3">
+                        Reprocess it on site
+                      </label>
+                    </div>
+
+                      <div class="govuk-radios__divider">or</div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="reason-5" name="reason" type="radio" value="else" data-aria-controls="conditional-reason-5">
+                        <label class="govuk-label govuk-radios__label" for="reason-5">
+                            Something else
+                        </label>
+                      </div>
+                      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-reason-5">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="reason-else">
+                              Enter details
+                          </label>
+                          <input class="govuk-input govuk-!-width-one-third" id="reason-else" name="reason-else">
+                        </div>
+                      </div>
+
+                  </div>
+                </fieldset>
+              </div>
+
+            <form class="form" method="post">
+            </form>
+              <a href="imports-reject-confirmation.html">
+                <button class="govuk-button" data-module="govuk-button">
+                  Submit and Continue
+                </button>
+              </a>
+
+            
+
+    </div>
+  </div>
+
+{% endblock %}

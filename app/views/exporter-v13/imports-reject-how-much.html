@@ -1,0 +1,86 @@
+
+
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+How much do you want to reject?
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 13 - This is not a live service.
+    </span>
+  </p>
+  </div>
+
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="reason-hint">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                        How much do you want to reject?
+                    </h1>
+                  </legend>
+                  <div id="reason-hint" class="govuk-hint">
+                    Select one option.
+                  </div>
+
+                  <div class="govuk-radios" data-module="govuk-radios">
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="reason" name="reason" type="radio" value="match" data-aria-controls="conditional-reason">
+                      <label class="govuk-label govuk-radios__label" for="reason">
+                        I want to reject all of the waste import
+                      </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="reason-2" name="reason" type="radio" value="contaminated" data-aria-controls="conditional-reason-2">
+                      <label class="govuk-label govuk-radios__label" for="reason-2">
+                        I want to reject part of the waste import
+                      </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-reason-2">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="reason-by-contaminated">
+                            Enter how much as a percentage
+                        </label>
+                        <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="weight" name="weight" type="text" spellcheck="false">
+                            <div class="govuk-input__suffix" aria-hidden="true">%</div>
+                          </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </fieldset>
+              </div>
+
+              <form class="form" method="post">
+
+              </form>
+
+              <a href="imports-reject-told-us.html"><button class="govuk-button" data-module="govuk-button">
+                Continue
+              </button></a>
+
+    </div>
+  </div>
+
+{% endblock %}

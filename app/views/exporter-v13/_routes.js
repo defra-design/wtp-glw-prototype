@@ -1859,7 +1859,7 @@ router.post('/imports-submit-how', function(req, res) {
     if (req.session.data['imports-create'] == 'imports-blank') {
         res.redirect('imports-unique-ref');
     } else if (req.session.data['imports-create'] == 'imports-exist') {
-        res.redirect('prenotification-templates');
+        res.redirect('imports-submit-how');
     } else if (req.session.data['imports-create'] == 'imports-csv') {
         res.redirect('imports-submit-how');
     }
@@ -2080,7 +2080,8 @@ router.post('/imports-date-of-shipment', function(req, res) {
                 if ((req.session.data.gPreviousLocation).includes('imports-check-your-answers')) {
                     res.redirect('imports-check-your-answers');
                 } else {
-                    res.redirect('imports-carrier-collect-postcode');
+                    // res.redirect('imports-carrier-collect-postcode');
+                    res.redirect('imports-carrier-collect-address-manual-2');
                 }
             }
             })
@@ -2090,7 +2091,8 @@ router.post('/imports-date-of-shipment', function(req, res) {
             if (req.session.data['imports-add-third-carrier'] == 'Yes' && req.session.data['imports-carrier-count'] <= 3) {
                 res.redirect('imports-carrier-add-3');
             } else if (req.session.data['imports-add-third-carrier'] == 'No' || req.session.data['imports-carrier-count'] >= 4) {
-                     res.redirect('imports-carrier-collect-postcode');
+                     // res.redirect('imports-carrier-collect-postcode');
+                     res.redirect('imports-carrier-collect-address-manual-2');
              }
             })
 
@@ -2137,6 +2139,12 @@ router.post('/imports-date-of-shipment', function(req, res) {
         })
         
         router.post('/imports-carrier-collect-address-manual', function(req, res) {
+            req.session.data['imports-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
+            req.session.data['imports-carrier-add-1'] = "true";
+            res.redirect('imports-waste-generator');
+        })
+
+        router.post('/imports-carrier-collect-address-manual-2', function(req, res) {
             req.session.data['imports-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
             req.session.data['imports-carrier-add-1'] = "true";
             res.redirect('imports-waste-generator');
@@ -2230,6 +2238,17 @@ router.post('/imports-date-of-shipment', function(req, res) {
         router.post('/imports-check-your-answers', function(req, res) {
             res.redirect('imports-check-your-answers');
          })
+
+//------------ IMPORTS - REJECT --------------------------------
+
+// Reject already told us
+router.post('/imports-reject-told-us', function(req, res) {
+    if (req.session.data['told-us'] == 'yes') {
+        res.redirect('imports-reject-submitted');
+    } else if (req.session.data['told-us'] == 'no') {
+        res.redirect('imports-reject-unique-ref');
+    }
+})
 
 // create-template-from-view-all
 //router.post('/create-template-from-view-all', function(req, res) {
