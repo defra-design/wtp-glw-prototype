@@ -46,22 +46,22 @@
 
                   <div class="govuk-radios" data-module="govuk-radios">
                     <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="told-us" name="told-us" type="radio" value="yes" {{ checked("told-us", "yes") }}>
-                      <label class="govuk-label govuk-radios__label" for="told-us">
+                      <input class="govuk-radios__input" id="told-us-yes" name="told-us" type="radio" value="yes" {{ checked("told-us", "yes") }}>
+                      <label class="govuk-label govuk-radios__label" for="told-us-yes">
                         Yes
                       </label>
                     </div>
-                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-told-us">
+                    <!-- <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-told-us">
                       <div class="govuk-form-group">
                         <label class="govuk-label" for="told-us-ref">
                           Enter the transaction number. For example, GLW124578</label>
                         <input class="govuk-input govuk-!-width-one-third" id="told-us-ref" name="told-us-ref" type="match" spellcheck="false" autocomplete="match">
                       </div>
-                    </div>
+                    </div> -->
 
                     <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="told-us-2" name="told-us" type="radio" value="contaminated" {{ checked("told-us", "no") }}>
-                      <label class="govuk-label govuk-radios__label" for="told-us-2">
+                      <input class="govuk-radios__input" id="told-us-no" name="told-us" type="radio" value="no" {{ checked("told-us", "no") }}>
+                      <label class="govuk-label govuk-radios__label" for="told-us-no">
                         No
                       </label>
                     </div>
@@ -76,6 +76,7 @@
                   Continue
                 </button>
               </div>
+              
             </form>
 <!--               <a href="imports-reject-how-much.html">
                 <button class="govuk-button" data-module="govuk-button">

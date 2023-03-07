@@ -44,17 +44,22 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      <!---- DYNAMIC HEADER SHOW / HIDE REFERENCE ---->
 
       {% if data ['imports-ref'] == "yes" %}
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Your reference number: {{ data['imports-enter-ref'] }}</span>
         Submit an import
       </h1>
+      <p class="govuk-body">You'll be able to check and submit this import once you've completed all the sections.</p>
       {% else %}
       <h1 class="govuk-heading-l">
         Submit an import
       </h1>
+      <p class="govuk-body">You'll be able to check and submit this import once you've completed all the sections.</p>
        {% endif %}
+
+      <!---- END DYNAMIC HEADER ---->
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Submission incomplete</h2>
       <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{sectionscompleted}} of 4 sections.</p>
@@ -344,7 +349,7 @@
 
 
         {% else %}
-        <p class="govuk-body">You'll be able to check and submit this import once you've completed all the sections.</p>
+
         {% endif %}
 
       </form>
