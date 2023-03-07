@@ -486,6 +486,7 @@
                 </a>
               </dd>
             </div>
+
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
               Recovery code
@@ -506,10 +507,60 @@
       </dl>
       <br>
 
+      <!------------------- REJECTION DETAILS ------------------------->
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-7">          
+
+        <div id="waste-treatment" class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            <h2 class="govuk-heading-m">Reject details</h2>
+          </dt>
+          <dd class="govuk-summary-list__value">
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          </dd> 
+        </div>
+
+          <!---------- Reason for rejection ---------->
+
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Reason for rejection
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <p class="govuk-body">Waste is contaminated</p>
+                <p class="govuk-body">The waste contains materials which cannot be removed and prevents processing.</p>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">
+                  Change<span class="govuk-visually-hidden">recovery name</span>
+                </a>
+              </dd>
+            </div>
+
+          <!---------- How much rejected ---------->
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Rejection amount
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">All of the waste import</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Change<span class="govuk-visually-hidden">recovery date</span>
+              </a>
+            </dd>
+          </div>
+
+        </dl>
+        <br>
+
         <!--------- DECLARATION ------------------->
 
         <h2 class="govuk-heading-m">
-          Now submit import
+          Now confirm the import details
         </h2>
 
         <p class="govuk-body">By submitting this import, you confirm that:</p>
@@ -534,7 +585,7 @@
         </button> -->
         
         <a href="imports-reject-whatnext-options.html"><button class="govuk-button" data-module="govuk-button">
-          Confirm and submit
+          Confirm and continue
         </button></a>
 
         <p class="govuk-body">

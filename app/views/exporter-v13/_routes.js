@@ -2147,15 +2147,15 @@ router.post('/imports-date-of-shipment', function(req, res) {
         router.post('/imports-carrier-collect-address-manual-2', function(req, res) {
             req.session.data['imports-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
             req.session.data['imports-carrier-add-1'] = "true";
-            res.redirect('imports-waste-generator');
+            res.redirect('imports-point-of-exit');
         })
 
-        router.post('/imports-waste-generator', function(req, res) {
+        /* router.post('/imports-waste-generator', function(req, res) {
             req.session.data['imports-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
             req.session.data['imports-carrier-add-1'] = "true";
             res.redirect('imports-point-of-exit');
             
-        })
+        }) */
 
         //-----------------
 
@@ -2248,6 +2248,13 @@ router.post('/imports-reject-told-us', function(req, res) {
     } else if (req.session.data['told-us'] == 'no') {
         res.redirect('imports-reject-unique-ref');
     }
+})
+
+// imports-reject-unique-ref
+router.post('/imports-reject-unique-ref', function(req, res) {
+    req.session.data['imports-add-unique-ref'] = req.session.data['added-unique-ref'];
+    req.session.data['just-edited'] = 'yes';
+    res.redirect('imports-reject-prenotify');
 })
 
 // create-template-from-view-all

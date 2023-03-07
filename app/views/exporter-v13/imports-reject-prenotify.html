@@ -28,7 +28,7 @@
         <a class="govuk-breadcrumbs__link" href="imports-dashboard">Green list waste overview</a>
       </li>
       <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="imports-unique-ref">Your reference</a>
+        <a class="govuk-breadcrumbs__link" href="imports-reject-unique-ref">Your reference</a>
       </li>
       <li class="govuk-breadcrumbs__list-item">
         Submit an import
@@ -44,13 +44,25 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Your reference number: {{ data['imports-reject-enter-ref'] }}</span>
-        Submit an import
-      </h1>
+     <!---- DYNAMIC HEADER SHOW / HIDE REFERENCE ---->
+
+     {% if data ['imports-reject-ref'] == "yes" %}
+     <h1 class="govuk-heading-l">
+       <span class="govuk-caption-l">Your reference number: {{ data['imports-reject-enter-ref'] }}</span>
+       Submit an import
+     </h1>
+     <p class="govuk-body">You'll be able to check and submit this import once you've completed all the sections.</p>
+     {% else %}
+     <h1 class="govuk-heading-l">
+       Submit an import
+     </h1>
+     <p class="govuk-body">You'll be able to check and submit this import once you've completed all the sections.</p>
+      {% endif %}
+
+     <!---- END DYNAMIC HEADER ---->
 
       <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Submission incomplete</h2>
-      <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{sectionscompleted}} of 4 sections.</p>
+      <p class="govuk-body govuk-!-margin-bottom-7">You have completed 4 of 4 sections.</p>
 
 
       <ol class="app-task-list">
@@ -223,6 +235,8 @@
 
       </ol>
 
+      <!--------------------- SUBMIT ANSWERS ----------------------------->
+
       <h2 class="govuk-heading-m">Final check</h2>
 
       <form class="form" method="post"></form>
@@ -233,8 +247,6 @@
         <a href="imports-reject-check-your-answers.html"><button class="govuk-button" data-module="govuk-button">
           Check this import
         </button></a>
-
-        <p class="govuk-body">You'll be able to check and submit this import once you've completed all the sections.</p>
 
        <p class="govuk-body"><a class="govuk-link" href="imports-dashboard">Return to this draft later</a></p>
 
