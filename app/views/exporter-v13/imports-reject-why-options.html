@@ -1,5 +1,3 @@
-
-
 {% extends "../layouts/layout-importer-current.html" %}
 
 {% block pageTitle %}
@@ -31,8 +29,6 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-          
-
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset" aria-describedby="reason-hint">
                   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -54,8 +50,9 @@
                     <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-reason">
                       <div class="govuk-form-group">
                         <label class="govuk-label" for="reason-by-match">
-                            Enter details                        </label>
-                        <input class="govuk-input govuk-!-width-one-third" id="reason-by-match" name="reason-by-match" type="match" spellcheck="false" autocomplete="match">
+                          Enter details
+                        </label>
+                        <textarea class="govuk-textarea govuk-!-width-two-thirds" id="reason-by-match" name="reason-by-match" rows="3"></textarea>
                       </div>
                     </div>
 
@@ -70,7 +67,7 @@
                         <label class="govuk-label" for="reason-by-contaminated">
                             Enter details
                         </label>
-                        <input class="govuk-input govuk-!-width-one-third" id="reason-by-contaminated" name="reason-by-contaminated" type="tel" autocomplete="tel">
+                        <textarea class="govuk-textarea govuk-!-width-two-thirds" id="reason-contaminated" name="reason-contaminated" rows="3"></textarea>
                       </div>
                     </div>
 
@@ -82,10 +79,10 @@
                     </div>
                     <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-reason-3">
                       <div class="govuk-form-group">
-                        <label class="govuk-label" for="reason-by-waste-type">
+                        <label class="govuk-label" for="reason-waste-type">
                             Enter details
                         </label>
-                        <input class="govuk-input govuk-!-width-one-third" id="reason-by-waste-type" name="reason-by-waste-type" type="tel" autocomplete="tel">
+                        <textarea class="govuk-textarea govuk-!-width-two-thirds" id="reason-waste-type" name="reason-waste-type" rows="3"></textarea>
                       </div>
                     </div>
 
@@ -100,7 +97,7 @@
                           <label class="govuk-label" for="reason-by-contract">
                               Enter details
                           </label>
-                          <input class="govuk-input govuk-!-width-one-third" id="reason-else" name="reason-else">
+                          <textarea class="govuk-textarea govuk-!-width-two-thirds" id="reason-contract" name="reason-contract" rows="3"></textarea>
                         </div>
                       </div>
 
@@ -117,7 +114,7 @@
                           <label class="govuk-label" for="reason-else">
                               Enter details
                           </label>
-                          <input class="govuk-input govuk-!-width-one-third" id="reason-else" name="reason-else">
+                          <textarea class="govuk-textarea govuk-!-width-two-thirds" id="reason-else" name="reason-else" rows="3"></textarea>
                         </div>
                       </div>
 
@@ -133,7 +130,9 @@
                 </button>
               </a>
 
-            
+              <div>
+                <a class="govuk-link" href="imports-dashboard.html">Cancel and return to green list overview</a></p>
+            </div> 
 
     </div>
   </div>

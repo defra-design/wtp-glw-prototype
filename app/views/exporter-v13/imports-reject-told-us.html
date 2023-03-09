@@ -40,11 +40,11 @@
                       Have you already told us about the import you want to reject?
                     </h1>
                   </legend>
-                  <div id="reason-hint" class="govuk-hint">
+                  <!-- <div id="reason-hint" class="govuk-hint">
                     Select one option.
-                  </div>
+                  </div> -->
 
-                  <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
                     <div class="govuk-radios__item">
                       <input class="govuk-radios__input" id="told-us-yes" name="told-us" type="radio" value="yes" {{ checked("told-us", "yes") }}>
                       <label class="govuk-label govuk-radios__label" for="told-us-yes">
@@ -76,6 +76,10 @@
                   Continue
                 </button>
               </div>
+
+              <div>
+                <a class="govuk-link" href="imports-dashboard.html">Cancel and return to green list overview</a></p>
+            </div> 
               
             </form>
 <!--               <a href="imports-reject-how-much.html">
