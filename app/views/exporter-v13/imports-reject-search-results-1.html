@@ -1,0 +1,83 @@
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+  Have you already told us about the import you want to reject?
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 13 - This is not a live service.
+    </span>
+  </p>
+  </div>
+
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <form class="form" method="post">
+
+      <h1 class="govuk-heading-l">
+        Submitted import search result
+      </h1>
+      <p class="govuk-body">Results <b>1</b> of <b>1</b></p>
+      
+    <!---------- SEARCH RESULTS TABLE ------------->
+
+      <table class="govuk-table govuk-!-margin-bottom-8">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Transaction number</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Date received</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-one-half">Exporter</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell"><a href="imports-reject-submitted.html">GLW-I- 28364</a></td>
+            <td class="govuk-table__cell">23 Feb 2023</td>
+            <td class="govuk-table__cell">Euromovement WEEE waste electric</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!---------- BUTTON ------------->
+            
+      <!--<div class="imports-name-button">
+        <button class="govuk-button" data-module="govuk-button">
+          Search again
+        </button>
+      </div>--> 
+
+        
+              
+    </form>
+               
+      <a href="imports-reject-search-submitted.html">
+        <button class="govuk-button" data-module="govuk-button">
+            Search again
+        </button>
+      </a>   
+
+      <div>
+        <a class="govuk-link" href="imports-dashboard.html">Cancel and return to green list overview</a></p>
+    </div> 
+
+    </div>
+  </div>
+
+{% endblock %}

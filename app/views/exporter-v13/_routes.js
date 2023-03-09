@@ -2244,11 +2244,16 @@ router.post('/imports-date-of-shipment', function(req, res) {
 // Reject already told us
 router.post('/imports-reject-told-us', function(req, res) {
     if (req.session.data['told-us'] == 'yes') {
-        res.redirect('imports-reject-submitted');
+        res.redirect('imports-reject-search-submitted');
     } else if (req.session.data['told-us'] == 'no') {
         res.redirect('imports-reject-unique-ref');
     }
 })
+
+// imports-reject-search-submitted
+router.post('/imports-reject-search-submitted', function(req, res) {
+    res.redirect('imports-reject-search-results-1');
+ })
 
 // imports-reject-unique-ref
 router.post('/imports-reject-unique-ref', function(req, res) {

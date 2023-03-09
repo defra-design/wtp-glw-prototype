@@ -474,17 +474,13 @@
 
         <!--------- DECLARATION ------------------->
 
-        <h2 class="govuk-heading-m">
-          Now submit import
-        </h2>
-
-        <p class="govuk-body">By submitting this import, you confirm that:</p>
-
-        <ul class="govuk-body">
-          <li>all the information you've provided is complete and correct to the best of your knowledge</li>
-          <li>there is an effective written contract with the overseas exporter arranging the shipment</li>
-          <li>you've taken legal responsibility of the waste</li>
-        </ul>
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            Check this is the import you want to reject
+          </strong>
+        </div>
 
         <div class="govuk-!-padding-bottom-4"></div>
 
@@ -499,12 +495,12 @@
           Confirm and submit
         </button> -->
         
-        <a href="imports-reject-whatnext-options.html"><button class="govuk-button" data-module="govuk-button">
-          Confirm and submit
+        <a href="imports-reject-confirmation.html"><button class="govuk-button govuk-button--warning" data-module="govuk-button">
+          Confirm and reject
         </button></a>
 
         <p class="govuk-body">
-          <a href="imports-dashboard" class="govuk-link">Cancel and return to green list waste overview</a>
+          <a href="imports-reject-search-submitted" class="govuk-link">This is not the correct import</a>
         </p>
 
       <!--</form>-->
