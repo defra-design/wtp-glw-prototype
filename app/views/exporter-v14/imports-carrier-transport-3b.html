@@ -1,0 +1,68 @@
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+  How will the first waste carrier transport the waste?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+      <div class="govuk-form-group">
+        
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              How was the waste transported?
+            </h1>
+          </legend>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+
+            <!-- SHIPPING CONTAINER -->
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="imports-transport-shipping" name="imports-transport" type="radio" value="shipping" {{ checked("imports-transport", "shipping") }}>
+              <label class="govuk-label govuk-radios__label" for="imports-transport-shipping">
+                Shipping container
+              </label>
+            </div>
+
+            <!-- TRAILER -->
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="imports-transport-trailer" name="imports-transport" type="radio" value="trailer" {{ checked("imports-transport", "trailer") }}>
+              <label class="govuk-label govuk-radios__label" for="imports-transport-trailer">
+                Trailer
+              </label>
+            </div>
+
+            <!-- BULK VESSEL -->
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="imports-transport-vessel" name="imports-transport" type="radio" value="bulk-vessel" {{ checked("imports-transport", "bulk-vessel") }}>
+              <label class="govuk-label govuk-radios__label" for="imports-transport-vessel">
+                Bulk vessel
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: 'Continue'
+      }) }}
+
+      {% include "./includes/imports-return-to-link.html" %}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

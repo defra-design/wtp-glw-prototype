@@ -1,0 +1,92 @@
+
+
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+How much do you want to reject?
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 14 - This is not a live service.
+    </span>
+  </p>
+  </div>
+
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="reject-amount-hint">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                        How much do you want to reject?
+                    </h1>
+                  </legend>
+                  <!-- <div id="reject-amount-hint" class="govuk-hint">
+                    Select one option.
+                  </div> -->
+
+                  <div class="govuk-radios" data-module="govuk-radios">
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="reject-amount" name="reject-amount" type="radio" value="match" data-aria-controls="conditional-reject-amount">
+                      <label class="govuk-label govuk-radios__label" for="reject-amount">
+                        I want to reject all of the waste import
+                      </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="reject-amount-2" name="reject-amount" type="radio" value="contaminated" data-aria-controls="conditional-reject-amount-2">
+                      <label class="govuk-label govuk-radios__label" for="reject-amount-2">
+                        I want to reject part of the waste import
+                      </label>
+                    </div>
+
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-reject-amount-2">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="reject-amount-weight">
+                          Enter weight, in tonnes
+                        </label>
+                          <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="reject-amount-weight" name="reject-amount-weight" value="{{ data['reject-amount-weight'] }}">
+                          </div>
+                      
+                      <div><p class="govuk-body govuk-!-margin-top-6"><a class="govuk-link" href="#">Enter as a percentage (%)</a></p></div>
+                      </div>
+                    </div>
+
+                  </div> 
+                </fieldset>
+              </div>
+
+              <form class="form" method="post">
+
+              </form>
+
+              <a href="imports-reject-whatnext-options.html"><button class="govuk-button" data-module="govuk-button">
+                Continue
+              </button></a>
+
+              <div>
+                <a class="govuk-link" href="imports-dashboard.html">Cancel and return to green list overview</a></p>
+            </div> 
+
+    </div>
+  </div>
+
+{% endblock %}

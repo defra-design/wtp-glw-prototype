@@ -1,0 +1,68 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  Delete favourite - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 13 - This is not a live service.
+    </span>
+  </p>
+</div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="">
+      
+      <h1 class="govuk-heading-l">
+        
+      </h1>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="delete-template-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['template-name'] or 'Euromovement paper waste movement'}}</span>
+            <h1 class="govuk-fieldset__heading">
+              Are you sure you want to delete this template?
+            </h1>
+          </legend>
+        
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="delete-template-check-yes" name="delete-template-check" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="delete-template-check">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="delete-template-check-no" name="delete-template-check" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="delete-template-check">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+        <div class="govuk-button-group">
+          <button class="govuk-button" data-module="govuk-button">
+            Confirm and continue
+          </button>
+        </div>
+        <a class="govuk-link" href="javascript:history.go(-1)">Cancel and return to template list</a>
+
+      </form>
+      
+    </div>
+  </div>
+
+{% endblock %}

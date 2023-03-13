@@ -1,0 +1,104 @@
+
+
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+  Do you want to add your own reference to this import?
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 14 - This is not a live service.
+    </span>
+  </p>
+  </div>
+  
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">Recovery facility details</h1>        
+        <p id="contact-hint" class="govuk-hint">Your Annex VII must be signed and dated in block 14.</p>
+
+        <form class="form" method="post">
+
+                <!------------ NAME ------------>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="imports-recovery-full-name">Who signed for the shipment?</label>
+                    <div id="contact-hint" class="govuk-hint">Full name</div>
+                    <input class="govuk-input" id="imports-recovery-full-name" name="imports-recovery-full-name" type="text">
+                </div>
+
+                <div class="govuk-!-padding-bottom-3"></div>
+
+                <!------------ DATE ------------>
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" role="group" aria-describedby="imports-recovery-date-hint">
+                      <legend class="govuk-fieldset__legend">
+                        When did the shipment arrive at the recovery facility?
+                      </legend>
+                      <div id="imports-recovery-date-hint" class="govuk-hint">
+                        For example, 27 3 2023
+                      </div>
+
+                      <div class="govuk-date-input" id="imports-recovery-date">
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="imports-recovery-date-day">
+                              Day
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="imports-recovery-date-day" name="imports-recovery-date-day" type="text" inputmode="numeric">
+                          </div>
+                        </div>
+
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="imports-recovery-date-month">
+                              Month
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="imports-recovery-date-month" name="imports-recovery-date-month" type="text" inputmode="numeric">
+                          </div>
+                        </div>
+
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="imports-recovery-date-year">
+                              Year
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="imports-recovery-date-year" name="imports-recovery-date-year" type="text" inputmode="numeric">
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+
+                  <div class="govuk-!-padding-bottom-4"></div>
+
+            {{ govukButton({
+            text: 'Continue'
+            }) }}
+
+            {% include "./includes/imports-return-to-link.html" %}
+
+         </form>
+
+    </div>
+  </div>
+
+{% endblock %}

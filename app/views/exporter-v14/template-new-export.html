@@ -1,0 +1,566 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  {{ data['template-name'] }}
+{% endblock %}
+
+{% block beforeContent %}
+    <div class="govuk-phase-banner">
+      <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">
+          Prototype
+        </strong>
+        <span class="govuk-phase-banner__text">
+          Version 13 - This is not a live service.
+        </span>
+      </p>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+<!--------------------- NOTIFICATION BANNER ----------------------------------------------------->
+
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            You’ve started a new export based on your template. Review and add information before you submit.
+          </p>
+        </div>
+      </div>
+
+
+      <span class="govuk-caption-l">New waste export from template:</span>
+      <h1 class="govuk-heading-l">
+        {% if data['template-name'] != undefined %}
+          {{ data['template-name'] }}
+        {% else %}
+          Euromovement WEEE waste export
+        {% endif %}
+      </h1>
+
+<!---------------------  TEMPLATE DETAILS ----------------------------------------------------->
+
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          <h2 class="govuk-heading-m">Your unique reference</h2>
+        </dt>
+        <dd class="govuk-summary-list__value">
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        </dd> 
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Unique reference
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <!-- DYNAMIC national code (set in local routes.js)-->
+          {% if data ['template-ref'] == "yes" %}
+          <p class="govuk-body">{{data['template-enter-ref']}}</p>
+          {% elseif data ['template-ref'] == "no" %}
+          <p class="govuk-body">Not applicable</p>
+          {% else %}            
+          <strong class="govuk-tag govuk-tag--blue">
+            Add Information
+          </strong>
+           {% endif %}
+          
+          <!-- <strong class="govuk-tag govuk-tag--blue">
+            Add Information
+          </strong> -->
+        </dd>
+        <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-new-unique-ref.html">
+              Change<span class="govuk-visually-hidden">reference number</span>
+            </a>
+        </dd>
+      </div>
+      
+    </dl>
+
+<!---------------------  ABOUT THE WASTE ----------------------------------------------------->
+
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+      <div id="about-waste" class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+          <h2 class="govuk-heading-m">About the waste</h2>
+        </dt>
+        <dd class="govuk-summary-list__value">
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        </dd> 
+      </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Waste code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data ['template-code'] == "basel" %}
+                          <p class="govuk-body">{{ data['basel-annex-ix-typeahead'] }}</p>
+
+                        {% elseif data ['template-code'] == "oecd" %}
+                          <p class="govuk-body">{{ data['oecd-typeahead'] }}</p>
+
+                        {% elseif data ['template-code'] == "annex-a" %}
+                          <p class="govuk-body">{{ data['annex-iiia-typeahead'] }}</p>
+
+                        {% elseif data ['template-code'] == "annex-b" %}
+                          <p class="govuk-body">{{ data['annex-iiib-typeahead'] }}</p>
+
+                        {% elseif data ['template-code'] == "not-applicable" %}
+                        <p class="govuk-body">Not applicable</p>
+            {% else %}
+              <p class="govuk-body">GC020: Electronic scrap (e.g. printed circuit boards, electronic components, wire, etc.)</p>
+              {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-waste-codes-and-description.html">
+              Change<span class="govuk-visually-hidden">waste codes, description, weight and collection date</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            EWC code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <!-- DYNAMIC EWC code (set in local routes.js)-->
+            {% if data ['template-ec-code'] == "Yes" %}
+            <p class="govuk-body">{{data['ec-wastes-typeahead']}}</p>
+            {% else %}
+            <p class="govuk-body">200136: discarded electrical and electronic equipment other than those mentioned in 20 01 21, 20 01 23 and 20 01 35</p>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-code-add-another-change.html">
+              Change<span class="govuk-visually-hidden">EWC code</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            National code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <!-- DYNAMIC national code (set in local routes.js)-->
+            {% if data ['template-nat-code'] == "yes" %}
+              <p class="govuk-body">{{data['template-national-code']}}</p>
+            {% else %}            
+            <p class="govuk-body">Not applicable</p>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-national-code.html">
+              Change<span class="govuk-visually-hidden">National code</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Waste description
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <!--<p class="govuk-body">Electronics including; wires and circuit boards</p>-->
+            {% if data ['template-usual-description-of-the-waste-status'] == "complete" %}
+              <p class="govuk-body">{{ data['template-new-description'] }}</p>
+            {% else %}    
+            <p class="govuk-body">Electronics including; wires and circuit boards</p>
+          {% endif %}
+
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-new-waste-description.html">
+              Change<span class="govuk-visually-hidden">Waste description</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Waste quantity
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">
+              {% if data ['template-quantity'] == "yes" %}
+              <p class="govuk-body">Actual<br>{{ data['template-quantity-weight-actual'] }} tonnes</p>
+
+              {% elseif data ['template-quantity'] == "no" %}
+              <p class="govuk-body">Estimate<br>{{ data['template-quantity-weight-estimate'] }} tonnes</p>
+              {% else %}  
+            <strong class="govuk-tag govuk-tag--blue">
+              Add Information
+            </strong> 
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-quantity.html">
+              Change<span class="govuk-visually-hidden">Waste quantity</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+<!---------------------  EXPORTER AND IMPORTER ----------------------------------------------------->
+
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+  <div id="exporter-importer" class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key govuk-!-width-one-third">
+      <h2 class="govuk-heading-m">Exporter and importer</h2>
+    </dt>
+    <dd class="govuk-summary-list__value">
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+
+  <div id="exporter-details" class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Exporter details
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <p class="govuk-body">Waste Ltd</p>
+      <p class="govuk-body">28 Wakefield street<br>Manchester<br>M1 4YU</p>
+      <p class="govuk-body">Jerry Whitfield</p>
+      <p class="govuk-body">jerry.whitfield@waste.com</p>
+      <p class="govuk-body">01852 375 285</p>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="template-who-arranged-shipment-details.html">
+        Change<span class="govuk-visually-hidden">Exporter</span>
+      </a>
+    </dd>
+  </div>
+  <div id="importer-details" class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Importer details
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <p class="govuk-body">Zero Waste Lab</p>
+      <p class="govuk-body">Dapperplein 45<br> 1093 XS Amsterdam<br> Netherlands<br></p>
+      <p class="govuk-body">Philip Franc</p>
+      <p class="govuk-body">philip.franc@zero-waste.com</p>
+      <p class="govuk-body">+31 20 210 2355</p>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="template-importer-consignee.html">
+        Change<span class="govuk-visually-hidden">Importer</span>
+      </a>
+    </dd>
+  </div>
+</dl>
+
+<!---------------------  JOURNEY OF WASTE ----------------------------------------------------->
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">        
+
+        <div id="waste-journey" class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            <h2 class="govuk-heading-m">Journey of waste</h2>
+          </dt>
+          <dd class="govuk-summary-list__value">
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          </dd> 
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Collection date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data ['template-actual-or-estimate-date'] == "yes" %}
+            <p class="govuk-body">Actual</p>
+
+            {% elseif data ['template-actual-or-estimate-date'] == "no" %}
+            <p class="govuk-body">Estimate</p>
+            {% endif %}
+
+            {% if data['template-actual-or-estimate-date'] == 'no' %}
+              {# Estimated shipment date entered #}
+              {{ data['template-estimate-shipment-day'] }}
+
+              {% if data['template-estimate-shipment-month'] == '1' or data['template-estimate-shipment-month'] == '01' %}
+                January
+              {% elif data['template-estimate-shipment-month'] == '2' or data['template-estimate-shipment-month'] == '02' %}
+                February
+              {% elif data['template-estimate-shipment-month'] == '3' or data['template-estimate-shipment-month'] == '03' %}
+                March
+              {% elif data['template-estimate-shipment-month'] == '4' or data['template-estimate-shipment-month'] == '04' %}
+                April
+              {% elif data['template-estimate-shipment-month'] == '5' or data['template-estimate-shipment-month'] == '05' %}
+                May
+              {% elif data['template-estimate-shipment-month'] == '6' or data['template-estimate-shipment-month'] == '06' %}
+                June
+              {% elif data['template-estimate-shipment-month'] == '7' or data['template-estimate-shipment-month'] == '07' %}
+                July
+              {% elif data['template-estimate-shipment-month'] == '8' or data['template-estimate-shipment-month'] == '08' %}
+                August
+              {% elif data['template-estimate-shipment-month'] == '9' or data['template-estimate-shipment-month'] == '09' %}
+                September
+              {% elif data['template-estimate-shipment-month'] == '10' or data['template-estimate-shipment-month'] == '10' %}
+                October
+              {% elif data['template-estimate-shipment-month'] == '11' or data['template-estimate-shipment-month'] == '11' %}
+                November
+              {% elif data['template-estimate-shipment-month'] == '12' or data['template-estimate-shipment-month'] == '12' %}
+                December
+
+              {% else %}
+              <strong class="govuk-tag govuk-tag--blue">
+                Add Information
+              </strong>
+                {#January#}
+              {% endif %}
+              {{ data['template-estimate-shipment-year'] }}
+
+            {% else %}
+
+              {# Actual shipment date enrered #}
+              {{ data['template-actual-shipment-day'] }}
+              {% if data['template-actual-shipment-month'] == '1' or data['template-actual-shipment-month'] == '01' %}
+                January
+              {% elif data['template-actual-shipment-month'] == '2' or data['template-actual-shipment-month'] == '02' %}
+                February
+              {% elif data['template-actual-shipment-month'] == '3' or data['template-actual-shipment-month'] == '03' %}
+                March
+              {% elif data['template-actual-shipment-month'] == '4' or data['template-actual-shipment-month'] == '04' %}
+                April
+              {% elif data['template-actual-shipment-month'] == '5' or data['template-actual-shipment-month'] == '05' %}
+                May
+              {% elif data['template-actual-shipment-month'] == '6' or data['template-actual-shipment-month'] == '06' %}
+                June
+              {% elif data['template-actual-shipment-month'] == '7' or data['template-actual-shipment-month'] == '07' %}
+                July
+              {% elif data['template-actual-shipment-month'] == '8' or data['template-actual-shipment-month'] == '08' %}
+                August
+              {% elif data['template-actual-shipment-month'] == '9' or data['template-actual-shipment-month'] == '09' %}
+                September
+              {% elif data['template-actual-shipment-month'] == '10' or data['template-actual-shipment-month'] == '10' %}
+                October
+              {% elif data['template-actual-shipment-month'] == '11' or data['template-actual-shipment-month'] == '11' %}
+                November
+              {% elif data['template-actual-shipment-month'] == '12' or data['template-actual-shipment-month'] == '12' %}
+                December
+            {% else %}
+            <strong class="govuk-tag govuk-tag--blue">
+              Add Information
+            </strong>
+                {#January#}
+              {% endif %}
+              {{ data['template-actual-shipment-year'] }}
+            
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-date-of-shipment.html">
+              Change<span class="govuk-visually-hidden">collection date</span>
+            </a>
+          </dd>
+        </div>
+
+        <div id="first-carrier" class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            First waste carrier
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">SG & Co</p>
+            <p class="govuk-body">Highfield House, Swansea, SA1 1DE</p>
+            <p class="govuk-body">Harry Blesin</p>
+            <p class="govuk-body">harry.blesin@sgco.com</p>
+            <p class="govuk-body">01792 273455</p>
+            <p class="govuk-body"></p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-carrier-add-1b.html">
+              Change<span class="govuk-visually-hidden">first carrier</span>
+            </a>
+          </dd>
+        </div>
+
+        <div id="first-transport" class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            First carrier transport waste
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">Trailer</p>
+            <p class="govuk-body">A1234567</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-carrier-transport-1b.html">
+              Change<span class="govuk-visually-hidden">waste carrier address</span>
+            </a>
+          </dd>
+        </div>
+
+        <div id="additional-carriers" class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Additional waste carriers
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">Not applicable</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-carrier-check-change.html">
+              Change<span class="govuk-visually-hidden">waste carriers method</span>
+            </a>
+          </dd>
+        </div>
+
+        <div id="collect-details" class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Waste collection details
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">HSW Ltd</p>
+            <p class="govuk-body">5 Stafford Park<br>Telford<br>TF6 3RT<br>England</p>
+            <p class="govuk-body">Michelle Spires</p>
+            <p class="govuk-body">michelle.spires@hswltd.com</p>
+            <p class="govuk-body">0121 6273 284</p>
+            <p class="govuk-body"></p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-waste-generator.html">
+              Change<span class="govuk-visually-hidden">waste collect address</span>
+            </a>
+          </dd>
+        </div>
+
+        <div id="waste-exit" class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Location waste leaves the UK
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data ['template-exit'] == "yes" %}
+            <p class="govuk-body">{{data['template-exit-location']}}</p>
+            {% else %}
+            <p class="govuk-body">Felixstowe</p>
+            {% endif %}         
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-point-of-exit.html">
+              Change<span class="govuk-visually-hidden">waste exit</span>
+            </a>
+          </dd>
+        </div>
+
+        <div id="transit-country" class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Countries waste will travel through
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">Not applicable</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-countries-add-another.html">
+              Change<span class="govuk-visually-hidden">waste travel countries</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+<!---------------------  TREATMENT OF WASTE ----------------------------------------------------->
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-7">          
+
+            <div id="waste-treatment" class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-third">
+                <h2 class="govuk-heading-m">Treatment of waste</h2>
+              </dt>
+              <dd class="govuk-summary-list__value">
+              </dd>
+              <dd class="govuk-summary-list__actions">
+              </dd> 
+            </div>
+          
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Recovery facility name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <p class="govuk-body">Zero Waste Lab</p>
+                <p class="govuk-body">Dapperplein 45<br> 1093 XS Amsterdam<br> Netherlands<br></p>
+
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="template-recovery-facility-laboratory.html">
+                  Change<span class="govuk-visually-hidden">recovery name</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+              Recovery code
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data ['template-code'] == "not-applicable" %}
+                  <p class="govuk-body">{{ data['recovery-operation-typeahead'] }}</p>
+                  {% else %}
+                <p class="govuk-body">R4: Recycling/reclamation of metals and metal compounds</p>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="template-recovery-operation">
+                  Change<span class="govuk-visually-hidden">recovery date</span>
+                </a>
+              </dd>
+            </div>
+      </dl>
+      <br>
+
+        <!--------- DECLARATION ------------------->
+
+        <h2 class="govuk-heading-m">
+          Declaration
+        </h2>
+
+        <p class="govuk-body">By submitting these exports, you confirm that:</p>
+
+        <ul class="govuk-body">
+          <li>all the information you've provided is complete and correct to the best of your knowledge</li>
+          <li>there are effective written contractual obligations with the consignees (if this applies to your exports)</li>
+          <li>you've checked with the relevant authorities if there are any local controls that apply in any country involved in the journey of the waste</li>
+          <li>you've classified the waste appropriately</li>
+        </ul>
+
+        <div class="govuk-!-padding-bottom-4"></div>
+
+      <!--------- BUTTON AND LINK ------------------->
+
+      <form action="" method="post" novalidate>
+
+        <input type="hidden" name="template-answers-checked" value="true">
+
+        <button class="govuk-button" data-module="govuk-button">
+          Agree and submit
+        </button>
+
+        <p class="govuk-body">
+          <a href="dashboard" class="govuk-link">Cancel and return to green list waste overview</a>
+        </p>
+
+      </form>
+
+    </div>
+
+  </div>
+
+{% endblock %}

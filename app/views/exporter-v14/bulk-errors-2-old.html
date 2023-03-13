@@ -1,0 +1,129 @@
+
+
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  Do you want to add your own reference number to this export?
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Prototype
+        </strong>
+        <span class="govuk-phase-banner__text">
+        Version 14 - This is not a live service.
+        </span>
+    </p>
+  </div>
+
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="">Waste tracking service</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="dashboard">Green list waste overview</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="bulk-upload.html">Upload multiple exports</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        Check and correct errors
+      </li>
+    </ol>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full-width">
+
+<!--------- ERROR SUMMARY ------------------->
+
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+        <h2 class="govuk-error-summary__title">
+            There are problems with your CSV file
+        </h2>
+        <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+            <li>
+                Filename: <b>csv-template (1).csv</b></a>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+
+<!--------- ERROR ADVICE ------------------->
+
+    <h1 class="govuk-heading-l">Check and correct errors</h1>
+
+    <p class="govuk-body">Check the errors listed with your CSV file and what you must do to correct them.</p>
+    <p class="govuk-body">Make the changes and upload your CSV file again. This will replace your previous upload.</p>
+    <p class="govuk-body govuk-!-margin-bottom-7">You cannot submit your exports until you’ve corrected the errors.</p>
+
+   <!-- </div> --> 
+<!-- </div> -->
+
+<!--------- ERROR LIST TABLE ------------------->
+
+<!-- <div class="govuk-grid-row"> -->
+    <!-- <div class="govuk-grid-column-full-width"> -->
+
+        <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Errors</th>
+                <th scope="col" class="govuk-table__header">Column heading</th>
+                <th scope="col" class="govuk-table__header">Correction</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell error-table-cell"><a href="bulk-errors-2b-ewc.html">Check 3 errors</a></td>
+                <td class="govuk-table__cell">EWC code</td>
+                <td class="govuk-table__cell">Enter the EWC code in the correct format. This should be 6 digits. For example, 010101.
+                    <br><br>
+                    If a EWC code does not apply to your shipment, enter ‘NA’ for not applicable. Do not leave the cell blank.</td>
+              </tr>
+              
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell"><a href="bulk-errors-2b-desc.html">Check 2 errors</a></td>
+                <td class="govuk-table__cell">Waste description</td>
+                <td class="govuk-table__cell">Enter a waste description. Give the usual description of the waste. For example, baled PET bottles, bagged HDPE pellets or OCC paper.
+                    <br><br>
+                    The waste description must be 200 characters or less.</td>
+              </tr>
+              
+            </tbody>
+          </table>
+
+          <div class="govuk-!-padding-bottom-4"></div>
+
+<!--------- UPLOAD FILE SELECT ------------------->
+
+      <form class="form" method="post">
+
+        <h2 class="govuk-heading-m">
+          Upload your corrected CSV file
+        </h2>
+      
+        <div class="govuk-form-group">
+          <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+        </div>
+
+        {{ govukButton({
+          text: 'Upload'
+        }) }}
+
+      </form>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+  Waste collection details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+            <form class="form" method="post">
+
+      <h1 class="govuk-heading-l">
+        Waste collection details
+      </h1>
+
+      <p>Interza Hoofdzetel Zaventem<br>
+        Hoogsraat 185<br>
+        1930 Zaventem<br>
+        Belgium<br>
+
+        <div id="event-name-hint" class="govuk-hint">
+          We'll use this as the exporting country.
+        </div>
+
+        <p><a href="imports-carrier-collect-postcode">Change address</a></p>
+
+        <br>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="address-line-1">
+            Organisation name <span class="govuk-visually-hidden">waste-name</span>
+          </label>
+          <input class="govuk-input govuk-!-width-three-quarters" id="imports-waste-name" name="imports-waste-name" type="text" value="{{data['imports-waste-name']}}">
+        </div>
+
+        <br>
+
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <h1 class="govuk-fieldset__heading">
+            Contact details
+          </h1>
+        </legend>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="imports-carrier-collect-full-name">
+            Full name
+          </label>
+          <input class="govuk-input govuk-!-width-three-quarters" id="imports-carrier-collect-full-name" name="imports-carrier-collect-full-name" type="text" value="{{data['imports-carrier-collect-full-name']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="imports-carrier-collect-email">
+            Email address
+          </label>
+          <input class="govuk-input govuk-!-width-one-half" id="imports-carrier-collect-email" name="imports-carrier-collect-email" type="email" value="{{data['imports-carrier-collect-email']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="imports-carrier-collect-phone">
+            Phone number
+          </label>
+          <input class="govuk-input govuk-!-width-one-third" id="imports-carrier-collect-phone" name="imports-carrier-collect-phone" type="tel" value="{{data['imports-carrier-collect-phone']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="imports-carrier-collect-fax">
+            Fax number (optional)
+          </label>
+          <input class="govuk-input govuk-!-width-one-third" id="imports-carrier-collect-fax" name="imports-carrier-collect-fax" type="tel" value="{{data['imports-carrier-collect-fax']}}">
+        </div>
+
+      </fieldset>
+      </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+        {% include "./includes/imports-return-to-link.html" %}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

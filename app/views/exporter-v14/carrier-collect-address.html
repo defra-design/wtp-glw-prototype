@@ -1,0 +1,54 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  Where will the first carrier collect the waste from?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+
+      <h1 class="govuk-heading-l">
+      Where will the first carrier collect the waste from?
+      </h1>
+
+
+      <!-- <h2 class="govuk-heading-m">
+        Postcode
+      </h2> -->
+      <p>TF6 3RT <a href="carrier-collect-postcode">Change</a></p>
+
+
+
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sort">
+            Select an address
+          </label>
+          <select class="govuk-select" id="sort" name="sort">
+            <option value="addresses" selected>5 addresses found</option>
+            <option value="address 1">1 Stafford Park, Telford TF6 3RT</option>
+            <option value="address 2">2 Stafford Park, Telford TF6 3RT</option>
+            <option value="address 3">3 Stafford Park, Telford TF6 3RT</option>
+            <option value="address 4">4 Stafford Park, Telford TF6 3RT</option>
+            <option value="address 5">5 Stafford Park, Telford TF6 3RT</option>
+          </select>
+        </div>
+
+        <p><a href="carrier-collect-address-manual">I cannot find my address in the list</a></p>
+
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+        {% include "./includes/return-to-link.html" %}
+
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+Export submitted
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 14 - This is not a live service.
+    </span>
+  </p>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    <form class="form" method="post">
+
+    <!--------- NOTIFICATION BANNER ------------------->
+        
+        <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+              <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                Success
+              </h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+              <h3 class="govuk-notification-banner__heading">
+                Your file csv-template (2).csv (45kb) is ready to submit
+              </h3>
+            </div>
+          </div>
+
+    <!--------- SUBMIT INSTRUCTIONS ------------------->
+    <h1 class="govuk-heading-l">Submit your multiple exports</h1>
+      <p class="govuk-body">You can agree and submit your multiple exports. You will need to update estimates to actuals later.</p>
+
+    <!--------- DECLARATION ------------------->
+
+      <h2 class="govuk-heading-m govuk-!-padding-top-4">
+        Declaration
+      </h2>
+
+      <p class="govuk-body">By submitting these exports, you confirm that:</p>
+
+      <ul class="govuk-body">
+        <li>all the information you've provided is complete and correct to the best of your knowledge</li>
+        <li>there are effective written contractual obligations with the consignees (if this applies to your exports)</li>
+        <li>you've checked with the relevant authorities if there are any local controls that apply in any country involved in the journey of the waste</li>
+        <li>you've classified the waste appropriately</li>
+      </ul>
+
+      <div class="govuk-!-padding-bottom-4"></div>
+
+    <!--------- BUTTON AND LINK ------------------->
+
+    {{ govukButton({
+        text: 'Agree and submit'
+      }) }}
+
+      <p class="govuk-body">
+        <a href="dashboard" class="govuk-link">Cancel and return to green list waste overview</a>
+      </p>
+
+    </form>
+    </div>
+  </div>
+
+{% endblock %}

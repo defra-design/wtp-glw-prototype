@@ -1,0 +1,96 @@
+
+
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+  Have you already told us about the import you want to reject?
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 14 - This is not a live service.
+    </span>
+  </p>
+  </div>
+
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="reason-hint">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                      Have you already told us about the import you want to reject?
+                    </h1>
+                  </legend>
+                  <!-- <div id="reason-hint" class="govuk-hint">
+                    Select one option.
+                  </div> -->
+
+                  <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="told-us-yes" name="told-us" type="radio" value="yes" {{ checked("told-us", "yes") }}>
+                      <label class="govuk-label govuk-radios__label" for="told-us-yes">
+                        Yes
+                      </label>
+                    </div>
+                    <!-- <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-told-us">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="told-us-ref">
+                          Enter the transaction number. For example, GLW124578</label>
+                        <input class="govuk-input govuk-!-width-one-third" id="told-us-ref" name="told-us-ref" type="match" spellcheck="false" autocomplete="match">
+                      </div>
+                    </div> -->
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="told-us-no" name="told-us" type="radio" value="no" {{ checked("told-us", "no") }}>
+                      <label class="govuk-label govuk-radios__label" for="told-us-no">
+                        No
+                      </label>
+                    </div>
+
+                  </div>
+                </fieldset>
+              </div>
+
+            
+              <div class="imports-name-button">
+                <button class="govuk-button" data-module="govuk-button">
+                  Continue
+                </button>
+              </div>
+
+              <div>
+                <a class="govuk-link" href="imports-dashboard.html">Cancel and return to green list overview</a></p>
+            </div> 
+              
+            </form>
+<!--               <a href="imports-reject-how-much.html">
+                <button class="govuk-button" data-module="govuk-button">
+                  Continue
+                </button>
+              </a> -->
+
+            
+
+    </div>
+  </div>
+
+{% endblock %}

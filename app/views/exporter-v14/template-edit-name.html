@@ -1,0 +1,67 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  Update template name - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Update template details
+      </h1>
+
+      <form class="form" method="post">
+
+      {% call govukFieldset({
+      }) %}
+
+      {{ govukInput({
+        label: {
+          text: "Enter template name"
+        },
+        id: "new-rename-template-name",
+        name: "new-rename-template-name",
+        value: data['new-rename-template-name'],
+        value: data['template-name']
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Enter a description of the template"
+        },
+        id: "new-rename-template-description",
+        name: "new-rename-template-description",
+        value: data['new-rename-template-description'],
+        value: data['template-description']
+      }) }}
+
+      {% endcall %}
+
+      <div class="govuk-button-group">
+
+        {{ govukButton({
+          text: 'Save'
+        }) }}
+
+        <a class="govuk-link" href="template-euromovement-selected">Cancel</a>
+
+      </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

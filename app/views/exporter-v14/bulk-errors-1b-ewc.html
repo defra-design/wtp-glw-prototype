@@ -1,0 +1,126 @@
+
+
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+Export green list waste - Correct all EWC code errors  
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Prototype
+        </strong>
+        <span class="govuk-phase-banner__text">
+        Version 14 - This is not a live service.
+        </span>
+    </p>
+  </div>
+
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="">Waste tracking service</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="dashboard">Green list waste overview</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="bulk-upload.html">Upload multiple exports</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        Check and correct errors
+      </li>
+    </ol>
+  </div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+<!--------- ERROR SUMMARY ------------------->
+
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+            <h2 class="govuk-error-summary__title">
+                Correct all EWC code errors 
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul class="govuk-list govuk-error-summary__list">
+                    <li>
+                        Enter the EWC code in the correct format. This should be 6 digits. For example, 010101.
+                        <br><br>
+                        If a EWC code does not apply to your shipment, enter ‘NA’ for not applicable. Do not leave the cell blank.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<!--------- ERROR DETAILS TABLE ------------------->
+
+        <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Error details</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Row number</th>
+                <th scope="col" class="govuk-table__header">Error</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">3</td>
+                <td class="govuk-table__cell">No information provided</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">12</td>
+                <td class="govuk-table__cell">Code not recognised</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">24</td>
+                <td class="govuk-table__cell">Code not recognised</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">27</td>
+                <td class="govuk-table__cell">Code is too short</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">32</td>
+                <td class="govuk-table__cell">Code is too long</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">41</td>
+                <td class="govuk-table__cell">Code is too long</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">56</td>
+                <td class="govuk-table__cell">Code not recognised</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">63</td>
+                <td class="govuk-table__cell">No information provided</td>
+              </tr>
+    
+            </tbody>
+          </table>
+
+          <div class="govuk-!-padding-bottom-4"></div>
+
+          <p class="govuk-body">
+            <a href="bulk-errors-1.html" class="govuk-link">Back to corrections table</a>
+          </p>
+
+    </div>
+</div>
+
+{% endblock %}

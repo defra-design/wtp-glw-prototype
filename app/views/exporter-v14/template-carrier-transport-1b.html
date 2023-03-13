@@ -1,0 +1,68 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  How will the first waste carrier transport the waste?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+      <div class="govuk-form-group">
+        
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              How is the waste being transported?
+            </h1>
+          </legend>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+
+            <!-- SHIPPING CONTAINER -->
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="transport-shipping" name="transport" type="radio" value="shipping" {{ checked("transport", "shipping") }}>
+              <label class="govuk-label govuk-radios__label" for="transport-shipping">
+                Shipping Container
+              </label>
+            </div>
+
+            <!-- TRAILER -->
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="transport-trailer" name="transport" type="radio" value="trailer" {{ checked("transport", "trailer") }}>
+              <label class="govuk-label govuk-radios__label" for="transport-trailer">
+                Trailer
+              </label>
+            </div>
+
+            <!-- BULK VESSEL -->
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="transport-vessel" name="transport" type="radio" value="bulk-vessel" {{ checked("transport", "bulk-vessel") }}>
+              <label class="govuk-label govuk-radios__label" for="transport-vessel">
+                Bulk vessel
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: 'Continue'
+      }) }}
+
+      {% include "./includes/template-return-to-link.html" %}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

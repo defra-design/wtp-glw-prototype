@@ -1,0 +1,206 @@
+
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  Your saved templates - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 13 - This is not a live service.
+    </span>
+  </p>
+</div>
+
+
+<!---------- DYNAMIC BACK LINK  ---------->
+  {# Unclear why gCurrentLocation lists the previous location URL, and gPreviousLocation doesn't. #}
+  {# Very confusing and conscious of logic already in-place, so don't want to make changes they may otherwise break things further down-the-line... #}
+
+  {% if 'manual-bulk-api' in data['gCurrentLocation'] %}
+    {{ govukBackLink({
+      text: 'Back',
+      href: 'manual-bulk-api'
+    }) }}
+  {% else %}
+    {{ govukBackLink({
+      text: 'Back',
+      href: 'dashboard'
+    }) }}
+  {% endif %}
+
+<!---------- END BACK LINK  ---------->
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    {#<div class="govuk-grid-column-two-thirds">#}
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        Your templates
+      </h1>
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Template name</th>
+            <th scope="col" class="govuk-table__header">Last used</th>
+            <th scope="col" class="govuk-table__header">Actions</th>
+            <th scope="col" class="govuk-table__header"></th>
+          </tr>
+        </thead>
+        
+        <tbody class="govuk-table__body">
+          
+            {% if 'template-euromovement-edit' in data['gCurrentLocation'] %}
+            {# Do nothing #}
+          {% else %}
+            {# Not sure as to what aspect this refers to #}
+            {% if data['template-name'] != undefined %}
+              <tr class="govuk-table__row">
+                <td scope="row" class="govuk-table__cell">
+                  <a href="template-euromovement-selected?just-edited=no" class="govuk-link"><b>{{ data['template-name'] }}</b></a>
+                  <br><label class="govuk-body-s">{{ data['template-description'] }}</label>
+                </td>
+                <td class="govuk-table__cell">
+                  <!-- todays date -->
+                  <script>
+                    const event = new Date();
+                    const options = { year: 'numeric', month: 'long'};
+                  </script>
+
+                  <script type="text/javascript"> document.write(event.getDate());</script> <script type="text/javascript"> document.write(event.toLocaleDateString(undefined, options));</script>
+                  <!-- todays date end -->
+                </td>
+
+                <td class="govuk-table__cell">
+                  <a href="template-new-export.html" class="govuk-link">New export</a>
+                </td>
+
+                <td class="govuk-table__cell">
+                  <a href="delete-template" class="govuk-link">Delete</a>
+                </td>
+                
+              </tr>
+            {% endif %}
+            {% endif %}
+            <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="template-euromovement-selected" class="govuk-link"><b>Euromovement WEEE waste export</b></a>
+              <br><label class="govuk-body-s">Description of the waste</label>
+            </td>
+            <td class="govuk-table__cell">
+              7 June 2022
+            </td>
+            <td class="govuk-table__cell">
+              <a href="template-new-export.html" class="govuk-link">New export</a>
+            </td>
+            <td class="govuk-table__cell">
+              <a href="delete-template" class="govuk-link">Delete</a>
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="#" class="govuk-link"><b>Euromovement paper scrap</b></a>
+              <br><label class="govuk-body-s">Description of the waste</label>
+            </td>
+            <td class="govuk-table__cell">
+              6 June 2022
+            </td>
+            <td class="govuk-table__cell">
+              <a href="template-new-export.html" class="govuk-link">New export</a>
+            </td>
+            <td class="govuk-table__cell">
+              <a href="delete-template" class="govuk-link">Delete</a>
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="#" class="govuk-link"><b>Sword Movements heavy melting steel</b></a>
+              <br><label class="govuk-body-s">Description of the waste</label>
+            </td>
+            <td class="govuk-table__cell">
+              6 June 2022
+            </td>
+            <td class="govuk-table__cell">
+              <a href="#" class="govuk-link">New export</a>
+            </td>
+            <td class="govuk-table__cell">
+              <a href="delete-template" class="govuk-link">Delete</a>
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="#" class="govuk-link"><b>Excel List Movements heavy melting steel</b></a>
+              <br><label class="govuk-body-s">Description of the waste</label>
+            </td>
+            <td class="govuk-table__cell">
+              4 June 2022
+            </td>
+            <td class="govuk-table__cell">
+              <a href="template-new-export.html" class="govuk-link">New export</a>
+            </td>
+            <td class="govuk-table__cell">
+              <a href="delete-template" class="govuk-link">Delete</a>
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <td scope="row" class="govuk-table__cell">
+              <a href="template-new-export.html" class="govuk-link"><b>Fabric Society Waste paper scrap</b></a>
+              <br><label class="govuk-body-s">Description of the waste</label>
+            </td>
+            <td class="govuk-table__cell">
+              2 June 2022
+            </td>
+            <td class="govuk-table__cell">
+              <a href="#" class="govuk-link">New export</a>
+            </td>
+            <td class="govuk-table__cell">
+              <a href="delete-template" class="govuk-link">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <!-- RESULTS COUNTER
+
+        <div class="flex-container grid-row">
+        {% if data['template-name'] != undefined %}
+          {{ mojPagination({
+            results: {
+            from: 1,
+            to: 6,
+            count: 6
+            }
+          }) }}
+        {% else %}
+          {{ mojPagination({
+            results: {
+            from: 1,
+            to: 7,
+            count: 7
+            }
+          }) }}
+          {% endif %}
+      </div> -->
+
+      <p class="govuk-body govuk-!-margin-top-6">
+        <a href="dashboard">Return to green list waste overview</a>
+      </p>
+  
+    </div>
+  </div>
+
+  {% endblock %}

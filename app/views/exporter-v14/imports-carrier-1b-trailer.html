@@ -1,0 +1,59 @@
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+  How will the first waste carrier transport the waste?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" method="post">
+
+        <div class="govuk-form-group">
+        
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    Trailer details
+                </h1>
+                </legend>
+
+                <!-- TRAILER NUMBER -->
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label" for="trailer-number">
+                        Enter the trailer number
+                    </label>
+
+                    <input class="govuk-input govuk-!-width-two-thirds" id="transport-trailer" name="transport-trailer" type="text" value="{{data['imports-transport-trailer']}}">
+                </div>
+
+                <!-- VEHICLE REGISTRATION -->
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label" for="vehicle-reg-number">
+                        Enter the vehicle registration (optional)
+                    </label>
+                    <div id="vehicle-reg-number-hint" class="govuk-hint">
+                        For the vehicle that collected the trailer 
+                    </div>
+                    <input class="govuk-input govuk-input--width-10" id="vehicle-reg-number" name="vehicle-reg-number" type="text" spellcheck="false" aria-describedby="vehicle-reg-number-hint" inputmode="text">
+                </div>
+
+            </fieldset>
+        </div>
+
+      {{ govukButton({
+        text: 'Save and continue'
+      }) }}
+
+      {% include "./includes/imports-return-to-link.html" %}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
