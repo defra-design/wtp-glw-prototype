@@ -1,0 +1,62 @@
+
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+Import submitted
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 14 - This is not a live service.
+    </span>
+  </p>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+        {{ govukPanel({
+          titleText: "Import submitted",
+          html: "Your transaction number is <strong>GLW0001</strong>"
+        }) }}
+
+        <p class="govuk-body govuk-!-padding-top-2">We’ve sent a confirmation email to <b>email@emailaddress.com</b>. </p>
+
+        <p class="govuk-body">We’ve also sent these details to the relevant UK regulatory authority. You do not need to send them anything else.</p>
+  
+        <p class="govuk-body">If you later need to reject this import, you can do this from the green list waste overview page.</p>
+  
+          <h3 class="govuk-heading-s govuk-!-padding-top-2">
+            What would you like to do next?
+          </h3>
+  
+          <ul class="govuk-list">
+            <li>
+              <a href="imports-dashboard.html" class="govuk-link">I want to reject this waste import</a>
+            </li>
+            <li>
+              <a href="imports-dashboard" class="govuk-link">I want to submit another waste import</a>
+            </li>
+            <li>
+              <a href="imports-dashboard" class="govuk-link">Go to all submitted imports</a>
+            </li>
+          </ul>
+
+          <p class="govuk-!-padding-bottom-4"></p>
+  
+        <p class="govuk-body">
+          <a href="imports-dashboard" class="govuk-link">Return to green list waste overview</a>
+        </p>
+
+    </div>
+  </div>
+
+{% endblock %}

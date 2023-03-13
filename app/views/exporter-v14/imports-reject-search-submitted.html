@@ -1,0 +1,72 @@
+
+
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+  Have you already told us about the import you want to reject?
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 14 - This is not a live service.
+    </span>
+  </p>
+  </div>
+
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" method="post">
+
+      <h1 class="govuk-heading-l">
+        Have you already told us about the import you want to reject?
+      </h1>
+      
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="event-name">
+          Enter your transaction number
+        </label>
+        <div id="reason-hint" class="govuk-hint">
+          For example, GLW-I-123456789
+        </div>
+        <input class="govuk-input" id="event-name" name="event-name" type="text">
+      </div>
+
+            
+      <div class="imports-name-button">
+        <button class="govuk-button" data-module="govuk-button">
+          Search for import
+        </button>
+      </div>
+
+      <div>
+        <a class="govuk-link" href="imports-dashboard.html">Cancel and return to green list overview</a></p>
+    </div> 
+              
+    </form>
+<!--               
+      <a href="imports-reject-how-much.html">
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </a> -->      
+
+    </div>
+  </div>
+
+{% endblock %}

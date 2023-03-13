@@ -1,0 +1,111 @@
+
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  Home - Export green list waste
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag">
+      Prototype
+    </strong>
+    <span class="govuk-phase-banner__text">
+      Version 13 - This is not a live service.
+    </span>
+  </p>
+</div>
+
+<a href="dashboard" class="govuk-back-link">Back</a>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <!------------------------ RADIOS --------------------------------------->
+        <form method="post" action="">
+
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset aria-describedby="template-desc-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    Which template would you like to use?
+                </h1>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="which-template" name="which-template" type="radio" value="euromove-paper" {{ checked("which-template", "euromove-paper") }}>
+                  <label class="govuk-label govuk-radios__label" for="which-template">
+                    Euromovement WEEE waste export
+                  </label>
+                  <div id="template-desc-item-hint" class="govuk-hint govuk-radios__hint">
+                    Weekly paper waste to shipment Italy
+                  </div>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="which-template-2" name="which-template" type="radio" value="waste-ltd" {{ checked("which-template", "waste-ltd") }}>
+                  <label class="govuk-label govuk-radios__label" for="which-template-2">
+                    Waste Ltd heavy melting steel
+                  </label>
+                  <div id="template-desc-item-hint" class="govuk-hint govuk-radios__hint">
+                    Waste metal to Steel Savers
+                  </div>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="which-template-3" name="which-template" type="radio" value="excel-list" {{ checked("which-template", "excel-list") }}>
+                  <label class="govuk-label govuk-radios__label" for="which-template-3">
+                    Excel List Movements heavy melting steel
+                  </label>
+                  <div id="template-desc-item-hint" class="govuk-hint govuk-radios__hint">
+                    Waste metal to Heavy Metals
+                  </div>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="which-template-4" name="which-template" type="radio" value="euromove-card" {{ checked("which-template", "euromove-card") }}>
+                  <label class="govuk-label govuk-radios__label" for="which-template-4">
+                    Euromovement card waste movement                  
+                    </label>
+                    <div id="template-desc-item-hint" class="govuk-hint govuk-radios__hint">
+                        Board Recycling card packaging to Belgium
+                    </div>
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="which-template-4" name="which-template" type="radio" value="fabric-society" {{ checked("which-template", "fabric-society") }}>
+                    <label class="govuk-label govuk-radios__label" for="which-template-4">
+                    Fabric Society Waste paper scrap                  
+                    </label>
+                    <div id="template-desc-item-hint" class="govuk-hint govuk-radios__hint">
+                        Paper waste to Paper Makers Ltd
+                    </div>
+                  </div>
+                <div class="govuk-radios__divider">or</div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="which-template-6" name="which-template" type="radio" value="other" {{ checked("which-template", "other") }}>
+                  <label class="govuk-label govuk-radios__label" for="which-template-6">
+                    one of my other templates
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="govuk-button-group">
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </div>
+  
+          <p class="govuk-body">
+            <a href="dashboard" class="govuk-link">Cancel and return to green list waste overview</a>
+          </p>
+          </form>
+    </div>
+  </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+  How do you want to submit the waste import? - Green list waste
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Prototype
+      </strong>
+      <span class="govuk-phase-banner__text">
+        Version 14 - This is not a live service.
+      </span>
+    </p>
+  </div>
+  
+  {{ govukBackLink({
+    text: 'Back',
+    href: 'javascript:history.go(-1)'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="" method="post">
+
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    Did the recovery facility receive the same waste quantity as stated on the Annex VII?
+                </h1>
+              </legend>
+
+              <div class="govuk-inset-text">
+                You told us the actual waste quantity was <b>20 tonnes</b> 
+              </div>
+
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="imports-recovery-weight" name="imports-recovery-weight" type="radio" value="email" data-aria-controls="conditional-imports-recovery-weight">
+                  <label class="govuk-label govuk-radios__label" for="imports-recovery-weight">
+                    Yes
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="imports-recovery-weight-2" name="imports-recovery-weight" type="radio" value="phone" data-aria-controls="conditional-imports-recovery-weight-2">
+                  <label class="govuk-label govuk-radios__label" for="imports-recovery-weight-2">
+                    No
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-imports-recovery-weight-2">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="imports-recovery-weight-amount">
+                        Enter the weight received (tonnes)
+                    </label>
+                    <input class="govuk-input govuk-!-width-one-third" id="imports-recovery-weight-amounte" name="imports-recovery-weight-amount" type="number">
+                  </div>
+                </div>
+
+              </div>
+            </fieldset>
+
+          </div>
+
+          <div class="imports-name-button">
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </div>
+        
+        </form>
+
+    </div>
+  </div>
+
+{% endblock %}

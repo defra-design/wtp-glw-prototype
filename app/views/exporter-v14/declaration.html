@@ -1,0 +1,68 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+Are you sure you want to submit this export?
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" method="post">
+
+<h1 class="govuk-heading-l">Are you sure you want to submit this export?</h1>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
+    </legend>
+    <p class="govuk-body">If you’re unsure about the information you’ve provided, you can check it by going into each section on the
+      <a href="prenotify" class="govuk-link">‘Export details’</a> page.<br>
+      <br>
+
+      <p class="govuk-body">By submitting this export, you:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>confirm that all the information you’ve provided is correct</li>
+        <li>understand that you’ll have a contractual relationship with the consignee</li>
+      </ul>
+
+
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="declaration" name="declaration" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="declaration">
+                Yes, submit export
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="declaration-2" name="declaration" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="declaration-2">
+                No
+              </label>
+            </div>
+          </div>
+
+
+
+
+
+  </fieldset>
+</div>
+
+
+{{ govukButton({
+  text: 'Save and continue'
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

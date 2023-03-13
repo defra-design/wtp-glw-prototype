@@ -1,0 +1,43 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  Describe the waste
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="" method="post">
+
+  
+        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+            {{ govukTextarea({
+            name: "more-detail",
+            value: data['template-new-description'],
+            value: data['template-new-description'],
+            id: "more-detail",
+            label: {
+                text: "Describe the waste",
+                classes: "govuk-label--l",
+                isPageHeading: true
+            },
+            hint: {
+                text: "Give the usual description of the waste. For example, baled PET bottles, bagged HDPE pellets or OCC paper."
+            }
+            }) }}
+        
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+        {% include "./includes/template-return-to-link.html" %}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
