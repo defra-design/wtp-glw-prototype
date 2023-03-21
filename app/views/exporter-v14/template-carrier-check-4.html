@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-exporter-current.html" %}
 
 {% block pageTitle %}
-  You have added 1 additional waste carrier
+  You have added 2 additional waste carriers
 {% endblock %}
 
 {% block content %}
@@ -37,8 +37,6 @@
           <br>
           <br>
 
-    {% if data['template-carrier-add-2'] == 'true' %}
-
           <h2 class="govuk-heading-m">Second waste carrier</h2>
           <dl class="govuk-summary-list govuk-!-margin-bottom-1">
             <div class="govuk-summary-list__row">
@@ -62,12 +60,8 @@
             </div>
             </dl>
 
-          <br>
-          <br>
-
-    {% endif %}
-
-    {% if data['template-carrier-add-3'] == 'true' %}
+        <br>
+        <br>
 
           <h2 class="govuk-heading-m">Third waste carrier</h2>
           <dl class="govuk-summary-list govuk-!-margin-bottom-1">
@@ -93,12 +87,8 @@
             </div>
             </dl>
 
-          <br>
-          <br>
-
-    {% endif %}
-
-    {% if data['template-carrier-add-4'] == 'true' %}
+            <br>
+            <br>
 
           <h2 class="govuk-heading-m">Fourth waste carrier</h2>
           <dl class="govuk-summary-list govuk-!-margin-bottom-1">
@@ -124,12 +114,8 @@
             </div>
             </dl>
 
-          <br>
-          <br>
-
-    {% endif %}
-
-    {% if data['template-carrier-add-5'] == 'true' %}
+            <br>
+            <br>
 
           <h2 class="govuk-heading-m">Fifth waste carrier</h2>
           <dl class="govuk-summary-list govuk-!-margin-bottom-1">
@@ -155,50 +141,20 @@
             </div>
             </dl>
 
-    {% endif %}
-
     <br>
     <br>
-
-    {% if data['template-carrier-count'] == '5' %}
-    <button class="govuk-button" data-module="govuk-button">
-      Save and continue
-    </button>
-    {% else %}
-
-    <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" aria-describedby="add-another-carrier-hint">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
-          Do you need to add another waste carrier?
-        </legend>
-        <div id="contact-hint" class="govuk-hint">
-          You can have up to 5 waste carriers.
-        </div>
-        <div class="govuk-radios govuk-radios--inline">
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="template-add-another-carrier" name="template-add-another-carrier" type="radio" value="Yes">
-            <label class="govuk-label govuk-radios__label" for="template-add-another-carrier">
-              Yes
-            </label>
-          </div>
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="template-add-another-carrier" name="template-add-another-carrier" type="radio" value="No">
-            <label class="govuk-label govuk-radios__label" for="template-add-another-carrier">
-              No
-            </label>
-          </div>
-        </div>
-      </fieldset>
-    </div>
-
-    <button href="template-carrier-add-3" class="govuk-button" data-module="govuk-button">
-      Save and continue
-    </button>
-    {% endif %}
-
-    {% include "./includes/template-return-to-link.html" %}
 
     </form>
+
+    <!-- <button href="template-carrier-collect-postcode" class="govuk-button" data-module="govuk-button">
+      Save and continue
+    </button> -->
+
+    <a href="template-carrier-collect-postcode"><button class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button></a>
+
+      {% include "./includes/template-return-to-link.html" %}
 
   </div>
 </div>

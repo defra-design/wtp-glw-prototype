@@ -17,40 +17,57 @@
   </p>
 </div>
 
-
-<!---------- DYNAMIC BACK LINK  ---------->
- <!--  
-  {# Unclear why gCurrentLocation lists the previous location URL, and gPreviousLocation doesn't. #}
-  {# Very confusing and conscious of logic already in-place, so don't want to make changes they may otherwise break things further down-the-line... #}
-
-  {% if 'manual-bulk-api' in data['gCurrentLocation'] %}
+<!---------- DYNAMIC BACK / BREADCRUMBS LINKs  ---------->
+  
+  {% if 'template-submit-export-radios' in data['gPreviousLocation'] %}
     {{ govukBackLink({
       text: 'Back',
-      href: 'manual-bulk-api'
+      href: 'template-submit-export-radios'
     }) }}
-  {% else %}
+
+  {% elseif 'template-create-export-radios' in data['gPreviousLocation'] %}
     {{ govukBackLink({
       text: 'Back',
-      href: 'dashboard'
+      href: 'template-create-export-radios'
+    }) }}
+
+  {% else %}
+    {{ govukBreadcrumbs({
+      items: [
+        {
+          text: "Waste tracking service",
+          href: "#"
+        },
+        {
+          text: "Green list waste overview",
+          href: "dashboard"
+        },
+        {
+          text: "Your templates",
+          href: ""
+        }
+      ]
     }) }}
   {% endif %} 
-  -->
+  
 
   <!---------- Breadcrumbs ---------->
 
-<div class="govuk-breadcrumbs">
-  <ol class="govuk-breadcrumbs__list">
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="">Waste tracking service</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="dashboard">Green list waste overview</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item">
-      Your templates
-    </li>
-  </ol>
-</div>
+  <!-- 
+    <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="">Waste tracking service</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="dashboard">Green list waste overview</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        Your templates
+      </li>
+    </ol>
+  </div> 
+  -->
 
 <!---------- END BACK LINK  ---------->
 
@@ -104,7 +121,7 @@
                 </td>
 
                 <td class="govuk-table__cell">
-                  <a href="delete-template" class="govuk-link">Delete</a>
+                  <a href="template-delete" class="govuk-link">Delete</a>
                 </td>
                 
               </tr>
@@ -122,7 +139,7 @@
               <a href="template-new-export.html" class="govuk-link">New export</a>
             </td>
             <td class="govuk-table__cell">
-              <a href="delete-template" class="govuk-link">Delete</a>
+              <a href="template-delete" class="govuk-link">Delete</a>
             </td>
           </tr>
 
@@ -138,7 +155,7 @@
               <a href="template-new-export.html" class="govuk-link">New export</a>
             </td>
             <td class="govuk-table__cell">
-              <a href="delete-template" class="govuk-link">Delete</a>
+              <a href="template-delete" class="govuk-link">Delete</a>
             </td>
           </tr>
 
@@ -154,7 +171,7 @@
               <a href="#" class="govuk-link">New export</a>
             </td>
             <td class="govuk-table__cell">
-              <a href="delete-template" class="govuk-link">Delete</a>
+              <a href="template-delete" class="govuk-link">Delete</a>
             </td>
           </tr>
 
@@ -170,7 +187,7 @@
               <a href="template-new-export.html" class="govuk-link">New export</a>
             </td>
             <td class="govuk-table__cell">
-              <a href="delete-template" class="govuk-link">Delete</a>
+              <a href="template-delete" class="govuk-link">Delete</a>
             </td>
           </tr>
 
@@ -186,7 +203,7 @@
               <a href="#" class="govuk-link">New export</a>
             </td>
             <td class="govuk-table__cell">
-              <a href="delete-template" class="govuk-link">Delete</a>
+              <a href="template-delete" class="govuk-link">Delete</a>
             </td>
           </tr>
         </tbody>
@@ -214,9 +231,24 @@
           {% endif %}
       </div> -->
 
+
+      <!---------- DYNAMIC RETURN LINK ---------->
+
+      {% if 'template-submit-export-radios' in data['gPreviousLocation'] %}
+      <p class="govuk-body govuk-!-margin-top-6">
+        <a href="dashboard">Cancel and return to green list waste overview</a>
+      </p>
+  
+      {% elseif 'template-create-export-radios' in data['gPreviousLocation'] %}
+      <p class="govuk-body govuk-!-margin-top-6">
+        <a href="dashboard">Cancel and return to green list waste overview</a>
+      </p>
+    
+      {% else %}
       <p class="govuk-body govuk-!-margin-top-6">
         <a href="dashboard">Return to green list waste overview</a>
       </p>
+      {% endif %} 
   
     </div>
   </div>

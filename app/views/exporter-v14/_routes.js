@@ -400,11 +400,26 @@ router.post('/template-create-new', function(req, res) {
     // template carriers ----------------------------------------------------
 
         router.post('/template-carrier-check', function(req, res) {
-            console.log(typeof req.session.data['template-carrier-count']);
-            if (req.session.data['template-add-third-carrier'] == 'Yes' && req.session.data['template-carrier-count'] <= 3) {
+            if (req.session.data['template-add-another-carrier'] == 'Yes') {
                 res.redirect('template-carrier-add-3');
-            } else if (req.session.data['template-add-third-carrier'] == 'No' || req.session.data['template-carrier-count'] >= 4) {
-                if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+            } else if (req.session.data['template-add-another-carrier'] == 'No') {
+                if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+                    res.redirect('check-your-answers');
+                } else {
+                    res.redirect('template-carrier-collect-postcode');
+                }
+            }
+            })
+          /*   console.log(typeof req.session.data['template-carrier-count']);
+            if (req.session.data['template-add-another-carrier'] == 'Yes' && req.session.data['template-carrier-count'] <= 4) {
+                res.redirect('template-carrier-add-3');
+            } else if (req.session.data['template-add-another-carrier'] == 'Yes' && req.session.data['template-carrier-count'] <= 5) {
+                    res.redirect('template-carrier-add-4');
+                } else if (req.session.data['template-add-another-carrier'] == 'Yes' && req.session.data['template-carrier-count'] == 4) {
+                    res.redirect('template-carrier-add-5');
+                    
+                if (req.session.data['template-add-another-carrier'] == 'No' || req.session.data['template-carrier-count'] >= 4) {
+                } else if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
                     res.redirect('template-new-export#waste-journey');
                 } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
                     res.redirect('template-euromovement-selected#waste-journey');
@@ -412,7 +427,46 @@ router.post('/template-create-new', function(req, res) {
                     res.redirect('template-carrier-collect-postcode');
                 }
             }
-        })
+        }) */
+
+        router.post('/template-carrier-check-2', function(req, res) {
+            if (req.session.data['template-add-another-carrier'] == 'Yes') {
+                res.redirect('template-carrier-add-4');
+            } else if (req.session.data['template-add-another-carrier'] == 'No') {
+                if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+                    res.redirect('check-your-answers');
+                } else {
+                    res.redirect('template-carrier-collect-postcode');
+                }
+            }
+            })
+
+        router.post('/template-carrier-check-3', function(req, res) {
+            if (req.session.data['template-add-another-carrier'] == 'Yes') {
+                    res.redirect('template-carrier-add-5');
+            } else if (req.session.data['template-add-another-carrier'] == 'No') {
+                if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+                    res.redirect('check-your-answers');
+                } else {
+                    res.redirect('template-carrier-collect-postcode');
+                }
+            }
+            })     
+ 
+        /*         
+        router.post('/template-carrier-check-4', function(req, res) {
+            if (req.session.data['template-add-another-carrier'] == 'Yes') {
+                    res.redirect('template-carrier-add-5');
+            } else if (req.session.data['template-add-another-carrier'] == 'No') {
+                if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+                    res.redirect('check-your-answers');
+                } else {
+                    res.redirect('template-carrier-collect-postcode');
+                }
+            }
+            }) 
+            */
+                
 
         router.post('/template-carrier-check-change', function(req, res) {  
             if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
@@ -425,7 +479,7 @@ router.post('/template-create-new', function(req, res) {
         
         router.post('/template-carriers', function(req, res) {
         if (req.session.data['template-add-second-carrier'] == 'Yes') {
-            res.redirect('template-carrier-add-3');
+            res.redirect('template-carrier-add-2');
         } else if (req.session.data['template-add-second-carrier'] == 'No') {
             if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
                 res.redirect('check-your-answers');
@@ -434,20 +488,6 @@ router.post('/template-create-new', function(req, res) {
             }
         }
         })
-        
-        router.post('/template-carrier-add-1', function(req, res) {
-            req.session.data['template-carrier-status'] = "Completed";
-            req.session.data['template-carrier-add-1'] = "true";
-        
-            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
-                res.redirect('template-new-export#waste-journey');
-            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
-                res.redirect('template-euromovement-selected#waste-journey');
-            } else {
-            res.redirect('template-carrier-transport-1b');          //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
-            }
-        })
-
 
         /*  router.post('/template-carrier-add-1b', function(req, res) {  
             if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
@@ -457,7 +497,6 @@ router.post('/template-create-new', function(req, res) {
                 } 
         
         }) */
-
         
         /* router.post('/template-carrier-transport-1b', function(req, res) {  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
             req.session.data['template-carrier-status'] = "Completed";
@@ -472,7 +511,22 @@ router.post('/template-create-new', function(req, res) {
             }
         }) */
 
-        // Carrier transport options
+        // -------- FIRST CARRIER --------
+
+        router.post('/template-carrier-add-1', function(req, res) {
+            req.session.data['template-carrier-status'] = "Completed";
+            req.session.data['template-carrier-add-1'] = "true";
+        
+            if ((req.session.data.gPreviousLocation).includes('template-new-export')) {
+                res.redirect('template-new-export#waste-journey');
+            } else if ((req.session.data.gPreviousLocation).includes('template-euromovement-selected')) {
+                res.redirect('template-euromovement-selected#waste-journey');
+            } else {
+            res.redirect('template-carrier-transport-1b');          //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+            }
+        })
+
+        // First carrier transport options
         router.post('/template-carrier-transport-1b', function(req, res) {
             if (req.session.data['transport'] == 'shipping') {
                 res.redirect('template-carrier-1b-shipping');
@@ -483,45 +537,176 @@ router.post('/template-create-new', function(req, res) {
             }
         })
 
-        // Carrier transport shipping
+        // First carrier transport shipping
         router.post('/template-carrier-1b-shipping', function(req, res) {
                 res.redirect('template-carriers');
         })
 
-        // Carrier transport trailer
+        // First carrier transport trailer
         router.post('/template-carrier-1b-trailer', function(req, res) {
                 res.redirect('template-carriers');    
         })
 
-        // Carrier transport bulk-vessel
+        // First carrier transport bulk-vessel
         router.post('/template-carrier-1b-vessel', function(req, res) {
             res.redirect('template-carriers');    
         })
         
+
+        // -------- SECOND CARRIER --------
         
         router.post('/template-carrier-add-2', function(req, res) { //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
             req.session.data['template-carrier-status'] = "Completed";
-            req.session.data['template-carrier-add-1'] = "true";
+            req.session.data['template-carrier-add-2'] = "true";
             res.redirect('template-carrier-transport-2b');          //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
         })
-        
-        router.post('/template-carrier-transport-2b', function(req, res) {  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
-            req.session.data['template-carrier-status'] = "Completed";
-            req.session.data['template-carrier-add-1'] = "true";
+
+        // Second carrier transport options
+        router.post('/template-carrier-transport-2b', function(req, res) {
+            if (req.session.data['transport-2'] == 'shipping') {
+                res.redirect('template-carrier-2b-shipping');
+            } else if (req.session.data['transport-2'] == 'trailer') {
+                res.redirect('template-carrier-2b-trailer');
+            } else if (req.session.data['transport-2'] == 'bulk-vessel') {
+                res.redirect('template-carrier-2b-vessel');
+            }
+        })
+
+        // Second carrier transport shipping
+        router.post('/template-carrier-2b-shipping', function(req, res) {
             res.redirect('template-carrier-check');
         })
 
-        router.post('/template-carrier-add-3', function(req, res) {
-            req.session.data['template-carrier-status'] = "Completed";
-            req.session.data['template-carrier-add-1'] = "true";
-            res.redirect('template-carrier-transport-3b');                  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+        // Second carrier transport trailer
+        router.post('/template-carrier-2b-trailer', function(req, res) {
+            res.redirect('template-carrier-check');
+        })
+
+        // Second carrier transport bulk-vessel
+        router.post('/template-carrier-2b-vessel', function(req, res) {
+            res.redirect('template-carrier-check');  
         })
         
-        router.post('/template-carrier-transport-3b', function(req, res) {  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+        /* router.post('/template-carrier-transport-2b', function(req, res) {
             req.session.data['template-carrier-status'] = "Completed";
             req.session.data['template-carrier-add-1'] = "true";
             res.redirect('template-carrier-check');
+        }) */
+
+
+        // -------- THIRD CARRIER --------
+
+        router.post('/template-carrier-add-3', function(req, res) {
+            req.session.data['template-carrier-status'] = "Completed";
+            req.session.data['template-carrier-add-3'] = "true";
+            res.redirect('template-carrier-transport-3b');                  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
         })
+
+        // Third carrier transport options
+        router.post('/template-carrier-transport-3b', function(req, res) {
+            if (req.session.data['transport-3'] == 'shipping') {
+                res.redirect('template-carrier-3b-shipping');
+            } else if (req.session.data['transport-3'] == 'trailer') {
+                res.redirect('template-carrier-3b-trailer');
+            } else if (req.session.data['transport-3'] == 'bulk-vessel') {
+                res.redirect('template-carrier-3b-vessel');
+            }
+        })
+
+        // Third carrier transport shipping
+        router.post('/template-carrier-3b-shipping', function(req, res) {
+            res.redirect('template-carrier-check-2');
+        })
+
+        // Third carrier transport trailer
+        router.post('/template-carrier-3b-trailer', function(req, res) {
+            res.redirect('template-carrier-check-2');
+        })
+
+        // Third carrier transport bulk-vessel
+        router.post('/template-carrier-3b-vessel', function(req, res) {
+            res.redirect('template-carrier-check-2');  
+        })
+
+                /* router.post('/template-carrier-transport-3b', function(req, res) {  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+            req.session.data['template-carrier-status'] = "Completed";
+            req.session.data['template-carrier-add-1'] = "true";
+            res.redirect('template-carrier-check');
+        }) */
+
+
+        // -------- FOURTH CARRIER --------
+
+        router.post('/template-carrier-add-4', function(req, res) {
+            req.session.data['template-carrier-status'] = "Completed";
+            req.session.data['template-carrier-add-4'] = "true";
+            res.redirect('template-carrier-transport-4b');                
+        })
+
+        // Fourth carrier transport options
+        router.post('/template-carrier-transport-4b', function(req, res) {
+            if (req.session.data['transport-4'] == 'shipping') {
+                res.redirect('template-carrier-4b-shipping');
+            } else if (req.session.data['transport-4'] == 'trailer') {
+                res.redirect('template-carrier-4b-trailer');
+            } else if (req.session.data['transport-4'] == 'bulk-vessel') {
+                res.redirect('template-carrier-4b-vessel');
+            }
+        })
+
+        // Fourth carrier transport shipping
+        router.post('/template-carrier-4b-shipping', function(req, res) {
+            res.redirect('template-carrier-check-3');
+        })
+
+        // Fourth carrier transport trailer
+        router.post('/template-carrier-4b-trailer', function(req, res) {
+            res.redirect('template-carrier-check-3');
+        })
+
+        // Fourth carrier transport bulk-vessel
+        router.post('/template-carrier-4b-vessel', function(req, res) {
+            res.redirect('template-carrier-check-3');  
+        })
+
+
+        // -------- FIFTH CARRIER --------
+
+         router.post('/template-carrier-add-5', function(req, res) {
+            req.session.data['template-carrier-status'] = "Completed";
+            req.session.data['template-carrier-add-5'] = "true";
+            res.redirect('template-carrier-transport-5b');                
+        })
+
+        // Fifth carrier transport options
+        router.post('/template-carrier-transport-5b', function(req, res) {
+            if (req.session.data['transport-5'] == 'shipping') {
+                res.redirect('template-carrier-5b-shipping');
+            } else if (req.session.data['transport-5'] == 'trailer') {
+                res.redirect('template-carrier-5b-trailer');
+            } else if (req.session.data['transport-5'] == 'bulk-vessel') {
+                res.redirect('template-carrier-5b-vessel');
+            }
+        })
+
+        // Fifth carrier transport shipping
+        router.post('/template-carrier-5b-shipping', function(req, res) {
+            res.redirect('template-carrier-check-4');
+        })
+
+        // Fifth carrier transport trailer
+        router.post('/template-carrier-5b-trailer', function(req, res) {
+            res.redirect('template-carrier-check-4');
+        })
+
+        // Fifth carrier transport bulk-vessel
+        router.post('/template-carrier-5b-vessel', function(req, res) {
+            res.redirect('template-carrier-check-4');  
+        })
+
+
+        //-----------------------------------------------------------
+
         
         router.post('/template-carrier-delete', function(req, res) {
             req.session.data['template-carrier-status'] = "Completed";
@@ -706,11 +891,11 @@ router.post('/template-new-unique-ref', function(req, res) {
         res.redirect('template-euromovement-selected');
     }) */
 
-// delete-template
-    router.post('/delete-template', function(req, res) {
+// template-delete
+    router.post('/template-delete', function(req, res) {
         //req.session.data['template-name'] = undefined;
         if (req.session.data['delete-template-check'] == 'Yes') {
-            res.redirect('delete-confirmation');
+            res.redirect('template-delete-confirmation');
         } else if (req.session.data['delete-template-check'] == 'No') {
             res.redirect('prenotification-templates');
         }
@@ -842,6 +1027,36 @@ router.post('/manual-bulk-api', function(req, res) {
         req.session.data['third-carrier-email'] = "";
         req.session.data['third-carrier-telephone'] = "";
         req.session.data['third-carrier-fax'] = "";
+
+        req.session.data['fourth-carrier-name'] = "";
+        req.session.data['fourth-carrier-name'] = "";
+        req.session.data['fourth-carrier-address-line-1'] = "";
+        req.session.data['fourth-carrier-address-line-2'] = "";
+        req.session.data['fourth-carrier-address-town'] = "";
+        req.session.data['fourth-carrier-address-county'] = "";
+        req.session.data['fourth-carrier-address-postcode'] = "";
+        //req.session.data['fourth-carrier-address-country'] = "";
+        req.session.data['fourth-carrier-typeahead'] = "";
+        req.session.data['fourth-carrier-means-of-transport'] = "";
+        req.session.data['fourth-carrier-contact-full-name'] = "";
+        req.session.data['fourth-carrier-email'] = "";
+        req.session.data['fourth-carrier-telephone'] = "";
+        req.session.data['fourth-carrier-fax'] = "";
+
+        req.session.data['fifth-carrier-name'] = "";
+        req.session.data['fifth-carrier-name'] = "";
+        req.session.data['fifth-carrier-address-line-1'] = "";
+        req.session.data['fifth-carrier-address-line-2'] = "";
+        req.session.data['fifth-carrier-address-town'] = "";
+        req.session.data['fifth-carrier-address-county'] = "";
+        req.session.data['fifth-carrier-address-postcode'] = "";
+        //req.session.data['fifth-carrier-address-country'] = "";
+        req.session.data['fifth-carrier-typeahead'] = "";
+        req.session.data['fifth-carrier-means-of-transport'] = "";
+        req.session.data['fifth-carrier-contact-full-name'] = "";
+        req.session.data['fifth-carrier-email'] = "";
+        req.session.data['fifth-carrier-telephone'] = "";
+        req.session.data['fifth-carrier-fax'] = "";
 
         req.session.data['waste-generator-company-name'] = "";
         req.session.data['waste-generator-address-line-1'] = "";
@@ -1679,6 +1894,7 @@ if(req.session.data['imports-recovery-facility-or-laboratory-status'] == "Comple
 
 
   //------ TEMPLATE-carrier-counter
+
   router.post('/template-carrier-add-3', function(req, res) {
     if(typeof req.session.data['template-carrier-count'] == "undefined"){
       req.session.data['template-carrier-count'] = 0;

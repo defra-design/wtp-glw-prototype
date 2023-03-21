@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-exporter-current.html" %}
 
 {% block pageTitle %}
-  Who are the waste carriers? - Export green list waste
+  Enter the additional waste carrier’s details
 {% endblock %}
 
 {% block content %}
@@ -11,56 +11,32 @@
         <form class="form" method="post">
 
     <h1 class="govuk-heading-l">
-      Enter details of additional carrier
+      Enter the second waste carrier’s details
     </h1>
-
-
 
       <fieldset class="govuk-fieldset">
 
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="secondcarrier">
+            Organisation name <span class="govuk-visually-hidden">line 1 of 2</span>
+          </label>
+          <input class="govuk-input govuk-!-width-three-quarters" id="template-second-carrier" name="template-second-carrier" type="text" value="">
+        </div>
 
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="template-address-line-1">
-      Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
-    </label>
-    <input class="govuk-input" id="template-address-line-1" name="template-address-line-1" type="text" autocomplete="address-line1">
-  </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="template-second-carrier-address">
+            Address
+          </label>
+          <textarea class="govuk-textarea" id="template-second-carrier-address" name="template-second-carrier-address" rows="5" autocomplete="street-address"></textarea>
+        </div>
 
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="template-address-line-2">
-      <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
-    </label>
-    <input class="govuk-input" id="template-address-line-2" name="template-address-line-2" type="text" autocomplete="address-line2">
-  </div>
-
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="template-address-town">
-      Town or city
-    </label>
-    <input class="govuk-input govuk-!-width-two-thirds" id="template-address-town" name="template-address-town" type="text" autocomplete="address-level2">
-  </div>
-
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="template-address-town">
-      Region, state or county
-    </label>
-    <input class="govuk-input govuk-!-width-two-thirds" id="template-address-town" name="template-address-town" type="text" autocomplete="address-level2">
-  </div>
-
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="template-address-postcode">
-      Postcode or ZIP code
-    </label>
-    <input class="govuk-input govuk-input--width-10" id="template-address-postcode" name="template-address-postcode" type="text" autocomplete="postal-code">
-  </div>
-
-  <h2 class="govuk-label-wrapper">
-    <label class="govuk-label">
-      Country
-    </label>
-  </h2>
-  <div id="third-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['third-carrier-typeahead'] }}">
-  </div>
+        <h2 class="govuk-label-wrapper">
+          <label class="govuk-label">
+            Country
+          </label>
+        </h2>
+        <div id="second-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['second-carrier-typeahead'] }}">
+        </div>
 
 </fieldset>
 
@@ -76,72 +52,49 @@
       </h1>
     </legend>
     <div class="govuk-form-group">
-      <label class="govuk-label" for="three-quarters">
-        Contact person
+      <label class="govuk-label" for="template-second-carrier-contact-name">
+        Full name
       </label>
-      <input class="govuk-input govuk-!-width-three-quarters" id="template-three-quarters" name="template-three-quarters" type="text">
+      <input class="govuk-input govuk-!-width-three-quarters" id="template-second-carrier-contact-name" name="template-second-carrier-contact-name" type="text">
     </div>
-    <div id="contact-hint" class="govuk-hint">
-      Select all options that are relevant to you.
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="template-first-carrier-email">
+        Email address
+      </label>
+      <input class="govuk-input govuk-!-width-one-half" id="template-second-carrier-email" name="template-second-carrier-email" type="email" value="">
     </div>
-    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="template-contact" name="template-contact" type="checkbox" value="email" data-aria-controls="conditional-contact">
-        <label class="govuk-label govuk-checkboxes__label" for="contact">
-          Email
-        </label>
-      </div>
-      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="contact-by-email">
-            Email address
-          </label>
-          <input class="govuk-input govuk-!-width-one-third" id="template-contact-by-email" name="template-contact-by-email" type="email" spellcheck="false" autocomplete="email">
-        </div>
 
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="template-second-carrier-phone">
+        Phone number
+      </label>
+      <div id="contact-hint" class="govuk-hint">
+         Include the country code for international numbers.
       </div>
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="template-contact-2" name="template-contact" type="checkbox" value="phone" data-aria-controls="conditional-contact-2">
-        <label class="govuk-label govuk-checkboxes__label" for="contact-2">
-          Phone
-        </label>
-      </div>
-      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-2">
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="template-contact-by-phone">
-            Phone number
-          </label>
-          <input class="govuk-input govuk-!-width-one-third" id="template-contact-by-phone" name="template-contact-by-phone" type="tel" autocomplete="tel">
-        </div>
-
-      </div>
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="template-contact-3" name="template-contact" type="checkbox" value="text message" data-aria-controls="conditional-contact-3">
-        <label class="govuk-label govuk-checkboxes__label" for="template-contact-3">
-          Text message
-        </label>
-      </div>
-      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-3">
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="template-contact-by-fax">
-            Fax
-          </label>
-          <input class="govuk-input govuk-!-width-one-third" id="template-contact-by-fax" name="template-contact-by-fax" type="tel" autocomplete="tel">
-        </div>
-
-      </div>
+      <input class="govuk-input govuk-!-width-one-third" id="template-second-carrier-phone" name="template-second-carrier-phone" type="tel" value="">
     </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="template-second-carrier-fax">
+        Fax number (optional)
+      </label>
+      <div id="contact-hint" class="govuk-hint">
+         Include the country code for international numbers.
+      </div>
+      <input class="govuk-input govuk-!-width-one-third" id="template-second-carrier-fax" name="template-second-carrier-fax" type="tel" value="">
+    </div>
+
 
   </fieldset>
 </div>
 
-
-
-
-
       {{ govukButton({
         text: 'Save and continue'
       }) }}
+
+      {% include "./includes/template-return-to-link.html" %}
+
 
     </form>
 

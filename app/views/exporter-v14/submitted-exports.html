@@ -12,12 +12,39 @@
       Prototype
     </strong>
     <span class="govuk-phase-banner__text">
-      Version 13 - This is not a live service.
+      Version 14 - This is not a live service.
     </span>
   </p>
   </div>
 
-  <!---------- Breadcrumbs ---------->
+  <!---------- DYNAMIC BACK / BREADCRUMBS LINKs  ---------->
+  
+  {% if 'template-create-how' in data['gPreviousLocation'] %}
+    {{ govukBackLink({
+      text: 'Back',
+      href: 'template-create-how'
+    }) }}
+
+  {% else %}
+    {{ govukBreadcrumbs({
+      items: [
+        {
+          text: "Waste tracking service",
+          href: "#"
+        },
+        {
+          text: "Green list waste overview",
+          href: "dashboard"
+        },
+        {
+          text: "All submitted exports",
+          href: ""
+        }
+      ]
+    }) }}
+  {% endif %} 
+
+  <!---------- Breadcrumbs ----------
 
   <div class="govuk-breadcrumbs">
     <ol class="govuk-breadcrumbs__list">
@@ -32,6 +59,9 @@
       </li>
     </ol>
   </div>
+
+  -->
+
 {% endblock %}
 
 {% block content %}
@@ -476,11 +506,21 @@
   </div>
 </nav>
 
-    <p class="govuk-body"><a class="govuk-link" href="">Check cancelled exports</a></p>
+  <!---------- DYNAMIC RETURN LINK ---------->
 
+    {% if 'template-create-how' in data['gPreviousLocation'] %}
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="dashboard">Cancel and return to green list waste overview</a>
+    </p>
 
-</form>
+    {% else %}
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="dashboard">Check cancelled exports</a>
+    </p>
+    {% endif %} 
 
-</div>
+  </form>
+
+  </div>
 </div>
 {% endblock %}
