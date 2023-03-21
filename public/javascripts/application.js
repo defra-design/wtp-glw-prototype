@@ -2317,6 +2317,40 @@ if ($('#third-carrier-typeahead-container').length > 0) {
   })
 }
 
+// Fourth carrier autocomplete
+if ($('#fourth-carrier-typeahead-container').length > 0) {
+  element = document.querySelector('#fourth-carrier-typeahead-container')
+  id = 'fourth-carrier-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: countryList,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}
+
+// Fifth carrier autocomplete
+if ($('#fifth-carrier-typeahead-container').length > 0) {
+  element = document.querySelector('#fifth-carrier-typeahead-container')
+  id = 'fifth-carrier-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: countryList,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}
+
 // Importer autocomplete
 if ($('#importer-typeahead-container').length > 0) {
   element = document.querySelector('#importer-typeahead-container')
