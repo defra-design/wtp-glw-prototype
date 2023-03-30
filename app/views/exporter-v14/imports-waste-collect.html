@@ -1,0 +1,97 @@
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+  Who is the first waste carrier?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" method="post">
+
+        <h1 class="govuk-heading-l">
+            Where did the first carrier collect the waste from?
+        </h1>
+        <div class="govuk-hint">The waste collection site is also known as the waste producer site.</div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="waste-collect-org-name">
+          Organisation name <span class="govuk-visually-hidden">line 1 of 2</span>
+        </label>
+        <input class="govuk-input govuk-!-width-three-quarters" id="waste-collect-org-name" name="waste-collect-org-name" type="text" value="{{data['imports-waste-collect-org-name']}}">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="first carrier-address">
+          Address
+        </label>
+        <textarea class="govuk-textarea" id="waste-collect-address" name="waste-collect-address" rows="5" autocomplete="street-address" value="{{data['imports-waste-collect-address']}}"></textarea>
+      </div>
+
+        <h2 class="govuk-label-wrapper">
+            <label class="govuk-label">
+            Country
+            </label>
+        </h2>
+        <div id="first-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['imports-waste-collect-typeahead'] }}">
+        </div>
+
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+                Contact details
+            </h1>
+            </legend>
+            <div class="govuk-form-group">
+            <label class="govuk-label" for="waste-collect-contact-name">
+                Full name
+            </label>
+            <input class="govuk-input govuk-!-width-three-quarters" id="waste-collect-contact-name" name="waste-collect-contact-name" type="text" value="{{data['imports-waste-collect-contact-name']}}">
+            </div>
+
+            <div class="govuk-form-group">
+            <label class="govuk-label" for="waste-collect-email">
+                Email address
+            </label>
+            <input class="govuk-input govuk-!-width-one-half" id="waste-collect-email" name="waste-collect-email" type="email" value="{{data['imports-waste-collect-email']}}">
+            </div>
+
+            <div class="govuk-form-group">
+            <label class="govuk-label" for="waste-collect-phone">
+                Phone number
+            </label>
+            <div id="contact-hint" class="govuk-hint">
+                Include the country code for international numbers.
+            </div>
+            <input class="govuk-input govuk-!-width-one-third" id="waste-collect-phone" name="waste-collect-phone" type="tel" value="{{data['imports-waste-collect-phone']}}">
+            </div>
+
+            <div class="govuk-form-group">
+            <label class="govuk-label" for="waste-collect-fax">
+                Fax number (optional)
+            </label>
+            <div id="contact-hint" class="govuk-hint">
+                Include the country code for international numbers.
+            </div>
+            <input class="govuk-input govuk-!-width-one-third" id="waste-collect-fax" name="waste-collect-fax" type="tel" value="{{data['imports-waste-collect-fax']}}">
+            </div>
+
+
+        </fieldset>
+        </div>
+
+      {{ govukButton({
+        text: 'Save and continue'
+      }) }}
+
+      {% include "./includes/imports-return-to-link.html" %}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
