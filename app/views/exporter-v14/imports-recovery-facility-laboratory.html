@@ -1,7 +1,11 @@
 {% extends "../layouts/layout-importer-current.html" %}
 
 {% block pageTitle %}
-  Recovery facility details
+{% if data ['imports-code'] == "not-applicable" %}
+        Laboratory details
+           {% else %}
+        Recovery facility details
+          {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -77,9 +81,10 @@
                 <label class="govuk-label" for="imports-facility-phone">
                   Phone number
                 </label>
-                <div id="contact-hint" class="govuk-hint">
+                <!-- <div id="contact-hint" class="govuk-hint">
                    Include the country code for international numbers.
-                </div>
+                </div> -->
+                <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="imports-facility-phone-code" name="imports-facility-phone-code" type="tel" value="0044 {{data['imports-facility-phone-code']}}">
                 <input class="govuk-input govuk-!-width-one-third" id="imports-facility-phone" name="imports-facility-phone" type="tel" value="{{data['imports-facility-phone']}}">
               </div>
 
@@ -87,11 +92,14 @@
                 <label class="govuk-label" for="imports-facility-fax">
                   Fax number (optional)
                 </label>
-                <div id="contact-hint" class="govuk-hint">
+                <!-- <div id="contact-hint" class="govuk-hint">
                    Include the country code for international numbers.
-                </div>
+                </div> -->
+                <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="imports-facility-fax-code" name="imports-facility-fax-code" type="tel" value="0044 {{data['imports-facility-fax-code']}}">
                 <input class="govuk-input govuk-!-width-one-third" id="imports-facility-fax" name="imports-facility-fax" type="tel" value="{{data['imports-facility-fax']}}">
               </div>
+
+              <div class="govuk-!-padding-bottom-2"></div>
 
 
             </fieldset>

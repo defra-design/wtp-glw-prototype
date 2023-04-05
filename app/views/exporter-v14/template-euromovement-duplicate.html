@@ -33,7 +33,11 @@
       </h1>
 
       <div class="govuk-inset-text">
-        This new template must be different from your <b>{{ data['template-name'] }}</b> template. Make changes and save.
+        This new template must be different from your <b> {% if data['template-name'] != undefined %}
+          {{ data['template-name'] }}
+        {% else %}
+          Euromovement WEEE waste export
+        {% endif %}</b> template. Make changes and save.
       </div>
 
 <!---------------------  TEMPLATE DETAILS ----------------------------------------------------->

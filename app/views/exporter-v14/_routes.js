@@ -2297,7 +2297,7 @@ router.post('/imports-date-of-shipment', function(req, res) {
                     res.redirect('imports-check-your-answers');
                 } else {
                     // res.redirect('imports-carrier-collect-postcode');
-                    res.redirect('imports-carrier-collect-address-manual-2');
+                    res.redirect('imports-carrier-collect');
                 }
             }
             })
@@ -2308,7 +2308,7 @@ router.post('/imports-date-of-shipment', function(req, res) {
                 res.redirect('imports-carrier-add-3');
             } else if (req.session.data['imports-add-third-carrier'] == 'No' || req.session.data['imports-carrier-count'] >= 4) {
                      // res.redirect('imports-carrier-collect-postcode');
-                     res.redirect('imports-carrier-collect-address-manual-2');
+                     res.redirect('imports-carrier-collect');
              }
             })
 
@@ -2360,24 +2360,24 @@ router.post('/imports-date-of-shipment', function(req, res) {
             res.redirect('imports-waste-generator');
         })
 
-        router.post('/imports-carrier-collect-address-manual-2', function(req, res) {
+        router.post('/imports-carrier-collect', function(req, res) {
             req.session.data['imports-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
             req.session.data['imports-carrier-add-1'] = "true";
-            res.redirect('imports-point-of-exit');
+            res.redirect('imports-point-of-entry');
         })
 
         /* router.post('/imports-waste-generator', function(req, res) {
             req.session.data['imports-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
             req.session.data['imports-carrier-add-1'] = "true";
-            res.redirect('imports-point-of-exit');
+            res.redirect('imports-point-of-entry');
             
         }) */
 
         //-----------------
 
         // imports location waste leaves
-        router.post('/imports-point-of-exit', function(req, res) {
-            req.session.data['imports-point-of-exit-status'] = "Completed";
+        router.post('/imports-point-of-entry', function(req, res) {
+            req.session.data['imports-point-of-entry-status'] = "Completed";
             res.redirect('imports-countries-states-concerned-new');
         })
 

@@ -77,21 +77,25 @@
                 <label class="govuk-label" for="facility-phone">
                   Phone number
                 </label>
-                <div id="contact-hint" class="govuk-hint">
+                <!-- <div id="contact-hint" class="govuk-hint">
                    Include the country code for international numbers.
-                </div>
-                <input class="govuk-input govuk-!-width-one-third" id="facility-phone" name="facility-phone" type="tel" value="{{data['facility-phone']}}">
+                </div> -->
+                <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="facility-phone-code" name="facility-phone-code" type="tel" value="0049{{data['facility-phone-code']}}">
+                <input class="govuk-input govuk-!-width-one-third" id="facility-phone" name="facility-phone" type="tel" value=" {{data['facility-phone']}}">
               </div>
 
               <div class="govuk-form-group">
                 <label class="govuk-label" for="facility-fax">
                   Fax number (optional)
                 </label>
-                <div id="contact-hint" class="govuk-hint">
+                <!-- <div id="contact-hint" class="govuk-hint">
                    Include the country code for international numbers.
-                </div>
+                </div> -->
+                <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="facility-fax-code" name="facility-fax-code" type="tel" value="0049{{data['facility-fax-code']}}">
                 <input class="govuk-input govuk-!-width-one-third" id="facility-fax" name="facility-fax" type="tel" value="{{data['facility-fax']}}">
               </div>
+
+              <div class="govuk-!-padding-bottom-2"></div>
 
 
             </fieldset>
