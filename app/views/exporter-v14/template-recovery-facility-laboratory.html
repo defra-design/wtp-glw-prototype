@@ -77,9 +77,10 @@
                 <label class="govuk-label" for="template-facility-phone">
                   Phone number
                 </label>
-                <div id="contact-hint" class="govuk-hint">
+                <!-- <div id="contact-hint" class="govuk-hint">
                    Include the country code for international numbers.
-                </div>
+                </div> -->
+                <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="template-facility-phone-code" name="template-facility-phone-code" type="tel" value="0049 {{data['template-facility-phone-code']}}">
                 <input class="govuk-input govuk-!-width-one-third" id="template-facility-phone" name="template-facility-phone" type="tel" value="{{data['template-facility-phone']}}">
               </div>
 
@@ -87,11 +88,14 @@
                 <label class="govuk-label" for="template-facility-fax">
                   Fax number (optional)
                 </label>
-                <div id="contact-hint" class="govuk-hint">
+                <!-- <div id="contact-hint" class="govuk-hint">
                    Include the country code for international numbers.
-                </div>
+                </div> -->
+                <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="template-facility-fax-code" name="template-facility-fax-code" type="tel" value="0049 {{data['template-facility-fax-code']}}">
                 <input class="govuk-input govuk-!-width-one-third" id="template-facility-fax" name="template-facility-fax" type="tel" value="{{data['template-facility-fax']}}">
               </div>
+
+              <div class="govuk-!-padding-bottom-2"></div>
 
 
             </fieldset>

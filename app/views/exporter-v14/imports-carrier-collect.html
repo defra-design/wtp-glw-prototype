@@ -1,0 +1,110 @@
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+Where did the first carrier collect the waste from?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      
+    <form class="form" method="post">
+
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-heading-l">
+            Where did the first carrier collect the waste from?
+          </h1>
+          <div class="govuk-hint">The waste collection site is also known as the waste producer site.</div>
+        </legend>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="imports-carriercollect">
+            Organisation name <span class="govuk-visually-hidden">line 1 of 2</span>
+          </label>
+          <input class="govuk-input govuk-!-width-three-quarters" id="imports-carriercollect" name="imports-carriercollect" type="text" value="">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="imports-carrier-collect-address">
+            Address
+          </label>
+          <textarea class="govuk-textarea" id="imports-carrier-collect-address" name="imports-carrier-collect-address" rows="5" autocomplete="street-address"></textarea>
+        </div>
+
+        <h2 class="govuk-label-wrapper">
+          <label class="govuk-label">
+            Country
+          </label>
+        </h2>
+        <div id="third-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="">
+        </div>
+
+</fieldset>
+
+<br>
+<br>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Contact details
+      </h1>
+    </legend>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="imports-carrier-collect-contact-name">
+        Full name
+      </label>
+      <input class="govuk-input govuk-!-width-three-quarters" id="imports-carrier-collect-contact-name" name="imports-carrier-collect-contact-name" type="text">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="imports-first-carrier-email">
+        Email address
+      </label>
+      <input class="govuk-input govuk-!-width-one-half" id="imports-carrier-collect-email" name="imports-carrier-collect-email" type="email" value="">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="imports-carrier-collect-phone">
+        Phone number
+      </label>
+      <!-- <div id="contact-hint" class="govuk-hint">
+         Include the country code for international numbers.
+      </div> -->
+      <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="imports-carrier-collect-code" name="imports-carrier-collect-code" type="tel" value="0049 {{data['imports-carrier-collect-phone-code']}}">
+      <input class="govuk-input govuk-!-width-one-third" id="imports-carrier-collect-phone" name="imports-carrier-collect-phone" type="tel" value="">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="imports-carrier-collect-fax">
+        Fax number (optional)
+      </label>
+      <!-- <div id="contact-hint" class="govuk-hint">
+         Include the country code for international numbers.
+      </div> -->
+      <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="imports-carrier-collecty-fax-code" name="imports-carrier-collect-fax-code" type="tel" value="0049 {{data['imports-carrier-collect-fax-code']}}">
+      <input class="govuk-input govuk-!-width-one-third" id="imports-carrier-collect-fax" name="imports-carrier-collect-fax" type="tel" value="">
+    </div>
+
+    <div class="govuk-!-padding-bottom-2"></div>
+
+
+  </fieldset>
+</div>
+
+      {{ govukButton({
+        text: 'Save and continue'
+      }) }}
+
+      {% include "./includes/imports-return-to-link.html" %}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
