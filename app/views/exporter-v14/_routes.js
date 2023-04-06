@@ -2230,20 +2230,10 @@ router.post('/imports-who-arranged-shipment-details', function(req, res) {
 // imports-person-arranged-signed
 router.post('/imports-person-arranged-signed', function(req, res) {
     req.session.data['imports-person-arranged-signed'] = "Completed";
-    res.redirect('imports-recovery-details');
+    res.redirect('imports-date-of-shipment');
 })
 
-// imports-recovery-details
-router.post('/imports-recovery-details', function(req, res) {
-    req.session.data['imports-recovery-details'] = "Completed";
-    res.redirect('imports-recovery-weight');
-})
 
-// imports-recovery-weight
-router.post('/imports-recovery-weight', function(req, res) {
-    req.session.data['imports-recovery-weight'] = "Completed";
-    res.redirect('imports-prenotify');
-})
 
 
 
@@ -2255,15 +2245,18 @@ router.post('/imports-date-of-shipment', function(req, res) {
     res.redirect('imports-carrier-add-1');
  })
 
- router.post('/imports-carrier-add-1', function(req, res) {
-    req.session.data['imports-carrier-status'] = "Completed";
-    req.session.data['imports-carrier-add-1'] = "true";
 
-    res.redirect('imports-carrier-transport-1b');          //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
-    
-})
+        // -------- IMPORTS FIRST CARRIER --------
 
-        // Carrier transport options
+        router.post('/imports-carrier-add-1', function(req, res) {
+            req.session.data['imports-carrier-status'] = "Completed";
+            req.session.data['imports-carrier-add-1'] = "true";
+
+            res.redirect('imports-carrier-transport-1b');          //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+            
+        })
+
+        // First carrier transport options
         router.post('/imports-carrier-transport-1b', function(req, res) {
             if (req.session.data['imports-transport'] == 'shipping') {
                 res.redirect('imports-carrier-1b-shipping');
@@ -2274,35 +2267,213 @@ router.post('/imports-date-of-shipment', function(req, res) {
             }
         })
 
-        // Carrier transport shipping
+        // First Carrier transport shipping
         router.post('/imports-carrier-1b-shipping', function(req, res) {
                 res.redirect('imports-carriers');
         })
 
-        // Carrier transport trailer
+        // First Carrier transport trailer
         router.post('/imports-carrier-1b-trailer', function(req, res) {
                 res.redirect('imports-carriers');    
         })
 
-        // Carrier transport bulk-vessel
+        // First Carrier transport bulk-vessel
         router.post('/imports-carrier-1b-vessel', function(req, res) {
             res.redirect('imports-carriers');    
         })
 
+        // -------- IMPORTS SECOND CARRIER --------
+        
+        router.post('/imports-carrier-add-2', function(req, res) { //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+            req.session.data['imports-carrier-status'] = "Completed";
+            req.session.data['imports-carrier-add-2'] = "true";
+            res.redirect('imports-carrier-transport-2b');          //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+        })
+
+        // Second carrier transport options
+        router.post('/imports-carrier-transport-2b', function(req, res) {
+            if (req.session.data['imports-transport-2'] == 'shipping') {
+                res.redirect('imports-carrier-2b-shipping');
+            } else if (req.session.data['imports-transport-2'] == 'trailer') {
+                res.redirect('imports-carrier-2b-trailer');
+            } else if (req.session.data['imports-transport-2'] == 'bulk-vessel') {
+                res.redirect('imports-carrier-2b-vessel');
+            }
+        })
+
+        // Second carrier transport shipping
+        router.post('/imports-carrier-2b-shipping', function(req, res) {
+            res.redirect('imports-carrier-check');
+        })
+
+        // Second carrier transport trailer
+        router.post('/imports-carrier-2b-trailer', function(req, res) {
+            res.redirect('imports-carrier-check');
+        })
+
+        // Second carrier transport bulk-vessel
+        router.post('/imports-carrier-2b-vessel', function(req, res) {
+            res.redirect('imports-carrier-check');  
+        })
+
+
+        // -------- IMPORTS THIRD CARRIER --------
+
+        router.post('/imports-carrier-add-3', function(req, res) {
+            req.session.data['imports-carrier-status'] = "Completed";
+            req.session.data['imports-carrier-add-3'] = "true";
+            res.redirect('imports-carrier-transport-3b');                  //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+        })
+
+        // Third carrier transport options
+        router.post('/imports-carrier-transport-3b', function(req, res) {
+            if (req.session.data['imports-transport-3'] == 'shipping') {
+                res.redirect('imports-carrier-3b-shipping');
+            } else if (req.session.data['imports-transport-3'] == 'trailer') {
+                res.redirect('imports-carrier-3b-trailer');
+            } else if (req.session.data['imports-transport-3'] == 'bulk-vessel') {
+                res.redirect('imports-carrier-3b-vessel');
+            }
+        })
+
+        // Third carrier transport shipping
+        router.post('/imports-carrier-3b-shipping', function(req, res) {
+            res.redirect('imports-carrier-check-2');
+        })
+
+        // Third carrier transport trailer
+        router.post('/imports-carrier-3b-trailer', function(req, res) {
+            res.redirect('imports-carrier-check-2');
+        })
+
+        // Third carrier transport bulk-vessel
+        router.post('/imports-carrier-3b-vessel', function(req, res) {
+            res.redirect('imports-carrier-check-2');  
+        })
+
+        // -------- IMPORTS FOURTH CARRIER --------
+
+        router.post('/imports-carrier-add-4', function(req, res) {
+            req.session.data['imports-carrier-status'] = "Completed";
+            req.session.data['imports-carrier-add-4'] = "true";
+            res.redirect('imports-carrier-transport-4b');                
+        })
+
+        // Fourth carrier transport options
+        router.post('/imports-carrier-transport-4b', function(req, res) {
+            if (req.session.data['imports-transport-4'] == 'shipping') {
+                res.redirect('imports-carrier-4b-shipping');
+            } else if (req.session.data['imports-transport-4'] == 'trailer') {
+                res.redirect('imports-carrier-4b-trailer');
+            } else if (req.session.data['imports-transport-4'] == 'bulk-vessel') {
+                res.redirect('imports-carrier-4b-vessel');
+            }
+        })
+
+        // Fourth carrier transport shipping
+        router.post('/imports-carrier-4b-shipping', function(req, res) {
+            res.redirect('imports-carrier-check-3');
+        })
+
+        // Fourth carrier transport trailer
+        router.post('/imports-carrier-4b-trailer', function(req, res) {
+            res.redirect('imports-carrier-check-3');
+        })
+
+        // Fourth carrier transport bulk-vessel
+        router.post('/imports-carrier-4b-vessel', function(req, res) {
+            res.redirect('imports-carrier-check-3');  
+        })
+
+
+        // -------- IMPORTS FIFTH CARRIER --------
+
+         router.post('/imports-carrier-add-5', function(req, res) {
+            req.session.data['imports-carrier-status'] = "Completed";
+            req.session.data['imports-carrier-add-5'] = "true";
+            res.redirect('imports-carrier-transport-5b');                
+        })
+
+        // Fifth carrier transport options
+        router.post('/imports-carrier-transport-5b', function(req, res) {
+            if (req.session.data['imports-transport-5'] == 'shipping') {
+                res.redirect('imports-carrier-5b-shipping');
+            } else if (req.session.data['imports-transport-5'] == 'trailer') {
+                res.redirect('imports-carrier-5b-trailer');
+            } else if (req.session.data['imports-transport-5'] == 'bulk-vessel') {
+                res.redirect('imports-carrier-5b-vessel');
+            }
+        })
+
+        // Fifth carrier transport shipping
+        router.post('/imports-carrier-5b-shipping', function(req, res) {
+            res.redirect('imports-carrier-check-4');
+        })
+
+        // Fifth carrier transport trailer
+        router.post('/imports-carrier-5b-trailer', function(req, res) {
+            res.redirect('imports-carrier-check-4');
+        })
+
+        // Fifth carrier transport bulk-vessel
+        router.post('/imports-carrier-5b-vessel', function(req, res) {
+            res.redirect('imports-carrier-check-4');  
+        })
+
+
+        //-----------------------------------------------------------
+
         router.post('/imports-carriers', function(req, res) {
             if (req.session.data['imports-add-second-carrier'] == 'Yes') {
-                res.redirect('imports-carrier-add-3');
+                res.redirect('imports-carrier-add-2');
             } else if (req.session.data['imports-add-second-carrier'] == 'No') {
                 if ((req.session.data.gPreviousLocation).includes('imports-check-your-answers')) {
                     res.redirect('imports-check-your-answers');
                 } else {
-                    // res.redirect('imports-carrier-collect-postcode');
                     res.redirect('imports-carrier-collect');
                 }
             }
             })
         
+        // Import carriers ----------------------------------------------------
+
         router.post('/imports-carrier-check', function(req, res) {
+            if (req.session.data['imports-add-another-carrier'] == 'Yes') {
+                res.redirect('imports-carrier-add-3');
+            } else if (req.session.data['imports-add-another-carrier'] == 'No') {
+                if ((req.session.data.gPreviousLocation).includes('imports-check-your-answers')) {
+                    res.redirect('imports-check-your-answers');
+                } else {
+                    res.redirect('imports-carrier-collect');
+                }
+            }
+            })
+
+            router.post('/imports-carrier-check-2', function(req, res) {
+                if (req.session.data['imports-add-another-carrier'] == 'Yes') {
+                    res.redirect('imports-carrier-add-4');
+                } else if (req.session.data['imports-add-another-carrier'] == 'No') {
+                    if ((req.session.data.gPreviousLocation).includes('imports-check-your-answers')) {
+                        res.redirect('imports-check-your-answers');
+                    } else {
+                        res.redirect('imports-carrier-collect');
+                    }
+                }
+                })
+    
+            router.post('/imports-carrier-check-3', function(req, res) {
+                if (req.session.data['imports-add-another-carrier'] == 'Yes') {
+                        res.redirect('imports-carrier-add-5');
+                } else if (req.session.data['imports-add-another-carrier'] == 'No') {
+                    if ((req.session.data.gPreviousLocation).includes('imports-check-your-answers')) {
+                        res.redirect('imports-check-your-answers');
+                    } else {
+                        res.redirect('imports-carrier-collect');
+                    }
+                }
+                })  
+
+        /* router.post('/imports-carrier-check', function(req, res) {
             console.log(typeof req.session.data['imports-carrier-count']);
             if (req.session.data['imports-add-third-carrier'] == 'Yes' && req.session.data['imports-carrier-count'] <= 3) {
                 res.redirect('imports-carrier-add-3');
@@ -2311,8 +2482,8 @@ router.post('/imports-date-of-shipment', function(req, res) {
                      res.redirect('imports-carrier-collect');
              }
             })
-
-        router.post('/imports-carrier-add-2', function(req, res) { //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
+        */
+        /*  router.post('/imports-carrier-add-2', function(req, res) { //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
             req.session.data['imports-carrier-status'] = "Completed";
             req.session.data['imports-carrier-add-1'] = "true";
             res.redirect('imports-carrier-transport-2b');          //---------  <<<< added 'b' to the end of the url <<<<<<<<< ---//
@@ -2334,19 +2505,21 @@ router.post('/imports-date-of-shipment', function(req, res) {
             req.session.data['imports-carrier-status'] = "Completed";
             req.session.data['imports-carrier-add-1'] = "true";
             res.redirect('imports-carrier-check');
-        })
+        }) */
         
+        //---------------------------------------------------------
+
         router.post('/imports-carrier-delete', function(req, res) {
             req.session.data['imports-carrier-status'] = "Completed";
             req.session.data['imports-carrier-add-1'] = "true";
             res.redirect('imports-carrier-check');
         })
         
-        router.post('/imports-carrier-collect-postcode', function(req, res) {
+        /* router.post('/imports-carrier-collect-postcode', function(req, res) {
             req.session.data['imports-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
             req.session.data['imports-carrier-add-1'] = "true";
             res.redirect('imports-carrier-collect-address');
-        })
+        }) */
         
         router.post('/imports-carrier-collect-address', function(req, res) {
             req.session.data['imports-waste-generator-original-producer-new-producer-or-collector-status'] = "Completed";
@@ -2381,6 +2554,7 @@ router.post('/imports-date-of-shipment', function(req, res) {
             res.redirect('imports-countries-states-concerned-new');
         })
 
+        // imports transit countries
         router.post('/imports-countries-states-concerned-new', function(req, res) {
             console.log(req.session.data['imports-country-state']);
             if(req.session.data['imports-countries-state']=='Yes'){
@@ -2431,6 +2605,7 @@ router.post('/imports-date-of-shipment', function(req, res) {
                     res.redirect('imports-prenotify');
             }
             })
+            //------ transit end
 
 
         // imports recovery facility
@@ -2442,6 +2617,18 @@ router.post('/imports-date-of-shipment', function(req, res) {
         // imports recovery code
         router.post('/imports-recovery-operation', function(req, res) {
             req.session.data['imports-recovery-operation-status'] = "Completed";
+            res.redirect('imports-recovery-details');
+        })
+
+        // imports-recovery-details
+        router.post('/imports-recovery-details', function(req, res) {
+            req.session.data['imports-recovery-details'] = "Completed";
+            res.redirect('imports-recovery-weight');
+        })
+
+        // imports-recovery-weight
+        router.post('/imports-recovery-weight', function(req, res) {
+            req.session.data['imports-recovery-weight'] = "Completed";
             res.redirect('imports-prenotify');
         })
 

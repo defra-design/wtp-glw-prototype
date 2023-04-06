@@ -1,9 +1,11 @@
-
-
 {% extends "../layouts/layout-importer-current.html" %}
 
 {% block pageTitle %}
-  Do you want to add your own reference to this import?
+{% if data ['imports-code'] == "not-applicable" %}
+        Who signed for the shipment at the laboratory?
+           {% else %}
+        Who signed for the shipment at the recovery facility?
+          {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -31,16 +33,27 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="govuk-heading-l">Recovery facility details</h1>        
+        <!-- Dynamic H1 -->  
+        {% if data ['imports-code'] == "not-applicable" %}
+        <h1 class="govuk-heading-l">
+          Who signed for the shipment at the laboratory?
+        </h1>
         <p id="contact-hint" class="govuk-hint">Your Annex VII must be signed and dated in block 14.</p>
+   
+         {% else %}
+        <h1 class="govuk-heading-l">
+          Who signed for the shipment at the recovery facility?
+        </h1>
+        <p id="contact-hint" class="govuk-hint">Your Annex VII must be signed and dated in block 14.</p>
+        {% endif %}  
+        
 
         <form class="form" method="post">
 
                 <!------------ NAME ------------>
 
                 <div class="govuk-form-group">
-                    <label class="govuk-label" for="imports-recovery-full-name">Who signed for the shipment?</label>
-                    <div id="contact-hint" class="govuk-hint">Full name</div>
+                    <label class="govuk-label" for="imports-recovery-full-name">Full name</label>
                     <input class="govuk-input" id="imports-recovery-full-name" name="imports-recovery-full-name" type="text">
                 </div>
 
@@ -50,9 +63,13 @@
 
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" role="group" aria-describedby="imports-recovery-date-hint">
-                      <legend class="govuk-fieldset__legend">
-                        When did the shipment arrive at the recovery facility?
-                      </legend>
+          
+                        <legend class="govuk-fieldset__legend">
+                          {% if data ['imports-code'] == "not-applicable" %} When did the shipment arrive at the laboratory?
+                          {% else %} When did the shipment arrive at the recovery facility?
+                           {% endif %}
+                        </legend>
+
                       <div id="imports-recovery-date-hint" class="govuk-hint">
                         For example, 27 3 2023
                       </div>

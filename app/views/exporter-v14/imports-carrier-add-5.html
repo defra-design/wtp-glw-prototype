@@ -1,0 +1,101 @@
+{% extends "../layouts/layout-importer-current.html" %}
+
+{% block pageTitle %}
+Enter the fifth waste carrier’s details
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+        <form class="form" method="post">
+
+    <h1 class="govuk-heading-l">
+        Enter the fifth waste carrier’s details
+    </h1>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="imports-fifth-carrier-org-name">
+          Organisation name <span class="govuk-visually-hidden">line 1 of 2</span>
+        </label>
+        <input class="govuk-input govuk-!-width-three-quarters" id="imports-fifth-carrier-org-name" name="imports-fifth-carrier-org-name" type="text" value="{{data['imports-fifth-carrier-org-name']}}">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="imports-fifth-carrier-address">
+          Address
+        </label>
+        <textarea class="govuk-textarea" id="imports-fifth-carrier-address" name="imports-fifth-carrier-address" rows="5" autocomplete="street-address" value="{{data['imports-fifth-carrier-address']}}"></textarea>
+      </div>
+
+    <h2 class="govuk-label-wrapper">
+        <label class="govuk-label">
+        Country
+        </label>
+    </h2>
+    <div id="fifth-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['imports-fifth-carrier-typeahead'] }}">
+    </div>
+
+    <br>
+    <br>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Contact details
+      </h1>
+    </legend>
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="imports-fifth-carrier-contact-name">
+        Full name
+      </label>
+      <input class="govuk-input govuk-!-width-three-quarters" id="imports-fifth-carrier-contact-name" name="imports-fifth-carrier-contact-name" type="text" value="{{data['imports-fifth-carrier-contact-name']}}">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="imports-fifth-carrier-email">
+        Email address
+      </label>
+      <input class="govuk-input govuk-!-width-one-half" id="imports-fifth-carrier-email" name="imports-fifth-carrier-email" type="email" value="{{data['imports-fifth-carrier-email']}}">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="imports-fifth-carrier-phone">
+        Phone number
+      </label>
+      <!-- <div id="contact-hint" class="govuk-hint">
+         Include the country code for international numbers.
+      </div> -->
+      <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="imports-fifth-carrier-phone-code" name="imports-fifth-carrier-phone-code" type="tel" value="0049 {{data['imports-fifth-carrier-phone-code']}}">
+      <input class="govuk-input govuk-!-width-one-third" id="imports-fifth-carrier-phone" name="imports-fifth-carrier-phone" type="tel" value="{{data['imports-fifth-carrier-phone']}}">
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="imports-fifth-carrier-fax">
+        Fax number (optional)
+      </label>
+      <!-- <div id="contact-hint" class="govuk-hint">
+         Include the country code for international numbers.
+      </div> -->
+      <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="imports-fifth-carrier-fax-code" name="imports-fifth-carrier-fax-code" type="tel" value="0049 {{data['imports-fifth-carrier-fax-code']}}">
+      <input class="govuk-input govuk-!-width-one-third" id="imports-fifth-carrier-fax" name="imports-fifth-carrier-fax" type="tel" value="{{data['imports-fifth-carrier-fax']}}">
+    </div>
+
+
+  </fieldset>
+</div>
+
+      {{ govukButton({
+        text: 'Save and continue'
+      }) }}
+
+      {% include "./includes/imports-return-to-link.html" %}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

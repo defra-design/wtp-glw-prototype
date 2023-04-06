@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-exporter-current.html" %}
 
 {% block pageTitle %}
-Enter quantity of waste
+Enter the actual quantity of waste in cubic metres
 {% endblock %}
 
 {% block content %}
@@ -25,7 +25,7 @@ Enter quantity of waste
                 Volume, in cubic metres
               </label>
                 <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="weight" name="actual-metres" value="{{ data['actual-metres'] }}" type="text" spellcheck="false">
-                <!-- <div class="govuk-input__suffix" aria-hidden="true">m3</div> -->
+                <div class="govuk-input__suffix" aria-hidden="true">m³</div>
               </div> 
             </div>
             </div>

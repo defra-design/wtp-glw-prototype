@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-importer-current.html" %}
 
 {% block pageTitle %}
-Do you know the quantity of waste?
+Enter the actual waste quantity
 {% endblock %}
 
 {% block content %}
@@ -61,6 +61,7 @@ Do you know the quantity of waste?
                     Enter the volume
                   </label>
                   <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="imports-volume" name="imports-quantity-volume" value="{{ data['imports-quantity-volume'] }}" type="text" spellcheck="false">
+                    <div class="govuk-input__suffix" aria-hidden="true">m³</div>
                   </div>
                 </div>
               </div>
@@ -107,6 +108,7 @@ Do you know the quantity of waste?
                     Enter the volume
                   </label>
                   <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="weight" name="imports-volume" value="{{ data['imports-quantity-volume'] }}" type="text" spellcheck="false">
+                    <div class="govuk-input__suffix" aria-hidden="true">m³</div>
                   </div>
                 </div>
               </div>

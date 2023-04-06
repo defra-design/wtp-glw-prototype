@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-importer-current.html" %}
 
 {% block pageTitle %}
-  You have added 1 additional waste carrier
+  You have added 2 additional waste carriers
 {% endblock %}
 
 {% block content %}
@@ -37,7 +37,7 @@
           <br>
           <br>
 
-    {% if data['imports-carrier-add-2'] == 'true' %}
+    <!-- {% if data['imports-carrier-add-2'] == 'true' %} -->
 
           <h2 class="govuk-heading-m">Second waste carrier</h2>
           <dl class="govuk-summary-list govuk-!-margin-bottom-1">
@@ -62,12 +62,12 @@
             </div>
             </dl>
 
-          <br>
+            <br>
           <br>
 
-    {% endif %}
+    <!-- {% endif %} -->
 
-    {% if data['imports-carrier-add-3'] == 'true' %}
+    <!-- {% if data['imports-carrier-add-3'] == 'true' %} -->
 
           <h2 class="govuk-heading-m">Third waste carrier</h2>
           <dl class="govuk-summary-list govuk-!-margin-bottom-1">
@@ -93,10 +93,7 @@
             </div>
             </dl>
 
-          <br>
-          <br>
-
-    {% endif %}
+    <!-- {% endif %} -->
 
     {% if data['imports-carrier-add-4'] == 'true' %}
 
@@ -123,9 +120,6 @@
                 </dd>
             </div>
             </dl>
-
-          <br>
-          <br>
 
     {% endif %}
 
