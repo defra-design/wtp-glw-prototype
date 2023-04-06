@@ -97,19 +97,19 @@
               <!-- Turns the link on and off -->
               <span class="app-task-list__task-name">
                 
-                  {% if data ['code'] == "basel" or data ['code'] == "oecd" or data ['code'] == "annex-a" or data ['code'] == "annex-b" %}
+                  {% if data['code'] == "basel" or data['code'] == "oecd" or data['code'] == "annex-a" or data['code'] == "annex-b" %}
                   <a href="quantity" aria-describedby="eligibility-status">
                   Quantity of waste
                   {% elseif data ['code'] == "not-applicable" %}
-                  <span class="app-task-list__task-name">
+                  <a href="quantity" aria-describedby="read-declaration-status">
                     Quantity of waste
-                  </span>
+                  </a>
                   {% else %}
                   <span class="app-task-list__task-name">
                     Quantity of waste
                   </span>
                   {% endif %}
-                </a>
+                  </a>
               </span>
 
               <!-- 

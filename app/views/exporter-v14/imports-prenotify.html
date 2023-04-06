@@ -97,18 +97,16 @@
               <!-- Turns the link on and off -->
               <span class="app-task-list__task-name">
                 
-                  {% if data ['imports-code'] == "basel" or data ['imports-code'] == "oecd" or data ['imports-code'] == "annex-a" or data ['imports-code'] == "annex-b" %}
+                  {% if data['imports-code'] == "basel" or data['imports-code'] == "oecd" or data['imports-code'] == "annex-a" or data['imports-code'] == "annex-b" %}
                   <a href="imports-quantity" aria-describedby="eligibility-status">
                   Quantity of waste
-                  {% elseif data ['imports-code'] == "not-applicable" %}
-                  <span class="app-task-list__task-name">
+                  {% elseif data['imports-code'] == "not-applicable" %}
+                  <a href="imports-quantity" aria-describedby="read-declaration-status">
                     Quantity of waste
-                  </span>
+                  </a>
                   {% else %}
-                  <span class="app-task-list__task-name">
-                    <a href="imports-quantity" aria-describedby="read-declaration-status">
+                  <span class="app-task-list__task-name">              
                       Quantity of waste
-                    </a>
                   </span>
                   {% endif %}
                 </a>
