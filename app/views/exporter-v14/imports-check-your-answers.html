@@ -172,19 +172,15 @@
             Waste quantity
           </dt>
           <dd class="govuk-summary-list__value">
-            <p class="govuk-body">20 tonnes</p>
+            <!-- <p class="govuk-body">20 tonnes</p> -->
 
-            <!-- <p class="govuk-body">
-              {% if data ['imports-quantity'] == "yes" %}
-              <p class="govuk-body">Actual<br>{{ data['imports-quantity-weight-actual'] }} tonnes</p>
+            <p class="govuk-body">
+              {% if data ['imports-quantity'] == "weight" %}
+              <p class="govuk-body">{{ data['imports-quantity-weight'] }}</p>
+              {% else %}
+              <p class="govuk-body">{{ data['imports-quantity-volume'] }}</p>
+            {% endif %}
 
-              {% elseif data ['imports-quantity'] == "no" %}
-              <p class="govuk-body">Estimate<br>{{ data['imports-quantity-weight-estimate'] }} tonnes</p>
-              {% else %}  
-            <strong class="govuk-tag govuk-tag--blue">
-              Add Information
-            </strong> 
-            {% endif %} -->
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -354,20 +350,23 @@
           </dd>
         </div>
 
+        <!--------- First waste carrier ------------------->
+
         <div id="first-carrier" class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             First waste carrier
           </dt>
           <dd class="govuk-summary-list__value">
-            <p class="govuk-body">SG & Co</p>
-            <p class="govuk-body">Dapperplein 50<br> 1093 XS Amsterdam<br> Netherlands<br></p>
-            <p class="govuk-body">Marc Jean</p>
-            <p class="govuk-body">marc.jean@SGcarrier.com</p>
-            <p class="govuk-body">+31 12 345 6789</p>
+            <p class="govuk-body">NL Hauliers</p>
+            <p class="govuk-body">Stroop Street</p>
+            <p class="govuk-body">Netherlands, 100089</p>
+            <p class="govuk-body">Harry Blesin</p>
+            <p class="govuk-body">harry.blesin@nlhaul.com</p>
+            <p class="govuk-body">00000 0000000</p>
             <p class="govuk-body"></p>
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
+            <a class="govuk-link" href="template-carrier-add-1b.html">
               Change<span class="govuk-visually-hidden">first carrier</span>
             </a>
           </dd>
@@ -375,32 +374,84 @@
 
         <div id="first-transport" class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            First carrier transportation
+            First carrier transportation 
           </dt>
           <dd class="govuk-summary-list__value">
             <p class="govuk-body">Trailer</p>
-            <p class="govuk-body">A1234567</p>
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
+            <a class="govuk-link" href="template-carrier-transport-1b.html">
               Change<span class="govuk-visually-hidden">waste carrier address</span>
             </a>
           </dd>
         </div>
 
-        <div id="additional-carriers" class="govuk-summary-list__row">
+        <div id="first-transport-details" class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Additional waste carriers
+            First carrier transport details 
           </dt>
           <dd class="govuk-summary-list__value">
-            <p class="govuk-body">Not applicable</p>
+            <p class="govuk-body">A1234567</p>
+            <p class="govuk-body">OV93 ABA</p>
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="#">
-              Change<span class="govuk-visually-hidden">waste carriers method</span>
+            <a class="govuk-link" href="template-carrier-transport-1b.html">
+              Change<span class="govuk-visually-hidden">waste carrier address</span>
             </a>
           </dd>
         </div>
+
+        <!--------- Second waste carrier ------------------->
+
+        <div id="second-carrier" class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Second waste carrier
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">Kent Waste Transport Co</p>
+            <p class="govuk-body">Folk House, Cardiff, CF82 4BA</p>
+            <p class="govuk-body">Phil Ch’ng</p>
+            <p class="govuk-body">Phil.Chng@kent-waste.com</p>
+            <p class="govuk-body">02920 000000</p>
+            <p class="govuk-body"></p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-carrier-add-2b.html">
+              Change<span class="govuk-visually-hidden">first carrier</span>
+            </a>
+          </dd>
+        </div>
+
+        <div id="second-transport" class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Second carrier transportation 
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">Shipping container</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-carrier-transport-2b.html">
+              Change<span class="govuk-visually-hidden">waste carrier address</span>
+            </a>
+          </dd>
+        </div>
+
+        <div id="second-transport-details" class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Second carrier transport details 
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <p class="govuk-body">SHIPPING009922</p>
+            <p class="govuk-body">NK65 RGE</p>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="template-carrier-transport-2b.html">
+              Change<span class="govuk-visually-hidden">waste carrier address</span>
+            </a>
+          </dd>
+        </div>
+
+        <!--------- Waste collection details ------------------->
 
         <div id="collect-details" class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -470,7 +521,9 @@
           
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Recovery facility name
+                {% if data ['imports-code'] == "not-applicable" %} Laboratory name
+                {% else %} Recovery facility name
+                {% endif %}
               </dt>
               <dd class="govuk-summary-list__value">
                 <p class="govuk-body">Waste Ltd</p>
@@ -489,13 +542,15 @@
 
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-              Recovery code
+                {% if data ['imports-code'] == "not-applicable" %} Disposal code
+                {% else %} Recovery code
+                {% endif %}
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if data ['imports-code'] == "not-applicable" %}
-                  <p class="govuk-body">{{ data['recovery-operation-typeahead'] }}</p>
+                  <p class="govuk-body">{{ data['d-code-typeahead'] }}</p>
                   {% else %}
-                <p class="govuk-body">R4: Recycling/reclamation of metals and metal compounds</p>
+                <p class="govuk-body">{{ data['recovery-operation-typeahead'] }}</p>
                 {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">

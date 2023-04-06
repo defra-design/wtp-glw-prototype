@@ -10,20 +10,21 @@
     <div class="govuk-grid-column-two-thirds">
             <form class="form" action="" method="post">
 
-      <h1 class="govuk-heading-l">
-        Describe the waste
-      </h1>
-
-
-        <div class="govuk-character-count govuk-!-margin-bottom-6" data-module="govuk-character-count" data-maxlength="200">
+        <div class="govuk-character-count govuk-!-margin-bottom-6" data-module="govuk-character-count" data-maxlength="100">
           <div class="govuk-form-group">
-            <p class="govuk-body">Give the usual description of the waste. For example, baled PET bottles, bagged HDPE pellets or OCC paper. </p>
-
-            <div class="govuk-form-group">
-              <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="2" aria-describedby="more-detail-hint" maxlength="100"></textarea>
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--l" for="with-hint">
+                Describe the waste
+              </label>
+            </h1>
+            <div id="with-hint-hint" class="govuk-hint">
+              Give the usual description of the waste. For example, baled PET bottles, bagged HDPE pellets or OCC paper.
             </div>
-
-        </div>
+            <textarea class="govuk-textarea govuk-js-character-count" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint with-hint-hint" maxlength="100"></textarea>
+          </div>
+          <div id="more-detail-hint" class="govuk-hint govuk-character-count__message">
+            You can enter up to 100 characters
+          </div>
         </div>
 
         {{ govukButton({

@@ -2159,13 +2159,13 @@ router.post('/imports-ec-code', function(req, res) {
           res.redirect('imports-code-add-another');
 })
 
-// imports-code-add-another
+/* // imports-code-add-another
 router.post('/imports-code-add-another', function(req, res) {
     res.redirect('imports-national-code');
-})
+}) */
 
 
-/* // imports-code-add-another
+ // imports-code-add-another
 router.post('/imports-code-add-another', function(req, res) {
     if (req.session.data['imports-add-ec-code'] == 'Yes') {
         res.redirect('imports-ec-code-2');
@@ -2173,7 +2173,7 @@ router.post('/imports-code-add-another', function(req, res) {
         res.redirect('imports-national-code');
         }
     
-    }) */
+    }) 
 
 // imports-national-code
 router.post('/imports-national-code', function(req, res) {

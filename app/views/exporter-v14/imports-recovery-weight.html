@@ -39,6 +39,7 @@
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
 
               <!-- Dynamic H1 -->  
+
               {% if data ['imports-code'] == "not-applicable" %}
                   Did the laboratory receive the same waste quantity as stated on the Annex VII?
               {% else %}
@@ -47,9 +48,18 @@
 
               </legend>
 
+              <!-- Dynamic Inset text -->  
+
+              {% if data ['imports-code'] == "not-applicable" %}
               <div class="govuk-inset-text">
                 You told us the actual waste quantity was <b>20kg</b> 
               </div>
+              {% else %}
+              <div class="govuk-inset-text">
+                You told us the actual waste quantity was <b>20 tonnes</b> 
+              </div>
+              {% endif %} 
+              
 
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
@@ -67,16 +77,24 @@
                 </div>
                 <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-imports-recovery-weight-2">
                   <div class="govuk-form-group">
-                    {% if data ['imports-code'] == "not-applicable" %}
-                    Did the laboratory receive the same waste quantity as stated on the Annex VII?
-                {% else %}
-                  <label class="govuk-label" for="imports-recovery-weight-amount">
-                    Enter the weight received (tonnes)
-                  </label>
-                {% endif %}  
-                    
 
-                    <input class="govuk-input govuk-!-width-one-third" id="imports-recovery-weight-amounte" name="imports-recovery-weight-amount" type="number">
+                    <!-- Dynamic text input label -->  
+
+                    {% if data ['imports-code'] == "not-applicable" %}
+                    <label class="govuk-label" for="imports-recovery-weight-amount-kg">
+                      Enter the weight received
+                    </label>
+                    <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="imports-recovery-weight-amount-kg" name="imports-recovery-weight-amount-kg" type="number">
+                    <div class="govuk-input__suffix" aria-hidden="true">kg</div>
+                  </div>
+                  {% else %}
+                    <label class="govuk-label" for="imports-recovery-weight-amount-ton">
+                      Enter the weight received (tonnes)
+                    </label>
+                    <div class="govuk-input__wrapper"><input class="govuk-input govuk-input--width-5" id="imports-recovery-weight-amount-ton" name="imports-recovery-weight-amount-ton" type="number">
+                    <div class="govuk-input__suffix" aria-hidden="true">t</div>
+                  {% endif %}  
+
                   </div>
                 </div>
 
@@ -90,6 +108,8 @@
               Continue
             </button>
           </div>
+
+          {% include "./includes/imports-return-to-link.html" %}
         
         </form>
 
