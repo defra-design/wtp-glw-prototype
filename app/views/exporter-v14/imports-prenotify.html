@@ -232,7 +232,7 @@
               {% endif %}
             </li>
 
-            <!---------- Location waste leaves UK ---------->
+            <!---------- Location waste enters UK ---------->
 
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
@@ -240,9 +240,9 @@
                   Location waste entered the UK
                 </a>
               </span>
-              {% if data['imports-point-of-exit-status'] == null or data['imports-point-of-exit-status'] == 'Not started' %}
+              {% if data['imports-point-of-entry-status'] == null or data['imports-point-of-entry-status'] == 'Not started' %}
                 <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="countries-states-concerned-status">Not started</strong>
-              {% elif data['imports-point-of-exit-status'] == 'Completed' %}
+              {% elif data['imports-point-of-entry-status'] == 'Completed' %}
                 <strong class="govuk-tag app-task-list__tag" id="countries-states-concerned-status">Completed</strong>
               {% endif %}
             </li>
@@ -334,7 +334,7 @@
       data['imports-waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" and
       data['imports-countries-states-concerned-status'] == "Completed" and
       data['imports-recovery-facility-or-laboratory-status']  == "Completed" and
-      data['imports-point-of-exit-status']  == "Completed" and
+      data['imports-point-of-entry-status']  == "Completed" and
       data['imports-recovery-operation-status'] == "Completed" %}
 
       <form class="form" method="post"></form>
