@@ -82,13 +82,13 @@
               <!-- Turns the link on and off -->
               <span class="app-task-list__task-name">
                 
-                  {% if data ['code'] == "basel" or data ['template-code'] == "oecd" or data ['template-code'] == "annex-a" or data ['template-code'] == "annex-b" %}
-                  <a href="template-quantity.html" aria-describedby="eligibility-status">
+                  {% if data['template-code'] == "basel" or data['template-code'] == "oecd" or data['template-code'] == "annex-a" or data['template-code'] == "annex-b" %}
+                  <a href="template-quantity" aria-describedby="eligibility-status">
                   Quantity of waste
                   {% elseif data ['template-code'] == "not-applicable" %}
-                  <span class="app-task-list__task-name">
+                  <a href="template-quantity" aria-describedby="read-declaration-status">
                     Quantity of waste
-                  </span>
+                  </a>
                   {% else %}
                   <span class="app-task-list__task-name">
                     Quantity of waste
