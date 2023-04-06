@@ -1,7 +1,11 @@
 {% extends "../layouts/layout-importer-current.html" %}
 
 {% block pageTitle %}
-  How do you want to submit the waste import? - Green list waste
+{% if data ['imports-code'] == "not-applicable" %}
+      Did the laboratory receive the same waste quantity as stated on the Annex VII?
+    {% else %}
+      Did the recovery facility receive the same waste quantity as stated on the Annex VII?
+    {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -33,13 +37,18 @@
         <div class="govuk-form-group">
             <fieldset class="govuk-fieldset">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                <h1 class="govuk-fieldset__heading">
-                    Did the recovery facility receive the same waste quantity as stated on the Annex VII?
-                </h1>
+
+              <!-- Dynamic H1 -->  
+              {% if data ['imports-code'] == "not-applicable" %}
+                  Did the laboratory receive the same waste quantity as stated on the Annex VII?
+              {% else %}
+                  Did the recovery facility receive the same waste quantity as stated on the Annex VII?
+              {% endif %}  
+
               </legend>
 
               <div class="govuk-inset-text">
-                You told us the actual waste quantity was <b>20 tonnes</b> 
+                You told us the actual waste quantity was <b>20kg</b> 
               </div>
 
               <div class="govuk-radios" data-module="govuk-radios">
@@ -58,9 +67,15 @@
                 </div>
                 <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-imports-recovery-weight-2">
                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="imports-recovery-weight-amount">
-                        Enter the weight received (tonnes)
-                    </label>
+                    {% if data ['imports-code'] == "not-applicable" %}
+                    Did the laboratory receive the same waste quantity as stated on the Annex VII?
+                {% else %}
+                  <label class="govuk-label" for="imports-recovery-weight-amount">
+                    Enter the weight received (tonnes)
+                  </label>
+                {% endif %}  
+                    
+
                     <input class="govuk-input govuk-!-width-one-third" id="imports-recovery-weight-amounte" name="imports-recovery-weight-amount" type="number">
                   </div>
                 </div>

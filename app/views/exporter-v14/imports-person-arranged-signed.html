@@ -3,7 +3,7 @@
 {% extends "../layouts/layout-importer-current.html" %}
 
 {% block pageTitle %}
-  Do you want to add your own reference to this import?
+  Has the person who arranged the shipment signed the declaration?
 {% endblock %}
 
 {% block beforeContent %}
@@ -45,32 +45,49 @@
                   Your Annex VII must be signed and dated in block 12. 
                 </div>
 
+                <div class="govuk-inset-text">
+                  You told us the person who arranged the shipment was <b>Philip Franc</b> 
+                </div>
+
                 <div class="govuk-!-padding-bottom-2"></div>
 
                 <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="imports-person-signed" name="imports-person-signed" type="radio" value="yes" data-aria-controls="conditional-contact" {{ checked("imports-person-signed", "yes") }}>
-                    <label class="govuk-label govuk-radios__label" for="imports-person-signed-num">
+                    <label class="govuk-label govuk-radios__label" for="imports-person-signed">
                     Yes
                     </label>
                 </div>
-                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
-                    <div class="govuk-form-group">
-                    <label class="govuk-label" for="imports-person-signed">
-                        Enter the person's name
-                    </label>
-                    <input class="govuk-input govuk-!-width-two-thirds" id="imports-enter-person-signed" name="imports-enter-person-signed" type="text" value="{{data['imports-enter-person-signed']}}">
-                    </div>  
-                </div>
+                
                 <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="imports-person-signed-2" name="imports-person-signed" type="radio" value="no" data-aria-controls="conditional-contact-2" {{ checked("imports-person-signed", "no") }}>
                     <label class="govuk-label govuk-radios__label" for="imports-person-signed-2">
-                    No
+                    No, a different person signed the declaration
                     </label>
                 </div>
+
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+                  <div class="govuk-form-group">
+                  <label class="govuk-label" for="imports-person-signed-2">
+                      Enter the person's full name
+                  </label>
+                  <input class="govuk-input govuk-!-width-two-thirds" id="imports-enter-person-signed" name="imports-enter-person-signed" type="text" value="{{data['imports-enter-person-signed']}}">
+                  </div>  
                 </div>
 
-            </fieldset>
+                <div class="govuk-radios__divider">or</div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="where-do-you-live-6" name="where-do-you-live" type="radio" value="abroad">
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live-6">
+                    There's no signature
+                  </label>
+                </div>
+
+                </div>
+
+              </fieldset>
+
             </div>
             </div>
 

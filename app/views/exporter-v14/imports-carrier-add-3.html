@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-importer-current.html" %}
 
 {% block pageTitle %}
-  Enter the additional waste carrier’s details
+Enter the third waste carrier’s details
 {% endblock %}
 
 {% block content %}
@@ -11,38 +11,33 @@
         <form class="form" method="post">
 
     <h1 class="govuk-heading-l">
-      Enter the additional waste carrier’s details
+        Enter the third waste carrier’s details
     </h1>
 
-      <fieldset class="govuk-fieldset">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="imports-third-carrier-org-name">
+          Organisation name <span class="govuk-visually-hidden">line 1 of 2</span>
+        </label>
+        <input class="govuk-input govuk-!-width-three-quarters" id="imports-third-carrier-org-name" name="imports-third-carrier-org-name" type="text" value="{{data['imports-third-carrier-org-name']}}">
+      </div>
 
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="additonalcarrier">
-            Organisation name <span class="govuk-visually-hidden">line 1 of 2</span>
-          </label>
-          <input class="govuk-input govuk-!-width-three-quarters" id="imports-additonalcarrier" name="imports-additonalcarrier" type="text" value="">
-        </div>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="imports-third-carrier-address">
+          Address
+        </label>
+        <textarea class="govuk-textarea" id="imports-third-carrier-address" name="imports-third-carrier-address" rows="5" autocomplete="street-address" value="{{data['imports-third-carrier-address']}}"></textarea>
+      </div>
 
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="imports-additonal-carrier-address">
-            Address
-          </label>
-          <textarea class="govuk-textarea" id="imports-additonal-carrier-address" name="imports-additonal-carrier-address" rows="5" autocomplete="street-address"></textarea>
-        </div>
+    <h2 class="govuk-label-wrapper">
+        <label class="govuk-label">
+        Country
+        </label>
+    </h2>
+    <div id="third-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['imports-third-carrier-typeahead'] }}">
+    </div>
 
-        <h2 class="govuk-label-wrapper">
-          <label class="govuk-label">
-            Country
-          </label>
-        </h2>
-        <div id="third-carrier-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="">
-        </div>
-
-</fieldset>
-
-<br>
-<br>
-
+    <br>
+    <br>
 
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
@@ -52,37 +47,39 @@
       </h1>
     </legend>
     <div class="govuk-form-group">
-      <label class="govuk-label" for="imports-additonal-carrier-contact-name">
+      <label class="govuk-label" for="imports-third-carrier-contact-name">
         Full name
       </label>
-      <input class="govuk-input govuk-!-width-three-quarters" id="imports-additonal-carrier-contact-name" name="imports-additonal-carrier-contact-name" type="text">
+      <input class="govuk-input govuk-!-width-three-quarters" id="imports-third-carrier-contact-name" name="imports-third-carrier-contact-name" type="text" value="{{data['imports-third-carrier-contact-name']}}">
     </div>
 
     <div class="govuk-form-group">
-      <label class="govuk-label" for="imports-first-carrier-email">
+      <label class="govuk-label" for="imports-third-carrier-email">
         Email address
       </label>
-      <input class="govuk-input govuk-!-width-one-half" id="imports-additonal-carrier-email" name="imports-additonal-carrier-email" type="email" value="">
+      <input class="govuk-input govuk-!-width-one-half" id="imports-third-carrier-email" name="imports-third-carrier-email" type="email" value="{{data['imports-third-carrier-email']}}">
     </div>
 
     <div class="govuk-form-group">
-      <label class="govuk-label" for="imports-additonal-carrier-phone">
+      <label class="govuk-label" for="imports-third-carrier-phone">
         Phone number
       </label>
-      <div id="contact-hint" class="govuk-hint">
+      <!-- <div id="contact-hint" class="govuk-hint">
          Include the country code for international numbers.
-      </div>
-      <input class="govuk-input govuk-!-width-one-third" id="imports-additonal-carrier-phone" name="imports-additonal-carrier-phone" type="tel" value="">
+      </div> -->
+      <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="imports-third-carrier-phone-code" name="imports-third-carrier-phone-code" type="tel" value="0049 {{data['imports-third-carrier-phone-code']}}">
+      <input class="govuk-input govuk-!-width-one-third" id="imports-third-carrier-phone" name="imports-third-carrier-phone" type="tel" value="{{data['imports-third-carrier-phone']}}">
     </div>
 
     <div class="govuk-form-group">
-      <label class="govuk-label" for="imports-additonal-carrier-fax">
+      <label class="govuk-label" for="imports-third-carrier-fax">
         Fax number (optional)
       </label>
-      <div id="contact-hint" class="govuk-hint">
+      <!-- <div id="contact-hint" class="govuk-hint">
          Include the country code for international numbers.
-      </div>
-      <input class="govuk-input govuk-!-width-one-third" id="imports-additonal-carrier-fax" name="imports-additonal-carrier-fax" type="tel" value="">
+      </div> -->
+      <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="imports-third-carrier-fax-code" name="imports-third-carrier-fax-code" type="tel" value="0049 {{data['imports-third-carrier-fax-code']}}">
+      <input class="govuk-input govuk-!-width-one-third" id="imports-third-carrier-fax" name="imports-third-carrier-fax" type="tel" value="{{data['imports-third-carrier-fax']}}">
     </div>
 
 

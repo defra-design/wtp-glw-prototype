@@ -1,7 +1,7 @@
 {% extends "../layouts/layout-importer-current.html" %}
 
 {% block pageTitle %}
-  Who is the first waste carrier?
+  Who was the first waste carrier?
 {% endblock %}
 
 {% block content %}
@@ -15,17 +15,17 @@
     </h1>
 
       <div class="govuk-form-group">
-        <label class="govuk-label" for="first-carrier-org-name">
+        <label class="govuk-label" for="imports-first-carrier-org-name">
           Organisation name <span class="govuk-visually-hidden">line 1 of 2</span>
         </label>
-        <input class="govuk-input govuk-!-width-three-quarters" id="first-carrier-org-name" name="first-carrier-org-name" type="text" value="{{data['imports-first-carrier-org-name']}}">
+        <input class="govuk-input govuk-!-width-three-quarters" id="imports-first-carrier-org-name" name="imports-first-carrier-org-name" type="text" value="{{data['imports-first-carrier-org-name']}}">
       </div>
 
       <div class="govuk-form-group">
-        <label class="govuk-label" for="first carrier-address">
+        <label class="govuk-label" for="imports-first carrier-address">
           Address
         </label>
-        <textarea class="govuk-textarea" id="first-carrier-address" name="first-carrier-address" rows="5" autocomplete="street-address" value="{{data['imports-first-carrier-address']}}"></textarea>
+        <textarea class="govuk-textarea" id="imports-first-carrier-address" name="imports-first-carrier-address" rows="5" autocomplete="street-address" value="{{data['imports-first-carrier-address']}}"></textarea>
       </div>
 
   <h2 class="govuk-label-wrapper">
@@ -46,37 +46,39 @@
       </h1>
     </legend>
     <div class="govuk-form-group">
-      <label class="govuk-label" for="first-carrier-contact-name">
+      <label class="govuk-label" for="imports-first-carrier-contact-name">
         Full name
       </label>
-      <input class="govuk-input govuk-!-width-three-quarters" id="first-carrier-contact-name" name="first-carrier-contact-name" type="text" value="{{data['imports-first-carrier-contact-name']}}">
+      <input class="govuk-input govuk-!-width-three-quarters" id="imports-first-carrier-contact-name" name="imports-first-carrier-contact-name" type="text" value="{{data['imports-first-carrier-contact-name']}}">
     </div>
 
     <div class="govuk-form-group">
-      <label class="govuk-label" for="first-carrier-email">
+      <label class="govuk-label" for="imports-first-carrier-email">
         Email address
       </label>
-      <input class="govuk-input govuk-!-width-one-half" id="first-carrier-email" name="first-carrier-email" type="email" value="{{data['imports-first-carrier-email']}}">
+      <input class="govuk-input govuk-!-width-one-half" id="imports-first-carrier-email" name="imports-first-carrier-email" type="email" value="{{data['imports-first-carrier-email']}}">
     </div>
 
     <div class="govuk-form-group">
-      <label class="govuk-label" for="first-carrier-phone">
+      <label class="govuk-label" for="imports-first-carrier-phone">
         Phone number
       </label>
-      <div id="contact-hint" class="govuk-hint">
+      <!-- <div id="contact-hint" class="govuk-hint">
          Include the country code for international numbers.
-      </div>
-      <input class="govuk-input govuk-!-width-one-third" id="first-carrier-phone" name="first-carrier-phone" type="tel" value="{{data['imports-first-carrier-phone']}}">
+      </div> -->
+      <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="imports-first-carrier-phone-code" name="imports-first-carrier-phone-code" type="tel" value="0049 {{data['imports-first-carrier-phone-code']}}">
+      <input class="govuk-input govuk-!-width-one-third" id="imports-first-carrier-phone" name="imports-first-carrier-phone" type="tel" value="{{data['imports-first-carrier-phone']}}">
     </div>
 
     <div class="govuk-form-group">
-      <label class="govuk-label" for="first-carrier-fax">
+      <label class="govuk-label" for="imports-first-carrier-fax">
         Fax number (optional)
       </label>
-      <div id="contact-hint" class="govuk-hint">
+      <!-- <div id="contact-hint" class="govuk-hint">
          Include the country code for international numbers.
-      </div>
-      <input class="govuk-input govuk-!-width-one-third" id="first-carrier-fax" name="first-carrier-fax" type="tel" value="{{data['imports-first-carrier-fax']}}">
+      </div> -->
+      <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="imports-first-carrier-fax-code" name="imports-first-carrier-fax-code" type="tel" value="0049 {{data['imports-first-carrier-fax-code']}}">
+      <input class="govuk-input govuk-!-width-one-third" id="imports-first-carrier-fax" name="imports-first-carrier-fax" type="tel" value="{{data['imports-first-carrier-fax']}}">
     </div>
 
 
