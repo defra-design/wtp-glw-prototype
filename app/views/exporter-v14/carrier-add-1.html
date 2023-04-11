@@ -64,9 +64,10 @@
       <label class="govuk-label" for="first-carrier-phone">
         Phone number
       </label>
-      <div id="contact-hint" class="govuk-hint">
+      <!-- <div id="contact-hint" class="govuk-hint">
          Include the country code for international numbers.
-      </div>
+      </div> -->
+      <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="first-carrier-phone-code" name="first-carrier-phone-code" type="tel" value="0044 {{data['first-carrier-phone-code']}}">
       <input class="govuk-input govuk-!-width-one-third" id="first-carrier-phone" name="first-carrier-phone" type="tel" value="{{data['first-carrier-phone']}}">
     </div>
 
@@ -74,9 +75,10 @@
       <label class="govuk-label" for="first-carrier-fax">
         Fax number (optional)
       </label>
-      <div id="contact-hint" class="govuk-hint">
+      <!-- <div id="contact-hint" class="govuk-hint">
          Include the country code for international numbers.
-      </div>
+      </div> -->
+      <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="first-carrier-fax-code" name="first-carrier-fax-code" type="tel" value="0044 {{data['first-carrier-fax-code']}}">
       <input class="govuk-input govuk-!-width-one-third" id="first-carrier-fax" name="first-carrier-fax" type="tel" value="{{data['first-carrier-fax']}}">
     </div>
 

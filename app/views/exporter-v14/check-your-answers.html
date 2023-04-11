@@ -14,9 +14,18 @@
 
                   <h1 class="govuk-heading-l">Check this export</h1>
 
-                  <h2 class="govuk-heading-m">Your reference</h2>
-
                   <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key govuk-!-width-one-third">
+                        <h2 class="govuk-heading-m">Your reference</h2>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd> 
+                    </div>
+
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
                         Your own reference
@@ -37,9 +46,20 @@
                     </div>
                     </dl>
 
-                  <h2 class="govuk-heading-m">About the waste</h2>
+                  <!---------------------  ABOUT THE WASTE ----------------------------------------------------->
 
                   <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                    <div id="about-waste" class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key govuk-!-width-one-third">
+                        <h2 class="govuk-heading-m">About the waste</h2>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd> 
+                    </div>
+
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
                         Waste code
@@ -229,9 +249,21 @@
                     </div>
                   </dl>
 
-                  <h2 class="govuk-heading-m">Exporter and importer</h2>
+                  <!---------------------  EXPORTER AND IMPORTER ----------------------------------------------------->
+
 
                   <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                    <div id="exporter-importer" class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key govuk-!-width-one-third">
+                        <h2 class="govuk-heading-m">Exporter and importer</h2>
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                      </dd>
+                    </div>
+
                     <div class="govuk-summary-list__row">
                       <dt class="govuk-summary-list__key">
                         Exporter details
@@ -269,9 +301,22 @@
                     </div>
                     </dl>
 
-                    <h2 class="govuk-heading-m">Journey of waste</h2>
+                    <!---------------------  JOURNEY OF WASTE ----------------------------------------------------->
 
                     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                      <div id="waste-journey" class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key govuk-!-width-one-third">
+                          <h2 class="govuk-heading-m">Journey of waste</h2>
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                        </dd> 
+                      </div>
+
+                      <!--------- First waste carrier ------------------->
+
                       <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                           First waste carrier
@@ -290,63 +335,88 @@
                             Change<span class="govuk-visually-hidden"> first waste carrier</span>
                           </a>
                         </dd>
-                      </div>
+                      </div>   
+
                       <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                           First carrier transport waste
                         </dt>
                         <dd class="govuk-summary-list__value">
-                          {% if data ['transport'] == "Shipping" %}
+                          {% if data ['transport'] == "shipping" %}
                           <p class="govuk-body">Shipping Container</p>
                             <p class="govuk-body">{{ data['transport-shipping'] }}</p>
+                            <p class="govuk-body">{{ data['shipping-reg'] }}</p>
 
-                            {% elseif data ['transport'] == "Trailer" %}
+                            {% elseif data ['transport'] == "trailer" %}
                             <p class="govuk-body">Trailer</p>
-                              <p class="govuk-body">{{ data['transport-trailer'] }}</p>
+                              <p class="govuk-body">{{ data['trailer-reg'] }}</p>
+                              <p class="govuk-body">{{ data['trailer-number'] }}</p>
 
-                              {% elseif data ['transport'] == "ISO Tank" %}
-                              <p class="govuk-body">Sea</p>
-                                <p class="govuk-body">{{ data['transport-iso-tank'] }}</p>
-
-                              {% elseif data ['transport'] == "Bulk vessel" %}
+                              {% elseif data ['transport'] == "bulk-vessel" %}
                               <p class="govuk-body">Bulk vessel</p>
-                                <p class="govuk-body">{{ data['transport-bulk-vessel'] }}</p>
+                                <p class="govuk-body">{{ data['transport-vessel'] }}</p>
 
                             {% endif %}
                         </dd>
                         <dd class="govuk-summary-list__actions">
-                          <a class="govuk-link" href="carrier-transport-1">
+                          <a class="govuk-link" href="carrier-transport-1b">
                             Change<span class="govuk-visually-hidden"> first carrier transport waste</span>
                           </a>
                         </dd>
                       </div>
+
+                      <!--------- Second waste carrier ------------------->
+
                       <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                          Additional waste carriers
+                          Second waste carrier
                         </dt>
                         <dd class="govuk-summary-list__value">
-                          {% if data ['add-second-carrier'] == "Yes" %}
-                          <p class="govuk-body">{{ data['additonalcarrier'] }}</p>
-                          <p class="govuk-body">{{ data['additonal-carrier-address'] }}</p>
-                          <p class="govuk-body">{{ data['third-carrier-typeahead'] }}</p>
-                          <p class="govuk-body">{{ data['additonal-carrier-contact-name'] }}</p>
-                          <p class="govuk-body">{{ data['additonal-carrier-email'] }}</p>
-                          <p class="govuk-body">{{ data['additonal-carrier-phone'] }}</p>
-                          <p class="govuk-body">{{ data['additonal-carrier-fax'] }}</p>
-
-                          {% elseif data ['add-second-carrier'] == "No" %}
-                          <p class="govuk-body">Not provided</p>
-                          {% endif %}
-
-
-
+                          <p class="govuk-body">{{ data['second-carrier-org-name'] }}</p>
+                          <p class="govuk-body">{{ data['second-carrier-address'] }}</p>
+                          <p class="govuk-body">{{ data['second-carrier-typeahead'] }}</p>
+                          <p class="govuk-body">{{ data['second-carrier-contact-name'] }}</p>
+                          <p class="govuk-body">{{ data['second-carrier-email'] }}</p>
+                          <p class="govuk-body">{{ data['second-carrier-phone'] }}</p>
+                          <p class="govuk-body">{{ data['second-carrier-fax'] }}</p>
                         </dd>
                         <dd class="govuk-summary-list__actions">
-                          <a class="govuk-link" href="carrier-check">
-                            Change<span class="govuk-visually-hidden"> additional waste carriers</span>
+                          <a class="govuk-link" href="carrier-add-2">
+                            Change<span class="govuk-visually-hidden"> second waste carrier</span>
+                          </a>
+                        </dd>
+                      </div>   
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Second carrier transport waste
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {% if data ['transport-2'] == "shipping" %}
+                          <p class="govuk-body">Shipping Container</p>
+                            <p class="govuk-body">{{ data['transport-shipping-2'] }}</p>
+                            <p class="govuk-body">{{ data['shipping-reg-2'] }}</p>
+
+                            {% elseif data ['transport-2'] == "trailer" %}
+                            <p class="govuk-body">Trailer</p>
+                              <p class="govuk-body">{{ data['trailer-reg-2'] }}</p>
+                              <p class="govuk-body">{{ data['trailer-number-2'] }}</p>
+
+                              {% elseif data ['transport-2'] == "bulk-vessel" %}
+                              <p class="govuk-body">Bulk vessel</p>
+                                <p class="govuk-body">{{ data['transport-vessel-2'] }}</p>
+
+                            {% endif %}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="carrier-transport-2b">
+                            Change<span class="govuk-visually-hidden"> first carrier transport waste</span>
                           </a>
                         </dd>
                       </div>
+
+                      <!--------- Waste collection details -------------------> 
+
                       <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                           Waste collection details
@@ -403,10 +473,20 @@
                       </div>
                       </dl>
 
-
-                      <h2 class="govuk-heading-m">Treatment of waste</h2>
+                      <!---------------------  TREATMENT OF WASTE ----------------------------------------------------->
 
                       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                        <div id="waste-treatment" class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+                            <h2 class="govuk-heading-m">Treatment of waste</h2>
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                          </dd> 
+                        </div>
+
                         <div class="govuk-summary-list__row">
                           <dt class="govuk-summary-list__key">
                             {% if data ['code'] == "not-applicable" %} Laboratory name
@@ -446,6 +526,8 @@
                         </div>
                   </dl>
 
+                  <!--------- DECLARATION ------------------->
+
                   <h2 class="govuk-heading-m">Now submit export</h2>
 
                   <p class="govuk-body">By submitting this export, you confirm that:</p>
@@ -467,11 +549,11 @@
 
                   {% endif %}
 
-
-
                   <form action="confirmation" method="post" novalidate>
 
                     <input type="hidden" name="answers-checked" value="true">
+
+                    <div class="govuk-!-padding-bottom-6"></div>
 
                     <button class="govuk-button" data-module="govuk-button">
                       Confirm and submit
