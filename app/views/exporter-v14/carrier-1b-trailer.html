@@ -1,0 +1,64 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  How will the first waste carrier transport the waste?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" method="post">
+
+        <div class="govuk-form-group">
+        
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    Trailer details
+                </h1>
+                </legend>
+
+                <p class="govuk-hint govuk-!-margin-bottom-6">If you do not know these details yet, leave them blank and continue.</p>
+
+                <!-- VEHICLE REGISTRATION -->
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label" for="trailer-reg">
+                        Enter the vehicle registration
+                    </label>
+<!--                     <div id="vehicle-reg-number-hint" class="govuk-hint">
+                        For the vehicle collecting the trailer 
+                    </div> -->
+                    <input class="govuk-input govuk-input--width-10" id="trailer-reg" name="trailer-reg" type="text" spellcheck="false" aria-describedby="trailer-reg-hint" inputmode="numeric" value="{{data['trailer-reg']}}">
+                </div>
+
+                <!-- TRAILER NUMBER -->
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-label" for="trailer-number">
+                      Enter the trailer number (optional)
+                  </label>
+<!--                   <div id="trailer-number-hint" class="govuk-hint">
+                      You must update this when the waste is collected
+                  </div> -->
+                  <input class="govuk-input govuk-input--width-10" id="trailer-number" name="trailer-number" type="text" value="{{data['trailer-number']}}">
+              </div>
+
+
+            </fieldset>
+        </div>
+
+      {{ govukButton({
+        text: 'Save and continue'
+      }) }}
+
+      {% include "./includes/return-to-link.html" %}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  How will the first waste carrier transport the waste?
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" method="post">
+
+        <div class="govuk-form-group">
+        
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    Shipping container details
+                </h1>
+                </legend>
+
+                <p class="govuk-hint govuk-!-margin-bottom-6">If you do not know these details yet, leave them blank and continue.</p>
+
+                <!-- SHIPPING CONTAINER NUMBER -->
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label" for="container-number">
+                        Enter the shipping container number
+                    </label>
+                  <!--
+                    <div id="container-number-hint" class="govuk-hint">
+                        You must update this when the waste is collected
+                    </div> 
+                  -->
+                    <input class="govuk-input govuk-!-width-two-thirds" id="transport-ship-3" name="transport-shipping-3" type="text" value="{{data['transport-shipping-3']}}">
+                </div>
+
+                <!-- VEHICLE REGISTRATION -->
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label" for="v-reg">
+                        Enter the vehicle registration (optional)
+                    </label>
+                  <!--
+                    <div id="vehicle-reg-hint" class="govuk-hint">
+                        For the vehicle collecting the container 
+                    </div> 
+                  -->
+                    <input class="govuk-input govuk-input--width-10" id="shipping-reg-3" name="shipping-reg-3" type="text" spellcheck="false" aria-describedby="shipping-reg-hint" inputmode="numeric" value="{{data['shipping-reg-3']}}">
+                </div>
+
+            </fieldset>
+        </div>
+
+      {{ govukButton({
+        text: 'Save and continue'
+      }) }}
+
+      {% include "./includes/return-to-link.html" %}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
