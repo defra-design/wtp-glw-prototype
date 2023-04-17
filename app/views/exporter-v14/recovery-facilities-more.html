@@ -1,0 +1,58 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  WWill the waste go to more than one recovery facility?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="recovery-more-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Will the waste go to more than one recovery facility?
+            </h1>
+          </legend>
+          <div id="recovery-more-hint" class="govuk-hint">
+            This includes for storage or processing.
+          </div>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="recovery-more" name="recovery-more" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="recovery-more">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="recovery-more-2" name="recovery-more" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="recovery-more-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-button-group">
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+      </div>
+
+    </form>
+
+      <!-- {{ govukButton({
+        text: 'Continue'
+      }) }}
+ -->
+      {% include "./includes/return-to-link.html" %}
+        
+
+    </div>
+  </div>
+
+{% endblock %}

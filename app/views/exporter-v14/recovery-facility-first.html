@@ -1,0 +1,106 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  First recovery facility details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+            <form class="form" method="post">
+
+          <h1 class="govuk-heading-l">
+            First recovery facility details
+          </h1>
+
+            <div class="govuk-form-group">
+            <label class="govuk-label" for="first-recovery-name">
+                Recovery facility name
+              <span class="govuk-visually-hidden">line 1 of 2</span>
+            </label>
+            <input class="govuk-input govuk-!-width-three-quarters" id="first-recovery-name" name="first-recovery-name" type="text" value="{{data['first-recovery-name']}}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="first-recovery-address">
+              Address
+            </label>
+            <textarea class="govuk-textarea" id="first-recovery-address" name="first-recovery-address" rows="5" autocomplete="street-address">{{ data['first-recovery-address'] }}</textarea>
+          </div>
+
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label">
+              Country
+            </label>
+            <div id="first-recovery-country-hint" class="govuk-hint">
+              We’ll also use this as the importing country.
+            </div>
+          </h2>
+          <div id="first-recovery-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['first-recovery-typeahead'] }}">
+          </div>
+
+          <div class="govuk-!-padding-bottom-6"></div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  Contact details
+                </h1>
+              </legend>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="first-recovery-full-name">
+                  Full name
+                </label>
+                <input class="govuk-input govuk-!-width-three-quarters" id="first-recovery-full-name" name="first-recovery-full-name" type="text" value="{{data['first-recovery-full-name']}}">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="first-recovery-email">
+                  Email address
+                </label>
+                <input class="govuk-input govuk-!-width-one-half" id="first-recovery-email" name="first-recovery-email" type="email" value="{{data['first-recovery-email']}}">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="first-recovery-phone">
+                  Phone number
+                </label>
+                <!-- <div id="contact-hint" class="govuk-hint">
+                   Include the country code for international numbers.
+                </div> -->
+                <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="first-recovery-phone-code" name="first-recovery-phone-code" type="tel" value="0049{{data['first-recovery-phone-code']}}">
+                <input class="govuk-input govuk-!-width-one-third" id="first-recovery-phone" name="first-recovery-phone" type="tel" value=" {{data['first-recovery-phone']}}">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="first-recovery-fax">
+                  Fax number (optional)
+                </label>
+                <!-- <div id="contact-hint" class="govuk-hint">
+                   Include the country code for international numbers.
+                </div> -->
+                <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="first-recovery-fax-code" name="first-recovery-fax-code" type="tel" value="0049{{data['first-recovery-fax-code']}}">
+                <input class="govuk-input govuk-!-width-one-third" id="first-recovery-fax" name="first-recovery-fax" type="tel" value="{{data['first-recovery-fax']}}">
+              </div>
+
+              <div class="govuk-!-padding-bottom-2"></div>
+
+
+            </fieldset>
+          </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+        {% include "./includes/return-to-link.html" %}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

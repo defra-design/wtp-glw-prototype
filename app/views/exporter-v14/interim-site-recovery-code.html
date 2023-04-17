@@ -1,0 +1,55 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+Interim site - What is the recovery code?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="">
+
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    What is the recovery code?
+                </h1>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="interim-rcode" name="interim-rcode" type="radio" value="R12">
+                  <label class="govuk-label govuk-radios__label" for="interim-rcode">
+                    <b>R12:</b> Exchange of wastes for submission to any of the operations numbered R01 to R11 
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="interim-rcode-2" name="interim-rcode" type="radio" value="R13">
+                  <label class="govuk-label govuk-radios__label" for="interim-rcode-2">
+                    <b>R13:</b> Storage of wastes pending any of the operations numbered R01 to R12 (excluding temporary storage, pending collection, on the site where it is produced)
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="govuk-button-group">
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </div>
+    
+        </form>
+
+      <!-- {{ govukButton({
+        text: 'Continue'
+      }) }} -->
+
+      {% include "./includes/return-to-link.html" %}
+        
+
+    </div>
+  </div>
+
+{% endblock %}
