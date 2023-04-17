@@ -1,0 +1,41 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  What is the recovery code?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+        <div class="govuk-form-group">
+
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l">
+              What is the recovery code?
+            </label>
+          </h1>
+          <div id="rcode-first-typeahead" class="govuk-hint">
+            Choose from the list or start typing
+          </div>
+          <div id="first-recovery-operation-typeahead-container" data-default-value="{{ data['first-recovery-operation-typeahead'] }}">
+          </div>
+
+        </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+        {% include "./includes/return-to-link.html" %}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

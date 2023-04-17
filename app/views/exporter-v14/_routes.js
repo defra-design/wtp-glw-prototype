@@ -1745,20 +1745,10 @@ router.post('/carrier-collect-address-manual', function(req, res) {
     res.redirect('waste-generator');
 })
 
-//-----------------------------------------------------------
+//---------------- RECOVERY LAB OR INTERIM -------------------------------------------
 
 
 // recovery-facility-laboratory
-router.post('/waste-treated', function(req, res) {
-    req.session.data['recovery-facility-or-laboratory-status'] = "Completed";
-
-    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-        res.redirect('check-your-answers');
-    } else {
-        res.redirect('recovery-facility-laboratory');
-    }
-})
-
 router.post('/recovery-facility-laboratory', function(req, res) {
     req.session.data['recovery-facility-or-laboratory-status'] = "Completed";
 
@@ -1768,6 +1758,7 @@ router.post('/recovery-facility-laboratory', function(req, res) {
         res.redirect('recovery-operation');
     }
 })
+
 
 // recovery-operation
 router.post('/recovery-operation', function(req, res) {
@@ -1780,6 +1771,114 @@ router.post('/recovery-operation', function(req, res) {
     }
 })
 
+
+// interim-site
+router.post('/interim-site', function(req, res) {
+    req.session.data['interim-site-status'] = "Completed";
+
+    if (req.session.data['interim-site'] == 'yes') {
+        res.redirect('interim-site-details');
+    } else if (req.session.data['interim-site'] == 'no') {
+        res.redirect('recovery-facilities-more');
+    }
+    
+})
+
+
+// interim-site-details
+router.post('/interim-site-details', function(req, res) {
+    req.session.data['interim-site-details-status'] = "Completed";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('interim-site-recovery-code');
+    }
+})
+
+
+// interim-site-recovery-code
+router.post('/interim-site-recovery-code', function(req, res) {
+    req.session.data['interim-site-recovery-code-status'] = "Completed";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('recovery-facilities-more');
+    }
+})
+
+
+// recovery-facilities-more
+router.post('/recovery-facilities-more', function(req, res) {
+
+    if (req.session.data['recovery-more'] == 'yes') {
+        res.redirect('recovery-facility-first');
+    } else if (req.session.data['recovery-more'] == 'no') {
+        res.redirect('recovery-facility-laboratory');
+    }
+    
+})
+
+
+// recovery-facility-first
+router.post('/recovery-facility-first', function(req, res) {
+    req.session.data['recovery-facility-first-status'] = "Completed";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('recovery-code-first');
+    }
+})
+
+
+// recovery-code-first
+router.post('/recovery-code-first', function(req, res) {
+    req.session.data['recovery-code-first-status'] = "Completed";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('recovery-facility-second');
+    }
+})
+
+
+// recovery-facility-second
+router.post('/recovery-facility-second', function(req, res) {
+    req.session.data['recovery-facility-second-status'] = "Completed";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('recovery-code-second');
+    }
+})
+
+// recovery-code-second
+router.post('/recovery-code-second', function(req, res) {
+    req.session.data['recovery-code-second-status'] = "Completed";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('recovery-facilities');
+    }
+})
+
+
+// recovery-facilities
+router.post('/recovery-facilities', function(req, res) {
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('prenotify');
+    }
+})
+
+
 //-----------------------------------------------------------
 
 // waste-codes-and-description
@@ -1788,9 +1887,11 @@ router.post('/waste-codes-and-description', function(req, res) {
         res.redirect('check-your-answers');
     } else {
         if (req.session.data['code'] == 'not-applicable') {
+            req.session.data['usual-description-of-the-waste-status'] = "In Progress";
             res.redirect('ec-code-2');
           } else {
-              res.redirect('ec-code');
+            req.session.data['usual-description-of-the-waste-status'] = "In Progress";
+            res.redirect('ec-code');
           }
     }
 })
@@ -1798,8 +1899,8 @@ router.post('/waste-codes-and-description', function(req, res) {
 //-----------------------------------------------------------
 
 router.post('/national-code', function(req, res) {
-    //req.session.data['usual-description-of-the-waste-status'] = "Completed";
-    req.session.data['usual-description-of-the-waste-status'] = "In Progress";
+    req.session.data['usual-description-of-the-waste-status'] = "Completed";
+    //req.session.data['usual-description-of-the-waste-status'] = "In Progress";
 
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
@@ -2115,6 +2216,7 @@ router.get('/template-carrier-check', function (req, res) {
 
   //------ EWC code counter
   router.post('/ec-code', function(req, res) {
+
           if(req.session.data['ec-code']=='Yes'){
             if(typeof req.session.data['code-count'] == "undefined"){
               req.session.data['code-count'] = 0;

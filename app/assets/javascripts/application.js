@@ -177,6 +177,40 @@ if ($('#recovery-operation-typeahead-container').length > 0) {
   })
 }
 
+// Part of the Interim site journey
+if ($('#first-recovery-operation-typeahead-container').length > 0) {
+  element = document.querySelector('#first-recovery-operation-typeahead-container')
+  id = 'first-recovery-operation-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: recoveryOperation,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}
+
+// Part of the Interim site journey
+if ($('#second-recovery-operation-typeahead-container').length > 0) {
+  element = document.querySelector('#second-recovery-operation-typeahead-container')
+  id = 'second-recovery-operation-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: recoveryOperation,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}
+
 // D-code autocomplete
 const dCode = [
   'D1: Deposit into or onto land',
@@ -2185,6 +2219,40 @@ if ($('#export-dispatch-typeahead-container').length > 0) {
 if ($('#interim-site-typeahead-container').length > 0) {
   element = document.querySelector('#interim-site-typeahead-container')
   id = 'interim-site-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: countryList,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}
+
+// First recovery autocomplete
+if ($('#first-recovery-typeahead-container').length > 0) {
+  element = document.querySelector('#first-recovery-typeahead-container')
+  id = 'first-recovery-typeahead' // To match it to the existing <label>.
+
+  accessibleAutocomplete ({
+    element: element,
+    defaultValue: element.getAttribute('data-default-value'),
+    id: id,
+    name: id,
+    source: countryList,
+    minLength: 1,
+    showAllValues: true,
+    dropdownArrow: () => ''
+  })
+}
+
+// Second recovery autocomplete
+if ($('#second-recovery-typeahead-container').length > 0) {
+  element = document.querySelector('#second-recovery-typeahead-container')
+  id = 'second-recovery-typeahead' // To match it to the existing <label>.
 
   accessibleAutocomplete ({
     element: element,

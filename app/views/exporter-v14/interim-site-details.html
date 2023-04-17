@@ -1,0 +1,103 @@
+{% extends "../layouts/layout-exporter-current.html" %}
+
+{% block pageTitle %}
+  Interim site details
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+            <form class="form" method="post">
+
+            <h1 class="govuk-heading-l">
+                Interim site details
+            </h1>
+
+            <div class="govuk-form-group">
+            <label class="govuk-label" for="interim-site-name">
+                Interim site name
+              <span class="govuk-visually-hidden">line 1 of 2</span>
+            </label>
+            <input class="govuk-input govuk-!-width-three-quarters" id="interim-site-name" name="interim-site-name" type="text" value="{{data['interim-site-name']}}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="interim-site-address">
+              Address
+            </label>
+            <textarea class="govuk-textarea" id="interim-site-address" name="interim-site-address" rows="5" autocomplete="street-address">{{ data['interim-site-address'] }}</textarea>
+          </div>
+
+          <h2 class="govuk-label-wrapper">
+            <label class="govuk-label">
+              Country
+            </label>
+          </h2>
+          <div id="interim-site-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['interim-site-typeahead'] }}">
+          </div>
+
+          <div class="govuk-!-padding-bottom-6"></div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  Contact details
+                </h1>
+              </legend>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="interim-site-full-name">
+                  Full name
+                </label>
+                <input class="govuk-input govuk-!-width-three-quarters" id="interim-site-full-name" name="interim-site-full-name" type="text" value="{{data['interim-site-full-name']}}">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="interim-site-email">
+                  Email address
+                </label>
+                <input class="govuk-input govuk-!-width-one-half" id="interim-site-email" name="interim-site-email" type="email" value="{{data['interim-site-email']}}">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="interim-site-phone">
+                  Phone number
+                </label>
+                <!-- <div id="contact-hint" class="govuk-hint">
+                   Include the country code for international numbers.
+                </div> -->
+                <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="interim-site-phone-code" name="interim-site-phone-code" type="tel" value="0049{{data['interim-site-phone-code']}}">
+                <input class="govuk-input govuk-!-width-one-third" id="interim-site-phone" name="interim-site-phone" type="tel" value=" {{data['interim-site-phone']}}">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="interim-site-fax">
+                  Fax number (optional)
+                </label>
+                <!-- <div id="contact-hint" class="govuk-hint">
+                   Include the country code for international numbers.
+                </div> -->
+                <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="interim-site-fax-code" name="interim-site-fax-code" type="tel" value="0049{{data['interim-site-fax-code']}}">
+                <input class="govuk-input govuk-!-width-one-third" id="interim-site-fax" name="interim-site-fax" type="tel" value="{{data['interim-site-fax']}}">
+              </div>
+
+              <div class="govuk-!-padding-bottom-2"></div>
+
+
+            </fieldset>
+          </div>
+
+        {{ govukButton({
+          text: 'Save and continue'
+        }) }}
+
+        {% include "./includes/return-to-link.html" %}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
