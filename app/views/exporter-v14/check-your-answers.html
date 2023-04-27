@@ -358,6 +358,7 @@
 
                             {% endif %}
                         </dd>
+
                         <dd class="govuk-summary-list__actions">
                           <a class="govuk-link" href="carrier-transport-1b">
                             Change<span class="govuk-visually-hidden"> first carrier transport waste</span>
@@ -366,6 +367,7 @@
                       </div>
 
                       <!--------- Second waste carrier ------------------->
+                      {% if data ['imports-carrier-add-2'] == "true" %}
 
                       <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
@@ -406,14 +408,19 @@
                               <p class="govuk-body">Bulk vessel</p>
                                 <p class="govuk-body">{{ data['transport-vessel-2'] }}</p>
 
-                            {% endif %}
+                          {% endif %}
                         </dd>
+
                         <dd class="govuk-summary-list__actions">
                           <a class="govuk-link" href="carrier-transport-2b">
                             Change<span class="govuk-visually-hidden"> first carrier transport waste</span>
                           </a>
                         </dd>
                       </div>
+
+                      {% else %}
+                      <div></div>
+                      {% endif %}
 
                       <!--------- Waste collection details -------------------> 
 
@@ -487,6 +494,46 @@
                           </dd> 
                         </div>
 
+                        <!------ Interim Facility  ------>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            Interim site
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            <p class="govuk-body">{{ data['interim-site-name'] }}</p>
+                            <p class="govuk-body">{{ data['interim-site-name-address'] }}</p>
+                            <p class="govuk-body">{{ data['interim-site-typeahead'] }}</p>
+                            <p class="govuk-body">{{ data['interim-site-full-name'] }}</p>
+                            <p class="govuk-body">{{ data['interim-site-email'] }}</p>
+                            <p class="govuk-body">{{ data['interim-site-phone'] }}</p>
+                            <p class="govuk-body">{{ data['interim-site-fax'] }}</p>
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="interim-site-details.html">
+                              Change<span class="govuk-visually-hidden"> interim site</span>
+                            </a>
+                          </dd>
+                        </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                           Interim recovery code
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            {% if data ['interim-rcode'] == "R12" %} R12: Exchange of wastes for submission to any of the operations numbered R01 to R11
+                            {% elif data ['interim-rcode'] == "R13"%} R13: Storage of wastes pending any of the operations numbered R01 to R12 (excluding temporary storage, pending collection, on the site where it is produced)
+                             {% endif %}  
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="interim-site-recovery-code.html">
+                              Change<span class="govuk-visually-hidden"> interim recovery code</span>
+                            </a>
+                          </dd>
+                        </div>
+
+                        <!------ Recovery Facility  ------>
+
                         <div class="govuk-summary-list__row">
                           <dt class="govuk-summary-list__key">
                             {% if data ['code'] == "not-applicable" %} Laboratory name
@@ -508,12 +555,12 @@
                             </a>
                           </dd>
                         </div>
+
                         <div class="govuk-summary-list__row">
                           <dt class="govuk-summary-list__key">
                             {% if data ['code'] == "not-applicable" %} Disposal code
                             {% else %} Recovery code
                              {% endif %}
-
                           </dt>
                           <dd class="govuk-summary-list__value">
                             <p class="govuk-body">{{ data['recovery-operation-typeahead'] }}</p>
@@ -524,6 +571,91 @@
                             </a>
                           </dd>
                         </div>
+
+                        <!------ First Recovery Facility  ------>
+
+                        {% if data ['recovery-facility-first-status'] == "Completed" %}
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            First recovery facility name
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            <p class="govuk-body">{{ data['first-recovery-name'] }}</p>
+                            <p class="govuk-body">{{ data['first-recovery-address'] }}</p>
+                            <p class="govuk-body">{{ data['first-recovery-typeahead'] }}</p>
+                            <p class="govuk-body">{{ data['first-recovery-full-name'] }}</p>
+                            <p class="govuk-body">{{ data['first-recovery-email'] }}</p>
+                            <p class="govuk-body">{{ data['first-recovery-phone'] }}</p>
+                            <p class="govuk-body">{{ data['first-recovery-fax'] }}</p>
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="recovery-facility-first">
+                              Change<span class="govuk-visually-hidden">First recovery facility</span>
+                            </a>
+                          </dd>
+                        </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            First recovery code
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            <p class="govuk-body">{{ data['first-recovery-operation-typeahead'] }}</p>
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="recovery-code-first.html">
+                              Change<span class="govuk-visually-hidden"> first recovery code</span>
+                            </a>
+                          </dd>
+                        </div>
+
+                        {% else %}
+                      <div></div>
+                      {% endif %}
+
+                      <!------ Second Recovery Facility  ------>
+                        
+                      {% if data ['recovery-facility-second-status'] == "Completed" %}
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Second recovery facility name
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          <p class="govuk-body">{{ data['second-recovery-name'] }}</p>
+                          <p class="govuk-body">{{ data['second-recovery-address'] }}</p>
+                          <p class="govuk-body">{{ data['second-recovery-typeahead'] }}</p>
+                          <p class="govuk-body">{{ data['second-recovery-full-name'] }}</p>
+                          <p class="govuk-body">{{ data['second-recovery-email'] }}</p>
+                          <p class="govuk-body">{{ data['second-recovery-phone'] }}</p>
+                          <p class="govuk-body">{{ data['second-recovery-fax'] }}</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="recovery-facility-second">
+                            Change<span class="govuk-visually-hidden">Second recovery facility</span>
+                          </a>
+                        </dd>
+                      </div>
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Second recovery code
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          <p class="govuk-body">{{ data['second-recovery-operation-typeahead'] }}</p>
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="recovery-code-second.html">
+                            Change<span class="govuk-visually-hidden"> second recovery code</span>
+                          </a>
+                        </dd>
+                      </div>
+
+                      {% else %}
+                    <div></div>
+                    {% endif %}
+
                   </dl>
 
                   <!--------- DECLARATION ------------------->
