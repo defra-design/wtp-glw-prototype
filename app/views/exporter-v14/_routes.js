@@ -1748,30 +1748,6 @@ router.post('/carrier-collect-address-manual', function(req, res) {
 //---------------- RECOVERY LAB OR INTERIM -------------------------------------------
 
 
-// recovery-facility-laboratory
-router.post('/recovery-facility-laboratory', function(req, res) {
-    req.session.data['recovery-facility-or-laboratory-status'] = "Completed";
-
-    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-        res.redirect('check-your-answers');
-    } else {
-        res.redirect('recovery-operation');
-    }
-})
-
-
-// recovery-operation
-router.post('/recovery-operation', function(req, res) {
-    req.session.data['recovery-operation-status'] = "Completed";
-
-    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-        res.redirect('check-your-answers');
-    } else {
-        res.redirect('prenotify');
-    }
-})
-
-
 // interim-site
 router.post('/interim-site', function(req, res) {
     req.session.data['interim-site-status'] = "Completed";
@@ -1870,6 +1846,30 @@ router.post('/recovery-code-second', function(req, res) {
 
 // recovery-facilities
 router.post('/recovery-facilities', function(req, res) {
+    req.session.data['recovery-facilities-status'] = "Completed";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('prenotify');
+    }
+})
+
+// recovery-facility-laboratory
+router.post('/recovery-facility-laboratory', function(req, res) {
+    req.session.data['recovery-facility-or-laboratory-status'] = "Completed";
+
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers');
+    } else {
+        res.redirect('recovery-operation');
+    }
+})
+
+
+// recovery-operation
+router.post('/recovery-operation', function(req, res) {
+    req.session.data['recovery-operation-status'] = "Completed";
 
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers');
@@ -2095,7 +2095,7 @@ router.get('/prenotify', function (req, res) {
       count++;
     }
 
-    if(req.session.data['recovery-facility-or-laboratory-status'] == "Completed" && req.session.data['recovery-operation-status'] == "Completed"){
+    if(req.session.data['interim-site-status'] == "Completed" && req.session.data['recovery-facilities-status'] == "Completed" && req.session.data['recovery-facility-or-laboratory-status'] == "Completed" && req.session.data['recovery-operation-status'] == "Completed" ){
       count++;
     }
 
@@ -2160,7 +2160,7 @@ if(req.session.data['imports-recovery-facility-or-laboratory-status'] == "Comple
 
 });
 
-
+//----------------------------------------------------------------------------------------------------------
 
 //------ carrier counter
   router.post('/carrier-add-3', function(req, res) {

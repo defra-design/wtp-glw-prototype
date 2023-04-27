@@ -116,13 +116,7 @@
                   </a>
               </span>
 
-              <!-- 
-                <span class="app-task-list__task-name">
-                <a href="quantity" aria-describedby="read-declaration-status">
-                  Quantity of waste
-                </a>
-              </span>
-             -->
+             <!---------- Sets the status tag ---------->
 
               {% if data['usual-description-of-the-waste-status'] == null or data['usual-description-of-the-waste-status'] == 'Not started' %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-export">Cannot start yet</strong>
@@ -302,7 +296,7 @@
               {% elseif data['recovery-facility-or-laboratory-status'] == null or data['recovery-facility-or-laboratory-status'] == 'Not started' %}
                 <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="recovery-facility-or-laboratory-status">Not started</strong>
 
-              {% elseif data['recovery-facility-or-laboratory-status'] == 'Completed' %}
+              {% elseif data['recovery-facility-or-laboratory-status'] == 'Completed' or data['recovery-facilities-status'] == 'Completed' %}
                 <strong class="govuk-tag app-task-list__tag" id="recovery-facility-or-laboratory-status">Completed</strong>
 
               {% endif %}
@@ -325,15 +319,49 @@
 
       </ol>
 
+      <!-------------------- For interim multiple recovery ----------------------->
+      
       {% if data['usual-description-of-the-waste-status'] == "Completed" and
       data['quantity-status'] == "Completed" and
       data['date-of-shipment-status'] == "Completed" and
       data['person-arranging-the-shipment-status'] == "Completed" and
       data['carrier-status'] == "Completed" and
       data['waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" and
-      data['countries-states-concerned-status'] == "Completed" and
-      data['recovery-facility-or-laboratory-status']  == "Completed" and
       data['point-of-exit-status']  == "Completed" and
+      data['countries-states-concerned-status'] == "Completed" and
+      data['interim-site-status']  == "Completed" and
+      data['interim-site-details-status']  == "Completed" and
+      data['interim-site-recovery-code-status']  == "Completed" and
+      data['recovery-code-first-status']  == "Completed" and
+      data['recovery-code-second-status']  == "Completed" and
+      data['recovery-facilities-status']  == "Completed" %}
+
+      <form action="check-your-answers" method="post" novalidate>
+
+        <input type="hidden" name="answers-checked" value="true">
+
+        <h2 class="govuk-heading-m">Final check</h2>
+
+        <button class="govuk-button" data-module="govuk-button">
+          Check this export
+        </button>
+
+      
+      <!-------------------- For interim single recovery ----------------------->
+
+      {% elseif 
+
+      data['usual-description-of-the-waste-status'] == "Completed" and
+      data['quantity-status'] == "Completed" and
+      data['date-of-shipment-status'] == "Completed" and
+      data['person-arranging-the-shipment-status'] == "Completed" and
+      data['carrier-status'] == "Completed" and
+      data['waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" and
+      data['point-of-exit-status']  == "Completed" and
+      data['countries-states-concerned-status'] == "Completed" and
+      data['interim-site-status']  == "Completed" and
+      data['recovery-facilities-status']  == "Completed" and
+      data['recovery-facility-or-laboratory-status']  == "Completed" and
       data['recovery-operation-status'] == "Completed" %}
 
       <form action="check-your-answers" method="post" novalidate>
@@ -346,7 +374,6 @@
           Check this export
         </button>
 
-        {% else %}
         
         {% endif %}
 
