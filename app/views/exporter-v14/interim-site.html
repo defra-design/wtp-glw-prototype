@@ -22,13 +22,13 @@
           </div>
           <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="interim-site" name="interim-site" type="radio" value="yes">
+              <input class="govuk-radios__input" id="interim-site" name="interim-site" type="radio" value="yes" {{ checked("interim-site", "yes") }}>
               <label class="govuk-label govuk-radios__label" for="interim-site">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="interim-site-2" name="interim-site" type="radio" value="no">
+              <input class="govuk-radios__input" id="interim-site-2" name="interim-site" type="radio" value="no" {{ checked("interim-site", "no") }}>
               <label class="govuk-label govuk-radios__label" for="interim-site">
                 No
               </label>
