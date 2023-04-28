@@ -87,7 +87,7 @@
                 <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="provide-waste-identification-details-status">Not started</strong>
 
               {% elif data['usual-description-of-the-waste-status'] == 'In Progress' %}
-                <strong class="govuk-tag app-task-list__tag" id="provide-waste-identification-details-status">In Progress</strong>
+                <strong class="govuk-tag govuk-tag--grey govuk-tag app-task-list__tag" id="provide-waste-identification-details-status">In Progress</strong>
 
               {% elif data['usual-description-of-the-waste-status'] == 'Completed' %}
                 <strong class="govuk-tag app-task-list__tag" id="provide-waste-identification-details-status">Completed</strong>
@@ -121,7 +121,7 @@
               {% if data['usual-description-of-the-waste-status'] == null or data['usual-description-of-the-waste-status'] == 'Not started' %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-export">Cannot start yet</strong>
 
-              {% elseif data['usual-description-of-the-waste-status'] == 'In Progress' or data['quantity-status'] == null or data['quantity-status'] == 'Not started' %}
+              {% elseif data['quantity-status'] == null %}
                 <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="quantity-status">Not started</strong>
                 
               {% elif data['quantity-status'] == 'Completed' %}
@@ -293,10 +293,13 @@
               data['quantity-status'] == null or data['quantity-status'] == 'Not started' %}
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-export">Cannot start yet</strong>
 
-              {% elseif data['recovery-facility-or-laboratory-status'] == null or data['recovery-facility-or-laboratory-status'] == 'Not started' %}
+              {% elseif data['interim-site-status'] == null %}
                 <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="recovery-facility-or-laboratory-status">Not started</strong>
 
-              {% elseif data['recovery-facility-or-laboratory-status'] == 'Completed' or data['recovery-facilities-status'] == 'Completed' %}
+                {% elseif data['recovery-operation-status'] == null or data['recovery-facilities-status'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey govuk-tag app-task-list__tag" id="recovery-facility-or-laboratory-status">In Progress</strong>
+
+              {% elseif data['recovery-operation-status'] == 'Completed' or data['recovery-facilities-status'] == 'Completed' %}
                 <strong class="govuk-tag app-task-list__tag" id="recovery-facility-or-laboratory-status">Completed</strong>
 
               {% endif %}
@@ -360,7 +363,6 @@
       data['point-of-exit-status']  == "Completed" and
       data['countries-states-concerned-status'] == "Completed" and
       data['interim-site-status']  == "Completed" and
-      data['recovery-facilities-status']  == "Completed" and
       data['recovery-facility-or-laboratory-status']  == "Completed" and
       data['recovery-operation-status'] == "Completed" %}
 

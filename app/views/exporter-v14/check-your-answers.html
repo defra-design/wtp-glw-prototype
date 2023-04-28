@@ -98,7 +98,6 @@
                       <dd class="govuk-summary-list__value">
                         {% if data ['ec-code'] == "Yes" %}
                         <p class="govuk-body">010101: wastes from mineral metalliferous excavation</p>
-                        <p class="govuk-body">010102: wastes from mineral non-metalliferous excavation</p>
 
                         {% elseif data ['ec-code'] == "No" %}
                         <p class="govuk-body">Not provided</p>
@@ -465,15 +464,15 @@
                           Countries waste will travel through
                         </dt>
                         <dd class="govuk-summary-list__value">
-                          {% if data ['transit'] == "yes" %}
+                          {% if data ['countries-state'] == "yes" %}
                           <p class="govuk-body">{{ data['transit-countries'] }}</p>
 
-                          {% elseif data ['transit'] == "no" %}
+                          {% elseif data ['countries-state'] == "no" %}
                           <p class="govuk-body">Not provided</p>
                           {% endif %}
                         </dd>
                         <dd class="govuk-summary-list__actions">
-                          <a class="govuk-link" href="countries-add-another">
+                          <a class="govuk-link" href="countries-states-concerned-new.html">
                             Change<span class="govuk-visually-hidden"> Transit countries</span>
                           </a>
                         </dd>
@@ -501,6 +500,7 @@
                             Interim site
                           </dt>
                           <dd class="govuk-summary-list__value">
+                            {% if data ['interim-site'] == "yes" %}
                             <p class="govuk-body">{{ data['interim-site-name'] }}</p>
                             <p class="govuk-body">{{ data['interim-site-name-address'] }}</p>
                             <p class="govuk-body">{{ data['interim-site-typeahead'] }}</p>
@@ -508,13 +508,20 @@
                             <p class="govuk-body">{{ data['interim-site-email'] }}</p>
                             <p class="govuk-body">{{ data['interim-site-phone'] }}</p>
                             <p class="govuk-body">{{ data['interim-site-fax'] }}</p>
+
+                            {% elseif data ['interim-site'] == "no" %}
+                            <p class="govuk-body">Not applicable</p>
+                            {% endif %}
+
                           </dd>
                           <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="interim-site-details.html">
+                            <a class="govuk-link" href="interim-site.html">
                               Change<span class="govuk-visually-hidden"> interim site</span>
                             </a>
                           </dd>
                         </div>
+
+                        {% if data ['interim-site-recovery-code-status'] == "Completed" %}
 
                         <div class="govuk-summary-list__row">
                           <dt class="govuk-summary-list__key">
@@ -531,6 +538,10 @@
                             </a>
                           </dd>
                         </div>
+
+                        {% else %}
+                      <div></div>
+                      {% endif %}
 
                         <!------ Recovery Facility  ------>
 
