@@ -2095,9 +2095,13 @@ router.get('/prenotify', function (req, res) {
       count++;
     }
 
-    if(req.session.data['interim-site-status'] == "Completed" && req.session.data['recovery-facilities-status'] == "Completed" && req.session.data['recovery-facility-or-laboratory-status'] == "Completed" && req.session.data['recovery-operation-status'] == "Completed" ){
+    if(req.session.data['interim-site-status'] == "Completed" && req.session.data['recovery-facilities-status'] == "Completed") {
       count++;
     }
+
+    else if(req.session.data['interim-site-status'] == "Completed" && req.session.data['recovery-facility-or-laboratory-status'] == "Completed" && req.session.data['recovery-operation-status'] == "Completed" ){
+        count++;
+      }
 
 		res.render(version+'/prenotify', {
 			'sectionscompleted' : count

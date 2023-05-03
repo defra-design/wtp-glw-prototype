@@ -87,7 +87,7 @@
                 <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="provide-waste-identification-details-status">Not started</strong>
 
               {% elif data['usual-description-of-the-waste-status'] == 'In Progress' %}
-                <strong class="govuk-tag govuk-tag--grey govuk-tag app-task-list__tag" id="provide-waste-identification-details-status">In Progress</strong>
+                <strong class="govuk-tag--yellow govuk-tag app-task-list__tag" id="provide-waste-identification-details-status">In Progress</strong>
 
               {% elif data['usual-description-of-the-waste-status'] == 'Completed' %}
                 <strong class="govuk-tag app-task-list__tag" id="provide-waste-identification-details-status">Completed</strong>
@@ -295,13 +295,10 @@
 
               {% elseif data['interim-site-status'] == null %}
                 <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="recovery-facility-or-laboratory-status">Not started</strong>
-
-                {% elseif data['recovery-operation-status'] == null or data['recovery-facilities-status'] == 'Not started' %}
-                <strong class="govuk-tag govuk-tag--grey govuk-tag app-task-list__tag" id="recovery-facility-or-laboratory-status">In Progress</strong>
+                
 
               {% elseif data['recovery-operation-status'] == 'Completed' or data['recovery-facilities-status'] == 'Completed' %}
                 <strong class="govuk-tag app-task-list__tag" id="recovery-facility-or-laboratory-status">Completed</strong>
-
               {% endif %}
 
             </li>
