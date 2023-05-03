@@ -22,10 +22,8 @@
         
           {% endif %}
 
-
-
             <div class="govuk-form-group">
-            <label class="govuk-label" for="first-carrier-name">
+            <label class="govuk-label" for="facility-name">
               {% if data ['code'] == "not-applicable" %} Laboratory name
               {% else %} Recovery facility name
                {% endif %}
@@ -38,7 +36,7 @@
             <label class="govuk-label" for="facility-address">
               Address
             </label>
-            <textarea class="govuk-textarea" id="facility-address" name="facility-address" rows="5" autocomplete="street-address">{{ data['facility-address'] }}</textarea>
+            <textarea class="govuk-textarea" id="facility-address" name="facility-address" rows="5" autocomplete="street-address" value="{{data['facility-address']}}"></textarea>
           </div>
 
           <h2 class="govuk-label-wrapper">
@@ -49,7 +47,7 @@
               We’ll also use this as the importing country.
             </div>
           </h2>
-          <div id="facility-or-lab-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{ data['facility-or-lab-typeahead'] }}">
+          <div id="facility-or-lab-typeahead-container" class="govuk-!-width-two-thirds govuk-!-margin-bottom-6" data-default-value="{{data['facility-or-lab-typeahead']}}">
           </div>
 
           <div class="govuk-form-group">
@@ -80,7 +78,7 @@
                 <!-- <div id="contact-hint" class="govuk-hint">
                    Include the country code for international numbers.
                 </div> -->
-                <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="facility-phone-code" name="facility-phone-code" type="tel" value="0049{{data['facility-phone-code']}}">
+                <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="facility-phone-code" name="facility-phone-code" type="tel" value="{{data['facility-phone-code']}}">
                 <input class="govuk-input govuk-!-width-one-third" id="facility-phone" name="facility-phone" type="tel" value=" {{data['facility-phone']}}">
               </div>
 
@@ -91,12 +89,11 @@
                 <!-- <div id="contact-hint" class="govuk-hint">
                    Include the country code for international numbers.
                 </div> -->
-                <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="facility-fax-code" name="facility-fax-code" type="tel" value="0049{{data['facility-fax-code']}}">
+                <input class="govuk-input govuk-input--width-4 govuk-!-margin-right-2" id="facility-fax-code" name="facility-fax-code" type="tel" value="{{data['facility-fax-code']}}">
                 <input class="govuk-input govuk-!-width-one-third" id="facility-fax" name="facility-fax" type="tel" value="{{data['facility-fax']}}">
               </div>
 
               <div class="govuk-!-padding-bottom-2"></div>
-
 
             </fieldset>
           </div>
@@ -106,7 +103,6 @@
         }) }}
 
         {% include "./includes/return-to-link.html" %}
-
 
       </form>
 
